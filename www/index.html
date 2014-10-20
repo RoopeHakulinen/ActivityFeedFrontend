@@ -1,91 +1,323 @@
 <!doctype html>
 <html lang="en" ng-app="app">
 <head>
-  <meta charset="utf-8">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="mobile-web-app-capable" content="yes">
+	<meta charset="utf-8">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="mobile-web-app-capable" content="yes">
 
-  <title>My App</title>  
-  
-  <link rel="stylesheet" href="lib/onsen/css/onsenui.css">  
-  <link rel="stylesheet" href="lib/onsen/css/onsen-css-components.css"> 
-  <link rel="stylesheet" href="styles/app.css"/> 
+	<title>Activity Feed</title>
 
-  <script src="lib/onsen/js/angular/angular.js"></script>    
-  <script src="lib/onsen/js/onsenui.js"></script>    
+	<link rel="stylesheet" href="lib/onsen/css/onsenui.css">
+	<link rel="stylesheet" href="lib/onsen/css/onsen-css-components.css">
+	<link rel="stylesheet" href="styles/app.css"/>
 
-  <script src="cordova.js"></script>
-  <script>
-    var module = angular.module('app', ['onsen']);
-  </script>
-  
+	<script src="lib/onsen/js/angular/angular.js"></script>
+	<script src="filters.js" type="application/javascript"></script>
+	<script src="lib/onsen/js/onsenui.js"></script>
+	<script src="cordova.js"></script>
+
+	<script>
+		document.addEventListener('deviceready', function onDeviceReady() {
+			console.log("Got deviceready.");
+		}, false);
+	</script>
+	<script src="app.js" type="application/javascript"></script>
+	<script src="conf.js" type="application/javascript"></script>
+	<script src="fileSystemService.js" type="application/javascript"></script>
+	<script src="settingsService.js" type="application/javascript"></script>
+	<script src="userService.js" type="application/javascript"></script>
+	<script src="loginCtrl.js" type="application/javascript"></script>
+	<script src="mainPageCtrl.js" type="application/javascript"></script>
+	<script src="mainMenuCtrl.js" type="application/javascript"></script>
+	<script src="settingsListCtrl.js" type="application/javascript"></script>
+	<script src="settingsCtrl.js" type="application/javascript"></script>
+	<style>
+		.page--menu-page__content {
+			background-color: #333;
+			color: white;
+		}
+
+		.menu-close,
+		.menu-close > .toolbar-button {
+			color: #999;
+		}
+
+		.menu-list,
+		.menu-item:first-child,
+		.menu-item:last-child,
+		.menu-item {
+			background-color: transparent;
+			background-image: none !important;
+			border-color: transparent;
+			color: #fff;
+		}
+
+		.menu-item {
+			padding: 0 0 0 20px;
+			line-height: 52px;
+			height: 52px;
+			text-shadow: rgba(0, 0, 0, 0.4) 0px 1px 0px;
+		}
+
+		.menu-item:active {
+			background-color: rgba(255, 255, 255, 0.1);
+		}
+
+		.menu-notification {
+			display: inline-block;
+			margin-top: 12px;
+			font-size: 14px;
+			height: 16px;
+			line-height: 16px;
+			min-width: 16px;
+			font-weight: 600;
+		}
+
+		.bottom-menu-list,
+		.bottom-menu-item:first-child,
+		.bottom-menu-item:last-child,
+		.bottom-menu-item {
+			border-color: #393939;
+			background-color: transparent;
+			background-image: none !important;
+			color: #ccc;
+		}
+
+		.bottom-menu-item:active {
+			background-color: rgba(255, 255, 255, 0.1);
+		}
+	</style>
 </head>
+<body ng-app="app">
+<ons-navigator var="appNavigator" page="login.html"></ons-navigator>
 
-<body>    
-  
-  <ons-split-view 
-    secondary-page="secondary.html" 
-    main-page="page1.html" 
-    main-page-width="70%" 
-    collapse="portrait">
-  </ons-split-view>
 
-  <ons-template id="page1.html">
-    <ons-page class="center">
-      <ons-toolbar>
-        <div class="center">Page 1</div>
-      </ons-toolbar>
 
-      <div class="content-padded" style="font-size: 13px; text-align: center; color: #999;">
-        <p>Rotate the device to landscape/portrait see the views split/collapse.</p>
-        <p>Or resize the window so that the width is larger than the height (landscape)/smaller than the height (portrait).</p>	
-      </div>
 
-      <ons-bottom-toolbar>
-      </ons-bottom-toolbar>
-    </ons-page>
-  </ons-template>
 
-  <ons-template id="page2.html">
-    <ons-page>
-      <ons-toolbar>
-        <div class="center">Page 2</div>
-      </ons-toolbar>
 
-      <div class="content-padded" style="font-size: 13px; text-align: center; color: #999;">
-        <p>Rotate the device to landscape/portrait see the views split/collapse.</p>
-        <p>Or resize the window so that the width is larger than the height (landscape)/smaller than the height (portrait).</p>	
-      </div>
+<ons-template id="login.html">
+	<ons-page class="center">
+		<ons-toolbar>
+			<div class="center">Login to Activity Feed</div>
+		</ons-toolbar>
 
-      <ons-bottom-toolbar>
-      </ons-bottom-toolbar>
-    </ons-page>
-  </ons-template>
+		<div class="center" ng-controller="loginCtrl">
+			<ons-modal var="loginLoader">
+				<ons-icon icon="fa-circle-o-notch" spin="true"></ons-icon>
+				<div>
+					<div>Trying to log in</div>
+				</div>
+			</ons-modal>
+			<div style="position: absolute; top: 0;left: 0;right: 0;bottom: 0;">
+				<div style="padding: 8px; position: absolute; top: 50%; margin-top: -80px; width: 100%;">
+					<section style="padding: 0 8px 8px">
+						<input type="text" class="text-input" ng-model="email" placeholder="Email" id="email"
+						       style="display: block; width: 100%; height: 40px; font-size: 30px;">
+					</section>
 
-  <ons-template id="secondary.html">
-    <ons-page style="border-right: 1px solid #ddd;">
+					<section style="padding: 0 8px 8px">
+						<input type="password" class="text-input" ng-model="password" placeholder="Password" id="password"
+						       style="display: block; width: 100%; height: 40px; font-size: 30px;">
+					</section>
 
-      <ons-list>
+					<section style="padding: 0 8px 8px">
+						<ons-button modifier="large" ng-click="login();" style="font-size: 20px;">Log in</ons-button>
+					</section>
+				</div>
+			</div>
+		</div>
 
-        <ons-list-item
-          modifier="chevron"
-          ng-click="ons.splitView.toggle();
-            ons.splitView.setMainPage('page1.html');">
-          <i class="fa fa-home fa-lg" style="color: #666"></i>
-          &nbsp; Page 1
-        </ons-list-item>
+		<ons-bottom-toolbar>
+		</ons-bottom-toolbar>
+	</ons-page>
+</ons-template>
 
-        <ons-list-item 
-          modifier="chevron"
-          ng-click="ons.splitView.toggle(); ons.splitView.setMainPage('page2.html');">
-          <i class="fa fa-gear fa-lg" style="color: #666"></i>
-          &nbsp; Page 2
-        </ons-list-item>
 
-      </ons-list>
 
-    </ons-page>
-  </ons-template>
- 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ons-template id="main-view.html">
+	<ons-sliding-menu
+		menu-page="main-menu.html"
+		main-page="main-page.html"
+		side="left"
+		var="slidingMenu"
+		type="reveal"
+		max-slide-distance="260px"
+		swipable="true">
+	</ons-sliding-menu>
+</ons-template>
+
+<ons-template id="main-page.html">
+	<ons-page class="center" ng-controller="mainPageCtrl">
+		<ons-modal var="appLoader">
+			<ons-icon icon="fa-circle-o-notch" spin="true"></ons-icon>
+			<div>
+				<div>Loading</div>
+			</div>
+		</ons-modal>
+		<ons-toolbar>
+			<div class="left">
+				<ons-toolbar-button ng-click="slidingMenu.toggle()">
+					<ons-icon icon="ion-navicon" size="28px" fixed-width="false"></ons-icon>
+				</ons-toolbar-button>
+			</div>
+			<div class="center">Activity Feed</div>
+		</ons-toolbar>
+
+		<div>
+			Welcome.
+		</div>
+		<ons-bottom-toolbar>
+		</ons-bottom-toolbar>
+	</ons-page>
+</ons-template>
+
+
+<ons-template id="main-menu.html">
+	<ons-page modifier="menu-page" ng-controller="mainMenuCtrl">
+		<ons-modal var="menuListLoader">
+			<ons-icon icon="fa-circle-o-notch" spin="true"></ons-icon>
+			<div>
+				<div>Loading</div>
+			</div>
+		</ons-modal>
+		<ons-toolbar modifier="transparent">
+			<div class="center"></div>
+		</ons-toolbar>
+
+		<ons-list class="menu-list">
+			<ons-list-item class="menu-item" ng-click="menu.setMainPage('page1.html', {closeMenu: true})">
+				<ons-icon icon="fa-plus"></ons-icon>
+				New Post
+			</ons-list-item>
+			<ons-list-item class="menu-item" ng-click="menu.setMainPage('search.html', {closeMenu: true})">
+				<ons-icon icon="fa-search"></ons-icon>
+				Search
+			</ons-list-item>
+			<ons-list-item class="menu-item" ng-click="menu.setMainPage('matches.html', {closeMenu: true})">
+				<ons-icon icon="fa-user"></ons-icon>
+				Matches
+				<div class="notification menu-notification">3</div>
+			</ons-list-item>
+			<ons-list-item class="menu-item" ng-click="menu.setMainPage('page1.html', {closeMenu: true})">
+				<ons-icon icon="fa-facebook"></ons-icon>
+				Facebook
+			</ons-list-item>
+			<ons-list-item class="menu-item" ng-click="menu.setMainPage('page1.html', {closeMenu: true})">
+				<ons-icon icon="fa-twitter"></ons-icon>
+				Official Twitter
+			</ons-list-item>
+		</ons-list>
+
+		<br>
+
+		<ons-list class="bottom-menu-list">
+			<ons-list-item class="bottom-menu-item" ng-click='appNavigator.pushPage("settings-view.html", {})'>
+				Settings
+			</ons-list-item>
+
+			<ons-list-item class="bottom-menu-item" ng-click="menu.setMainPage('page1.html', {closeMenu: true})">
+				Help
+			</ons-list-item>
+
+			<ons-list-item class="bottom-menu-item" ng-click="menu.setMainPage('page2.html', {closeMenu: true})">
+				Send feedback
+			</ons-list-item>
+		</ons-list>
+		<ons-bottom-toolbar modifier="transparent">
+		</ons-bottom-toolbar>
+	</ons-page>
+</ons-template>
+
+
+
+
+
+
+
+
+
+<ons-template id="settings-view.html">
+	<ons-split-view
+		secondary-page="settings-listing.html"
+		main-page="general-settings-page.html"
+		main-page-width="70%"
+		collapse="width 600px"
+		var="settingsView">
+	</ons-split-view>
+</ons-template>
+
+<ons-template id="settings-listing.html">
+	<ons-page ng-controller="settingsListCtrl">
+		<ons-toolbar>
+			<div class="left">
+				<ons-toolbar-button ng-click="appNavigator.popPage();">
+					<ons-icon icon="fa-chevron-left"></ons-icon>
+				</ons-toolbar-button>
+			</div>
+			<div class="center"></div>
+		</ons-toolbar>
+		<ons-list modifier="right-border" id="settings-page-list" ng-repeat="page in availablePages">
+			<ons-list-item modifier="tappable" ng-click="settingsView.setMainPage(page.target);">{{page.name}}</ons-list-item>
+		</ons-list>
+	</ons-page>
+</ons-template>
+
+<ons-template id="general-settings-page.html">
+	<ons-page class="center">
+		<ons-modal var="appLoader">
+			<ons-icon icon="fa-circle-o-notch" spin="true"></ons-icon>
+			<div>
+				<div>Loading</div>
+			</div>
+		</ons-modal>
+		<ons-toolbar>
+			<div class="center">Settings</div>
+		</ons-toolbar>
+
+
+		<div class="content-padded" style="font-size: 13px; text-align: center; color: #999;" ng-controller="settingsCtrl">
+			<ons-list>
+				<ons-list-header>Settings</ons-list-header>
+				<ons-list-item>Auto reload:<ons-switch var="useAutoReloadSwitch" ng-model="useAutoReload"></ons-switch></ons-list-item>
+				<ons-list-item>Timeout: <select id="timeout-select" ng-model="selectedTimeout.id" ng-options="timeout.id as timeout.name for timeout in timeoutListOptions"></select></ons-list-item>
+				<ons-list-item>Device name: <input type="text" ng-model="deviceName" /></ons-list-item>
+			</ons-list>
+		</div>
+		<ons-bottom-toolbar>
+		</ons-bottom-toolbar>
+	</ons-page>
+</ons-template>
+
+
+
+<ons-template id="about-page.html">
+	<ons-page ng-controller="settingsCtrl">
+		<ons-toolbar>
+		</ons-toolbar>
+		<div class="content-padded" style="font-size: 13px; text-align: center; color: #999;">
+			<h1>Activity Feed</h1>
+			<p>Designed by: Roope Hakulinen</p>
+		</div>
+		<ons-bottom-toolbar>
+		</ons-bottom-toolbar>
+	</ons-page>
+</ons-template>
 </body>
 </html>
