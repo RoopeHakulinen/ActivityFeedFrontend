@@ -53,12 +53,17 @@ module.controller("loginCtrl", function ($scope, $http, settingsService, fileSys
 						'Content-type': 'application/json',
 						'Accept': 'application/json'
 					}
-				})
-				.success(
-				function (data) {
+				}
+			).success(
+				function (data)
+				{
 					$scope.loginSuccess(data);
 				}
-			);
+			).error(
+				function(data)
+				{
+					alert("Facebook auth callback error: " + data);
+				});
 			alert("UserInfo: " + JSON.stringify(userData));
 		};
 
