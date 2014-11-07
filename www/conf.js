@@ -10,7 +10,7 @@ module.constant(
 	"urlConfig",
 	{
 		"login": serverUrl + "users/sign_in",
-		"facebookCallback": serverUrl + "users/auth/facebook"
+		"facebookCallback": serverUrl + "users/auth/facebook/callback"
 	}
 
 );
