@@ -45,8 +45,21 @@ module.controller("loginCtrl", function ($scope, $http, settingsService, fileSys
 	{
 		var success = function(userData)
 		{
+			$http(
+				{
+					method: "GET",
+					url: urlConfig["facebookCallback"],
+					headers: {
+						'Content-type': 'application/json',
+						'Accept': 'application/json'
+					}
+				})
+				.success(
+				function (data) {
+					$scope.loginSuccess(data);
+				}
+			);
 			alert("UserInfo: " + JSON.stringify(userData));
-			alert("Facebook login succeeded.");
 		};
 
 		var error = function(error)

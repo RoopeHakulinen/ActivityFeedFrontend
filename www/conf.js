@@ -9,7 +9,8 @@ if (TEST_ENABLED)
 module.constant(
 	"urlConfig",
 	{
-		"login": serverUrl + "users/sign_in"
+		"login": serverUrl + "users/sign_in",
+		"facebookCallback": serverUrl + "users/auth/facebook/callback"
 	}
 
 );
