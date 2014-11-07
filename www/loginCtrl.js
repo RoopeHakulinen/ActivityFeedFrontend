@@ -41,6 +41,22 @@ module.controller("loginCtrl", function ($scope, $http, settingsService, fileSys
 		loginLoader.hide();
 	};
 
+	$scope.facebookLogin = function()
+	{
+		var success = function(userData)
+		{
+			alert("UserInfo: " + JSON.stringify(userData));
+			alert("Facebook login succeeded.");
+		};
+
+		var error = function(error)
+		{
+			alert("Facebook login failed: " + error);
+		};
+
+		facebookConnectPlugin.login(["public_profile"], success, error)
+	};
+
 
 	$scope.storeCredentialsForOffline = function ()
 	{

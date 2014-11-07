@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget
+	id="com.activer"
+	version="0.0.1"
+	xmlns="http://www.w3.org/ns/widgets"
+	xmlns:cdv="http://cordova.apache.org/ns/1.0"
+	xmlns:gap="http://phonegap.com/ns/1.0">
+	<name>Activer</name>
+	<description>
+		Find company to do sports or attend happenings.
+	</description>
+	<author email="roope.hakulinen@gmail.com" href="http://activer.com">
+		Roope Hakulinen
+	</author>
+	<content src="index.html"/>
+	<access origin="*"/>
+
+	<!-- Use the newest version of PhoneGap -->
+	<preference name="phonegap-version" value="3.6.3" />
+
+	<gap:plugin name="com.phonegap.plugins.facebookconnect" version="0.9.0">
+		<param name="APP_ID" value="375866282577187"/>
+		<param name="APP_NAME" value="Activer"/>
+	</gap:plugin>
+
+
+	<!-- PhoneGap plugins for PhoneGap Build to attach to build -->
+	<!-- <gap:plugin name="org.apache.cordova.file"/> -->
+
+	<!-- Android preferences -->
+	<preference name="android-installLocation" value="auto" />
+	<preference name="detect-data-types" value="true" />
+
+	<!-- iOS preferences -->
+	<preference name="exit-on-suspend" value="false" />
+	<preference name="fullscreen" value="true" />
+
+	<!-- Disable status bar from the iOS -->
+	<!--<gap:config-file platform="ios" parent="UIViewControllerBasedStatusBarAppearance" overwrite="true">
+		<false/>
+	</gap:config-file> -->
+</widget>

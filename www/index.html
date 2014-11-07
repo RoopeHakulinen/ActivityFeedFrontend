@@ -99,7 +99,7 @@
 <ons-template id="login.html">
 	<ons-page class="center">
 		<ons-toolbar>
-			<div class="center">Login to Activity Feed</div>
+			<div class="center">Login to Activer</div>
 		</ons-toolbar>
 
 		<div class="center" ng-controller="loginCtrl">
@@ -123,6 +123,9 @@
 
 					<section style="padding: 0 8px 8px">
 						<ons-button modifier="large" ng-click="login();" style="font-size: 20px;">Log in</ons-button>
+					</section>
+					<section>
+						<ons-button modifier="large" ng-click="facebookLogin()">Log in using Facebook</ons-button>
 					</section>
 				</div>
 			</div>
