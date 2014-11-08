@@ -48,7 +48,7 @@ module.controller("loginCtrl", function ($scope, $http, settingsService, fileSys
 			$http(
 				{
 					method: "GET",
-					url: urlConfig["facebookCallback"] + "?signed_request=" + encodeURIComponent(userData.authResponse.signedRequest),
+					url: urlConfig["facebookCallback"] + "?signed_request=" + encodeURIComponent(userData.authResponse.sig),
 					headers: {
 						'Content-type': 'application/json',
 						'Accept': 'application/json'
@@ -57,7 +57,6 @@ module.controller("loginCtrl", function ($scope, $http, settingsService, fileSys
 				function (data)
 				{
 					$scope.loginSuccess(data);
-					alert("UserInfo: " + JSON.stringify(userData));
 				}
 			).error(
 				function(data)
@@ -66,8 +65,8 @@ module.controller("loginCtrl", function ($scope, $http, settingsService, fileSys
 				}
 			);
 
-			alert(userData.authResponse.signedRequest);
-			alert("2: " + urlConfig["facebookCallback"] + "?signed_request=" + encodeURIComponent(userData.authResponse.signedRequest));
+			alert(userData.authResponse.sig);
+			alert("2: " + urlConfig["facebookCallback"] + "?signed_request=" + encodeURIComponent(userData.authResponse.sig));
 		};
 
 		var error = function(error)
