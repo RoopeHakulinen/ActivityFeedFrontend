@@ -45,19 +45,20 @@ module.controller("loginCtrl", function ($scope, $http, settingsService, fileSys
 	{
 		var success = function(userData)
 		{
+			alert(urlConfig["facebookCallback"]);
 			$http.get(
 				urlConfig["facebookCallback"]
 			).success(
 				function (data)
 				{
 					$scope.loginSuccess(data);
+					alert("UserInfo: " + JSON.stringify(userData));
 				}
 			).error(
 				function(data)
 				{
 					alert("Facebook auth callback error: " + data);
 				});
-			alert("UserInfo: " + JSON.stringify(userData));
 		};
 
 		var error = function(error)
