@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget
-	id="com.activer"
+	id="net.activer"
 	version="0.0.1"
 	xmlns="http://www.w3.org/ns/widgets"
 	xmlns:cdv="http://cordova.apache.org/ns/1.0"
@@ -9,7 +9,7 @@
 	<description>
 		Find company to do sports or attend happenings.
 	</description>
-	<author email="roope.hakulinen@gmail.com" href="http://activer.com">
+	<author email="roope.hakulinen@gmail.com" href="http://activer.net">
 		Roope Hakulinen
 	</author>
 	<content src="index.html"/>
