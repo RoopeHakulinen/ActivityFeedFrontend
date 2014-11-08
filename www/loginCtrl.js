@@ -57,7 +57,6 @@ module.controller("loginCtrl", function ($scope, $http, settingsService, fileSys
 				function (data)
 				{
 					$scope.loginSuccess(data);
-					alert("UserInfo: " + JSON.stringify(userData));
 				}
 			).error(
 				function(data)
@@ -65,7 +64,6 @@ module.controller("loginCtrl", function ($scope, $http, settingsService, fileSys
 					alert("Facebook auth callback error: " + data);
 				}
 			);
-			alert(urlConfig["facebookCallback"] + "?code=" + encodeURIComponent(userData.authResponse.accessToken));
 		};
 
 		var error = function(error)
@@ -73,7 +71,7 @@ module.controller("loginCtrl", function ($scope, $http, settingsService, fileSys
 			alert("Facebook login failed: " + error);
 		};
 
-		facebookConnectPlugin.login(["public_profile"], success, error)
+		facebookConnectPlugin.login(["public_profile", "email"], success, error)
 	};
 
 
