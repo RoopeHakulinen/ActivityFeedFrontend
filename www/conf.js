@@ -1,4 +1,4 @@
-TEST_ENABLED = true;
+TEST_ENABLED = false;
 
 var serverUrl = "https://api.activer.net/";
 if (TEST_ENABLED)
