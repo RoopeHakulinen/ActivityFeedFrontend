@@ -1,6 +1,6 @@
 TEST_ENABLED = true;
 
-var serverUrl = "http://localhost:3000/";
+var serverUrl = "https://api.activer.net/";
 if (TEST_ENABLED)
 {
 	serverUrl = "http://91.155.208.83:3001/";
