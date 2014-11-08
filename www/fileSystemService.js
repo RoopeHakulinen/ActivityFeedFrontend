@@ -1,20 +1,27 @@
 module.service('fileSystemService', function () {
+	this.loadedFiles = [];
+
+	window.requestFileSystem  = window.requestFileSystem || window.webkitRequestFileSystem;
 
 	this.readFile = function (filename, callback)
 	{
-		console.log("Accessing file system.");
+		if (this.loadedFiles[filename])
+		{
+			console.log("Cache hit!");
+			callback(this.loadedFiles[filename]);
+			return;
+		}
 
 		function gotFileEntry(fileEntry) {
-			console.log("Got the file entry for reading.");
-			fileEntry.file(actualReadFile);
+			fileEntry.file(actualReadFile.bind(this));
 		}
 
 		function onFileSystemSuccess(fileSystem) {
-			//var file = cd(filename);
 			console.log("Trying to read from " + filename);
-			fileSystem.root.getFile(filename,
-				{create: true, exclusive: false},
-				gotFileEntry, this.errorHandler);
+
+			window.resolveLocalFileSystemURL(cordova.file.dataDirectory, function(dirEntry) {
+				dirEntry.getFile(filename, {create: true, exclusive: false}, gotFileEntry.bind(this), this.errorHandler);
+			}.bind(this));
 		}
 
 		function actualReadFile(fileObject)
@@ -24,25 +31,27 @@ module.service('fileSystemService', function () {
 			{
 				var text = event.target.result;
 				console.log("File was read, calling callback provided. ");
+				this.loadedFiles[filename] = text; // Store to cache
 				callback(text);
-			};
+			}.bind(this);
 			reader.readAsText(fileObject);
 		}
-		window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFileSystemSuccess, this.errorHandler);
+		window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFileSystemSuccess.bind(this), this.errorHandler);
 	};
 
-	this.writeFile = function(filename, textToWrite, callback)
+	this.writeFile = function(filename, textToWrite, append, callback)
 	{
-
-
+		if (typeof append === "undefined")
+		{
+			append = false;
+		}
 		function onFileSystemSuccess(fileSystem) {
 			console.log("Trying to write to " + filename);
-			fileSystem.root.getFile(filename,
-				{create: true, exclusive: false},
-				gotFileEntry, this.errorHandler);
+			window.resolveLocalFileSystemURL(cordova.file.dataDirectory, function(dirEntry) {
+				dirEntry.getFile(filename, {create: true, exclusive: false}, gotFileEntry, this.errorHandler);
+			});
 
 			function gotFileEntry(fileEntry) {
-				console.log("Got the file entry.");
 				fileEntry.file(saveFileContent);
 
 				function saveFileContent()
@@ -51,13 +60,16 @@ module.service('fileSystemService', function () {
 
 					function gotFileWriter(writer)
 					{
+						if (append)
+						{
+							writer.seek(writer.length);
+						}
 						writer.write(textToWrite);
 						writer.onwriteend = function(event) {
-							console.log("File written.");
 							if (typeof callback === "function")
 							{
 								var url = fileEntry.toURL();
-								console.log("Got URL " + url)
+								console.log("File written to " + url);
 								callback(url);
 							}
 						};
