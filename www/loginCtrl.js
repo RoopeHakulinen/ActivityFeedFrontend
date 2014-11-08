@@ -54,7 +54,6 @@ module.controller("loginCtrl", function ($scope, $http, settingsService, fileSys
 				}).success(
 				function (data)
 				{
-					alert(JSON.stringify(data));
 					$scope.loginSuccess(data);
 				}
 			).error(

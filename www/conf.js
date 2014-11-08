@@ -3,7 +3,7 @@ TEST_ENABLED = true;
 var serverUrl = "https://api.activer.net/";
 if (TEST_ENABLED)
 {
-	serverUrl = "http://91.155.208.83:3001/";
+	serverUrl = "https://91.155.208.83:3001/";
 }
 
 module.constant(
