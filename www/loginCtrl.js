@@ -48,7 +48,7 @@ module.controller("loginCtrl", function ($scope, $http, settingsService, fileSys
 			$http(
 				{
 					method: "GET",
-					url: urlConfig["facebookCallback"] + "?signed_request=" + encodeURIComponent(userData.authResponse.sig),
+					url: urlConfig["facebookCallback"] + "?code=" + encodeURIComponent(userData.authResponse.accessToken),
 					headers: {
 						'Content-type': 'application/json',
 						'Accept': 'application/json'
@@ -65,7 +65,7 @@ module.controller("loginCtrl", function ($scope, $http, settingsService, fileSys
 					alert("Facebook auth callback error: " + data);
 				}
 			);
-			alert(userData.authResponse);
+			alert(urlConfig["facebookCallback"] + "?code=" + encodeURIComponent(userData.authResponse.accessToken));
 		};
 
 		var error = function(error)
