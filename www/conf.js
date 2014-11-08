@@ -3,7 +3,7 @@ TEST_ENABLED = true;
 var serverUrl = "http://localhost:3000/";
 if (TEST_ENABLED)
 {
-	serverUrl = "http://91.155.208.83:3000/";
+	serverUrl = "http://91.155.208.83:3001/";
 }
 
 module.constant(
