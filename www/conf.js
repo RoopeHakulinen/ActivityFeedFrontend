@@ -1,9 +1,9 @@
-TEST_ENABLED = false;
+TEST_ENABLED = true;
 
 var serverUrl = "https://api.activer.net/";
 if (TEST_ENABLED)
 {
-	serverUrl = "http://91.155.208.83:3001/";
+	serverUrl = "https://r.activer.net:3001/"; // Refers to local machine in DNS
 }
 
 module.constant(
