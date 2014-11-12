@@ -49,7 +49,7 @@ module.controller("loginCtrl", function ($scope, $http, settingsService, fileSys
 				$http(
 					{
 						method: "GET",
-						url: urlConfig["facebookCallback"] + "?code=" + encodeURIComponent(userData.authResponse.accessToken),
+						url: urlConfig["facebookCallback"] + "?code=" + encodeURIComponent(token),
 						headers: {
 							'Content-type': 'application/json',
 							'Accept': 'application/json'
