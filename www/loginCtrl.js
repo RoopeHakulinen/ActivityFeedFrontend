@@ -43,32 +43,25 @@ module.controller("loginCtrl", function ($scope, $http, settingsService, fileSys
 	{
 		var success = function(userData)
 		{
-			facebookConnectPlugin.getAccessToken(function(token) {
-				alert("Token: " + token);
-
-				$http(
-					{
-						method: "GET",
-						url: urlConfig["facebookCallback"] + "?code=" + encodeURIComponent(token),
-						headers: {
-							'Content-type': 'application/json',
-							'Accept': 'application/json'
-						}
-					}).success(
-					function (data)
-					{
-						$scope.loginSuccess(data);
+			$http(
+				{
+					method: "GET",
+					url: urlConfig["facebookCallback"] + "?code=" + encodeURIComponent(userData.authResponse.accessToken),
+					headers: {
+						'Content-type': 'application/json',
+						'Accept': 'application/json'
 					}
-				).error(
-					function(data)
-					{
-						alert("Facebook auth callback error: " + data);
-					}
-				);
-
-			}, function(err) {
-				alert("Could not get access token: " + err);
-			});
+				}).success(
+				function (data)
+				{
+					$scope.loginSuccess(data);
+				}
+			).error(
+				function(data)
+				{
+					alert("Facebook auth callback error: " + data);
+				}
+			);
 		};
 
 		var error = function(error)
