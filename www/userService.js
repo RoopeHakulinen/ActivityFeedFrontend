@@ -1,4 +1,4 @@
-module.service('userService', function () {
+module.service('userService', function ($http, urlConfig) {
 	this.user = {};
 
 	this.setUser = function (user)
@@ -26,13 +26,34 @@ module.service('userService', function () {
 		return this.user.id;
 	};
 
-	this.setToken = function (token)
+	this.logout = function (force)
 	{
-		this.user["authentication-token"] = token;
-	}
+		window.plugins.toast.showShortBottom("Logging out.");
+		if (typeof force === "undefined")
+		{
+			force = false;
+		}
+		if (!force && !confirm("Are you sure you want to log out?"))
+		{
+			return;
+		}
+		console.log("Logging out.");
 
-	this.getToken = function ()
-	{
-		return this.user["authentication-token"];
+		$http.get(urlConfig["logout"]).success(
+			function(data, status, headers, config)
+			{
+				window.plugins.toast.showShortBottom("Logged out successfully");
+			}.bind(this)
+		).error(
+			function(data, status, headers, config)
+			{
+				console.log("Logging out failed.");
+				// Do nothing as this can be intentional
+			}
+		);
+
+		console.log("Logged out.");
+		this.setUser({});
+		appNavigator.resetToPage("login.html");
 	};
 });

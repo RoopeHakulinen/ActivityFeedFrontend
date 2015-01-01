@@ -1,10 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget
-	id="net.activer"
-	version="0.0.1"
-	xmlns="http://www.w3.org/ns/widgets"
-	xmlns:cdv="http://cordova.apache.org/ns/1.0"
-	xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="net.activer.app" version="0.0.1"
+        xmlns="http://www.w3.org/ns/widgets"
+        xmlns:cdv="http://cordova.apache.org/ns/1.0"
+        xmlns:gap="http://phonegap.com/ns/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android">
 	<name>Activer</name>
 	<description>
 		Find company to do sports or attend happenings.
@@ -18,27 +17,32 @@
 	<!-- Use the newest version of PhoneGap -->
 	<preference name="phonegap-version" value="3.6.3" />
 
-	<feature name="http://api.phonegap.com/1.0/file"/>
-
-	<!-- PhoneGap Build doesn't yet support 0.9.0 -->
-	<gap:plugin name="com.phonegap.plugins.facebookconnect" version="0.8.0">
+	<!-- PhoneGap plugins for PhoneGap Build to attach to build -->
+	<gap:plugin name="org.apache.cordova.camera" version="0.3.2" source="pgb" />
+	<gap:plugin name="org.apache.cordova.device" version="0.2.12" source="pgb" />
+	<gap:plugin name="org.apache.cordova.file" version="1.3.1" source="pgb" />
+	<gap:plugin name="org.apache.cordova.network-information" version="0.2.12" source="pgb" />
+	<gap:plugin name="nl.x-services.plugins.toast" version="2.0.2" source="pgb" />
+	<gap:plugin name="com.phonegap.plugins.pushplugin" version="2.4.0" source="pgb" />
+	<gap:plugin name="com.phonegap.plugins.facebookconnect" version="0.8.0" source="pgb"> <!-- PhoneGap Build doesn't yet support 0.9.0 -->
 		<param name="APP_ID" value="375866282577187"/>
 		<param name="APP_NAME" value="Activer"/>
 	</gap:plugin>
 
-	<!-- PhoneGap plugins for PhoneGap Build to attach to build -->
-	<gap:plugin name="org.apache.cordova.file"/>
+	<!-- App needs permissions only for camera, internet, storage, media (record audio and video) and network state -->
+	<feature name="http://api.phonegap.com/1.0/camera"/>
+	<feature name="http://api.phonegap.com/1.0/device"/>
+	<feature name="http://api.phonegap.com/1.0/file"/>
+	<feature name="http://api.phonegap.com/1.0/network"/>
+
 
 	<!-- Android preferences -->
 	<preference name="android-installLocation" value="auto" />
 	<preference name="detect-data-types" value="true" />
+	<preference name="AndroidPersistentFileLocation" value="Internal" /> <!-- Makes FileTransfer use internal storage -->
 
 	<!-- iOS preferences -->
 	<preference name="exit-on-suspend" value="false" />
 	<preference name="fullscreen" value="true" />
-
-	<!-- Disable status bar from the iOS -->
-	<!--<gap:config-file platform="ios" parent="UIViewControllerBasedStatusBarAppearance" overwrite="true">
-		<false/>
-	</gap:config-file> -->
+	<preference name="iosPersistentFileLocation" value="Library" /> <!-- Makes FileTransfer use internal storage -->
 </widget>
