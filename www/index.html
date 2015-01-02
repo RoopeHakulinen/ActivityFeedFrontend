@@ -17,7 +17,9 @@
 	<script src="cordova.js"></script>
 
 	<script>
+		var isPhoneGapApp = false;
 		document.addEventListener('deviceready', function onDeviceReady() {
+			isPhoneGapApp = true;
 			console.log("Got deviceready.");
 		}, false);
 	</script>
