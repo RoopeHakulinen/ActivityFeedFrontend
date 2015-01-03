@@ -271,7 +271,7 @@
 	</ons-sliding-menu>
 </ons-template>
 
-<ons-template id="main-page.html">
+<ons-template id="browse.html">
 	<ons-page class="center" ng-controller="mainPageCtrl">
 		<ons-modal var="appLoader">
 			<ons-icon icon="fa-circle-o-notch" spin="true"></ons-icon>
@@ -310,7 +310,7 @@
 		</ons-toolbar>
 
 		<ons-list class="menu-list">
-			<ons-list-item class="menu-item" ng-click="slidingMenu.setMainPage('create-activity.html', {closeMenu: true})">
+			<ons-list-item class="menu-item" ng-click="appNavigator.pushPage('create-activity.html');"> <!--slidingMenu.setMainPage('create-activity.html', {closeMenu: true})-->
 				<ons-icon icon="fa-plus"></ons-icon>
 				Lisää aktiviteetti
 			</ons-list-item>
