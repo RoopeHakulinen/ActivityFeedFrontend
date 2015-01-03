@@ -95,10 +95,36 @@
 
 
 
-
-
-
 <ons-template id="login.html">
+	<ons-page ng-controller="loginCtrl">
+		<ons-toolbar>
+			<div class="left"><ons-toolbar-button ng-click="navigator.app.exit();">Close</ons-toolbar-button></div>
+			<div class="center">Log In</div>
+		</ons-toolbar>
+
+		<ons-modal var="loginLoader">
+			<ons-icon icon="fa-circle-o-notch" spin="true"></ons-icon>
+			<div>
+				<div>Trying to log in</div>
+			</div>
+		</ons-modal>
+
+		<div class="login-form">
+			<input type="email" class="text-input--underbar" placeholder="Email" ng-model="email" value="">
+			<input type="password" class="text-input--underbar" placeholder="Password" ng-model="password" value="">
+			<br><br>
+			<ons-button modifier="large" class="login-button" ng-click="login()">Log In</ons-button>
+			<br><br>
+			<ons-button modifier="large" class="login-button" ng-click="facebookLogin()">Log in using Facebook</ons-button>
+			<br>
+			<ons-button modifier="quiet" class="forgot-password">Forgot password?</ons-button>
+		</div>
+
+	</ons-page>
+
+</ons-template>
+
+<!--<ons-template id="login.html">
 	<ons-page class="center">
 		<ons-toolbar>
 			<div class="center">Login to Activer</div>
@@ -137,12 +163,120 @@
 		</ons-bottom-toolbar>
 	</ons-page>
 </ons-template>
+-->
+
+
+
+<ons-template id="create-activity.html">
+	<ons-page>
+		<ons-toolbar>
+			<div class="left"><ons-toolbar-button ng-click="app.navigator.popPage();">Cancel</ons-toolbar-button></div>
+			<div class="center">New Message</div>
+		</ons-toolbar>
+
+		<ons-list modifier="inset" style="margin-top: 10px">
+			<ons-list-item class="to-wrapper">
+				<ons-row>
+					<ons-col width="52px">
+						<img src="images/profile-image-02.png" width="42" class="to-image">
+					</ons-col>
+					<ons-col>
+						<div class="to-name">Graham</div>
+						<div class="to-email">@graham</div>
+					</ons-col>
+				</ons-row>
+			</ons-list-item>
+			<ons-list-item>
+				<input type="text" class="text-input text-input--transparent" placeholder="Name" style="width: 100%">
+			</ons-list-item>
+
+			<ons-list-item>
+				<textarea class="textarea textarea--transparent" placeholder="Message" style="width: 100%; height: 100px;"></textarea>
+			</ons-list-item>
+
+			<ons-list-item modifier="chevron">
+				<ons-icon icon="fa-tag" style="opacity:0.2"></ons-icon>
+			</ons-list-item>
+
+		</ons-list>
+
+		<div style="padding: 10px 9px">
+			<ons-button modifier="large" style="margin: 0 auto;">
+				Send
+			</ons-button>
+		</div>
+
+
+	</ons-page>
+
+</ons-template>
 
 
 
 
+<ons-template id="list-activities.html">
+	<ons-page>
+		<ons-toolbar>
+			<div class="left"><ons-toolbar-button ng-click="app.navigator.popPage();">Cancel</ons-toolbar-button></div>
+			<div class="center">
+				Schedule
+			</div>
+			<div class="right">
+				<ons-toolbar-button>
+					<ons-icon icon="ion-plus" fixed-width="false" style="vertical-align: -4px;"></ons-icon>
+				</ons-toolbar-button>
+			</div>
+		</ons-toolbar>
 
+		<div class="navigation-bar">
+			<div class="navigation-bar__center">
 
+				<!-- segment control -->
+				<div class="button-bar" style="width:200px; margin:8px auto 0;">
+					<div class="button-bar__item">
+						<input type="radio" name="navi-segment-a" checked>
+						<div class="button-bar__button">Today</div>
+					</div>
+					<div class="button-bar__item">
+						<input type="radio" name="navi-segment-a">
+						<div class="button-bar__button">Tomorrow</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<ons-list class="plan-list">
+			<ons-list-item modifier="chevron" class="plan" ng-repeat="a in [1,2,3,4,5,6,7,8,9,10]">
+				<ons-row>
+					<ons-col width="80px" class="plan-left">
+						<div class="plan-date">5:30 PM</div>
+						<div class="plan-duration">1h</div>
+					</ons-col>
+
+					<ons-col width="6px" class="plan-center" ng-style="{backgroundColor:a % 3 == 1 ? '#3399ff' : '#ccc'}">
+					</ons-col>
+
+					<ons-col class="plan-right">
+						<div class="plan-name">Onsen UI Meetup</div>
+
+						<div class="plan-info">
+							<div ng-hide="a % 4 == 0">
+								<ons-icon icon="fa-phone"></ons-icon>123-456-789
+							</div>
+
+							<div ng-hide="a % 3 == 0">
+								<ons-icon icon="fa-map-marker"></ons-icon>Moscone, San Francisco
+							</div>
+						</div>
+					</ons-col>
+				</ons-row>
+			</ons-list-item>
+
+		</ons-list>
+
+	</ons-page>
+</ons-template>
 
 
 
@@ -207,26 +341,18 @@
 		</ons-toolbar>
 
 		<ons-list class="menu-list">
-			<ons-list-item class="menu-item" ng-click="menu.setMainPage('page1.html', {closeMenu: true})">
+			<ons-list-item class="menu-item" ng-click="menu.setMainPage('create-activity.html', {closeMenu: true})">
 				<ons-icon icon="fa-plus"></ons-icon>
-				New Post
+				Lisää aktiviteetti
 			</ons-list-item>
-			<ons-list-item class="menu-item" ng-click="menu.setMainPage('search.html', {closeMenu: true})">
+			<ons-list-item class="menu-item" ng-click="menu.setMainPage('list-activities.html', {closeMenu: true})">
 				<ons-icon icon="fa-search"></ons-icon>
-				Search
+				Näytä aktiviteetit
 			</ons-list-item>
-			<ons-list-item class="menu-item" ng-click="menu.setMainPage('matches.html', {closeMenu: true})">
+			<ons-list-item class="menu-item" ng-click="menu.setMainPage('invitations.html', {closeMenu: true})">
 				<ons-icon icon="fa-user"></ons-icon>
-				Matches
+				Kutsut
 				<div class="notification menu-notification">3</div>
-			</ons-list-item>
-			<ons-list-item class="menu-item" ng-click="menu.setMainPage('page1.html', {closeMenu: true})">
-				<ons-icon icon="fa-facebook"></ons-icon>
-				Facebook
-			</ons-list-item>
-			<ons-list-item class="menu-item" ng-click="menu.setMainPage('page1.html', {closeMenu: true})">
-				<ons-icon icon="fa-twitter"></ons-icon>
-				Official Twitter
 			</ons-list-item>
 		</ons-list>
 
@@ -234,15 +360,25 @@
 
 		<ons-list class="bottom-menu-list">
 			<ons-list-item class="bottom-menu-item" ng-click='appNavigator.pushPage("settings-view.html", {})'>
-				Settings
+				Asetukset
 			</ons-list-item>
 
 			<ons-list-item class="bottom-menu-item" ng-click="menu.setMainPage('page1.html', {closeMenu: true})">
-				Help
+				Apua
 			</ons-list-item>
 
 			<ons-list-item class="bottom-menu-item" ng-click="menu.setMainPage('page2.html', {closeMenu: true})">
-				Send feedback
+				Anna palautetta
+			</ons-list-item>
+
+			<ons-list-item class="bottom-menu-item" ng-click="menu.setMainPage('page1.html', {closeMenu: true})">
+				<ons-icon icon="fa-facebook"></ons-icon>
+				Facebook
+			</ons-list-item>
+
+			<ons-list-item class="bottom-menu-item" ng-click="menu.setMainPage('page1.html', {closeMenu: true})">
+				<ons-icon icon="fa-twitter"></ons-icon>
+				Official Twitter
 			</ons-list-item>
 		</ons-list>
 		<ons-bottom-toolbar modifier="transparent">
