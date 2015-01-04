@@ -262,7 +262,7 @@
 <ons-template id="main-view.html">
 	<ons-sliding-menu
 		menu-page="main-menu.html"
-		main-page="main-page.html"
+		main-page="browser.html"
 		side="left"
 		var="slidingMenu"
 		type="reveal"
@@ -288,8 +288,13 @@
 			<div class="center">Activer</div>
 		</ons-toolbar>
 
-		<div>
-			Welcome.
+		<div class="profile-card">
+
+			<img src="images/profile-image-01.png" class="profile-image">
+			<div class="profile-name">Dave Graham</div>
+			<div class="profile-id">@davegraham</div>
+			<div class="profile-desc">Freelance designer, software engineer and cyclist</div>
+
 		</div>
 		<ons-bottom-toolbar>
 		</ons-bottom-toolbar>
@@ -310,15 +315,15 @@
 		</ons-toolbar>
 
 		<ons-list class="menu-list">
-			<ons-list-item class="menu-item" ng-click="appNavigator.pushPage('create-activity.html');"> <!--slidingMenu.setMainPage('create-activity.html', {closeMenu: true})-->
+			<ons-list-item class="menu-item" ng-click="appNavigator.pushPage('create-activity.html');slidingMenu.closeMenu();">
 				<ons-icon icon="fa-plus"></ons-icon>
 				Lisää aktiviteetti
 			</ons-list-item>
-			<ons-list-item class="menu-item" ng-click="slidingMenu.setMainPage('list-activities.html', {closeMenu: true})">
+			<ons-list-item class="menu-item" ng-click="appNavigator.pushPage('list-activities.html');slidingMenu.closeMenu();">
 				<ons-icon icon="fa-search"></ons-icon>
 				Näytä aktiviteetit
 			</ons-list-item>
-			<ons-list-item class="menu-item" ng-click="slidingMenu.setMainPage('invitations.html', {closeMenu: true})">
+			<ons-list-item class="menu-item" ng-click="appNavigator.pushPage('invitations.html');slidingMenu.closeMenu();">
 				<ons-icon icon="fa-user"></ons-icon>
 				Kutsut
 				<div class="notification menu-notification">3</div>
@@ -328,24 +333,24 @@
 		<br>
 
 		<ons-list class="bottom-menu-list">
-			<ons-list-item class="bottom-menu-item" ng-click='appNavigator.pushPage("settings-view.html", {})'>
+			<ons-list-item class="bottom-menu-item" ng-click="appNavigator.pushPage('settings-view.html');slidingMenu.closeMenu();">
 				Asetukset
 			</ons-list-item>
 
-			<ons-list-item class="bottom-menu-item" ng-click="slidingMenu.setMainPage('page1.html', {closeMenu: true})">
+			<ons-list-item class="bottom-menu-item" ng-click="appNavigator.pushPage('invitations.html');slidingMenu.closeMenu();">
 				Apua
 			</ons-list-item>
 
-			<ons-list-item class="bottom-menu-item" ng-click="slidingMenu.setMainPage('page2.html', {closeMenu: true})">
+			<ons-list-item class="bottom-menu-item" ng-click="appNavigator.pushPage('feedback.html');slidingMenu.closeMenu();">
 				Anna palautetta
 			</ons-list-item>
 
-			<ons-list-item class="bottom-menu-item" ng-click="slidingMenu.setMainPage('page1.html', {closeMenu: true})">
+			<ons-list-item class="bottom-menu-item" ng-click="appNavigator.pushPage('invitations.html');slidingMenu.closeMenu();">
 				<ons-icon icon="fa-facebook"></ons-icon>
 				Facebook
 			</ons-list-item>
 
-			<ons-list-item class="bottom-menu-item" ng-click="slidingMenu.setMainPage('page1.html', {closeMenu: true})">
+			<ons-list-item class="bottom-menu-item" ng-click="appNavigator.pushPage('invitations.html');slidingMenu.closeMenu();">
 				<ons-icon icon="fa-twitter"></ons-icon>
 				Official Twitter
 			</ons-list-item>
