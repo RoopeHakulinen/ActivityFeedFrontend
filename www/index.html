@@ -165,6 +165,126 @@
 
 
 
+
+
+
+
+
+
+
+
+
+<ons-template id="main-view.html">
+	<ons-sliding-menu
+		menu-page="main-menu.html"
+		main-page="browse.html"
+		side="left"
+		var="slidingMenu"
+		type="reveal"
+		max-slide-distance="260px"
+		swipable="true">
+	</ons-sliding-menu>
+</ons-template>
+
+<ons-template id="browse.html">
+	<ons-page class="center" ng-controller="browseCtrl">
+		<ons-toolbar>
+			<div class="left">
+				<ons-toolbar-button ng-click="slidingMenu.toggle();">
+					<ons-icon icon="ion-navicon" size="28px" fixed-width="false"></ons-icon>
+				</ons-toolbar-button>
+			</div>
+			<div class="center">Activer</div>
+			<div class="right">
+				<ons-toolbar-button ng-click="appNavigator.pushPage('create-activity.html');">
+					<ons-icon icon="ion-ios-plus-outline" size="28px" fixed-width="false"></ons-icon>
+				</ons-toolbar-button>
+			</div>
+		</ons-toolbar>
+
+		<div ng-show="currentActivity.id">
+			<div class="profile-card">
+				<img src="{{currentActivity.image}}" class="profile-image">
+				<div class="profile-name">{{currentActivity.name}}</div>
+				<div class="profile-id">{{currentActivity.date}}</div>
+				<div class="profile-desc">{{currentActivity.desc}}</div>
+				<div class="profile-stars">{{currentActivity.stars}}</div>
+			</div>
+			<div class="controls">
+				<ons-button ng-click="sendInvitation();">Lähetä kutsu</ons-button>
+				<ons-button ng-click="skip();">Seuraava</ons-button>
+			</div>
+		</div>
+		<div ng-hide="currentActivity.id">
+			Valitettavasti aktiviteetteja ei löytynyt.
+		</div>
+	</ons-page>
+</ons-template>
+
+
+<ons-template id="main-menu.html">
+	<ons-page modifier="menu-page" ng-controller="mainMenuCtrl">
+		<ons-modal var="menuListLoader">
+			<ons-icon icon="fa-circle-o-notch" spin="true"></ons-icon>
+			<div>
+				<div>Loading</div>
+			</div>
+		</ons-modal>
+		<ons-toolbar modifier="transparent">
+			<div class="center"></div>
+		</ons-toolbar>
+
+		<ons-list class="menu-list">
+			<ons-list-item class="menu-item" ng-click="appNavigator.pushPage('create-activity.html');slidingMenu.closeMenu();">
+				<ons-icon icon="fa-plus"></ons-icon>
+				Lisää aktiviteetti
+			</ons-list-item>
+			<ons-list-item class="menu-item" ng-click="appNavigator.pushPage('show-activities.html');slidingMenu.closeMenu();">
+				<ons-icon icon="fa-search"></ons-icon>
+				Aktiviteetit
+			</ons-list-item>
+			<ons-list-item class="menu-item" ng-click="appNavigator.pushPage('list-invitations.html');slidingMenu.closeMenu();">
+				<ons-icon icon="fa-user"></ons-icon>
+				Kutsut
+				<div class="notification menu-notification">3</div>
+			</ons-list-item>
+		</ons-list>
+
+		<br>
+
+		<ons-list class="bottom-menu-list">
+			<ons-list-item class="bottom-menu-item" ng-click="appNavigator.pushPage('settings-view.html');slidingMenu.closeMenu();">
+				Asetukset
+			</ons-list-item>
+
+			<ons-list-item class="bottom-menu-item" ng-click="appNavigator.pushPage('help.html');slidingMenu.closeMenu();">
+				Apua
+			</ons-list-item>
+
+			<ons-list-item class="bottom-menu-item" ng-click="appNavigator.pushPage('feedback.html');slidingMenu.closeMenu();">
+				Anna palautetta
+			</ons-list-item>
+
+			<ons-list-item class="bottom-menu-item" ng-click="appNavigator.pushPage('invitations.html');slidingMenu.closeMenu();">
+				<ons-icon icon="fa-facebook"></ons-icon>
+				Facebook
+			</ons-list-item>
+
+			<ons-list-item class="bottom-menu-item" ng-click="appNavigator.pushPage('invitations.html');slidingMenu.closeMenu();">
+				<ons-icon icon="fa-twitter"></ons-icon>
+				Official Twitter
+			</ons-list-item>
+		</ons-list>
+	</ons-page>
+</ons-template>
+
+
+
+
+
+
+
+
 <ons-template id="create-activity.html">
 	<ons-page>
 		<ons-toolbar>
@@ -249,118 +369,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-<ons-template id="main-view.html">
-	<ons-sliding-menu
-		menu-page="main-menu.html"
-		main-page="browse.html"
-		side="left"
-		var="slidingMenu"
-		type="reveal"
-		max-slide-distance="260px"
-		swipable="true">
-	</ons-sliding-menu>
-</ons-template>
-
-<ons-template id="browse.html">
-	<ons-page class="center" ng-controller="browseCtrl">
-		<ons-toolbar>
-			<div class="left">
-				<ons-toolbar-button ng-click="slidingMenu.toggle();">
-					<ons-icon icon="ion-navicon" size="28px" fixed-width="false"></ons-icon>
-				</ons-toolbar-button>
-			</div>
-			<div class="center">Activer</div>
-			<div class="right">
-				<ons-toolbar-button ng-click="appNavigator.pushPage('create-activity.html');">
-					<ons-icon icon="ion-ios-plus-outline" size="28px" fixed-width="false"></ons-icon>
-				</ons-toolbar-button>
-			</div>
-		</ons-toolbar>
-
-		<div ng-show="currentActivity.id">
-			<div class="profile-card">
-				<img src="{{currentActivity.image}}" class="profile-image">
-				<div class="profile-name">{{currentActivity.name}}</div>
-				<div class="profile-id">{{currentActivity.date}}</div>
-				<div class="profile-desc">{{currentActivity.desc}}</div>
-				<div class="profile-stars">{{currentActivity.stars}}</div>
-			</div>
-			<div class="controls">
-				<ons-button ng-click="sendInvitation();">Lähetä kutsu</ons-button>
-				<ons-button ng-click="skip();">Seuraava</ons-button>
-			</div>
-		</div>
-		<div ng-hide="currentActivity.id">
-			Valitettavasti aktiviteetteja ei löytynyt.
-		</div>
-	</ons-page>
-</ons-template>
-
-
-<ons-template id="main-menu.html">
-	<ons-page modifier="menu-page" ng-controller="mainMenuCtrl">
-		<ons-modal var="menuListLoader">
-			<ons-icon icon="fa-circle-o-notch" spin="true"></ons-icon>
-			<div>
-				<div>Loading</div>
-			</div>
-		</ons-modal>
-		<ons-toolbar modifier="transparent">
-			<div class="center"></div>
-		</ons-toolbar>
-
-		<ons-list class="menu-list">
-			<ons-list-item class="menu-item" ng-click="appNavigator.pushPage('create-activity.html');slidingMenu.closeMenu();">
-				<ons-icon icon="fa-plus"></ons-icon>
-				Lisää aktiviteetti
-			</ons-list-item>
-			<ons-list-item class="menu-item" ng-click="appNavigator.pushPage('list-invitations.html');slidingMenu.closeMenu();">
-				<ons-icon icon="fa-search"></ons-icon>
-				Näytä kutsut
-			</ons-list-item>
-			<ons-list-item class="menu-item" ng-click="appNavigator.pushPage('invitations.html');slidingMenu.closeMenu();">
-				<ons-icon icon="fa-user"></ons-icon>
-				Kutsut
-				<div class="notification menu-notification">3</div>
-			</ons-list-item>
-		</ons-list>
-
-		<br>
-
-		<ons-list class="bottom-menu-list">
-			<ons-list-item class="bottom-menu-item" ng-click="appNavigator.pushPage('settings-view.html');slidingMenu.closeMenu();">
-				Asetukset
-			</ons-list-item>
-
-			<ons-list-item class="bottom-menu-item" ng-click="appNavigator.pushPage('invitations.html');slidingMenu.closeMenu();">
-				Apua
-			</ons-list-item>
-
-			<ons-list-item class="bottom-menu-item" ng-click="appNavigator.pushPage('feedback.html');slidingMenu.closeMenu();">
-				Anna palautetta
-			</ons-list-item>
-
-			<ons-list-item class="bottom-menu-item" ng-click="appNavigator.pushPage('invitations.html');slidingMenu.closeMenu();">
-				<ons-icon icon="fa-facebook"></ons-icon>
-				Facebook
-			</ons-list-item>
-
-			<ons-list-item class="bottom-menu-item" ng-click="appNavigator.pushPage('invitations.html');slidingMenu.closeMenu();">
-				<ons-icon icon="fa-twitter"></ons-icon>
-				Official Twitter
-			</ons-list-item>
-		</ons-list>
-	</ons-page>
-</ons-template>
 
 
 
