@@ -27,6 +27,7 @@ module.controller("loginCtrl", function ($scope, $http, settingsService, fileSys
 				$scope.loginSuccess(data);
 			}).error(function () {
 				console.log("Login failed.");
+				loginLoader.hide();
 			});
 	};
 
