@@ -6,7 +6,7 @@ module.controller("createActivityCtrl", function ($scope, $http, urlConfig) {
 
 	£scope.createActivity = function()
 	{
-
+		commonLoader.show();
 		$http.post(urlConfig["activity"],
 			{
 				data:
@@ -20,11 +20,13 @@ module.controller("createActivityCtrl", function ($scope, $http, urlConfig) {
 			function()
 			{
 				window.plugins.toast.showShortBottom('Activity successfully added.');
+				commonLoader.hide();
 			}
 		).error(
 			function(data, status)
 			{
 				window.plugins.toast.showShortBottom('Activity creation failed with status ' + status);
+				commonLoader.hide();
 			}
 		);
 	};
