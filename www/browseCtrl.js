@@ -35,10 +35,10 @@ module.controller("browseCtrl", function ($scope, $http, settingsService, urlCon
 		);
 	};
 
-	$scope.accept = function()
+	$scope.sendInvitation = function()
 	{
 		$http.post(
-				urlConfig["activity"] + "/" + $scope.currentActivity.id + "/accept"
+				urlConfig["activity"] + "/" + $scope.currentActivity.id + "/sendInvitation"
 		).success(
 			function()
 			{
@@ -54,10 +54,10 @@ module.controller("browseCtrl", function ($scope, $http, settingsService, urlCon
 		$scope.showNext();
 	};
 
-	$scope.reject = function()
+	$scope.skip = function()
 	{
 		$http.post(
-				urlConfig["activity"] + "/" + $scope.currentActivity.id + "/reject"
+				urlConfig["activity"] + "/" + $scope.currentActivity.id + "/skip"
 		).success(
 			function()
 			{

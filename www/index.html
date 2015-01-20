@@ -168,7 +168,7 @@
 <ons-template id="create-activity.html">
 	<ons-page>
 		<ons-toolbar>
-			<div class="left"><ons-toolbar-button ng-click="appNavigator.popPage();">Cancel</ons-toolbar-button></div>
+			<div class="left"><ons-back-button>Takaisin</ons-back-button></div>
 			<div class="center">Luo aktiviteetti</div>
 		</ons-toolbar>
 
@@ -201,10 +201,10 @@
 
 
 
-<ons-template id="list-activities.html">
-	<ons-page>
+<ons-template id="list-invitations.html">
+	<ons-page ng-controller="listInvitationsCtrl">
 		<ons-toolbar>
-			<div class="left"><ons-toolbar-button ng-click="appNavigator.popPage();">Cancel</ons-toolbar-button></div>
+			<div class="left"><ons-back-button>Takaisin</ons-back-button></div>
 			<div class="center">
 				Schedule
 			</div>
@@ -233,10 +233,11 @@
 							<div ng-hide="a % 4 == 0">
 								<ons-icon icon="fa-phone"></ons-icon>123-456-789
 							</div>
+						</div>
 
-							<div ng-hide="a % 3 == 0">
-								<ons-icon icon="fa-map-marker"></ons-icon>Moscone, San Francisco
-							</div>
+						<div class="controls">
+							<ons-icon icon="ion-checkmark-circled" size="28px" fixed-width="false" ng-click="accept(a);"></ons-icon>
+							<ons-icon icon="ion-close-circled" size="28px" fixed-width="false" ng-click="reject(a);"></ons-icon>
 						</div>
 					</ons-col>
 				</ons-row>
@@ -271,12 +272,6 @@
 
 <ons-template id="browse.html">
 	<ons-page class="center" ng-controller="browseCtrl">
-		<ons-modal var="appLoader">
-			<ons-icon icon="fa-circle-o-notch" spin="true"></ons-icon>
-			<div>
-				<div>Loading</div>
-			</div>
-		</ons-modal>
 		<ons-toolbar>
 			<div class="left">
 				<ons-toolbar-button ng-click="slidingMenu.toggle();">
@@ -294,14 +289,14 @@
 		<div ng-show="currentActivity.id">
 			<div class="profile-card">
 				<img src="{{currentActivity.image}}" class="profile-image">
-				<div class="profile-name">{{currentActivity.profileName}}</div>
-				<div class="profile-id">{{currentActivity.profileName}}</div>
+				<div class="profile-name">{{currentActivity.name}}</div>
+				<div class="profile-id">{{currentActivity.date}}</div>
 				<div class="profile-desc">{{currentActivity.desc}}</div>
 				<div class="profile-stars">{{currentActivity.stars}}</div>
 			</div>
 			<div class="controls">
-				<ons-button ng-click="accept();">Hyväksy</ons-button>
-				<ons-button ng-click="reject();">Hylkää</ons-button>
+				<ons-button ng-click="sendInvitation();">Lähetä kutsu</ons-button>
+				<ons-button ng-click="skip();">Seuraava</ons-button>
 			</div>
 		</div>
 		<div ng-hide="currentActivity.id">
@@ -328,9 +323,9 @@
 				<ons-icon icon="fa-plus"></ons-icon>
 				Lisää aktiviteetti
 			</ons-list-item>
-			<ons-list-item class="menu-item" ng-click="appNavigator.pushPage('list-activities.html');slidingMenu.closeMenu();">
+			<ons-list-item class="menu-item" ng-click="appNavigator.pushPage('list-invitations.html');slidingMenu.closeMenu();">
 				<ons-icon icon="fa-search"></ons-icon>
-				Näytä aktiviteetit
+				Näytä kutsut
 			</ons-list-item>
 			<ons-list-item class="menu-item" ng-click="appNavigator.pushPage('invitations.html');slidingMenu.closeMenu();">
 				<ons-icon icon="fa-user"></ons-icon>
@@ -388,7 +383,7 @@
 <ons-template id="settings-listing.html">
 	<ons-page ng-controller="settingsListCtrl">
 		<ons-toolbar>
-			<div class="left"><ons-back-button>Back</ons-back-button></div>
+			<div class="left"><ons-back-button>Takaisin</ons-back-button></div>
 			<div class="center"></div>
 		</ons-toolbar>
 		<ons-list modifier="right-border" id="settings-page-list" ng-repeat="page in availablePages">
@@ -406,8 +401,8 @@
 			</div>
 		</ons-modal>
 		<ons-toolbar>
-			<div class="left"><ons-back-button>Back</ons-back-button></div>
-			<div class="center">Settings</div>
+			<div class="left"><ons-back-button>Takaisin</ons-back-button></div>
+			<div class="center">Asetukset</div>
 		</ons-toolbar>
 
 
@@ -427,7 +422,7 @@
 <ons-template id="about-page.html">
 	<ons-page ng-controller="settingsCtrl">
 		<ons-toolbar>
-			<div class="left"><ons-back-button>Back</ons-back-button></div>
+			<div class="left"><ons-back-button>Takaisin</ons-back-button></div>
 		</ons-toolbar>
 		<div class="content-padded" style="font-size: 13px; text-align: center; color: #999;">
 			<h1>Activer</h1>
