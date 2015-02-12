@@ -11,10 +11,11 @@ module.constant(
 	{
 		"login": serverUrl + "users/sign_in",
 		"facebookCallback": serverUrl + "users/auth/facebook/callback",
-		"activity": serverUrl + "activity",
-		"activities": serverUrl + "activities",
-		"invitations": serverUrl + "invitations",
-		"profile": serverUrl + "profile"
+		"activity": serverUrl + "activity/",
+		"activities": serverUrl + "activities/",
+		"invitations": serverUrl + "invitations/",
+		"profile": serverUrl + "profile/",
+		"direct": serverUrl + "direct/"
 	}
 
 );

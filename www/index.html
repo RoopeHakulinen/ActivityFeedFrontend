@@ -28,6 +28,9 @@
 	<script src="fileSystemService.js" type="application/javascript"></script>
 	<script src="settingsService.js" type="application/javascript"></script>
 	<script src="userService.js" type="application/javascript"></script>
+	<script src="activityService.js" type="application/javascript"></script>
+	<script src="invitationService.js" type="application/javascript"></script>
+	<script src="directService.js" type="application/javascript"></script>
 	<script src="loginCtrl.js" type="application/javascript"></script>
 	<script src="browseCtrl.js" type="application/javascript"></script>
 	<script src="mainMenuCtrl.js" type="application/javascript"></script>
@@ -172,7 +175,7 @@
 		<ons-modal var="menuListLoader">
 			<ons-icon icon="fa-circle-o-notch" spin="true"></ons-icon>
 			<div>
-				<div>Loading</div>
+				<div>Ladataan</div>
 			</div>
 		</ons-modal>
 		<ons-toolbar modifier="transparent">
@@ -180,44 +183,42 @@
 		</ons-toolbar>
 
 		<ons-list class="menu-list">
+			<ons-list-item class="menu-item" ng-click="appNavigator.resetToPage('browse.html');slidingMenu.closeMenu();">
+				<ons-icon icon="fa-plus"></ons-icon>
+				Näytä aktiviteetit
+			</ons-list-item>
 			<ons-list-item class="menu-item" ng-click="appNavigator.pushPage('create-activity.html');slidingMenu.closeMenu();">
 				<ons-icon icon="fa-plus"></ons-icon>
-				Lisää aktiviteetti
+				Luo aktiviteetti
 			</ons-list-item>
 			<ons-list-item class="menu-item" ng-click="appNavigator.pushPage('show-activities.html');slidingMenu.closeMenu();">
 				<ons-icon icon="fa-search"></ons-icon>
-				Aktiviteetit
+				Minun aktiviteettini
 			</ons-list-item>
 			<ons-list-item class="menu-item" ng-click="appNavigator.pushPage('list-invitations.html');slidingMenu.closeMenu();">
 				<ons-icon icon="fa-user"></ons-icon>
 				Kutsut
-				<div class="notification menu-notification">3</div>
+				<div ng-show="getInvitationsCount()" class="notification menu-notification">{{getInvitationsCount()}}</div>
 			</ons-list-item>
 		</ons-list>
 
 		<br>
 
 		<ons-list class="bottom-menu-list">
+			<ons-list-item class="bottom-menu-item" ng-click="appNavigator.pushPage('profile.html');slidingMenu.closeMenu();">
+				Profiili
+			</ons-list-item>
+
 			<ons-list-item class="bottom-menu-item" ng-click="appNavigator.pushPage('settings-view.html');slidingMenu.closeMenu();">
 				Asetukset
 			</ons-list-item>
 
 			<ons-list-item class="bottom-menu-item" ng-click="appNavigator.pushPage('help.html');slidingMenu.closeMenu();">
-				Apua
+				Tietoja
 			</ons-list-item>
 
-			<ons-list-item class="bottom-menu-item" ng-click="appNavigator.pushPage('feedback.html');slidingMenu.closeMenu();">
-				Anna palautetta
-			</ons-list-item>
-
-			<ons-list-item class="bottom-menu-item" ng-click="appNavigator.pushPage('invitations.html');slidingMenu.closeMenu();">
-				<ons-icon icon="fa-facebook"></ons-icon>
-				Facebook
-			</ons-list-item>
-
-			<ons-list-item class="bottom-menu-item" ng-click="appNavigator.pushPage('invitations.html');slidingMenu.closeMenu();">
-				<ons-icon icon="fa-twitter"></ons-icon>
-				Official Twitter
+			<ons-list-item class="bottom-menu-item" ng-click="">
+				Activer
 			</ons-list-item>
 		</ons-list>
 	</ons-page>
@@ -301,8 +302,8 @@
 						</div>
 
 						<div class="controls">
-							<ons-icon icon="ion-checkmark-circled" size="28px" fixed-width="false" ng-click="accept(a);"></ons-icon>
-							<ons-icon icon="ion-close-circled" size="28px" fixed-width="false" ng-click="reject(a);"></ons-icon>
+							<ons-icon icon="ion-checkmark-circled" size="28px" fixed-width="false" ng-click="accept();"></ons-icon>
+							<ons-icon icon="ion-close-circled" size="28px" fixed-width="false" ng-click="reject();"></ons-icon>
 						</div>
 					</ons-col>
 				</ons-row>

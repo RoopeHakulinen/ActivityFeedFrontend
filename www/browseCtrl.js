@@ -1,4 +1,4 @@
-module.controller("browseCtrl", function ($scope, $http, settingsService, urlConfig) {
+module.controller("browseCtrl", function ($scope, $http, $q, settingsService, urlConfig, activityService, invitationService) {
 	$scope.currentActivity = {};
 	$scope.activities = [];
 
@@ -37,40 +37,33 @@ module.controller("browseCtrl", function ($scope, $http, settingsService, urlCon
 
 	$scope.sendInvitation = function()
 	{
-		$http.post(
-				urlConfig["activity"] + "/" + $scope.currentActivity.id + "/sendInvitation"
-		).success(
-			function()
+		$q.when(invitationService.send($scope.currentActivity.id)).then(
+			function (data)
 			{
-				window.plugins.toast.showShortBottom('Activity accepted');
-			}
-		).error(
+				window.plugins.toast.showShortBottom('Invitation sent');
+				$scope.currentActivity.solved = true;
+				$scope.showNext();
+			},
 			function(data, status)
 			{
-				window.plugins.toast.showShortBottom('Activity accepting failed with status ' + status);
-			}
-		);
-		$scope.currentActivity.solved = true;
-		$scope.showNext();
+				window.plugins.toast.showShortBottom('Invitation sending failed with status ' + status);
+			});
 	};
 
 	$scope.skip = function()
 	{
-		$http.post(
-				urlConfig["activity"] + "/" + $scope.currentActivity.id + "/skip"
-		).success(
-			function()
+		$q.when(activityService.skip($scope.currentActivity.id)).then(
+			function(data)
 			{
 				window.plugins.toast.showShortBottom('Activity rejected');
-			}
-		).error(
+				$scope.currentActivity.solved = true;
+				$scope.showNext();
+			},
 			function(data, status)
 			{
 				window.plugins.toast.showShortBottom('Activity rejecting failed with status ' + status);
 			}
 		);
-		$scope.currentActivity.solved = true;
-		$scope.showNext();
 	};
 
 	$scope.showNext = function()

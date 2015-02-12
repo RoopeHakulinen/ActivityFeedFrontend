@@ -1,45 +1,25 @@
-module.service('fileSystemService', function () {
-	window.requestFileSystem  = window.requestFileSystem || window.webkitRequestFileSystem;
-
-	this.readFile = function (filename, callback, temp)
+module.service('fileSystemService', function ()
+{
+	this.readFile = function (fileName, callback, readType)
 	{
-		function gotFileEntry(fileEntry) {
-			fileEntry.file(actualReadFile.bind(this));
-		}
-
-		function onFileSystemSuccess(fileSystem) {
-			console.log("Trying to read from " + filename);
-
-			if (isPhoneGapApp)
-			{
-				window.resolveLocalFileSystemURL(this.getDirectory(), function(dirEntry) {
-					dirEntry.getFile(filename, {create: true, exclusive: false}, gotFileEntry.bind(this), this.errorHandler);
-				}.bind(this));
-			}
-			else
-			{
-				fileSystem.root.getFile(filename, {create: true, exclusive: false}, gotFileEntry.bind(this), this.errorHandler);
-			}
-		}
-
 		function actualReadFile(fileObject)
 		{
 			var reader = new FileReader();
-			reader.onloadend = function(event)
+			reader.onloadend = function (event)
 			{
 				var text = event.target.result;
 				console.log("File was read, calling callback provided. ");
 				callback(text);
 			}.bind(this);
-			if (temp == 1)
+			if (readType == 1)
 			{
 				reader.readAsBinaryString(fileObject);
 			}
-			else if(temp == 2)
+			else if (readType == 2)
 			{
 				reader.readAsArrayBuffer(fileObject);
 			}
-			else if(temp == 3)
+			else if (readType == 3)
 			{
 				reader.readAsDataURL(fileObject);
 			}
@@ -49,21 +29,10 @@ module.service('fileSystemService', function () {
 			}
 		}
 
-		if (isPhoneGapApp)
-		{
-			window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFileSystemSuccess.bind(this), this.errorHandler);
-		}
-		else
-		{
-			navigator.webkitPersistentStorage.requestQuota(1024*1024*1024, function(grantedBytes) {
-				window.webkitRequestFileSystem(LocalFileSystem.PERSISTENT, grantedBytes, onFileSystemSuccess.bind(this), this.errorHandler);
-			}, function(e) {
-				console.log('Error', e);
-			});
-		}
+		this._getFileObject(fileName, actualReadFile);
 	};
 
-	this.writeFile = function(filename, textToWrite, append, callback, mimeType)
+	this.writeFile = function (fileName, data, append, callback, mimeType)
 	{
 		if (typeof append === "undefined")
 		{
@@ -73,68 +42,118 @@ module.service('fileSystemService', function () {
 		{
 			mimeType = "text/plain";
 		}
-		function onFileSystemSuccess(fileSystem) {
-			console.log("Trying to write to " + filename);
 
-			if (isPhoneGapApp)
+		function saveFileContent(fileEntry)
+		{
+			function gotFileWriter(writer)
 			{
-				window.resolveLocalFileSystemURL(this.getDirectory(), function(dirEntry) {
-					dirEntry.getFile(filename, {create: true, exclusive: false}, gotFileEntry.bind(this), this.errorHandler);
-				}.bind(this));
-			}
-			else
-			{
-				fileSystem.root.getFile(filename, {create: true, exclusive: false}, gotFileEntry.bind(this), this.errorHandler);
-			}
-
-			function gotFileEntry(fileEntry) {
-				fileEntry.file(saveFileContent);
-
-				function saveFileContent()
+				if (append)
 				{
-					fileEntry.createWriter(gotFileWriter, this.errorHandler);
-
-					function gotFileWriter(writer)
-					{
-						if (append)
-						{
-							writer.seek(writer.length);
-						}
-						if (!isPhoneGapApp)
-						{
-							textToWrite = new Blob([textToWrite], {type: mimeType});
-						}
-						writer.write(textToWrite);
-						writer.onwriteend = function() {
-							if (typeof callback === "function")
-							{
-								var url = fileEntry.toURL();
-								console.log("File written to " + url);
-								callback(url);
-							}
-						};
-					}
+					writer.seek(writer.length);
 				}
+				if (!isPhoneGapApp)
+				{
+					data = new Blob([data], {type: mimeType});
+				}
+				writer.write(data);
+				writer.onwriteend = function ()
+				{
+					if (typeof callback === "function")
+					{
+						var url = fileEntry.toURL();
+						console.log("File written to " + url);
+						callback(url);
+					}
+				};
 			}
+
+			fileEntry.createWriter(gotFileWriter.bind(this), this._errorHandler.bind(this));
 		}
 
-		if (isPhoneGapApp)
-		{
-			window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFileSystemSuccess.bind(this), this.errorHandler);
-		}
-		else
-		{
-			navigator.webkitPersistentStorage.requestQuota(1024*1024, function(grantedBytes) {
-				window.webkitRequestFileSystem(LocalFileSystem.PERSISTENT, grantedBytes, onFileSystemSuccess.bind(this), this.errorHandler);
-			}, function(e) {
-				console.log('Error', e);
-			});
-		}
+		this._getFileEntry(fileName, saveFileContent);
 	};
 
-	this.errorHandler = function (e) {
+	this.moveFile = function (from, to, onSuccess)
+	{
+		function _gotFileEntry(fileEntry)
+		{
+			function _gotDirectoryEntry(directoryEntry)
+			{
+				function fileMoved()
+				{
+					var url = fileEntry.toURL();
+					onSuccess(url);
+				}
+				fileEntry.copyTo(directoryEntry, to, fileMoved, this._errorHandler);
+			}
+
+			this._getDirectoryEntry(this._getDirectory(), _gotDirectoryEntry.bind(this));
+		}
+
+		this._getFileEntry(from, _gotFileEntry.bind(this));
+	};
+
+	this.removeFile = function (from, onSuccess)
+	{
+		function _gotFileEntry(fileEntry)
+		{
+			fileEntry.remove(onSuccess, this._errorHandler);
+		}
+
+		this._getFileEntry(from, _gotFileEntry.bind(this));
+	};
+
+	this._getFileObject = function (fileName, successHandler)
+	{
+		function _gotFileEntry(fileEntry)
+		{
+			fileEntry.file(successHandler.bind(this));
+		}
+
+		this._getFileEntry(fileName, _gotFileEntry);
+	};
+
+	this._getFileEntry = function (fileName, successHandler)
+	{
+		var directory = this._getDirectory();
+		if (fileName.indexOf("/") !== -1) // If given fileName is absolute
+		{
+			var parts = fileName.split("/");
+			directory = "";
+			for (var i = 0; i < parts.length - 1; ++i)
+			{
+				directory += parts[i] + "/";
+			}
+			fileName = parts[parts.length - 1];
+		}
+		function _gotDirectoryEntry(directoryEntry)
+		{
+			directoryEntry.getFile(fileName, {create: true, exclusive: false}, successHandler.bind(this), this._errorHandler.bind(this));
+		}
+
+		this._getDirectoryEntry(directory, _gotDirectoryEntry);
+	};
+
+	this._getDirectoryEntry = function (directory, successHandler)
+	{
+		function _onFileSystemSuccess()
+		{
+			window.resolveLocalFileSystemURL(directory, successHandler.bind(this))
+		}
+
+		function _requestFileSystem()
+		{
+			window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, _onFileSystemSuccess.bind(this), this._errorHandler.bind(this));
+		}
+
+		_requestFileSystem.call(this);
+	};
+
+	this._errorHandler = function (e)
+	{
 		var msg = '';
-		switch (e.code) {
+		switch (e.code)
+		{
 			case FileError.QUOTA_EXCEEDED_ERR:
 				msg = 'QUOTA_EXCEEDED_ERR';
 				break;
@@ -150,6 +169,12 @@ module.service('fileSystemService', function () {
 			case FileError.INVALID_STATE_ERR:
 				msg = 'INVALID_STATE_ERR';
 				break;
+			case FileError.ENCODING_ERR:
+				msg = 'ENCODING_ERR';
+				break;
+			case FileError.PATH_EXISTS_ERR:
+				msg = 'PATH_EXISTS_ERR';
+				break;
 			default:
 				msg = 'Unknown Error';
 				break;
@@ -160,10 +185,10 @@ module.service('fileSystemService', function () {
 
 	this.getBaseURL = function ()
 	{
-		return this.getDirectory();
+		return this._getDirectory();
 	};
 
-	this.getDirectory = function ()
+	this._getDirectory = function ()
 	{
 		var directory = cordova.file.dataDirectory;
 		if (navigator.userAgent.match(/Android/i))

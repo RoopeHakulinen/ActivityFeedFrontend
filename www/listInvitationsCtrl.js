@@ -1,30 +1,28 @@
-module.controller("listInvitationsCtrl", function ($scope, $http, urlConfig) {
+module.controller("listInvitationsCtrl", function ($scope, $http, urlConfig, invitationService) {
 
 	$scope.activities = [];
 
 	$scope.fetchActivities = function()
 	{
 		$http.get(
-			urlConfig["activities"]
+			urlConfig["invitations"]
 		).success(
 			function(data)
 			{
 				$scope.activities = data;
-				window.plugins.toast.showShortBottom('Activity list length ' + data.length);
+				window.plugins.toast.showShortBottom('Invitation list length ' + data.length);
 			}
 		).error(
 			function()
 			{
-				window.plugins.toast.showShortBottom('Activity list fetching failed with status code ' + status);
+				window.plugins.toast.showShortBottom('Invitation list fetching failed with status code ' + status);
 			}
 		);
 	};
 
-	$scope.accept = function(invitation)
+	$scope.accept = function()
 	{
-		$http.post(
-				urlConfig["activity"] + "/" + $scope.currentActivity.id + "/accept"
-		).success(
+		invitationService.accept($scope.currentActivity.id).success(
 			function()
 			{
 				window.plugins.toast.showShortBottom('Activity accepted');
@@ -39,11 +37,9 @@ module.controller("listInvitationsCtrl", function ($scope, $http, urlConfig) {
 		$scope.showNext();
 	};
 
-	$scope.reject = function(invitation)
+	$scope.reject = function()
 	{
-		$http.post(
-				urlConfig["activity"] + "/" + $scope.currentActivity.id + "/reject"
-		).success(
+		invitationService.reject($scope.currentActivity.id).success(
 			function()
 			{
 				window.plugins.toast.showShortBottom('Activity rejected');
