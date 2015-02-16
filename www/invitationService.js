@@ -23,17 +23,17 @@ module.service('invitationService', function ($http, $q, urlConfig) {
 
 	this._fetchInvitations = function ()
 	{
-		return $http.get();
-	};
-
-	this.getInvitationsCount = function ()
-	{
 		var deferred = $q.defer();
-		this.getInvitations().then(
-			function (invitations)
+		$http.get(urlConfig["invitations"]).success(
+			function (data)
 			{
-				deferred.resolve(invitations.length);
-			}.bind(this)
+				deferred.resolve(data);
+			}
+		).error(
+			function ()
+			{
+				deferred.reject();
+			}
 		);
 		return deferred.promise;
 	};

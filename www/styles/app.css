@@ -85,7 +85,7 @@ input[type=email], input[type=password] {
 
 /* Create activity ends */
 
-/* List activities starts */
+/* List activityTypes starts */
 .plan-list {
 	border-top: none;
 	background-image: none !important;
@@ -133,4 +133,4 @@ input[type=email], input[type=password] {
 	line-height: 1.4;
 }
 
-/* List activities end */
+/* List activityTypes end */

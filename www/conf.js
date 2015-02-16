@@ -12,7 +12,7 @@ module.constant(
 		"login": serverUrl + "users/sign_in",
 		"facebookCallback": serverUrl + "users/auth/facebook/callback",
 		"activity": serverUrl + "activity/",
-		"activities": serverUrl + "activities/",
+		"activityTypes": serverUrl + "activityTypes/",
 		"invitations": serverUrl + "invitations/",
 		"profile": serverUrl + "profile/",
 		"direct": serverUrl + "direct/"

@@ -1,4 +1,4 @@
-module.controller("createActivityCtrl", function ($scope, $http, urlConfig) {
+module.controller("createActivityCtrl", function ($scope, $http, urlConfig, activityService, activityTypeService) {
 
 	$scope.activityType = {name: "", id: -1};
 	$scope.place = "";
@@ -7,16 +7,8 @@ module.controller("createActivityCtrl", function ($scope, $http, urlConfig) {
 	£scope.createActivity = function()
 	{
 		commonLoader.show();
-		$http.post(urlConfig["activity"],
-			{
-				data:
-				{
-					activityType: $scope.activityType.id,
-					place: $scope.place,
-					time: $scope.time
-				}
-			}
-		).success(
+
+		activityService.create($scope.activityType.id, $scope.place, $scope.time).success(
 			function()
 			{
 				window.plugins.toast.showShortBottom('Activity successfully added.');

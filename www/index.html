@@ -29,6 +29,7 @@
 	<script src="settingsService.js" type="application/javascript"></script>
 	<script src="userService.js" type="application/javascript"></script>
 	<script src="activityService.js" type="application/javascript"></script>
+	<script src="activityTypeService.js" type="application/javascript"></script>
 	<script src="invitationService.js" type="application/javascript"></script>
 	<script src="directService.js" type="application/javascript"></script>
 	<script src="loginCtrl.js" type="application/javascript"></script>
@@ -198,7 +199,7 @@
 			<ons-list-item class="menu-item" ng-click="appNavigator.pushPage('list-invitations.html');slidingMenu.closeMenu();">
 				<ons-icon icon="fa-user"></ons-icon>
 				Kutsut
-				<div ng-show="getInvitationsCount()" class="notification menu-notification">{{getInvitationsCount()}}</div>
+				<div ng-show="invitations" class="notification menu-notification">{{invitations.length}}</div>
 			</ons-list-item>
 		</ons-list>
 
