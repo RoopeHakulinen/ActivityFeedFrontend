@@ -10,6 +10,12 @@ String.prototype.splice = function( idx, rem, s ) {
 module.factory('authHttpRequestInterceptor', function (userService) {
 	return {
 		request: function (config) {
+			// Adjust the JSON API
+			config.headers['Content-type'] = 'application/json';
+			config.headers['Accept'] = 'application/json';
+
+
+			// Adjust authorization if so
 			var user = userService.getUser();
 			if (user)
 			{

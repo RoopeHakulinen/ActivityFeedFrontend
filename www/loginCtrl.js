@@ -30,11 +30,7 @@ module.controller("loginCtrl", function ($scope, $http, settingsService, fileSys
 			{
 				method: "POST",
 				url: urlConfig["login"],
-				data: {user: {"email": $scope.email, "password": $scope.password}},
-				headers: {
-					'Content-type': 'application/json',
-					'Accept': 'application/json'
-				}
+				data: {user: {"email": $scope.email, "password": $scope.password}}
 			})
 			.success(function (data) {
 				$scope.loginSuccess(data);
