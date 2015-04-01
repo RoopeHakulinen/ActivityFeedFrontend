@@ -11,8 +11,11 @@ module.factory('authHttpRequestInterceptor', function (userService) {
 	return {
 		request: function (config) {
 			var user = userService.getUser();
-			config.headers['X-Auth-Email'] = user["email"];
-			config.headers['X-Auth-Token'] =  user["token"];
+			if (user)
+			{
+				config.headers['X-Auth-Email'] = user["email"];
+				config.headers['X-Auth-Token'] = user["token"];
+			}
 			return config;
 		}
 	};
