@@ -1,8 +1,17 @@
 module.controller("createActivityCtrl", function ($scope, $http, urlConfig, activityService, activityTypeService) {
+	$scope.activityTypes = [];
 
 	$scope.activityType = {name: "", id: -1};
 	$scope.place = "";
 	$scope.time = 0;
+
+	$scope.getActivityTypes = function()
+	{
+		activityTypeService.getActivityTypes().then(function(activityTypes)
+		{
+			$scope.activityTypes = activityTypes;
+		});
+	};
 
 	$scope.createActivity = function()
 	{
@@ -22,4 +31,5 @@ module.controller("createActivityCtrl", function ($scope, $http, urlConfig, acti
 			}
 		);
 	};
+
 });
