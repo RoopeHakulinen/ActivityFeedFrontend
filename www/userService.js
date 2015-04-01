@@ -11,17 +11,17 @@ module.service('userService', function () {
 
 	this.getUsername = function ()
 	{
-		return this.user.username;
+		return this.getUser().username;
 	};
 
 	this.getFullname = function ()
 	{
-		return this.user.firstname + " " + this.user.lastname;
+		return this.getUser().firstname + " " + this.getUser().lastname;
 	};
 
 	this.getId = function ()
 	{
-		return this.user.id;
+		return this.getUser().id;
 	};
 
 	this.logout = function (force)
