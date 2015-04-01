@@ -8,7 +8,14 @@ module.controller("loginCtrl", function ($scope, $http, settingsService, fileSys
 		$scope.password = "password";
 	}
 
-	$scope.credentialsFileName = "credentials.json";
+	$scope.initialize = function()
+	{
+		if (userService.getUser())
+		{
+			$scope.signedIn();
+		}
+		navigator.splashscreen.hide();
+	};
 
 	$scope.login = function () {
 		console.log("Trying to log in with email " + $scope.email);
@@ -34,6 +41,11 @@ module.controller("loginCtrl", function ($scope, $http, settingsService, fileSys
 	$scope.loginSuccess = function (user)
 	{
 		userService.setUser(user);
+		$scope.signedIn();
+	};
+
+	$scope.signedIn = function()
+	{
 		console.log("Login succeeded.");
 		settingsService.loadUserSettings();
 		appNavigator.pushPage("main-view.html", {});
@@ -72,4 +84,6 @@ module.controller("loginCtrl", function ($scope, $http, settingsService, fileSys
 
 		facebookConnectPlugin.login(["public_profile", "email"], success, error)
 	};
+
+	$scope.initialize();
 });

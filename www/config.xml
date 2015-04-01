@@ -22,6 +22,7 @@
 	<gap:plugin name="org.apache.cordova.device" version="0.2.12" source="pgb" />
 	<gap:plugin name="org.apache.cordova.file" version="1.3.1" source="pgb" />
 	<gap:plugin name="org.apache.cordova.network-information" version="0.2.12" source="pgb" />
+	<gap:plugin name="org.apache.cordova.splashscreen" version="0.3.4" source="pgb" />
 	<gap:plugin name="nl.x-services.plugins.toast" version="2.0.2" source="pgb" />
 	<gap:plugin name="com.phonegap.plugins.pushplugin" version="2.4.0" source="pgb" />
 	<gap:plugin name="com.phonegap.plugins.facebookconnect" version="0.8.0" source="pgb"> <!-- PhoneGap Build doesn't yet support 0.9.0 -->
@@ -35,6 +36,11 @@
 	<feature name="http://api.phonegap.com/1.0/file"/>
 	<feature name="http://api.phonegap.com/1.0/network"/>
 
+	<!--<gap:splash src="splash.png" />-->
+
+	<!-- General preferences -->
+	<preference name="AutoHideSplashScreen" value="false" />
+	<preference name="SplashScreen" value="screen" />
 
 	<!-- Android preferences -->
 	<preference name="android-installLocation" value="auto" />

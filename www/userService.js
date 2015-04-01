@@ -1,14 +1,12 @@
 module.service('userService', function ($http, urlConfig) {
-	this.user = {};
-
 	this.setUser = function (user)
 	{
-		this.user = user;
+		localStorage.setItem("user", user);
 	};
 
 	this.getUser = function ()
 	{
-		return this.user;
+		return localStorage.getItem("user");
 	};
 
 	this.getUsername = function ()
@@ -37,23 +35,9 @@ module.service('userService', function ($http, urlConfig) {
 		{
 			return;
 		}
-		console.log("Logging out.");
-
-		$http.get(urlConfig["logout"]).success(
-			function(data, status, headers, config)
-			{
-				window.plugins.toast.showShortBottom("Logged out successfully");
-			}.bind(this)
-		).error(
-			function(data, status, headers, config)
-			{
-				console.log("Logging out failed.");
-				// Do nothing as this can be intentional
-			}
-		);
 
 		console.log("Logged out.");
-		this.setUser({});
+		this.setUser(false);
 		appNavigator.resetToPage("login.html");
 	};
 });
