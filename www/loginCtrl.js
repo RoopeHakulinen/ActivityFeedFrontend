@@ -84,6 +84,4 @@ module.controller("loginCtrl", function ($scope, $http, settingsService, fileSys
 
 		facebookConnectPlugin.login(["public_profile", "email"], success, error)
 	};
-
-	$scope.initialize();
 });
