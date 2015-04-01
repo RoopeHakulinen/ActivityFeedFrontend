@@ -4,7 +4,7 @@ module.controller("loginCtrl", function ($scope, $http, settingsService, fileSys
 
 	if (TEST_ENABLED)
 	{
-		$scope.email = "asd@asd.com";
+		$scope.email = "roope.hakulinen@gmail.com";
 		$scope.password = "password";
 	}
 
