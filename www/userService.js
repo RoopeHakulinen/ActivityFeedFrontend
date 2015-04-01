@@ -1,12 +1,17 @@
 module.service('userService', function () {
 	this.setUser = function (user)
 	{
-		localStorage.setItem("user", user);
+		localStorage.setItem("user", JSON.stringify(user));
 	};
 
 	this.getUser = function ()
 	{
-		return localStorage.getItem("user");
+		var stored = localStorage.getItem("user");
+		if (typeof stored === "string")
+		{
+			return JSON.parse(stored);
+		}
+		return false;
 	};
 
 	this.getUsername = function ()
