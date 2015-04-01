@@ -14,7 +14,10 @@ module.controller("loginCtrl", function ($scope, $http, settingsService, fileSys
 		{
 			$scope.signedIn();
 		}
-		navigator.splashscreen.hide();
+		setTimeout(function ()
+		{
+			navigator.splashscreen.hide();
+		}, 500);
 	};
 
 	$scope.login = function () {

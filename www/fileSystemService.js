@@ -51,10 +51,6 @@ module.service('fileSystemService', function ()
 				{
 					writer.seek(writer.length);
 				}
-				if (!isPhoneGapApp)
-				{
-					data = new Blob([data], {type: mimeType});
-				}
 				writer.write(data);
 				writer.onwriteend = function ()
 				{
