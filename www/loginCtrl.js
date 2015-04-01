@@ -10,14 +10,13 @@ module.controller("loginCtrl", function ($scope, $http, settingsService, fileSys
 
 	$scope.initialize = function()
 	{
-		if (userService.getUser())
-		{
-			$scope.signedIn();
-		}
-
 		var interval = setInterval(function ()
 		{
 			if (typeof navigator.splashscreen !== "undefined") {
+				if (userService.getUser())
+				{
+					$scope.signedIn();
+				}
 				navigator.splashscreen.hide();
 				clearInterval(interval);
 			}
