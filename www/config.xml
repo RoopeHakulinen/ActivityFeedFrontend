@@ -15,7 +15,7 @@
 	<access origin="*"/>
 
 	<!-- Use the newest version of PhoneGap -->
-	<preference name="phonegap-version" value="3.6.3" />
+	<preference name="phonegap-version" value="3.7.0" />
 
 	<!-- PhoneGap plugins for PhoneGap Build to attach to build -->
 	<gap:plugin name="org.apache.cordova.camera" version="0.3.2" source="pgb" />
