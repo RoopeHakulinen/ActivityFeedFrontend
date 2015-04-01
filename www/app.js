@@ -14,7 +14,7 @@ module.factory('authHttpRequestInterceptor', function (userService) {
 			if (user)
 			{
 				config.headers['X-Auth-Email'] = user["email"];
-				config.headers['X-Auth-Token'] = user["token"];
+				config.headers['X-Auth-Token'] = user["authentication_token"];
 			}
 			return config;
 		}
