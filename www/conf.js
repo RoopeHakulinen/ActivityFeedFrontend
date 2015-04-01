@@ -3,7 +3,7 @@ TEST_ENABLED = true;
 var serverUrl = "https://api.activer.net/";
 if (TEST_ENABLED)
 {
-	serverUrl = "https://192.168.59.104/"; // Refers to local machine in DNS
+	serverUrl = "https://test.activer.net/";
 }
 
 module.constant(
