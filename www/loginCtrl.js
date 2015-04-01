@@ -14,10 +14,14 @@ module.controller("loginCtrl", function ($scope, $http, settingsService, fileSys
 		{
 			$scope.signedIn();
 		}
-		setTimeout(function ()
+
+		var interval = setInterval(function ()
 		{
-			navigator.splashscreen.hide();
-		}, 500);
+			if (typeof navigator.splashscreen !== "undefined") {
+				navigator.splashscreen.hide();
+				clearInterval(interval);
+			}
+		}, 50);
 	};
 
 	$scope.login = function () {
