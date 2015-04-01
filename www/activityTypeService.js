@@ -1,5 +1,5 @@
 module.service('activityTypeService', function ($http, $q, urlConfig) {
-	this.activityTypes = [];
+	this.activityTypes = false;
 
 	this.getActivityTypes = function ()
 	{
