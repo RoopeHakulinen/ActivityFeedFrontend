@@ -4,7 +4,7 @@ module.controller("createActivityCtrl", function ($scope, $http, urlConfig, acti
 	$scope.place = "";
 	$scope.time = 0;
 
-	£scope.createActivity = function()
+	$scope.createActivity = function()
 	{
 		commonLoader.show();
 
