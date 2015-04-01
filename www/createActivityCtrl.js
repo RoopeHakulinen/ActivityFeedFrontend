@@ -3,7 +3,12 @@ module.controller("createActivityCtrl", function ($scope, $http, urlConfig, acti
 
 	$scope.activityType = {name: "", id: -1};
 	$scope.place = "";
-	$scope.time = 0;
+	$scope.time = "12:00";
+
+	$scope.initialize = function()
+	{
+		$scope.getActivityTypes();
+	};
 
 	$scope.getActivityTypes = function()
 	{
@@ -32,4 +37,5 @@ module.controller("createActivityCtrl", function ($scope, $http, urlConfig, acti
 		);
 	};
 
+	$scope.initialize();
 });
