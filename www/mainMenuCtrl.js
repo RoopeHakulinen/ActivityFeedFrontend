@@ -1,7 +1,7 @@
-module.controller("mainMenuCtrl", function ($scope, $http, invitationsService) {
+module.controller("mainMenuCtrl", function ($scope, $http, invitationService) {
 
 	$scope.getInvitationsCount = function()
 	{
-		invitationsService.getInvitationsCount();
+		invitationService.getInvitationsCount();
 	};
 });
