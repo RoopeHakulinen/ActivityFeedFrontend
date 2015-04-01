@@ -1,4 +1,4 @@
-module.service('userService', function ($http, urlConfig) {
+module.service('userService', function () {
 	this.setUser = function (user)
 	{
 		localStorage.setItem("user", user);
