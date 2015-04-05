@@ -24,11 +24,7 @@ module.service('activityService', function ($http, $q, urlConfig, userService) {
 	this._fetchActivities = function (type)
 	{
 		var deferred = $q.defer();
-		var url = urlConfig["activities"];
-		if (typeof type === "number")
-		{
-			url += type + "/";
-		}
+		var url = urlConfig["activities"] + type + "/";
 		$http.get(url).success(
 			function (data)
 			{
