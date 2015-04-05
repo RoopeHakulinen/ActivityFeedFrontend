@@ -58,9 +58,33 @@ module.service('activityService', function ($http, $q, urlConfig, userService) {
 		);
 	};
 
+	this.invite = function (id)
+	{
+		return this.createSuggestion(id, 1);
+	};
 
 	this.skip = function (id)
 	{
-		return $http.post(urlConfig["activity"] + "/" + id + "/skip?userId=" + userService.getId());
+		return this.createSuggestion(id, 0);
 	};
+
+	this.createSuggestion = function(id, status)
+	{
+		return $http({
+			method: 'POST',
+			url: urlConfig["activities"] + "/" + id + "/suggestions",
+			data: {
+				suggestion: {
+					status: status
+				}
+			}
+		}).success(function() {
+			this.handled();
+		}.bind(this));
+	};
+
+	this.handled = function()
+	{
+		this.activities.splice(1,0);
+	}
 });

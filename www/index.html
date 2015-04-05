@@ -66,50 +66,8 @@
 			<br>
 			<ons-button modifier="quiet" class="forgot-password">Unohditko salasanasi?</ons-button>
 		</div>
-
-	</ons-page>
-
-</ons-template>
-
-<!--<ons-template id="login.html">
-	<ons-page class="center">
-		<ons-toolbar>
-			<div class="center">Login to Activer</div>
-		</ons-toolbar>
-
-		<div class="center" ng-controller="loginCtrl">
-			<ons-modal var="loginLoader">
-				<ons-icon icon="fa-circle-o-notch" spin="true"></ons-icon>
-				<div>
-					<div>Trying to log in</div>
-				</div>
-			</ons-modal>
-			<div style="position: absolute; top: 0;left: 0;right: 0;bottom: 0;">
-				<div style="padding: 8px; position: absolute; top: 50%; margin-top: -80px; width: 100%;">
-					<section style="padding: 0 8px 8px">
-						<input type="text" class="text-input" ng-model="email" placeholder="Email" id="email"
-						       style="display: block; width: 100%; height: 40px; font-size: 30px;">
-					</section>
-
-					<section style="padding: 0 8px 8px">
-						<input type="password" class="text-input" ng-model="password" placeholder="Password" id="password"
-						       style="display: block; width: 100%; height: 40px; font-size: 30px;">
-					</section>
-
-					<section style="padding: 0 8px 8px">
-						<ons-button modifier="large" ng-click="login();" style="font-size: 20px;">Log in</ons-button>
-					</section>
-					<section>
-						<ons-button modifier="large" ng-click="facebookLogin()">Log in using Facebook</ons-button>
-					</section>
-				</div>
-			</div>
-		</div>
-
 	</ons-page>
 </ons-template>
--->
-
 
 
 
@@ -152,19 +110,19 @@
 
 		<div ng-show="currentActivity.id">
 			<div class="profile-card">
-				<img src="{{currentActivity.image}}" class="profile-image">
+				<img src="{{currentActivity.image || ''}}" class="profile-image">
 				<div class="profile-name">{{currentActivity.name}}</div>
 				<div class="profile-id">{{currentActivity.date}}</div>
 				<div class="profile-desc">{{currentActivity.desc}}</div>
 				<div class="profile-stars">{{currentActivity.stars}}</div>
 			</div>
 			<div class="controls">
-				<ons-button ng-click="sendInvitation();">Lähetä kutsu</ons-button>
-				<ons-button ng-click="skip();">Seuraava</ons-button>
+				<ons-button ng-click="invite();">Lähetä kutsu</ons-button>
+				<ons-button ng-click="skip();">Skippaa</ons-button>
 			</div>
 		</div>
 		<div ng-hide="currentActivity.id">
-			Valitettavasti aktiviteetteja ei löytynyt.
+			Ei aktiviteetteja..
 		</div>
 	</ons-page>
 </ons-template>

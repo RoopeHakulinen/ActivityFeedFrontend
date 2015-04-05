@@ -1,10 +1,10 @@
 module.service('invitationService', function ($http, $q, urlConfig) {
-	this.invitations = false;
+	this.invitations = [];
 
 	this.getInvitations = function ()
 	{
 		var deferred = $q.defer();
-		if (!this.invitations)
+		if (this.invitations.length == 0)
 		{
 			this._fetchInvitations().then(
 				function(data)
@@ -24,7 +24,7 @@ module.service('invitationService', function ($http, $q, urlConfig) {
 	this._fetchInvitations = function ()
 	{
 		var deferred = $q.defer();
-		$http.get(urlConfig["invitations"]).success(
+		$http.get(urlConfig["suggestions"]).success(
 			function (data)
 			{
 				deferred.resolve(data);
@@ -38,27 +38,29 @@ module.service('invitationService', function ($http, $q, urlConfig) {
 		return deferred.promise;
 	};
 
-	this.send = function (id)
+	this.accept = function (id)
 	{
 		return $http({
-			method: "POST",
-			url: urlConfig["activities"] + id + "/suggestions",
+			method: "PUT",
+			url: urlConfig["suggestions"] + id,
 			data: {
 				suggestion: {
-					status: 1
+					status: 2
 				}
 			}
 		});
 	};
 
-
-	this.accept = function (id)
-	{
-		return $http.post(urlConfig["invitation"] + "/" + id + "/accept");
-	};
-
 	this.reject = function (id)
 	{
-		return $http.post(urlConfig["invitation"] + "/" + id + "/reject");
+		return $http({
+			method: "PUT",
+			url: urlConfig["suggestions"] + id,
+			data: {
+				suggestion: {
+					status: 3
+				}
+			}
+		});
 	};
 });
