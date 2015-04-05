@@ -1,22 +1,22 @@
 module.service('activityService', function ($http, $q, urlConfig, userService) {
-	this.activityTypes = false;
+	this.activities = [];
 
 	this.getActivities = function ()
 	{
 		var deferred = $q.defer();
-		if (!this.activityTypes)
+		if (this.activities.length < 5)
 		{
 			this._fetchActivities().then(
 				function(data)
 				{
 					this.activityTypes = data;
-					deferred.resolve(this.activityTypes)
+					deferred.resolve(this.activities)
 				}.bind(this)
 			);
 		}
 		else
 		{
-			deferred.resolve(this.activityTypes);
+			deferred.resolve(this.activities);
 		}
 		return deferred.promise;
 	};
