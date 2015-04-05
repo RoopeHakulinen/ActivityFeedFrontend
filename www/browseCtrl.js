@@ -38,6 +38,11 @@ module.controller("browseCtrl", function ($scope, $http, $q, settingsService, ur
 
 	$scope.showNext = function()
 	{
-		$scope.currentActivity = activityService.getActivities()[0];
+		activityService.getActivities().then(function(activities)
+		{
+			$scope.currentActivity = activities[0];
+		});
 	};
+
+	$scope.initialize();
 });
