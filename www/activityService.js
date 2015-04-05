@@ -9,7 +9,7 @@ module.service('activityService', function ($http, $q, urlConfig, userService) {
 			this._fetchActivities().then(
 				function(data)
 				{
-					this.activityTypes = data;
+					this.activities = data;
 					deferred.resolve(this.activities)
 				}.bind(this)
 			);
