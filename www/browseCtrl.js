@@ -9,7 +9,7 @@ module.controller("browseCtrl", function ($scope, $http, $q, settingsService, ur
 
 	$scope.sendInvitation = function()
 	{
-		$q.when(invitationService.send($scope.currentActivity.id)).then(
+		invitationService.send($scope.currentActivity.id).then(
 			function (data)
 			{
 				window.plugins.toast.showShortBottom('Invitation sent');
@@ -23,7 +23,7 @@ module.controller("browseCtrl", function ($scope, $http, $q, settingsService, ur
 
 	$scope.skip = function()
 	{
-		$q.when(activityService.skip($scope.currentActivity.id)).then(
+		activityService.skip($scope.currentActivity.id).then(
 			function(data)
 			{
 				window.plugins.toast.showShortBottom('Activity rejected');

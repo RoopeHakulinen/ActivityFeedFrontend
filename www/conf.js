@@ -14,7 +14,7 @@ module.constant(
 		"activity": serverUrl + "activity/",
 		"activities": serverUrl + "activities/",
 		"activityTypes": serverUrl + "activity_types/",
-		"invitations": serverUrl + "invitations/",
+		"suggestions": serverUrl + "suggestions/",
 		"profile": serverUrl + "profile/",
 		"direct": serverUrl + "direct/"
 	}

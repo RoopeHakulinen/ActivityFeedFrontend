@@ -40,7 +40,14 @@ module.service('invitationService', function ($http, $q, urlConfig) {
 
 	this.send = function (id)
 	{
-		return $http.post(urlConfig["invitation"] + "/" + id + "/sendInvitation");
+		return $http.post({
+			url: urlConfig["activities"] + id + "/suggestions",
+			data: {
+				"suggestion": {
+					"status": 1
+				}
+			}
+		});
 	};
 
 
