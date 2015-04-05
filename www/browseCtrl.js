@@ -40,7 +40,10 @@ module.controller("browseCtrl", function ($scope, $http, $q, settingsService, ur
 	{
 		activityService.getActivities().then(function(activities)
 		{
-			$scope.currentActivity = activities[0];
+			activityService.getActivity(activities[0]).then(function(activity)
+			{
+				$scope.currentActivity = activity;
+			});
 		});
 	};
 
