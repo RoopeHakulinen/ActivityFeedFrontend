@@ -141,10 +141,10 @@
 		</ons-toolbar>
 
 		<ons-list class="menu-list">
-			<ons-list-item class="menu-item" ng-click="appNavigator.resetToPage('browse.html');slidingMenu.closeMenu();">
+			<!--<ons-list-item class="menu-item" ng-click="appNavigator.resetToPage('browse.html');slidingMenu.closeMenu();">
 				<ons-icon icon="fa-search"></ons-icon>
 				Näytä aktiviteetit
-			</ons-list-item>
+			</ons-list-item>-->
 			<ons-list-item class="menu-item" ng-click="appNavigator.pushPage('create-activity.html');slidingMenu.closeMenu();">
 				<ons-icon icon="fa-plus"></ons-icon>
 				Luo aktiviteetti
@@ -213,7 +213,6 @@
 			<ons-list-item modifier="chevron">
 				<ons-icon icon="fa-tag" style="opacity:0.2"></ons-icon>
 			</ons-list-item>
-
 		</ons-list>
 
 		<div style="padding: 10px 9px">
@@ -221,10 +220,7 @@
 				Luo aktiviteetti
 			</ons-button>
 		</div>
-
-
 	</ons-page>
-
 </ons-template>
 
 
@@ -235,7 +231,7 @@
 		<ons-toolbar>
 			<div class="left"><ons-back-button>Takaisin</ons-back-button></div>
 			<div class="center">
-				Schedule
+				Kutsut
 			</div>
 			<div class="right">
 				<ons-toolbar-button>
