@@ -37,17 +37,4 @@ module.service('activityTypeService', function ($http, $q, urlConfig) {
 		);
 		return deferred.promise;
 	};
-
-//	this.create = function (activityType, place, time)
-//	{
-//		return $http.post(urlConfig["activityType"],
-//			{
-//				data:
-//				{
-//					name: activityType,
-//					image: place
-//				}
-//			}
-//		);
-//	};
 });
