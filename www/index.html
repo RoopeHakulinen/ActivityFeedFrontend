@@ -115,7 +115,7 @@
 				<div class="profile-timeframe">{{currentActivity.from}} - {{currentActivity.to}}</div>
 				<div class="profile-desc">{{currentActivity.message}}</div>
 				<div class="profile-stars">{{currentActivity.stars}}</div>
-				<div class="profile-participants">{{currentActivity.participants}} / {{currentActivity.maxParticipants}} pelaajaa</div>
+				<div class="profile-participants">{{currentActivity.participants.length}} / {{currentActivity.maxParticipants}} pelaajaa</div>
 			</div>
 			<div class="controls">
 				<ons-button ng-click="invite();">Lähetä kutsu</ons-button>
