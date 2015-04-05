@@ -109,12 +109,13 @@
 		</ons-toolbar>
 
 		<div ng-show="currentActivity.id">
-			<div class="profile-card">
-				<img src="{{currentActivity.image || '//:0'}}" class="profile-image">
-				<div class="profile-name">{{currentActivity.name}}</div>
-				<div class="profile-id">{{currentActivity.date}}</div>
-				<div class="profile-desc">{{currentActivity.desc}}</div>
+			<div class="profile-card" style="{{_getActivityTypeStyles()}}">
+				<img src="{{currentActivity.organizer.image}}" class="profile-image" alt="{{currentActivity.organizer.email}}">
+				<div class="profile-name">{{currentActivity.organizer.email}}</div>
+				<div class="profile-timeframe">{{currentActivity.from}} - {{currentActivity.to}}</div>
+				<div class="profile-desc">{{currentActivity.message}}</div>
 				<div class="profile-stars">{{currentActivity.stars}}</div>
+				<div class="profile-participants">{{currentActivity.participants}} / {{currentActivity.maxParticipants}} pelaajaa</div>
 			</div>
 			<div class="controls">
 				<ons-button ng-click="invite();">Lähetä kutsu</ons-button>

@@ -37,4 +37,11 @@ module.service('activityTypeService', function ($http, $q, urlConfig) {
 		);
 		return deferred.promise;
 	};
+
+	this.getStyles = function(id)
+	{
+		return this.activityTypes.filter(function(item) {
+			return item.id === id;
+		})[0].styles;
+	};
 });

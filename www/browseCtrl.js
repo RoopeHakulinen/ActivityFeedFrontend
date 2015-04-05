@@ -47,5 +47,10 @@ module.controller("browseCtrl", function ($scope, $http, $q, settingsService, ur
 		});
 	};
 
+	$scope._getActivityTypeStyles = function()
+	{
+		return activityTypeService.getStyles(this.currentActivity.activity_type_id);
+	};
+
 	$scope.initialize();
 });
