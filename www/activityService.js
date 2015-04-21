@@ -26,15 +26,16 @@ module.service('activityService', function ($http, $q, urlConfig, userService) {
 		var deferred = $q.defer();
 		var url = urlConfig["activities"];
 
-		// Add location stuff AKA lat, lng and range
-		var loc = userService.getLocation();
-		url += encodeURIComponent(loc.lat) + "/" + encodeURIComponent(loc.lng) + "/" + encodeURIComponent(userService.getRange()) + "/";
-
-		// If there is activity type specified, append that as last parameter
+		// If there is activity type specified, append that as parameter
 		if (typeof type === "number")
 		{
-			url += type;
+			url += type + "/";
 		}
+
+		// Add location stuff AKA lat, lng and range
+		var loc = userService.getLocation();
+		url += "?lat=" + loc.lat + "&lng=" + loc.lng + "&range=" + userService.getRange();
+
 		$http.get(url).success(
 			function (data)
 			{
