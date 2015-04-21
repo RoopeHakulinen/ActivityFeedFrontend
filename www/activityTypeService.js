@@ -40,8 +40,8 @@ module.service('activityTypeService', function ($http, $q, urlConfig) {
 
 	this.getStyles = function(id)
 	{
-		return this.activityTypes.filter(function(item) {
+		return !!this.activityTypes ? this.activityTypes.filter(function(item) {
 			return item.id === id;
-		})[0].styles;
+		})[0].styles : "";
 	};
 });
