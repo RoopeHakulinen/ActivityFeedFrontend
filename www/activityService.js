@@ -25,12 +25,16 @@ module.service('activityService', function ($http, $q, urlConfig, userService) {
 	{
 		var deferred = $q.defer();
 		var url = urlConfig["activities"];
-		if (typeof type === "number")
-		{
-			url += type + "/";
-		}
+
+		// Add location stuff AKA lat, lng and range
 		var loc = userService.getLocation();
 		url += loc.lat + "/" + loc.lng + "/" + userService.getRange() + "/";
+
+		// If there is activity type specified, append that as last parameter
+		if (typeof type === "number")
+		{
+			url += type;
+		}
 		$http.get(url).success(
 			function (data)
 			{
