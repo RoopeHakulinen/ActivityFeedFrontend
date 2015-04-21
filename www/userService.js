@@ -29,6 +29,16 @@ module.service('userService', function () {
 		return this.getUser().id;
 	};
 
+	this.getLocation = function ()
+	{
+		return {lat: "61.498172", lng: "23.761092"};
+	};
+
+	this.getRange = function ()
+	{
+		return 50;
+	};
+
 	this.logout = function (force)
 	{
 		window.plugins.toast.showShortBottom("Logging out.");

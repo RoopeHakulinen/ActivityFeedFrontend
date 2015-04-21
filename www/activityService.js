@@ -29,6 +29,8 @@ module.service('activityService', function ($http, $q, urlConfig, userService) {
 		{
 			url += type + "/";
 		}
+		var loc = userService.getLocation();
+		url += loc.lat + "/" + loc.lng + "/" + userService.getRange() + "/";
 		$http.get(url).success(
 			function (data)
 			{
@@ -61,16 +63,21 @@ module.service('activityService', function ($http, $q, urlConfig, userService) {
 		return deferred.promise;
 	};
 
-	this.create = function (activityType, place, time)
+	this.create = function (activityType, locationName, lat, lng, from, to, participantCount, requiredLevel, message)
 	{
 		return $http.post(urlConfig["activity"],
 			{
 				data:
 				{
-					activityType: activityType,
-					place: place,
-					time: time,
-					user: userService.getId()
+					activity_type_id: activityType.id,
+					location_name: locationName,
+					from: from,
+					to: to,
+					lat: lat,
+					lng: lng,
+					participant_count: participantCount,
+					required_level: requiredLevel,
+					message: message
 				}
 			}
 		);

@@ -2,8 +2,14 @@ module.controller("createActivityCtrl", function ($scope, $http, urlConfig, acti
 	$scope.activityTypes = [];
 
 	$scope.activityType = {name: "", id: -1};
-	$scope.place = "";
-	$scope.time = "12:00";
+	$scope.locationName = "";
+	$scope.lat = "61.498172";
+	$scope.lng = "23.761092";
+	$scope.from = "17:00";
+	$scope.to = "18:00";
+	$scope.message = "";
+	$scope.participantCount = 2;
+	$scope.requiredLevel = 0;
 
 	$scope.initialize = function()
 	{
@@ -22,7 +28,7 @@ module.controller("createActivityCtrl", function ($scope, $http, urlConfig, acti
 	{
 		commonLoader.show();
 
-		activityService.create($scope.activityType.id, $scope.place, $scope.time).success(
+		activityService.create($scope.activityType.id, $scope.locationName, $scope.lat, $scope.lng, $scope.from, $scope.to, $scope.participantCount, $scope.requiredLevel, $scope.message).success(
 			function()
 			{
 				window.plugins.toast.showShortBottom('Activity successfully added.');
