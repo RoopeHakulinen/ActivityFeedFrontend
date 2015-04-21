@@ -49,7 +49,7 @@ module.controller("browseCtrl", function ($scope, $http, $q, settingsService, ur
 
 	$scope._getOrganizerImage = function ()
 	{
-		var imageUrl = currentActivity.organizer.profile.image;
+		var imageUrl = $scope.currentActivity.organizer.profile.image;
 		return imageUrl === null ? "http://cdn2-b.examiner.com/sites/default/files/styles/image_content_width/hash/a8/55/a855bf4d4292f3428df5284ba5620643.jpg?itok=S73UMWZ9" : imageUrl;
 	};
 
