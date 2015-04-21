@@ -28,7 +28,7 @@ module.service('activityService', function ($http, $q, urlConfig, userService) {
 
 		// Add location stuff AKA lat, lng and range
 		var loc = userService.getLocation();
-		url += loc.lat + "/" + loc.lng + "/" + userService.getRange() + "/";
+		url += encodeURIComponent(loc.lat) + "/" + encodeURIComponent(loc.lng) + "/" + encodeURIComponent(userService.getRange()) + "/";
 
 		// If there is activity type specified, append that as last parameter
 		if (typeof type === "number")
