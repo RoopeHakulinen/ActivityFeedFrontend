@@ -109,16 +109,18 @@
 		</ons-toolbar>
 
 		<div ng-show="currentActivity.id">
-			<div class="profile-card" style="{{_getActivityTypeStyles()}}">
-				<img ng-src="{{_getOrganizerImage()}}" class="profile-image" alt="{{currentActivity.organizer.email}}">
-				<div class="profile-name">{{currentActivity.organizer.profile.name}}</div>
-				<div class="profile-location-name">{{currentActivity.location_name}}</div>
-				<div class="profile-timeframe">{{currentActivity.from}} - {{currentActivity.to}}</div>
-				<div class="profile-desc">{{currentActivity.comments[0].text}}</div>
-				<div class="profile-stars">{{currentActivity.required_level}}</div>
-				<div class="profile-participants">{{currentActivity.participants.length}} / {{currentActivity.participant_count}} pelaajaa jo mukana</div>
-				<div class="profile-distance">{{currentActivity.distance}} km</div>
-			</div>
+			<ons-gesture-detector ng-swipeleft="skip()" ng-swiperight="invite()">
+				<div class="profile-card" style="{{_getActivityTypeStyles()}}">
+					<img ng-src="{{_getOrganizerImage()}}" class="profile-image" alt="{{currentActivity.organizer.email}}">
+					<div class="profile-name">{{currentActivity.organizer.profile.name}}</div>
+					<div class="profile-location-name">{{currentActivity.location_name}}</div>
+					<div class="profile-timeframe">{{currentActivity.from}} - {{currentActivity.to}}</div>
+					<div class="profile-desc">{{currentActivity.comments[0].text}}</div>
+					<div class="profile-stars">{{currentActivity.required_level}}</div>
+					<div class="profile-participants">{{currentActivity.participants.length}} / {{currentActivity.participant_count}} pelaajaa jo mukana</div>
+					<div class="profile-distance">{{currentActivity.distance}} km</div>
+				</div>
+			</ons-gesture-detector>
 			<div class="controls" style="width: 20%; margin: 5% auto;">
 				<ons-icon
 					icon="fa-forward"
