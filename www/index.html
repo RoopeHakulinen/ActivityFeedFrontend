@@ -119,9 +119,21 @@
 				<div class="profile-participants">{{currentActivity.participants.length}} / {{currentActivity.participant_count}} pelaajaa jo mukana</div>
 				<div class="profile-distance">{{currentActivity.distance}} km</div>
 			</div>
-			<div class="controls">
-				<ons-button ng-click="invite();">Lähetä kutsu</ons-button>
-				<ons-button ng-click="skip();">Skippaa</ons-button>
+			<div class="controls" style="width: 20%; margin: 5% auto;">
+				<ons-icon
+					icon="fa-check"
+					size="20px"
+					fixed-width="false"
+					style="color: red; float: left;"
+					ng-click="invite();">
+				</ons-icon>
+				<ons-icon
+					icon="fa-forward"
+					size="20px"
+					fixed-width="false"
+					style="color: red; float: right;"
+					ng-click="skip();">
+				</ons-icon>
 			</div>
 		</div>
 		<div ng-hide="currentActivity.id">
