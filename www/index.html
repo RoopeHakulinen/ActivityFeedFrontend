@@ -110,7 +110,7 @@
 
 		<div ng-show="currentActivity.id">
 			<div class="profile-card" style="{{_getActivityTypeStyles()}}">
-				<img src="{{_getOrganizerImage()}}" class="profile-image" alt="{{currentActivity.organizer.email}}">
+				<img ng-src="{{_getOrganizerImage()}}" class="profile-image" alt="{{currentActivity.organizer.email}}">
 				<div class="profile-name">{{currentActivity.organizer.profile.name}}</div>
 				<div class="profile-location-name">{{currentActivity.location_name}}</div>
 				<div class="profile-timeframe">{{currentActivity.from}} - {{currentActivity.to}}</div>
