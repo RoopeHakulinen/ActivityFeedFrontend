@@ -56,36 +56,31 @@ module.controller("loginCtrl", function ($scope, $http, settingsService, fileSys
 
 	$scope.facebookLogin = function()
 	{
-		var success = function(userData)
+		var success = function(authData)
 		{
-			facebookConnectPlugin.api(userData.authResponse.userID, ["public_profile", "email"], function(token) {
-				console.error("Token: " + token);
-			}, function(err) {
-				console.error("Could not get access token: " + err);
-			});facebookConnectPlugin.api("", ["public_profile", "email"], function(token) {
-			console.error("Token: " + token);
-		}, function(err) {
-			console.error("Could not get access token: " + err);
-		});
-			$http(
-				{
-					method: "GET",
-					url: urlConfig["facebookCallback"] + "?code=" + encodeURIComponent(userData.authResponse.accessToken),
-					headers: {
-						'Content-type': 'application/json',
-						'Accept': 'application/json'
+			facebookConnectPlugin.api(authData.authResponse.userID, ["public_profile", "email"], function(data) {
+				$http(
+					{
+						method: "GET",
+						url: urlConfig["facebookCallback"] + "?user=" + JSON.stringify(data),
+						headers: {
+							'Content-type': 'application/json',
+							'Accept': 'application/json'
+						}
+					}).success(
+					function (data)
+					{
+						$scope.loginSuccess(data);
 					}
-				}).success(
-				function (data)
-				{
-					$scope.loginSuccess(data);
-				}
-			).error(
-				function(data)
-				{
-					alert("Facebook auth callback error: " + data);
-				}
-			);
+				).error(
+					function(data)
+					{
+						alert("Facebook auth callback error: " + data);
+					}
+				);
+			}, function(err) {
+				console.error("Could not get user data token: " + err);
+			});
 		};
 
 		var error = function(error)
