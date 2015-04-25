@@ -58,7 +58,7 @@ module.controller("loginCtrl", function ($scope, $http, settingsService, fileSys
 	{
 		var success = function(authData)
 		{
-			facebookConnectPlugin.api(authData.authResponse.userID + "?fields=id,email,name,picture,gender,birthday", ["public_profile", "email"], function(data) {
+			facebookConnectPlugin.api(authData.authResponse.userID + "?fields=id,email,name,picture,gender,birthday", ["public_profile", "email", "user_birthday"], function(data) {
 				$http(
 					{
 						method: "POST",
