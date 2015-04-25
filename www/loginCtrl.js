@@ -61,7 +61,7 @@ module.controller("loginCtrl", function ($scope, $http, settingsService, fileSys
 			facebookConnectPlugin.api(authData.authResponse.userID, ["public_profile", "email"], function(data) {
 				$http(
 					{
-						method: "GET",
+						method: "POST",
 						url: urlConfig["facebookCallback"] + "?user=" + JSON.stringify(data),
 						headers: {
 							'Content-type': 'application/json',
