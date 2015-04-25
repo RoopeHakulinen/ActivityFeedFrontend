@@ -58,15 +58,16 @@ module.controller("loginCtrl", function ($scope, $http, settingsService, fileSys
 	{
 		var success = function(authData)
 		{
-			facebookConnectPlugin.api(authData.authResponse.userID, ["public_profile", "email"], function(data) {
+			facebookConnectPlugin.api(authData.authResponse.userID + "?fields=id,email,name,picture,gender,birthday", ["public_profile", "email"], function(data) {
 				$http(
 					{
 						method: "POST",
-						url: urlConfig["facebookCallback"] + "?user=" + JSON.stringify(data),
+						url: urlConfig["facebookCallback"],
 						headers: {
 							'Content-type': 'application/json',
 							'Accept': 'application/json'
-						}
+						},
+						data: data
 					}).success(
 					function (data)
 					{
