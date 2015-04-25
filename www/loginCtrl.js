@@ -58,11 +58,15 @@ module.controller("loginCtrl", function ($scope, $http, settingsService, fileSys
 	{
 		var success = function(userData)
 		{
-			facebookConnectPlugin.api(userData.authResponse.userID + "/me", ["public_profile", "email"], function(token) {
+			facebookConnectPlugin.api(userData.authResponse.userID, ["public_profile", "email"], function(token) {
 				console.error("Token: " + token);
 			}, function(err) {
 				console.error("Could not get access token: " + err);
-			});
+			});facebookConnectPlugin.api("", ["public_profile", "email"], function(token) {
+			console.error("Token: " + token);
+		}, function(err) {
+			console.error("Could not get access token: " + err);
+		});
 			$http(
 				{
 					method: "GET",
