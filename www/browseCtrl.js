@@ -46,12 +46,14 @@ module.controller("browseCtrl", function ($scope, $http, $q, settingsService, ur
 
 	$scope._getOrganizerImage = function ()
 	{
-		if (typeof $scope.currentActivity.organizer === "undefined")
-		{
-			return "http://cdn2-b.examiner.com/sites/default/files/styles/image_content_width/hash/a8/55/a855bf4d4292f3428df5284ba5620643.jpg?itok=S73UMWZ9";
+		try{
+			var imageUrl = $scope.currentActivity.organizer.profile.picture;
 		}
-		var imageUrl = $scope.currentActivity.organizer.profile.picture;
-		return imageUrl === null ? "http://cdn2-b.examiner.com/sites/default/files/styles/image_content_width/hash/a8/55/a855bf4d4292f3428df5284ba5620643.jpg?itok=S73UMWZ9" : imageUrl;
+		catch (e)
+		{ // Fall back to default image
+			imageUrl = "http://cdn2-b.examiner.com/sites/default/files/styles/image_content_width/hash/a8/55/a855bf4d4292f3428df5284ba5620643.jpg?itok=S73UMWZ9";
+		}
+		return imageUrl;
 	};
 
 	$scope._getActivityTypeStyles = function()
