@@ -20,7 +20,7 @@ module.controller("loginCtrl", function ($scope, $http, settingsService, fileSys
 				setTimeout(function ()
 				{
 					navigator.splashscreen.hide();
-				}, 500);
+				}, 1000);
 				clearInterval(interval);
 			}
 		}, 50);
