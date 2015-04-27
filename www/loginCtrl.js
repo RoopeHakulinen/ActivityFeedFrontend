@@ -55,10 +55,14 @@ module.controller("loginCtrl", function ($scope, $http, settingsService, fileSys
 	{
 		console.log("Login succeeded.");
 		settingsService.loadUserSettings();
-		appNavigator.pushPage("main-view.html", {}, 'slide', function ()
-		{
-			navigator.splashscreen.hide();
-		});
+		appNavigator.pushPage("main-view.html",
+			{
+				onTransitionEnd: function ()
+				{
+					navigator.splashscreen.hide();
+				}
+			}
+		);
 		loginLoader.hide();
 	};
 
