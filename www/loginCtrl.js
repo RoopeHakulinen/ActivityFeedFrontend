@@ -12,12 +12,15 @@ module.controller("loginCtrl", function ($scope, $http, settingsService, fileSys
 	{
 		var interval = setInterval(function ()
 		{
-			if (deviceReady && typeof navigator.splashscreen !== "undefined") {
+			if (deviceReady) {
 				if (userService.getUser())
 				{
 					$scope.signedIn();
 				}
-				navigator.splashscreen.hide();
+				setTimeout(function ()
+				{
+					navigator.splashscreen.hide();
+				}, 200);
 				clearInterval(interval);
 			}
 		}, 50);
