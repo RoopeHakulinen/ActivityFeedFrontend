@@ -17,8 +17,10 @@
 	<script src="cordova.js"></script>
 
 	<script>
+		deviceReady = false;
 		document.addEventListener('deviceready', function () {
 			console.log("Got deviceready.");
+			deviceReady = true;
 		}, false);
 	</script>
 	<script src="app.js" type="application/javascript"></script>

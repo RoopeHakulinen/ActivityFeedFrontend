@@ -12,7 +12,7 @@ module.controller("loginCtrl", function ($scope, $http, settingsService, fileSys
 	{
 		var interval = setInterval(function ()
 		{
-			if (typeof navigator.splashscreen !== "undefined") {
+			if (deviceReady && typeof navigator.splashscreen !== "undefined") {
 				if (userService.getUser())
 				{
 					$scope.signedIn();
