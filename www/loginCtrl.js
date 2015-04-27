@@ -15,12 +15,14 @@ module.controller("loginCtrl", function ($scope, $http, settingsService, fileSys
 			if (deviceReady) {
 				if (userService.getUser())
 				{
+					hidingSplashScreenNeeded = true;
 					$scope.signedIn();
 				}
-				setTimeout(function ()
+				else
 				{
 					navigator.splashscreen.hide();
-				}, 750);
+					hidingSplashScreenNeeded = false;
+				}
 				clearInterval(interval);
 			}
 		}, 50);
@@ -53,7 +55,10 @@ module.controller("loginCtrl", function ($scope, $http, settingsService, fileSys
 	{
 		console.log("Login succeeded.");
 		settingsService.loadUserSettings();
-		appNavigator.pushPage("main-view.html", {});
+		appNavigator.pushPage("main-view.html", {}, 'slide', function ()
+		{
+			navigator.splashscreen.hide();
+		});
 		loginLoader.hide();
 	};
 
