@@ -46,9 +46,13 @@
 	<preference name="android-installLocation" value="auto" />
 	<preference name="detect-data-types" value="true" />
 	<preference name="AndroidPersistentFileLocation" value="Internal" /> <!-- Makes FileTransfer use internal storage -->
+	<preference name="android-minSdkVersion" value="14" /> <!-- There values are defined on Android's tablet quality guide -->
+	<preference name="android-targetSdkVersion" value="19" />
 
 	<!-- iOS preferences -->
 	<preference name="exit-on-suspend" value="false" />
 	<preference name="fullscreen" value="true" />
 	<preference name="iosPersistentFileLocation" value="Library" /> <!-- Makes FileTransfer use internal storage -->
+
+	<gap:splash src="splash.png" />
 </widget>
