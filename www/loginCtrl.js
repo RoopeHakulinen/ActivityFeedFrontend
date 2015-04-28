@@ -92,7 +92,7 @@ module.controller("loginCtrl", function ($scope, $http, settingsService, fileSys
 					}
 				);
 			}, function(err) {
-				console.error("Could not get user data token: " + err);
+				console.error("Could not get user data token: " + JSON.stringify(err));
 			});
 		};
 
