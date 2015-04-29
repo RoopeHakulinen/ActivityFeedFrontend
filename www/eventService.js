@@ -30,18 +30,18 @@ module.controller("eventService", function (userService) {
 	document.addEventListener('deviceready', function onDeviceReady() {
 		console.log("Got deviceready.");
 		window.deviceReady = true;
-
 		window.alert = function (msg)
 		{
-				navigator.notification.alert(
-					msg,
-					function ()
-					{
-					},
-					'Activer',
-					"OK"
-				);
-			}
+			navigator.notification.alert(
+				msg,
+				function ()
+				{
+				},
+				'Activer',
+				"OK"
+			);
+		};
+		userService.updateGeolocation();
 	}, false);
 
 	document.addEventListener('online', function() {
