@@ -40,7 +40,21 @@
 <body ng-app="app">
 <ons-navigator var="appNavigator" page="login.html"></ons-navigator>
 
+<ons-modal var="confirmationModal">
+	<div class="alert-dialog-mask"></div>
+	<div class="alert-dialog">
+		<div class="alert-dialog-title">Kirjaudu ulos</div>
 
+		<div class="alert-dialog-content">
+			Olekto varma, että haluat kirjautua ulos?
+		</div>
+
+		<div class="alert-dialog-footer alert-dialog-footer--one">
+			<button class="alert-dialog-button alert-dialog-button--primal alert-dialog-button--one">Kirjaudu ulos</button>
+			<button class="alert-dialog-button alert-dialog-button--one">Peruuta</button>
+		</div>
+	</div>
+</ons-modal>
 
 <ons-template id="login.html">
 	<ons-page ng-controller="loginCtrl" ng-init="initialize()">
