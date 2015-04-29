@@ -1,6 +1,6 @@
 module.service('settingsService', function (fileSystemService, userService) {
 	this.settings = {};
-	var DEFAULT_SETTIMGS = {
+	var DEFAULT_SETTINGS = {
 		range: 50
 	};
 	this.setItem = function (key, value) {
