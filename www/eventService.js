@@ -1,4 +1,4 @@
-module.controller("eventService", function (userService) {
+module.service("eventService", function (userService) {
 
 	this.logout = function()
 	{
