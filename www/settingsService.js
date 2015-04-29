@@ -37,7 +37,7 @@ module.service('settingsService', function (fileSystemService, userService) {
 			}
 			else
 			{
-				this.settings = DEFAULT_SETTIMGS;
+				this.settings = DEFAULT_SETTINGS;
 				console.log("Using default settings");
 			}
 		}.bind(this);
