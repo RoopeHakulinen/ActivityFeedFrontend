@@ -171,11 +171,11 @@
 			<div class="center"></div>
 		</ons-toolbar>
 
-		<ons-list class="menu-list">
-			<!--<ons-list-item class="menu-item" ng-click="appNavigator.resetToPage('browse.html');slidingMenu.closeMenu();">
-				<ons-icon icon="fa-search"></ons-icon>
-				Näytä aktiviteetit
-			</ons-list-item>-->
+		<ons-list class="menu-list" style="margin-bottom: 6px;">
+			<ons-list-item class="menu-item">
+				<!--<ons-icon icon="fa-search"></ons-icon>-->
+				Activer
+			</ons-list-item>
 			<ons-list-item class="menu-item" ng-click="appNavigator.pushPage('create-activity.html');slidingMenu.closeMenu();">
 				<ons-icon icon="fa-plus"></ons-icon>
 				Luo aktiviteetti
@@ -190,8 +190,6 @@
 				<div ng-show="invitations" class="notification menu-notification">{{invitations.length}}</div>
 			</ons-list-item>
 		</ons-list>
-
-		<br>
 
 		<ons-list class="bottom-menu-list">
 			<ons-list-item class="bottom-menu-item" ng-click="appNavigator.pushPage('settings.html');slidingMenu.closeMenu();">
@@ -348,10 +346,12 @@
 		<ons-toolbar>
 			<div class="left"><ons-back-button>Takaisin</ons-back-button></div>
 		</ons-toolbar>
-		<div class="content-padded" style="font-size: 13px; text-align: center; color: #999;">
-			<h1>Activer - Activer Ltd</h1>
-			<p>Version 1.0.0</p>
-			<p>Designed by: Roope Hakulinen</p>
+		<div class="content-padded" style="font-size: 13px; text-align: center;">
+			<h1>Activer by Activer Ltd</h1>
+			<p>Version 1.0.0<br/>
+				Contact via info@activer.net<br/>
+				Designed by: Roope Hakulinen<br/>
+			</p>
 		</div>
 	</ons-page>
 </ons-template>
