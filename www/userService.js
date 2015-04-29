@@ -36,7 +36,7 @@ module.service('userService', function () {
 
 	this.getRange = function ()
 	{
-		return 50;
+		return 500;
 	};
 
 	this.logout = function (force)
