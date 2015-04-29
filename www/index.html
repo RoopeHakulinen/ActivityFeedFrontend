@@ -365,9 +365,10 @@
 		<div class="content-padded" style="font-size: 13px; text-align: center; color: #999;" ng-controller="settingsCtrl">
 			<ons-list>
 				<ons-list-header>Settings</ons-list-header>
-				<ons-list-item>Auto reload:<ons-switch var="useAutoReloadSwitch" ng-model="useAutoReload"></ons-switch></ons-list-item>
-				<ons-list-item>Timeout: <select id="timeout-select" ng-model="selectedTimeout.id" ng-options="timeout.id as timeout.name for timeout in timeoutListOptions"></select></ons-list-item>
-				<ons-list-item>Device name: <input type="text" ng-model="deviceName" /></ons-list-item>
+				<ons-list-item>Range: <input type="text" ng-model="range" /></ons-list-item>
+			</ons-list>
+			<ons-list>
+				<ons-list-item modifier="tappable" ng-click="logout()" style="line-height: 1.75em;">{{getUserName()}}<span style="color: #00ACEE;">Sign out from Activer</span></ons-list-item>
 			</ons-list>
 		</div>
 	</ons-page>

@@ -1,4 +1,4 @@
-module.service('activityService', function ($http, $q, urlConfig, userService) {
+module.service('activityService', function ($http, $q, urlConfig, userService, settingsService) {
 	this.activities = [];
 
 	this.getActivities = function ()
@@ -34,7 +34,7 @@ module.service('activityService', function ($http, $q, urlConfig, userService) {
 
 		// Add location stuff AKA lat, lng and range
 		var loc = userService.getLocation();
-		url += "?lat=" + loc.lat + "&lng=" + loc.lng + "&range=" + userService.getRange();
+		url += "?lat=" + loc.lat + "&lng=" + loc.lng + "&range=" + settingsService.getRange();
 
 		$http.get(url).success(
 			function (data)

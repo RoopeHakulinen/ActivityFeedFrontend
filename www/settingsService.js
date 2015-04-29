@@ -1,13 +1,17 @@
 module.service('settingsService', function (fileSystemService, userService) {
 	this.settings = {};
 
-
 	this.setItem = function (key, value) {
 		this.settings[key] = value;
 	};
 
 	this.getItem = function (key) {
 		return this.settings[key];
+	};
+
+	this.getRange = function ()
+	{
+		return this.getItem("range");
 	};
 
 	this.loadUserSettings = function ()
@@ -22,7 +26,7 @@ module.service('settingsService', function (fileSystemService, userService) {
 			else
 			{
 				this.settings = {
-
+					range: 50
 				};
 				console.log("Using default settings");
 			}

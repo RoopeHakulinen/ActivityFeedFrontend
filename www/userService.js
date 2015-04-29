@@ -70,10 +70,6 @@ module.service('userService', function () {
 		);
 	};
 
-	this.getRange = function ()
-	{
-		return 500;
-	};
 
 	this.logout = function (force)
 	{
