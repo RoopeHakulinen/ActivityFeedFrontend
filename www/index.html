@@ -326,16 +326,16 @@
 		<ons-toolbar>
 			<div class="left"><ons-back-button>Takaisin</ons-back-button></div>
 			<div class="center">Asetukset</div>
+			<div class="right"></div>
 		</ons-toolbar>
 
 
 		<div class="content-padded" style="font-size: 13px; text-align: center; color: #999;" ng-controller="settingsCtrl">
 			<ons-list>
-				<ons-list-header>Settings</ons-list-header>
-				<ons-list-item>Range: <input type="text" ng-model="range" /></ons-list-item>
+				<ons-list-item>Etäisyys: <input type="text" ng-model="range" /></ons-list-item>
 			</ons-list>
 			<ons-list>
-				<ons-list-item modifier="tappable" ng-click="logout()" style="line-height: 1.75em;">{{getUserName()}}<span style="color: #00ACEE;">Sign out from Activer</span></ons-list-item>
+				<ons-list-item modifier="tappable" ng-click="logout()" style="">{{getUserName()}}<span style="color: #00ACEE;">Sign out from Activer</span></ons-list-item>
 			</ons-list>
 		</div>
 	</ons-page>
