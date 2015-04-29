@@ -1,12 +1,19 @@
 module.service('settingsService', function (fileSystemService, userService) {
 	this.settings = {};
-
+	var DEFAULT_SETTIMGS = {
+		range: 50
+	};
 	this.setItem = function (key, value) {
 		this.settings[key] = value;
 	};
 
 	this.getItem = function (key) {
-		return this.settings[key];
+		var value = this.settings[key];
+		if (typeof value === "undefined")
+		{
+			return DEFAULT_SETTINGS[key];
+		}
+		return value;
 	};
 
 	this.getRange = function ()
@@ -30,9 +37,7 @@ module.service('settingsService', function (fileSystemService, userService) {
 			}
 			else
 			{
-				this.settings = {
-					range: 50
-				};
+				this.settings = DEFAULT_SETTIMGS;
 				console.log("Using default settings");
 			}
 		}.bind(this);
