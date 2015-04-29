@@ -14,6 +14,11 @@ module.service('settingsService', function (fileSystemService, userService) {
 		return this.getItem("range");
 	};
 
+	this.setRange = function (range)
+	{
+		this.setItem("range", range);
+	};
+
 	this.loadUserSettings = function ()
 	{
 		console.log("Reading users settings file.");
