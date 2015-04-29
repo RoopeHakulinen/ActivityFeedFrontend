@@ -40,8 +40,16 @@ module.service('activityTypeService', function ($http, $q, urlConfig) {
 
 	this.getStyles = function(id)
 	{
-		return !!this.activityTypes ? this.activityTypes.filter(function(item) {
-			return item.id === id;
-		})[0].styles : "";
+		if (!!this.activityTypes && typeof id === "number")
+		{
+			var activityTypes = this.activityTypes.filter(function(item) {
+				return item.id === id;
+			});
+			if (activityTypes.length === 1 && typeof activityTypes[0].styles === "string")
+			{
+				return activityTypes[0].styles;
+			}
+		}
+		return "";
 	};
 });
