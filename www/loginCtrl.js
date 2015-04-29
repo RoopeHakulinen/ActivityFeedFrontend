@@ -1,4 +1,4 @@
-module.controller("loginCtrl", function ($scope, $http, settingsService, fileSystemService, userService, urlConfig) {
+module.controller("loginCtrl", function (eventService, $scope, $http, settingsService, fileSystemService, userService, urlConfig) {
 	$scope.email = "";
 	$scope.password = "";
 
