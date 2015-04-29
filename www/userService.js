@@ -1,5 +1,5 @@
 module.service('userService', function () {
-	var geolocation = {lat: 0, lng: 0};
+	this.position = {lat: 0, lng: 0};
 
 	this.setUser = function (user)
 	{
@@ -33,22 +33,39 @@ module.service('userService', function () {
 
 	this.getLocation = function ()
 	{
-		return geolocation;
+		return this.position;
 	};
 
-	this.setGeolocation = function (position)
+	this.setPosition = function (position)
 	{
 		console.log("New location: (" + position.coords.latitude + ", " + position.coords.longitude + ")");
-		geolocation = {lat: position.coords.latitude, lng: position.coords.longitude};
+		this.position = {lat: position.coords.latitude, lng: position.coords.longitude};
 	};
 
-	this.updateGeolocation = function ()
+	this.positioningFailed = function (error)
 	{
-		navigator.geolocation.watchPosition(this.setGeolocation.bind(this),
-			function (error)
+		alert("Paikannus epäonnistui. Käyttäjää ei pystytty paikantamaan. Koodi: " + error.code + ", viesti: " + error.message);
+	};
+
+	this.initializePosition = function ()
+	{
+		navigator.geolocation.getCurrentPosition(
+			function (position)
 			{
-				alert("Paikannus epäonnistui. Käyttäjää ei pystytty paikantamaan. Koodi: " + error.code + ", viesti: " + error.message);
-			},
+				this.setPosition(position);
+				this.updatePosition();
+			}.bind(this),
+			this.positioningFailed.bind(this),
+			{enableHighAccuracy: false}
+		);
+		this.updatePosition();
+	};
+
+	this.updatePosition = function ()
+	{
+		navigator.geolocation.watchPosition(
+			this.setPosition.bind(this),
+			this.positioningFailed.bind(this),
 			{maximumAge: 1000*60*30, enableHighAccuracy: true}
 		);
 	};

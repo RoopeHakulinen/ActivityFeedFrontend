@@ -41,7 +41,7 @@ module.service("eventService", function (userService) {
 				"OK"
 			);
 		};
-		userService.updateGeolocation();
+		userService.initializePosition();
 	}, false);
 
 	document.addEventListener('online', function() {
