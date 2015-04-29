@@ -18,7 +18,6 @@ module.service('activityService', function ($http, $q, urlConfig, userService, s
 		{
 			deferred.resolve(this.activities);
 		}
-		setTimeout(this.getActivities.bind(this), 1000);
 		return deferred.promise;
 	};
 
