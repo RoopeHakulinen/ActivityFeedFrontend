@@ -135,15 +135,15 @@ input[type=email], input[type=password] {
 
 
 .star-five {
-	margin: 50px 0;
+	margin: 12px 0;
 	position: relative;
 	display: block;
 	color: white;
 	width: 0px;
 	height: 0px;
-	border-right:  100px solid transparent;
-	border-bottom: 70px  solid darkgoldenrod;
-	border-left:   100px solid transparent;
+	border-right:  25px solid transparent;
+	border-bottom: 17px  solid darkgoldenrod;
+	border-left:   25px solid transparent;
 	-moz-transform:    rotate(35deg);
 	-webkit-transform: rotate(35deg);
 	-ms-transform:     rotate(35deg);
@@ -151,14 +151,14 @@ input[type=email], input[type=password] {
 }
 
 .star-five:before {
-	border-bottom: 80px solid darkgoldenrod;
-	border-left: 30px solid transparent;
-	border-right: 30px solid transparent;
+	border-bottom: 20px solid darkgoldenrod;
+	border-left: 8px solid transparent;
+	border-right: 8px solid transparent;
 	position: absolute;
 	height: 0;
 	width: 0;
-	top: -45px;
-	left: -65px;
+	top: -11px;
+	left: -16px;
 	display: block;
 	content: '';
 	-webkit-transform: rotate(-35deg);
@@ -171,13 +171,13 @@ input[type=email], input[type=password] {
 	position: absolute;
 	display: block;
 	color: red;
-	top: 3px;
-	left: -105px;
+	top: 1px;
+	left: -26px;
 	width: 0px;
 	height: 0px;
-	border-right: 100px solid transparent;
-	border-bottom: 70px solid darkgoldenrod;
-	border-left: 100px solid transparent;
+	border-right: 25px solid transparent;
+	border-bottom: 17px solid darkgoldenrod;
+	border-left: 25px solid transparent;
 	-webkit-transform: rotate(-70deg);
 	-moz-transform:    rotate(-70deg);
 	-ms-transform:     rotate(-70deg);
