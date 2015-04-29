@@ -16,15 +16,12 @@
 	<script src="cordova.js"></script>
 
 	<script>
-		deviceReady = false;
-		document.addEventListener('deviceready', function () {
-			console.log("Got deviceready.");
-			deviceReady = true;
-		}, false);
+		window.deviceReady = false;
 	</script>
 	<script src="app.js" type="application/javascript"></script>
 	<script src="filters.js" type="application/javascript"></script>
 	<script src="conf.js" type="application/javascript"></script>
+	<script src="eventService.js" type="application/javascript"></script>
 	<script src="fileSystemService.js" type="application/javascript"></script>
 	<script src="settingsService.js" type="application/javascript"></script>
 	<script src="userService.js" type="application/javascript"></script>
@@ -314,13 +311,15 @@
 
 
 <ons-template id="settings-view.html">
-	<ons-split-view
-		secondary-page="settings-listing.html"
-		main-page="general-settings-page.html"
-		main-page-width="70%"
-		collapse="width 600px"
-		var="settingsView">
-	</ons-split-view>
+	<ons-page>
+		<ons-split-view
+			secondary-page="settings-listing.html"
+			main-page="general-settings-page.html"
+			main-page-width="70%"
+			collapse="width 600px"
+			var="settingsView">
+		</ons-split-view>
+	</ons-page>
 </ons-template>
 
 <ons-template id="settings-listing.html">
