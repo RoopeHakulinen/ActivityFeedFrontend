@@ -52,7 +52,7 @@ module.service('userService', function () {
 			{enableHighAccuracy: true}
 		);
 
-		setTimeout(this.updateGeolocation.bind(this), 60*15); // Update geolocation every 15 minutes.
+		setTimeout(this.updateGeolocation.bind(this), 1000*60*15); // Update geolocation every 15 minutes.
 	};
 
 	this.getRange = function ()
