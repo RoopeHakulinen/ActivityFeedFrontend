@@ -1,10 +1,11 @@
-module.controller("createActivityCtrl", function ($scope, $http, urlConfig, activityService, activityTypeService) {
+module.controller("createActivityCtrl", function ($scope, $http, urlConfig, activityService, activityTypeService, userService) {
 	$scope.activityTypes = [];
 
 	$scope.activityType = {name: "", id: -1};
 	$scope.locationName = "";
-	$scope.lat = "61.498172";
-	$scope.lng = "23.761092";
+	$scope.lat = userService.getLocation().lat;
+	$scope.lng = userService.getLocation().lng;
+	$scope.date = "";
 	$scope.from = "17:00";
 	$scope.to = "18:00";
 	$scope.message = "";
@@ -28,7 +29,7 @@ module.controller("createActivityCtrl", function ($scope, $http, urlConfig, acti
 	{
 		commonLoader.show();
 
-		activityService.create($scope.activityType.id, $scope.locationName, $scope.lat, $scope.lng, $scope.from, $scope.to, $scope.participantCount, $scope.requiredLevel, $scope.message).success(
+		activityService.create($scope.activityType.id, $scope.locationName, $scope.lat, $scope.lng, $scope.date + "T" + $scope.from, $scope.date + "T" + $scope.to, $scope.participantCount, $scope.requiredLevel, $scope.message).success(
 			function()
 			{
 				window.plugins.toast.showShortBottom('Activity successfully added.');

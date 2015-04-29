@@ -1,4 +1,6 @@
 module.service('userService', function () {
+	var geolocation = {lat: 0, lng: 0};
+
 	this.setUser = function (user)
 	{
 		localStorage.setItem("user", JSON.stringify(user));
@@ -31,7 +33,26 @@ module.service('userService', function () {
 
 	this.getLocation = function ()
 	{
-		return {lat: "61.498172", lng: "23.761092"};
+		return geolocation;
+	};
+
+	this.setGeolocation = function (position)
+	{
+		console.log("New location: (" + position.coords.latitude + ", " + position.coords.longitude + ")");
+		geolocation = {lat: position.coords.latitude, lng: position.coords.longitude};
+	};
+
+	this.updateGeolocation = function ()
+	{
+		navigator.geolocation.getCurrentPosition(this.setGeolocation.bind(this),
+			function ()
+			{
+				alert("Paikannus epäonnistui. Käyttäjää ei pystytty paikantamaan.");
+			},
+			{enableHighAccuracy: true}
+		);
+
+		setTimeout(this.updateGeolocation.bind(this), 60*15); // Update geolocation every 15 minutes.
 	};
 
 	this.getRange = function ()

@@ -224,28 +224,24 @@
 			</ons-list-item>
 
 			<ons-list-item>
-				Ajanjakso: <input type="text" ng-model="from" class="text-input text-input--transparent" style="width: 100%"> -
-				<input type="text" ng-model="to" class="text-input text-input--transparent" style="width: 100%">
+				Ajanjakso: <input type="text" ng-model="date" class="text-input text-input--transparent" style="width: 40px"> <input type="text" ng-model="from" class="text-input text-input--transparent" style="width: 40px"> -
+				<input type="text" ng-model="to" class="text-input text-input--transparent" style="width: 40px">
 			</ons-list-item>
 
 			<ons-list-item>
-				<input type="text" ng-model="locationName" class="text-input text-input--transparent" placeholder="Paikka" style="width: 100%">
+				Sijainti: <input type="text" ng-model="locationName" class="text-input text-input--transparent" placeholder="Paikka" style="width: 100%">
 			</ons-list-item>
 
 			<ons-list-item>
-				<input type="text" ng-model="participantCount" class="text-input text-input--transparent" placeholder="Osallistujamäärä" style="width: 100%">
+				Maksimiosallistujamäärä: <input type="text" ng-model="participantCount" class="text-input text-input--transparent" style="width: 100%">
 			</ons-list-item>
 
 			<ons-list-item>
-				<input type="text" ng-model="requiredLevel" class="text-input text-input--transparent" placeholder="Vaadittu taso (0.0 - 5.0)" style="width: 100%">
+				Vaadittu taso (0.0 - 5.0): <input type="text" ng-model="requiredLevel" class="text-input text-input--transparent" style="width: 100%">
 			</ons-list-item>
 
 			<ons-list-item>
-				<textarea class="textarea textarea--transparent" ng-model="message" placeholder="Lisätietoja" style="width: 100%; height: 100px;"></textarea>
-			</ons-list-item>
-
-			<ons-list-item modifier="chevron">
-				<ons-icon icon="fa-tag" style="opacity:0.2"></ons-icon>
+				Lisätietoja: <textarea class="textarea textarea--transparent" ng-model="message" style="width: 100%; height: 100px;"></textarea>
 			</ons-list-item>
 		</ons-list>
 

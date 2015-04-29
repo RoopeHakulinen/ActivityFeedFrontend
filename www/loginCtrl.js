@@ -54,6 +54,7 @@ module.controller("loginCtrl", function ($scope, $http, settingsService, fileSys
 	$scope.signedIn = function()
 	{
 		console.log("Login succeeded.");
+		userService.updateGeolocation();
 		settingsService.loadUserSettings();
 		appNavigator.pushPage("main-view.html",
 			{
