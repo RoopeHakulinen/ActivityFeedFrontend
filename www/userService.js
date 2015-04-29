@@ -44,15 +44,13 @@ module.service('userService', function () {
 
 	this.updateGeolocation = function ()
 	{
-		navigator.geolocation.getCurrentPosition(this.setGeolocation.bind(this),
-			function ()
+		navigator.geolocation.watchPosition(this.setGeolocation.bind(this),
+			function (error)
 			{
-				alert("Paikannus epäonnistui. Käyttäjää ei pystytty paikantamaan.");
+				alert("Paikannus epäonnistui. Käyttäjää ei pystytty paikantamaan. Koodi: " + error.code + ", viesti: " + error.message);
 			},
-			{enableHighAccuracy: true}
+			{maximumAge: 1000*60*30, enableHighAccuracy: true}
 		);
-
-		setTimeout(this.updateGeolocation.bind(this), 1000*60*15); // Update geolocation every 15 minutes.
 	};
 
 	this.getRange = function ()
