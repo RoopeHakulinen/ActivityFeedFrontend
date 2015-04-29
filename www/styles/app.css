@@ -142,7 +142,7 @@ input[type=email], input[type=password] {
 	width: 0px;
 	height: 0px;
 	border-right:  25px solid transparent;
-	border-bottom: 17px  solid darkgoldenrod;
+	border-bottom: 17px solid lightgray;
 	border-left:   25px solid transparent;
 	-moz-transform:    rotate(35deg);
 	-webkit-transform: rotate(35deg);
@@ -151,7 +151,7 @@ input[type=email], input[type=password] {
 }
 
 .star-five:before {
-	border-bottom: 20px solid darkgoldenrod;
+	border-bottom: 20px solid lightgray;
 	border-left: 8px solid transparent;
 	border-right: 8px solid transparent;
 	position: absolute;
@@ -176,7 +176,7 @@ input[type=email], input[type=password] {
 	width: 0px;
 	height: 0px;
 	border-right: 25px solid transparent;
-	border-bottom: 17px solid darkgoldenrod;
+	border-bottom: 17px solid lightgray;
 	border-left: 25px solid transparent;
 	-webkit-transform: rotate(-70deg);
 	-moz-transform:    rotate(-70deg);
@@ -187,7 +187,15 @@ input[type=email], input[type=password] {
 
 .star-five.highlight
 {
-	color: gold;
+	border-bottom: darkgoldenrod;
+}
+.star-five.highlight:before
+{
+	border-bottom: darkgoldenrod;
+}
+.star-five.highlight:after
+{
+	border-bottom: darkgoldenrod;
 }
 
 /* List activityTypes end */
