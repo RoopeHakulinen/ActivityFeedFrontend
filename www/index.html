@@ -34,7 +34,6 @@
 	<script src="createActivityCtrl.js" type="application/javascript"></script>
 	<script src="mainMenuCtrl.js" type="application/javascript"></script>
 	<script src="listInvitationsCtrl.js" type="application/javascript"></script>
-	<script src="settingsListCtrl.js" type="application/javascript"></script>
 	<script src="settingsCtrl.js" type="application/javascript"></script>
 </head>
 <body ng-app="app">
@@ -195,7 +194,7 @@
 		<br>
 
 		<ons-list class="bottom-menu-list">
-			<ons-list-item class="bottom-menu-item" ng-click="appNavigator.pushPage('settings-view.html');slidingMenu.closeMenu();">
+			<ons-list-item class="bottom-menu-item" ng-click="appNavigator.pushPage('settings.html');slidingMenu.closeMenu();">
 				Asetukset
 			</ons-list-item>
 
@@ -207,7 +206,7 @@
 				Tietoja
 			</ons-list-item>
 
-			<ons-list-item class="bottom-menu-item" ng-click="">
+			<ons-list-item class="bottom-menu-item" ng-click="appNavigator.pushPage('about.html');slidingMenu.closeMenu();">
 				Activer
 			</ons-list-item>
 		</ons-list>
@@ -320,40 +319,12 @@
 
 
 
-
-
-
-
-<ons-template id="settings-view.html">
-	<ons-page>
-		<ons-split-view
-			secondary-page="settings-listing.html"
-			main-page="general-settings-page.html"
-			main-page-width="70%"
-			collapse="width 600px"
-			var="settingsView">
-		</ons-split-view>
-	</ons-page>
-</ons-template>
-
-<ons-template id="settings-listing.html">
-	<ons-page ng-controller="settingsListCtrl">
-		<ons-toolbar>
-			<div class="left"><ons-back-button>Takaisin</ons-back-button></div>
-			<div class="center"></div>
-		</ons-toolbar>
-		<ons-list modifier="right-border" id="settings-page-list" ng-repeat="page in availablePages">
-			<ons-list-item modifier="tappable" ng-click="settingsView.setMainPage(page.target);">{{page.name}}</ons-list-item>
-		</ons-list>
-	</ons-page>
-</ons-template>
-
-<ons-template id="general-settings-page.html">
+<ons-template id="settings.html">
 	<ons-page class="center">
 		<ons-modal var="appLoader">
 			<ons-icon icon="fa-circle-o-notch" spin="true"></ons-icon>
 			<div>
-				<div>Loading</div>
+				<div>Ladataan</div>
 			</div>
 		</ons-modal>
 		<ons-toolbar>
@@ -376,13 +347,14 @@
 
 
 
-<ons-template id="about-page.html">
-	<ons-page ng-controller="settingsCtrl">
+<ons-template id="about.html">
+	<ons-page>
 		<ons-toolbar>
 			<div class="left"><ons-back-button>Takaisin</ons-back-button></div>
 		</ons-toolbar>
 		<div class="content-padded" style="font-size: 13px; text-align: center; color: #999;">
-			<h1>Activer</h1>
+			<h1>Activer - Activer Ltd</h1>
+			<p>Version 1.0.0</p>
 			<p>Designed by: Roope Hakulinen</p>
 		</div>
 	</ons-page>
