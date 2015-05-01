@@ -38,15 +38,17 @@ module.controller("browseCtrl", function ($scope, $http, $q, settingsService, ur
 
 	$scope.showNext = function()
 	{
-		activityService.getActivities().then(function(activities)
-		{
-			if (activities.length === 0)
+		activityService.getActivities().then(
+			function(activities)
 			{
-				setTimeout(this.showNext.bind(this), 1000);
-				$scope.currentActivity = {};
-			}
-			$scope.currentActivity = activities[0];
-		});
+				if (activities.length === 0)
+				{
+					setTimeout(this.showNext.bind(this), 1000);
+					$scope.currentActivity = {};
+				}
+				$scope.currentActivity = activities[0];
+			}.bind(this)
+		);
 	};
 
 	$scope._getOrganizerImage = function ()
