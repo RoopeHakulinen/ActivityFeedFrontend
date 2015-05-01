@@ -65,10 +65,7 @@ module.controller("browseCtrl", function ($scope, $http, $q, settingsService, ur
 
 	$scope._getActivityTypeStyles = function()
 	{
-		if (typeof this.currentActivity.activity_type_id !== "undefined")
-		{
-			return activityTypeService.getStyles(this.currentActivity.activity_type_id);
-		}
+		return activityTypeService.getStyles($scope.currentActivity.activity_type_id);
 	};
 
 	$scope.initialize();

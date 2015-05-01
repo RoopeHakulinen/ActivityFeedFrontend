@@ -130,8 +130,8 @@
 					<div class="profile-location-name">{{currentActivity.location_name}}</div>
 					<div class="profile-timeframe">{{currentActivity.from | asDate | date: "d.M. klo H:mm"}} - {{currentActivity.to | asDate | date: "H:mm"}}</div>
 					<div class="profile-desc">{{currentActivity.comments[0].text}}</div>
-					<div class="profile-stars" ng-repeat="n in [1, 2, 3, 4, 5]">
-						<div class="star-five" ng-class="{highlight: currentActivity.required_level >= n}"></div>
+					<div class="profile-stars">
+						<div class="star-five" ng-class="{highlight: currentActivity.required_level >= n}" ng-repeat="n in [1, 2, 3, 4, 5]"></div>
 					</div>
 					<div class="profile-participants">{{currentActivity.participants}} / {{currentActivity.participant_count}} pelaajaa jo mukana</div>
 					<div class="profile-distance">{{currentActivity.distance | number:1}} km</div>
