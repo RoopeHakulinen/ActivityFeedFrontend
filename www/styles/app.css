@@ -187,15 +187,15 @@ input[type=email], input[type=password] {
 
 .star-five.highlight
 {
-	border-bottom: darkgoldenrod;
+	border-bottom-color: darkgoldenrod;
 }
 .star-five.highlight:before
 {
-	border-bottom: darkgoldenrod;
+	border-bottom-color: darkgoldenrod;
 }
 .star-five.highlight:after
 {
-	border-bottom: darkgoldenrod;
+	border-bottom-color: darkgoldenrod;
 }
 
 /* List activityTypes end */
