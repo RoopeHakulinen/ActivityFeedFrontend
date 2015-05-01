@@ -74,7 +74,6 @@ module.service('userService', function () {
 
 	this.logout = function (force)
 	{
-		window.plugins.toast.showShortBottom("Logging out.");
 		if (typeof force === "undefined")
 		{
 			force = false;
