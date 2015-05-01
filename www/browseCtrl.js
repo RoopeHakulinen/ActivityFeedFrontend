@@ -40,9 +40,13 @@ module.controller("browseCtrl", function ($scope, $http, $q, settingsService, ur
 	{
 		activityService.getActivities().then(function(activities)
 		{
-			$scope.currentActivity = activities.length > 0 ? activities[0] : {};
+			if (activities.length === 0)
+			{
+				setTimeout(this.showNext.bind(this), 1000);
+				$scope.currentActivity = {};
+			}
+			$scope.currentActivity = activities[0];
 		});
-		setTimeout(this.showNext.bind(this), 1000);
 	};
 
 	$scope._getOrganizerImage = function ()
