@@ -46,7 +46,10 @@ module.controller("browseCtrl", function ($scope, $http, $q, settingsService, ur
 					setTimeout(this.showNext.bind(this), 1000);
 					$scope.currentActivity = {};
 				}
-				$scope.currentActivity = activities[0];
+				else
+				{
+					$scope.currentActivity = activities[0];
+				}
 			}.bind(this)
 		);
 	};
