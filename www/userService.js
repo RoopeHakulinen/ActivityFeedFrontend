@@ -63,11 +63,12 @@ module.service('userService', function () {
 
 	this.updatePosition = function ()
 	{
-		navigator.geolocation.watchPosition(
+		navigator.geolocation.getCurrentPosition(
 			this.setPosition.bind(this),
 			this.positioningFailed.bind(this),
 			{maximumAge: 1000*60*30, enableHighAccuracy: true}
 		);
+		setTimeout(this.updatePosition.bind(this), 1000*60*15);
 	};
 
 
