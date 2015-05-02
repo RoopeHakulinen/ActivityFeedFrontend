@@ -1,15 +1,16 @@
 module.controller("listInvitationsCtrl", function ($scope, $http, urlConfig, invitationService) {
+	$scope.invitations = $http.get(
+		urlConfig["invitations"]
+	);
 
-	$scope.activities = [];
-
-	$scope.fetchActivities = function()
+	/*$scope.fetchInvitations = function()
 	{
 		$http.get(
 			urlConfig["invitations"]
 		).success(
 			function(data)
 			{
-				$scope.activities = data;
+				$scope.invitations = data;
 				window.plugins.toast.showShortBottom('Invitation list length ' + data.length);
 			}
 		).error(
@@ -18,9 +19,9 @@ module.controller("listInvitationsCtrl", function ($scope, $http, urlConfig, inv
 				window.plugins.toast.showShortBottom('Invitation list fetching failed with status code ' + status);
 			}
 		);
-	};
+	};*/
 
-	$scope.accept = function()
+	/*$scope.accept = function()
 	{
 		invitationService.accept($scope.currentActivity.id).success(
 			function()
@@ -52,6 +53,6 @@ module.controller("listInvitationsCtrl", function ($scope, $http, urlConfig, inv
 		);
 		$scope.currentActivity.solved = true;
 		$scope.showNext();
-	};
+	};*/
 
 });

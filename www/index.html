@@ -273,18 +273,18 @@
 		</ons-toolbar>
 
 		<ons-list class="plan-list">
-			<ons-list-item modifier="chevron" class="plan" ng-repeat="a in [1,2,3,4,5,6,7,8,9,10]" ng-click="showActivity(a);">
+			<ons-list-item modifier="chevron" class="plan" ng-repeat="invitation in invitations" ng-click="showInvitation(a);">
 				<ons-row>
 					<ons-col width="80px" class="plan-left">
-						<div class="plan-date">5:30 PM</div>
-						<div class="plan-duration">1h</div>
+						<div class="plan-date">{{invitation.from | asDate | date: "d.M. klo H:mm"}} - {{invitation.to | asDate | date: "H:mm"}}</div>
+						<!--<div class="plan-duration">{{invitation.from - invitation.to | asDate | date: "H mm"}}</div>-->
 					</ons-col>
 
 					<ons-col width="6px" class="plan-center" ng-style="{backgroundColor:a % 3 == 1 ? '#3399ff' : '#ccc'}">
 					</ons-col>
 
 					<ons-col class="plan-right">
-						<div class="plan-name">Onsen UI Meetup</div>
+						<div class="plan-name">{{invitation.activity_type.name}}</div>
 
 						<div class="plan-info">
 							<div ng-hide="a % 4 == 0">
