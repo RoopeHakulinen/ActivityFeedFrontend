@@ -1,6 +1,6 @@
 module.controller("listInvitationsCtrl", function ($scope, $http, urlConfig, invitationService) {
 	$scope.invitations = $http.get(
-		urlConfig["invitations"]
+		urlConfig["suggestions"]
 	);
 
 	/*$scope.fetchInvitations = function()
