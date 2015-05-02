@@ -36,39 +36,48 @@ module.service('userService', function () {
 		return this.position;
 	};
 
-	this.setPosition = function (position)
+	this.setPosition = function (lat, lng)
 	{
-		console.log("New location: (" + position.coords.latitude + ", " + position.coords.longitude + ")");
-		this.position = {lat: position.coords.latitude, lng: position.coords.longitude};
+		this.position = {lat: lat, lng: lng};
+		localStorage.setItem("lastKnownPosition", this.position);
 	};
 
-	this.positioningFailed = function (error)
+	this._positioningFailed = function (error)
 	{
 		alert("Paikannus epäonnistui. Käyttäjää ei pystytty paikantamaan. Koodi: " + error.code + ", viesti: " + error.message);
 	};
 
+	this._positioningCallback = function (position)
+	{
+		console.log("New location: (" + position.coords.latitude + ", " + position.coords.longitude + ")");
+		this.setPosition(position.coords.latitude, position.coords.longitude);
+	};
+
 	this.initializePosition = function ()
 	{
+		if (typeof localStorage.getItem("lastKnownPosition") !== "undefined") // First check localStorage for latest position to quickly work right
+		{
+			this.setPosition(localStorage.getItem("lastKnownPosition").lat, localStorage.getItem("lastKnownPosition").lng)
+		}
 		navigator.geolocation.getCurrentPosition(
 			function (position)
 			{
-				this.setPosition(position);
-				this.updatePosition();
+				this._positioningCallback(position);
+				this._updatePosition();
 			}.bind(this),
-			this.positioningFailed.bind(this),
+			this._positioningFailed.bind(this),
 			{enableHighAccuracy: false}
 		);
-		this.updatePosition();
 	};
 
-	this.updatePosition = function ()
+	this._updatePosition = function ()
 	{
 		navigator.geolocation.getCurrentPosition(
-			this.setPosition.bind(this),
-			this.positioningFailed.bind(this),
+			this._positioningCallback.bind(this),
+			this._positioningFailed.bind(this),
 			{maximumAge: 1000*60*30, enableHighAccuracy: true}
 		);
-		setTimeout(this.updatePosition.bind(this), 1000*60*15);
+		setTimeout(this._updatePosition.bind(this), 1000*60*15);
 	};
 
 
