@@ -55,7 +55,7 @@ module.service('userService', function () {
 
 	this.initializePosition = function ()
 	{
-		if (typeof localStorage.getItem("lastKnownPosition") !== "undefined") // First check localStorage for latest position to quickly work right
+		if (localStorage.getItem("lastKnownPosition") !== null) // First check localStorage for latest position to quickly work right
 		{
 			this.setPosition(localStorage.getItem("lastKnownPosition").lat, localStorage.getItem("lastKnownPosition").lng)
 		}
