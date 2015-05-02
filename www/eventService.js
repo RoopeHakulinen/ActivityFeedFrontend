@@ -12,6 +12,10 @@ module.service("eventService", function (userService) {
 			confirmationModal.hide();
 			e.preventDefault();
 		}
+		else if (mainMenu.isMenuOpened())
+		{
+			mainMenu.closeMenu();
+		}
 		else if (currentPage.name.indexOf("main-view") !== -1) // If we are on survey view
 		{
 			this.logout();

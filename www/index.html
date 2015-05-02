@@ -98,7 +98,7 @@
 			menu-page="main-menu.html"
 			main-page="browse.html"
 			side="left"
-			var="slidingMenu"
+			var="mainMenu"
 			type="reveal"
 			max-slide-distance="260px"
 			swipeable="false">
@@ -110,7 +110,7 @@
 	<ons-page class="center" ng-controller="browseCtrl">
 		<ons-toolbar>
 			<div class="left">
-				<ons-toolbar-button ng-click="slidingMenu.toggle();">
+				<ons-toolbar-button ng-click="mainMenu.toggle();">
 					<ons-icon icon="ion-navicon" size="28px" fixed-width="false"></ons-icon>
 				</ons-toolbar-button>
 			</div>
@@ -174,15 +174,15 @@
 		</ons-toolbar>
 
 		<ons-list class="menu-list" style="margin-bottom: 6px;">
-			<ons-list-item class="menu-item" ng-click="appNavigator.pushPage('create-activity.html');slidingMenu.closeMenu();">
+			<ons-list-item class="menu-item" ng-click="appNavigator.pushPage('create-activity.html');mainMenu.closeMenu();">
 				<ons-icon icon="fa-plus"></ons-icon>
 				Luo aktiviteetti
 			</ons-list-item>
-			<ons-list-item class="menu-item" ng-click="appNavigator.pushPage('show-activities.html');slidingMenu.closeMenu();">
+			<ons-list-item class="menu-item" ng-click="appNavigator.pushPage('show-activities.html');mainMenu.closeMenu();">
 				<ons-icon icon="fa-star"></ons-icon>
 				Minun aktiviteettini
 			</ons-list-item>
-			<ons-list-item class="menu-item" ng-click="appNavigator.pushPage('list-invitations.html');slidingMenu.closeMenu();">
+			<ons-list-item class="menu-item" ng-click="appNavigator.pushPage('list-invitations.html');mainMenu.closeMenu();">
 				<ons-icon icon="fa-user"></ons-icon>
 				Kutsut
 				<div ng-show="invitations" class="notification menu-notification">{{invitations.length}}</div>
@@ -190,15 +190,15 @@
 		</ons-list>
 
 		<ons-list class="bottom-menu-list">
-			<ons-list-item class="bottom-menu-item" ng-click="appNavigator.pushPage('settings.html');slidingMenu.closeMenu();">
+			<ons-list-item class="bottom-menu-item" ng-click="appNavigator.pushPage('settings.html');mainMenu.closeMenu();">
 				Asetukset
 			</ons-list-item>
 
-			<!--<ons-list-item class="bottom-menu-item" ng-click="appNavigator.pushPage('profile.html');slidingMenu.closeMenu();">
+			<!--<ons-list-item class="bottom-menu-item" ng-click="appNavigator.pushPage('profile.html');mainMenu.closeMenu();">
 				Profiili
 			</ons-list-item>-->
 
-			<ons-list-item class="bottom-menu-item" ng-click="appNavigator.pushPage('about.html');slidingMenu.closeMenu();">
+			<ons-list-item class="bottom-menu-item" ng-click="appNavigator.pushPage('about.html');mainMenu.closeMenu();">
 				Tietoja
 			</ons-list-item>
 		</ons-list>
