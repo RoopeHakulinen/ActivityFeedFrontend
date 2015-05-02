@@ -43,7 +43,7 @@ module.controller("browseCtrl", function ($scope, $http, $q, settingsService, ur
 			{
 				if (activities.length === 0)
 				{
-					setTimeout(this.showNext.bind(this), 1000);
+					setTimeout(this.showNext.bind(this), 1000*30);
 					$scope.currentActivity = {};
 				}
 				else
