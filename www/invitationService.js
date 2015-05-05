@@ -52,7 +52,7 @@ module.service('invitationService', function ($http, $q, urlConfig) {
 	{
 		return $http({
 			method: 'POST',
-			url: urlConfig["activities"] + "/" + id + "/suggestions",
+			url: urlConfig["activities"] + id + "/suggestions",
 			data: {
 				suggestion: {
 					status: status
@@ -75,7 +75,7 @@ module.service('invitationService', function ($http, $q, urlConfig) {
 	{
 		return $http({
 			method: 'PUT',
-			url: urlConfig["suggestions"] + "/" + id,
+			url: urlConfig["suggestions"] + id,
 			data: {
 				suggestion: {
 					status: status
