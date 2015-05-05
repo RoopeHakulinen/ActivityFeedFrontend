@@ -3,9 +3,6 @@ module.service('invitationService', function ($http, $q, urlConfig) {
 
 	this.getInvitations = function ()
 	{
-		return $http.get(
-			urlConfig["suggestions"]
-		);
 		var deferred = $q.defer();
 		if (this.invitations.length == 0)
 		{

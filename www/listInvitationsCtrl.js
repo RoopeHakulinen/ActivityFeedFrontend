@@ -1,17 +1,19 @@
 module.controller("listInvitationsCtrl", function ($scope, urlConfig, invitationService) {
 	$scope.invitations = [];//invitationService.getInvitations();
 
+	$scope.initialize = function ()
+	{
+		$scope.fetchInvitations();
+	};
+
 	$scope.fetchInvitations = function()
 	{
-		$http.get(
-			urlConfig["invitations"]
-		).success(
+		invitationService.getInvitations().then(
 			function(data)
 			{
 				$scope.invitations = data;
 				window.plugins.toast.showShortBottom('Invitation list length ' + data.length);
-			}
-		).error(
+			},
 			function()
 			{
 				window.plugins.toast.showShortBottom('Invitation list fetching failed with status code ' + status);
@@ -32,8 +34,6 @@ module.controller("listInvitationsCtrl", function ($scope, urlConfig, invitation
 				window.plugins.toast.showShortBottom('Activity accepting failed with status ' + status);
 			}
 		);
-		$scope.currentActivity.solved = true;
-		$scope.showNext();
 	};
 
 	$scope.reject = function()
@@ -49,8 +49,6 @@ module.controller("listInvitationsCtrl", function ($scope, urlConfig, invitation
 				window.plugins.toast.showShortBottom('Activity rejecting failed with status ' + status);
 			}
 		);
-		$scope.currentActivity.solved = true;
-		$scope.showNext();
 	};
 
 });
