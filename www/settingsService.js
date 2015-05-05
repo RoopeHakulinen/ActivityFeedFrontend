@@ -9,9 +9,9 @@ module.service('settingsService', function (fileSystemService, userService) {
 
 	this.getItem = function (key) {
 		var value = this.settings[key];
-		if (typeof value === "undefined")
+		if (typeof value === "undefined") // If there exists no set property for this key
 		{
-			return DEFAULT_SETTINGS[key];
+			return DEFAULT_SETTINGS[key]; // Use the default value
 		}
 		return value;
 	};
