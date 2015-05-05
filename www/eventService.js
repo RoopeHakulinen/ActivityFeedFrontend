@@ -20,7 +20,7 @@ module.service("eventService", function (userService) {
 		else if (currentPage.name.indexOf("main-view") !== -1) // If we are on survey view
 		{
 			this.logout();
-			e.preventDefault();
+			//e.preventDefault();
 		}
 		else if (currentPage.name.indexOf("login") !== -1)
 		{
