@@ -40,7 +40,7 @@ module.service('activityTypeService', function ($http, $q, urlConfig) {
 
 	this.getStyles = function(id)
 	{
-		var activityType = _findActivityTypeById(id);
+		var activityType = this._findActivityTypeById(id);
 		if (activityType && typeof activityType.styles === "string")
 		{
 			return activityType.styles;
