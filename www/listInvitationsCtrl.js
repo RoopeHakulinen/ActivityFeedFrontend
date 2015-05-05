@@ -52,7 +52,7 @@ module.controller("listInvitationsCtrl", function ($scope, urlConfig, invitation
 
 	$scope.getActivityTypeName = function(id)
 	{
-		return activityTypeService.getName();
+		return activityTypeService.getName(id);
 	};
 
 });

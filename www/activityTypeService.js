@@ -50,7 +50,7 @@ module.service('activityTypeService', function ($http, $q, urlConfig) {
 
 	this.getName = function (id)
 	{
-		var activityType = _findActivityTypeById(id);
+		var activityType = this._findActivityTypeById(id);
 		if (activityType && typeof activityType.name === "string")
 		{
 			return activityType.name;
