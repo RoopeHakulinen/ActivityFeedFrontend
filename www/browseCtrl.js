@@ -2,7 +2,7 @@ module.controller("browseCtrl", function ($scope, $http, $q, settingsService, ur
 	$scope.currentActivity = {};
 	$scope.currentActivityType = false;
 
-	$scope.sendInvitation = function()
+	$scope.invite = function()
 	{
 		invitationService.send($scope.currentActivity.id).then(
 			function (data)
