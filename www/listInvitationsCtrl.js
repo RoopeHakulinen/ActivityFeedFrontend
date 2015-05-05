@@ -55,4 +55,9 @@ module.controller("listInvitationsCtrl", function ($scope, urlConfig, invitation
 		return activityTypeService.getName(id);
 	};
 
+	$scope.getDuration = function (from, to)
+	{
+		return Date.parse(from) - Date.parse(to);
+	};
+
 });
