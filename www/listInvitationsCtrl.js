@@ -1,7 +1,7 @@
 module.controller("listInvitationsCtrl", function ($scope, urlConfig, invitationService) {
-	$scope.invitations = invitationService.getInvitations();
+	$scope.invitations = [];//invitationService.getInvitations();
 
-	/*$scope.fetchInvitations = function()
+	$scope.fetchInvitations = function()
 	{
 		$http.get(
 			urlConfig["invitations"]
@@ -17,7 +17,7 @@ module.controller("listInvitationsCtrl", function ($scope, urlConfig, invitation
 				window.plugins.toast.showShortBottom('Invitation list fetching failed with status code ' + status);
 			}
 		);
-	};*/
+	};
 
 	/*$scope.accept = function()
 	{
