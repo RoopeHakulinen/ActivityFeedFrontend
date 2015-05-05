@@ -1,9 +1,9 @@
 module.controller("listInvitationsCtrl", function ($scope, urlConfig, invitationService) {
-	$scope.invitations = [];//invitationService.getInvitations();
+	$scope.invitations = invitationService.getInvitations();
 
 	$scope.initialize = function ()
 	{
-		$scope.fetchInvitations();
+		//$scope.fetchInvitations();
 	};
 
 	$scope.fetchInvitations = function()
@@ -12,7 +12,6 @@ module.controller("listInvitationsCtrl", function ($scope, urlConfig, invitation
 			function(data)
 			{
 				$scope.invitations = data;
-				window.plugins.toast.showShortBottom('Invitation list length ' + data.length);
 			},
 			function()
 			{
