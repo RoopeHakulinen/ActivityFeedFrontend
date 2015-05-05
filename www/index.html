@@ -277,7 +277,7 @@
 				<ons-row> <!--  ng-style="{backgroundColor:status == 'match' ? '#3399ff' : '#ccc'}" -->
 					<ons-col width="80px" class="plan-left">
 						<div class="plan-date">{{invitation.activity.from | asDate | date: "d.M. klo H:mm"}} - {{invitation.activity.to | asDate | date: "H:mm"}}</div>
-						<div class="plan-duration">{{getDuration(invitation.activity.from, invitation.activity.to) | asDate | date: "H'h'mm'min'"}}</div>
+						<div class="plan-duration">{{getDuration(invitation.activity.from, invitation.activity.to) | asDate | date: "H'h' mm'min'"}}</div>
 					</ons-col>
 
 					<ons-col width="6px" class="plan-center" style="backgroundColor: #3399ff">

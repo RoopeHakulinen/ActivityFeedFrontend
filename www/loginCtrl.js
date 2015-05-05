@@ -1,4 +1,4 @@
-module.controller("loginCtrl", function (eventService, $scope, $http, settingsService, fileSystemService, userService, urlConfig) {
+module.controller("loginCtrl", function (eventService, $scope, $http, settingsService, fileSystemService, userService, urlConfig, activityTypeService) {
 	$scope.email = "";
 	$scope.password = "";
 
@@ -23,6 +23,7 @@ module.controller("loginCtrl", function (eventService, $scope, $http, settingsSe
 					navigator.splashscreen.hide();
 					hidingSplashScreenNeeded = false;
 				}
+				activityTypeService.getActivityTypes();
 				clearInterval(interval);
 			}
 		}, 50);
