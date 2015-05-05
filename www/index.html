@@ -276,25 +276,25 @@
 			<ons-list-item modifier="chevron" class="plan" ng-repeat="invitation in invitations" ng-click="showInvitation(a);">
 				<ons-row> <!--  ng-style="{backgroundColor:status == 'match' ? '#3399ff' : '#ccc'}" -->
 					<ons-col width="80px" class="plan-left">
-						<div class="plan-date">{{invitation.from | asDate | date: "d.M. klo H:mm"}} - {{invitation.to | asDate | date: "H:mm"}}</div>
-						<div class="plan-duration">{{invitation.from - invitation.to | asDate | date: "H mm"}}</div>
+						<div class="plan-date">{{invitation.activity.from | asDate | date: "d.M. klo H:mm"}} - {{invitation.activity.to | asDate | date: "H:mm"}}</div>
+						<div class="plan-duration">{{invitation.activity.from - invitation.activity.to | asDate | date: "H mm"}}</div>
 					</ons-col>
 
-					<ons-col width="6px" class="plan-center" style="backgroundColor: #ccc">
+					<ons-col width="6px" class="plan-center" style="backgroundColor: #3399ff">
 					</ons-col>
 
 					<ons-col class="plan-right">
-						<div class="plan-name">{{invitation.activity_type.name}}</div>
+						<div class="plan-name">{{getActivityTypeName(invitation.activity.activity_type_id)}}</div>
 
-						<div class="plan-info">
+						<!--<div class="plan-info">
 							<div ng-hide="a % 4 == 0">
 								<ons-icon icon="fa-phone"></ons-icon>123-456-789
 							</div>
-						</div>
+						</div>-->
 
 						<div class="controls">
 							<ons-icon icon="ion-checkmark-circled" size="56px" fixed-width="false" ng-click="accept(invitation);" style="color: green;"></ons-icon>
-							<ons-icon icon="ion-close-circled" size="56px" fixed-width="false" ng-click="reject(invitation);" style="color: green;"></ons-icon>
+							<ons-icon icon="ion-close-circled" size="56px" fixed-width="false" ng-click="reject(invitation);" style="color: red;"></ons-icon>
 						</div>
 					</ons-col>
 				</ons-row>

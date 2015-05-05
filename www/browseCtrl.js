@@ -8,6 +8,7 @@ module.controller("browseCtrl", function ($scope, $http, $q, settingsService, ur
 			function (data)
 			{
 				window.plugins.toast.showShortBottom('Invitation sent');
+				activityService.handled();
 				$scope.showNext();
 			},
 			function(data, status)
@@ -18,10 +19,11 @@ module.controller("browseCtrl", function ($scope, $http, $q, settingsService, ur
 
 	$scope.skip = function()
 	{
-		activityService.skip($scope.currentActivity.id).then(
+		invitationService.skip($scope.currentActivity.id).then(
 			function(data)
 			{
 				window.plugins.toast.showShortBottom('Activity rejected');
+				activityService.handled();
 				$scope.showNext();
 			},
 			function(data, status)

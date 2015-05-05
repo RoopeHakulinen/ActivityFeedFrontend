@@ -38,27 +38,47 @@ module.service('invitationService', function ($http, $q, urlConfig) {
 		return deferred.promise;
 	};
 
-	this.accept = function (id)
+	this.send = function (id)
+	{
+		return this._createSuggestion(id, 1);
+	};
+
+	this.skip = function (id)
+	{
+		return this._createSuggestion(id, 0);
+	};
+
+	this._createSuggestion = function(id, status)
 	{
 		return $http({
-			method: "PUT",
-			url: urlConfig["suggestions"] + id,
+			method: 'POST',
+			url: urlConfig["activities"] + "/" + id + "/suggestions",
 			data: {
 				suggestion: {
-					status: 2
+					status: status
 				}
 			}
 		});
 	};
 
+	this.accept = function (id)
+	{
+		return this._updateSuggestion(id, 2);
+	};
+
 	this.reject = function (id)
 	{
+		return this._updateSuggestion(id, 3);
+	};
+
+	this._updateSuggestion = function(id, status)
+	{
 		return $http({
-			method: "PUT",
-			url: urlConfig["suggestions"] + id,
+			method: 'PUT',
+			url: urlConfig["suggestions"] + "/" + id,
 			data: {
 				suggestion: {
-					status: 3
+					status: status
 				}
 			}
 		});

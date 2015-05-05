@@ -1,4 +1,4 @@
-module.controller("listInvitationsCtrl", function ($scope, urlConfig, invitationService) {
+module.controller("listInvitationsCtrl", function ($scope, urlConfig, invitationService, activityTypeService) {
 	$scope.invitations = [];//invitationService.getInvitations();
 
 	$scope.initialize = function ()
@@ -48,6 +48,11 @@ module.controller("listInvitationsCtrl", function ($scope, urlConfig, invitation
 				window.plugins.toast.showShortBottom('Activity rejecting failed with status ' + status);
 			}
 		);
+	};
+
+	$scope.getActivityTypeName = function(id)
+	{
+		return activityTypeService.getName();
 	};
 
 });
