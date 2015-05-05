@@ -39,7 +39,7 @@ module.service('userService', function () {
 	this.setPosition = function (lat, lng)
 	{
 		this.position = {lat: lat, lng: lng};
-		localStorage.setItem("lastKnownPosition", this.position);
+		localStorage.setItem("lastKnownPosition", JSON.stringify(this.position));
 	};
 
 	this._positioningFailed = function (error)
@@ -55,9 +55,11 @@ module.service('userService', function () {
 
 	this.initializePosition = function ()
 	{
-		if (localStorage.getItem("lastKnownPosition") !== null) // First check localStorage for latest position to quickly work right
+		var lastKnownPosition = localStorage.getItem("lastKnownPosition");
+		if (lastKnownPosition !== null && typeof lastKnownPosition === "string") // First check localStorage for latest position to quickly work right
 		{
-			this.setPosition(localStorage.getItem("lastKnownPosition").lat, localStorage.getItem("lastKnownPosition").lng)
+			lastKnownPosition = JSON.parse(lastKnownPosition);
+			this.setPosition(lastKnownPosition.lat, lastKnownPosition.lng)
 		}
 		navigator.geolocation.getCurrentPosition(
 			function (position)
