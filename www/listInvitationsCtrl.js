@@ -1,9 +1,9 @@
 module.controller("listInvitationsCtrl", function ($scope, urlConfig, invitationService) {
-	$scope.invitations = invitationService.getInvitations();
+	$scope.invitations = [];//invitationService.getInvitations();
 
 	$scope.initialize = function ()
 	{
-		//$scope.fetchInvitations();
+		$scope.fetchInvitations();
 	};
 
 	$scope.fetchInvitations = function()
