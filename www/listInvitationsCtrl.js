@@ -19,9 +19,9 @@ module.controller("listInvitationsCtrl", function ($scope, urlConfig, invitation
 		);
 	};
 
-	/*$scope.accept = function()
+	$scope.accept = function(invitation)
 	{
-		invitationService.accept($scope.currentActivity.id).success(
+		invitationService.accept(invitation.id).success(
 			function()
 			{
 				window.plugins.toast.showShortBottom('Activity accepted');
@@ -38,7 +38,7 @@ module.controller("listInvitationsCtrl", function ($scope, urlConfig, invitation
 
 	$scope.reject = function()
 	{
-		invitationService.reject($scope.currentActivity.id).success(
+		invitationService.reject(invitation.id).success(
 			function()
 			{
 				window.plugins.toast.showShortBottom('Activity rejected');
@@ -51,6 +51,6 @@ module.controller("listInvitationsCtrl", function ($scope, urlConfig, invitation
 		);
 		$scope.currentActivity.solved = true;
 		$scope.showNext();
-	};*/
+	};
 
 });
