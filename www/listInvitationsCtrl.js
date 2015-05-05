@@ -20,32 +20,34 @@ module.controller("listInvitationsCtrl", function ($scope, urlConfig, invitation
 		);
 	};
 
-	$scope.accept = function(invitation)
+	$scope.accept = function(invitation, index)
 	{
 		invitationService.accept(invitation.id).success(
 			function()
 			{
-				window.plugins.toast.showShortBottom('Activity accepted');
+				window.plugins.toast.showShortBottom('Invitation accepted');
+				$scope.invitations.splice(index, 1);
 			}
 		).error(
 			function(data, status)
 			{
-				window.plugins.toast.showShortBottom('Activity accepting failed with status ' + status);
+				window.plugins.toast.showShortBottom('Invitation accepting failed with status ' + status);
 			}
 		);
 	};
 
-	$scope.reject = function()
+	$scope.reject = function(invitation, index)
 	{
 		invitationService.reject(invitation.id).success(
 			function()
 			{
-				window.plugins.toast.showShortBottom('Activity rejected');
+				window.plugins.toast.showShortBottom('Invitation rejected');
+				$scope.invitations.splice(index, 1);
 			}
 		).error(
 			function(data, status)
 			{
-				window.plugins.toast.showShortBottom('Activity rejecting failed with status ' + status);
+				window.plugins.toast.showShortBottom('Invitation rejecting failed with status ' + status);
 			}
 		);
 	};

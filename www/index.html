@@ -273,7 +273,7 @@
 		</ons-toolbar>
 
 		<ons-list class="plan-list">
-			<ons-list-item modifier="chevron" class="plan" ng-repeat="invitation in invitations" ng-click="showInvitation(a);">
+			<ons-list-item modifier="chevron" class="plan" ng-repeat="invitation in invitations track by $index" ng-click="showInvitation(a);">
 				<ons-row> <!--  ng-style="{backgroundColor:status == 'match' ? '#3399ff' : '#ccc'}" -->
 					<ons-col width="80px" class="plan-left">
 						<div class="plan-date">{{invitation.activity.from | asDate | date: "d.M. klo H:mm"}} - {{invitation.activity.to | asDate | date: "H:mm"}}</div>
@@ -293,8 +293,8 @@
 						</div>-->
 
 						<div class="controls">
-							<ons-icon icon="ion-checkmark-circled" size="56px" fixed-width="false" ng-click="accept(invitation);" style="color: green;"></ons-icon>
-							<ons-icon icon="ion-close-circled" size="56px" fixed-width="false" ng-click="reject(invitation);" style="color: red;"></ons-icon>
+							<ons-icon icon="ion-checkmark-circled" size="56px" fixed-width="false" ng-click="accept(invitation, $index);" style="color: green;"></ons-icon>
+							<ons-icon icon="ion-close-circled" size="56px" fixed-width="false" ng-click="reject(invitation, $index);" style="color: red;"></ons-icon>
 						</div>
 					</ons-col>
 				</ons-row>
