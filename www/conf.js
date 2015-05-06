@@ -13,10 +13,10 @@ module.constant(
 		"facebookCallback": serverUrl + "users/facebook/",
 		"activity": serverUrl + "activity/",
 		"activities": serverUrl + "activities/",
+		"myActivities": serverUrl + "activities/my",
 		"activityTypes": serverUrl + "activity_types/",
 		"suggestions": serverUrl + "suggestions/",
 		"profile": serverUrl + "profile/",
 		"direct": serverUrl + "direct/"
 	}
-
 );

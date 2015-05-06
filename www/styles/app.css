@@ -86,48 +86,113 @@ input[type=email], input[type=password] {
 /* Create activity ends */
 
 /* List activityTypes starts */
-.plan-list {
+.invitation-list {
 	border-top: none;
 	background-image: none !important;
 }
 
-.plan {
+.invitation {
 	line-height: 1;
 	padding: 0;
 }
 
-.plan-left {
+.invitation-left {
 	text-align: right;
 	padding: 10px 10px 10px 0;
 }
 
-.plan-center {
+.invitation-center {
 	background-color: #3399ff;
 	opacity: 0.5;
 }
 
-.plan-right {
+.invitation-right {
 	padding: 10px 40px 10px 10px;
 }
 
-.plan-date {
+.invitation-date {
 	font-size: 14px;
 	opacity: 0.8;
 	margin-bottom: 4px;
 	font-weight: 500;
 }
 
-.plan-duration {
+.invitation-duration {
 	font-size: 11px;
 	opacity: 0.4;
 }
 
-.plan-name {
+.invitation-name {
 	font-size: 17px;
 	margin-bottom: 8px;
 }
 
-.plan-info {
+.invitation-info {
+	opacity: 0.4;
+	font-size: 12px;
+	line-height: 1.4;
+}
+
+
+
+/* List my activities starts */
+.my-activities-list {
+	border-top: none;
+	background-image: none !important;
+}
+
+.my-activities {
+	line-height: 1;
+	padding: 0;
+}
+
+.my-activities.own
+{
+	background-color: green;
+}
+
+.my-activities.pending
+{
+	background-color: yellow;
+}
+
+.my-activities.participating
+{
+	background-color: lawngreen;
+}
+
+.my-activities-left {
+	text-align: right;
+	padding: 10px 10px 10px 0;
+}
+
+.my-activities-center {
+	background-color: #3399ff;
+	opacity: 0.5;
+}
+
+.my-activities-right {
+	padding: 10px 40px 10px 10px;
+}
+
+.my-activities-date {
+	font-size: 14px;
+	opacity: 0.8;
+	margin-bottom: 4px;
+	font-weight: 500;
+}
+
+.my-activities-duration {
+	font-size: 11px;
+	opacity: 0.4;
+}
+
+.my-activities-name {
+	font-size: 17px;
+	margin-bottom: 8px;
+}
+
+.my-activities-info {
 	opacity: 0.4;
 	font-size: 12px;
 	line-height: 1.4;

@@ -68,6 +68,24 @@ module.service('activityService', function ($http, $q, urlConfig, userService, s
 		return deferred.promise;
 	};
 
+	this.getMyActivities = function ()
+	{
+		var deferred = $q.defer();
+		var url = urlConfig["myActivities"];
+		$http.get(url).success(
+			function (data)
+			{
+				deferred.resolve(data);
+			}
+		).error(
+			function ()
+			{
+				deferred.reject();
+			}
+		);
+		return deferred.promise;
+	};
+
 	this.create = function (activityType, locationName, lat, lng, from, to, participantCount, requiredLevel, message)
 	{
 		return $http.post(urlConfig["activity"],
