@@ -294,18 +294,18 @@
 				'pending': pendingActivity(activity),
 				'participating': participatingInActivity(activity)
 				}"
-				ng-repeat="activity in activities">
+				ng-repeat="activity in activities track by $index">
 				<ons-row>
 					<ons-col width="80px" class="my-activities-left">
-						<div class="my-activities-date">{{activity.from | asDate | date: "d.M. klo H:mm"}} - {{activity.to | asDate | date: "H:mm"}}</div>
-						<div class="my-activities-duration">{{getDuration(activity.from, activity.to) | asDate | date: "H'h' mm'min'"}}</div>
+						<div class="my-activities-date">{{activities[$index].from | asDate | date: "d.M. klo H:mm"}} - {{activities[$index].to | asDate | date: "H:mm"}}</div>
+						<div class="my-activities-duration">{{getDuration(activities[$index].from, activities[$index].to) | asDate | date: "H'h' mm'min'"}}</div>
 					</ons-col>
 
 					<ons-col width="6px" class="my-activities-center" style="backgroundColor: #3399ff">
 					</ons-col>
 
 					<ons-col class="my-activities-right">
-						<div class="my-activities-name">{{getActivityTypeName(activity.activity_type_id)}}</div>
+						<div class="my-activities-name">{{getActivityTypeName(activities[$index].activity_type_id)}}</div>
 
 						<!--<div class="my-activities-info">
 							<div ng-hide="a % 4 == 0">
