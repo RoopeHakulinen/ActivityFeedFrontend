@@ -90,19 +90,16 @@ module.service('activityService', function ($http, $q, urlConfig, userService, s
 	{
 		return $http.post(urlConfig["activities"],
 			{
-				data:
-				{
-					activity: {
-						activity_type_id: activityTypeId,
-						location_name: locationName,
-						from: from,
-						to: to,
-						lat: lat,
-						lng: lng,
-						participant_count: participantCount,
-						required_level: requiredLevel,
-						message: message
-					}
+				activity: {
+					activity_type_id: activityTypeId,
+					location_name: locationName,
+					from: from,
+					to: to,
+					lat: lat,
+					lng: lng,
+					participant_count: participantCount,
+					required_level: requiredLevel,
+					message: message
 				}
 			}
 		);
