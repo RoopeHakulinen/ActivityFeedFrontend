@@ -11,7 +11,7 @@ module.controller("myActivitiesCtrl", function ($scope, activityService, activit
 		activityService.getMyActivities().then(
 			function(data)
 			{
-				$scope.activities = data;
+				$scope.activities = data.activities;
 			},
 			function()
 			{
