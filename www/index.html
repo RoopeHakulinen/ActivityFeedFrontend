@@ -288,24 +288,24 @@
 			<ons-list-item
 				modifier="chevron"
 				class="my-activities"
-				ng-repeat="activity in activities track by $index"
-				ng-click="showActivity(activity);"
+				ng-repeat="activityObj in activities track by $index"
+				ng-click="showActivity(activityObj);"
 				ng-class="{
-				'own': ownActivity(activity),
-				'pending': pendingActivity(activity),
-				'participating': participatingInActivity(activity)
+				'own': ownActivity(activityObj),
+				'pending': pendingActivity(activityObj),
+				'participating': participatingInActivity(activityObj)
 				}">
 				<ons-row>
 					<ons-col width="80px" class="my-activities-left">
-						<div class="my-activities-date">{{activities[$index].from | asDate | date: "d.M. klo H:mm"}} - {{activities[$index].to | asDate | date: "H:mm"}}</div>
-						<div class="my-activities-duration">{{getDuration(activities[$index].from, activities[$index].to) | asDate | date: "H'h' mm'min'"}}</div>
+						<div class="my-activities-date">{{activityObj.from | asDate | date: "d.M. klo H:mm"}} - {{activityObj.to | asDate | date: "H:mm"}}</div>
+						<div class="my-activities-duration">{{getDuration(activityObj.from, activityObj.to) | asDate | date: "H'h' mm'min'"}}</div>
 					</ons-col>
 
 					<ons-col width="6px" class="my-activities-center" style="backgroundColor: #3399ff">
 					</ons-col>
 
 					<ons-col class="my-activities-right">
-						<div class="my-activities-name">{{getActivityTypeName(activities[$index].activity_type_id)}}</div>
+						<div class="my-activities-name">{{getActivityTypeName(activityObj.activity_type_id)}}</div>
 
 						<!--<div class="my-activities-info">
 							<div ng-hide="a % 4 == 0">
