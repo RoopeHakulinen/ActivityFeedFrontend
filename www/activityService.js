@@ -86,13 +86,13 @@ module.service('activityService', function ($http, $q, urlConfig, userService, s
 		return deferred.promise;
 	};
 
-	this.create = function (activityType, locationName, lat, lng, from, to, participantCount, requiredLevel, message)
+	this.create = function (activityTypeId, locationName, lat, lng, from, to, participantCount, requiredLevel, message)
 	{
-		return $http.post(urlConfig["activity"],
+		return $http.post(urlConfig["activities"],
 			{
 				data:
 				{
-					activity_type_id: activityType.id,
+					activity_type_id: activityTypeId,
 					location_name: locationName,
 					from: from,
 					to: to,
