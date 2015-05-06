@@ -284,11 +284,10 @@
 			</div>
 		</ons-toolbar>
 
-		<ons-list class="my-activities-list">
+		<ons-list class="my-activities-list" ng-repeat="activity in activities track by $index">
 			<ons-list-item
 				modifier="chevron"
 				class="my-activities"
-				ng-repeat="activity in activities track by $index"
 				ng-click="showActivity(activity);"
 				ng-class="{
 				'own': ownActivity(activity),

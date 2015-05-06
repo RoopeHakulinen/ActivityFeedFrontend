@@ -33,12 +33,16 @@ module.controller("createActivityCtrl", function ($scope, $http, urlConfig, acti
 			function()
 			{
 				window.plugins.toast.showShortBottom('Activity successfully added.');
-				commonLoader.hide();
 			}
 		).error(
 			function(data, status)
 			{
+
 				window.plugins.toast.showShortBottom('Activity creation failed with status ' + status);
+			}
+		).finally(
+			function ()
+			{
 				commonLoader.hide();
 			}
 		);

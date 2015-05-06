@@ -1,5 +1,5 @@
 module.controller("myActivitiesCtrl", function ($scope, activityService, activityTypeService, userService) {
-	$scope.activities = [];//invitationService.getInvitations();
+	$scope.activities = [];
 
 	$scope.initialize = function ()
 	{
