@@ -1,4 +1,4 @@
-module.controller("listInvitationsCtrl", function ($scope, activityService, activityTypeService, userService) {
+module.controller("myActivitiesCtrl", function ($scope, activityService, activityTypeService, userService) {
 	$scope.activities = [];//invitationService.getInvitations();
 
 	$scope.initialize = function ()
