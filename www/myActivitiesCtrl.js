@@ -20,6 +20,11 @@ module.controller("myActivitiesCtrl", function ($scope, activityService, activit
 		);
 	};
 
+	$scope.showActivity = function (activity)
+	{
+		return activity.id;
+	};
+
 	$scope.ownActivity = function (activity)
 	{
 		return activity.organizer.id === userService.getId();
