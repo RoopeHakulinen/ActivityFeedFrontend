@@ -5,7 +5,7 @@ module.controller("createActivityCtrl", function ($scope, $http, urlConfig, acti
 	$scope.locationName = "";
 	$scope.lat = userService.getLocation().lat;
 	$scope.lng = userService.getLocation().lng;
-	$scope.date = (new Date().getDate()) + "." + (new Date().getMonth() + 1) + ".";
+	$scope.date = (new Date(new Date().getTime() + 24 * 60 * 60 * 1000).getDate() ) + "." + (new Date(new Date().getTime() + 24 * 60 * 60 * 1000).getMonth() + 1) + ".";
 	$scope.from = "17:00";
 	$scope.to = "18:00";
 	$scope.message = "";
