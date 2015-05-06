@@ -284,7 +284,7 @@
 			</div>
 		</ons-toolbar>
 
-		<ons-list class="my-activities-list" ng-repeat="activity in activities track by $index">
+		<ons-list class="my-activities-list">
 			<ons-list-item
 				modifier="chevron"
 				class="my-activities"
@@ -293,7 +293,8 @@
 				'own': ownActivity(activity),
 				'pending': pendingActivity(activity),
 				'participating': participatingInActivity(activity)
-				}">
+				}"
+				ng-repeat="activity in activities track by $index">
 				<ons-row>
 					<ons-col width="80px" class="my-activities-left">
 						<div class="my-activities-date">{{activity.from | asDate | date: "d.M. klo H:mm"}} - {{activity.to | asDate | date: "H:mm"}}</div>
