@@ -214,13 +214,13 @@
 
 
 <ons-template id="create-activity.html">
-	<ons-page>
+	<ons-page ng-controller="createActivityCtrl">
 		<ons-toolbar>
 			<div class="left"><ons-back-button>Takaisin</ons-back-button></div>
 			<div class="center">Luo aktiviteetti</div>
 		</ons-toolbar>
 
-		<ons-list modifier="inset" style="margin-top: 10px" ng-controller="createActivityCtrl">
+		<ons-list modifier="inset" style="margin-top: 10px">
 			<ons-list-item>
 				<label for="activity-type">Tyyppi</label>
 				<select id="activity-type" ng-model="activityType" ng-options="activityType.name for activityType in activityTypes track by activityType.id" style="float: right; margin-top: 2px; padding: 9px;"></select>
