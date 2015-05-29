@@ -1,15 +1,14 @@
 module.controller("browseCtrl", function ($scope, $http, $q, settingsService, urlConfig, activityService, activityTypeService, invitationService) {
-	$scope.currentActivity = {};
-	$scope.currentActivityType = false;
+	$scope.activities = [];
 
-	$scope.invite = function()
+	$scope.invite = function(activity)
 	{
-		invitationService.send($scope.currentActivity.id).then(
-			function (data)
+		invitationService.send(activity.id).then(
+			function ()
 			{
 				window.plugins.toast.showShortBottom('Invitation sent');
 				activityService.handled();
-				$scope.showNext();
+				$scope.updateActivities();
 			},
 			function(data, status)
 			{
@@ -17,14 +16,14 @@ module.controller("browseCtrl", function ($scope, $http, $q, settingsService, ur
 			});
 	};
 
-	$scope.skip = function()
+	$scope.skip = function(activity)
 	{
-		invitationService.skip($scope.currentActivity.id).then(
-			function(data)
+		invitationService.skip(activity.id).then(
+			function()
 			{
 				window.plugins.toast.showShortBottom('Activity rejected');
 				activityService.handled();
-				$scope.showNext();
+				$scope.updateActivities();
 			},
 			function(data, status)
 			{
@@ -33,32 +32,28 @@ module.controller("browseCtrl", function ($scope, $http, $q, settingsService, ur
 		);
 	};
 
-	$scope.showNext = function()
+	$scope.updateActivities = function()
 	{
 		activityService.getActivities().then(
 			function(activities)
 			{
 				if (activities.length === 0)
 				{
-					setTimeout(this.showNext.bind(this), 1000*30);
-					$scope.currentActivity = {};
+					setTimeout(this.updateActivities.bind(this), 1000*30);
 				}
-				else
-				{
-					$scope.currentActivity = activities[0];
-				}
+				$scope.activities = angular.copy(activities);
 			}.bind(this),
 			function ()
 			{
-				setTimeout(this.showNext.bind(this), 1000*20);
+				setTimeout(this.updateActivities.bind(this), 1000*20);
 			}.bind(this)
 		);
 	};
 
-	$scope._getOrganizerImage = function ()
+	$scope._getOrganizerImage = function (activity)
 	{
 		try{
-			var imageUrl = $scope.currentActivity.organizer.profile.picture;
+			var imageUrl = activity.organizer.profile.picture;
 		}
 		catch (e)
 		{ // Fall back to default image
@@ -67,11 +62,11 @@ module.controller("browseCtrl", function ($scope, $http, $q, settingsService, ur
 		return imageUrl;
 	};
 
-	$scope._getActivityTypeStyles = function()
+	$scope._getActivityTypeStyles = function(activity)
 	{
-		if (typeof $scope.currentActivity.activity_type_id !== "undefined")
+		if (typeof activity.activity_type_id !== "undefined")
 		{
-			return activityTypeService.getStyles($scope.currentActivity.activity_type_id);
+			return activityTypeService.getStyles(activity.activity_type_id);
 		}
 		return "";
 	};

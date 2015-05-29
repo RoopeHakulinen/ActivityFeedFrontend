@@ -123,39 +123,41 @@
 			</div>
 		</ons-toolbar>
 
-		<div ng-show="currentActivity.id">
-			<ons-gesture-detector ng-swipeleft="skip()" ng-swiperight="invite()">
-				<div class="profile-card" style="{{_getActivityTypeStyles()}}">
-					<img ng-src="{{_getOrganizerImage()}}" class="profile-image" alt="{{currentActivity.organizer.email}}">
-					<div class="profile-name">{{currentActivity.organizer.profile.name}}</div>
-					<div class="profile-location-name">{{currentActivity.location_name}}</div>
-					<div class="profile-timeframe">{{currentActivity.from | asDate | date: "d.M. klo H:mm"}} - {{currentActivity.to | asDate | date: "H:mm"}}</div>
-					<div class="profile-desc">{{currentActivity.comments[0].text}}</div>
-					<div class="profile-stars">
-						<div class="star-five" ng-class="{highlight: currentActivity.required_level >= n}" ng-repeat="n in [1, 2, 3, 4, 5]"></div>
+		<div ng-show="activities.length">
+			<ons-carousel fullscreen swipeable overscrollable auto-scroll>
+				<ons-carousel-item ng-repeat="activity in activities">
+					<div class="profile-card" style="{{_getActivityTypeStyles(activity)}}">
+						<img ng-src="{{_getOrganizerImage(activity)}}" class="profile-image" alt="{{activity.organizer.email}}">
+						<div class="profile-name">{{activity.organizer.profile.name}}</div>
+						<div class="profile-location-name">{{activity.location_name}}</div>
+						<div class="profile-timeframe">{{activity.from | asDate | date: "d.M. klo H:mm"}} - {{activity.to | asDate | date: "H:mm"}}</div>
+						<div class="profile-desc">{{activity.comments[0].text}}</div>
+						<div class="profile-stars">
+							<div class="star-five" ng-class="{highlight: activity.required_level >= n}" ng-repeat="n in [1, 2, 3, 4, 5]"></div>
+						</div>
+						<div class="profile-participants">{{activity.participants}} / {{activity.participant_count}} pelaajaa jo mukana</div>
+						<div class="profile-distance">{{activity.distance | number:1}} km</div>
 					</div>
-					<div class="profile-participants">{{currentActivity.participants}} / {{currentActivity.participant_count}} pelaajaa jo mukana</div>
-					<div class="profile-distance">{{currentActivity.distance | number:1}} km</div>
-				</div>
-			</ons-gesture-detector>
-			<div class="controls" style="width: 140px; margin: 5% auto;">
-				<ons-icon
-					icon="fa-forward"
-					size="20px"
-					fixed-width="false"
-					style="background-color: dimgray; border-radius: 50%; padding: 20px; color: red; float: right;"
-					ng-click="skip();">
-				</ons-icon>
-				<ons-icon
-					icon="fa-check"
-					size="20px"
-					fixed-width="false"
-					style="background-color: dimgray; border-radius: 50%; padding: 20px; color: green; float: left;"
-					ng-click="invite();">
-				</ons-icon>
-			</div>
+					<div class="controls" style="width: 140px; margin: 5% auto;">
+						<ons-icon
+							icon="fa-forward"
+							size="20px"
+							fixed-width="false"
+							style="background-color: dimgray; border-radius: 50%; padding: 20px; color: red; float: right;"
+							ng-click="skip(activity);">
+						</ons-icon>
+						<ons-icon
+							icon="fa-check"
+							size="20px"
+							fixed-width="false"
+							style="background-color: dimgray; border-radius: 50%; padding: 20px; color: green; float: left;"
+							ng-click="invite(activity);">
+						</ons-icon>
+					</div>
+				</ons-carousel-item>
+			</ons-carousel>
 		</div>
-		<div ng-hide="currentActivity.id">
+		<div ng-hide="!activities.length">
 			<div style="margin: 0 auto; width: 130px;margin-top: 100px">Ei aktiviteetteja..</div>
 		</div>
 	</ons-page>
