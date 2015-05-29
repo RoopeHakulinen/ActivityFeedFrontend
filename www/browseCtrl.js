@@ -3,15 +3,18 @@ module.controller("browseCtrl", function ($scope, $http, $q, settingsService, ur
 
 	$scope.initialize = function() {
 		$scope.updateActivities();
-		browseCarousel.on('overscroll', function(e) {
-			if (e.direction === "right") {
-				var deferred = $q.defer();
-				e.waitToReturn(deferred.promise);
-				window.setTimeout(function () {
-					deferred.resolve();
-				}, 2500);
-			}
-		});
+		setTimeout(
+			function () {
+				browseCarousel.on('overscroll', function (e) {
+					if (e.direction === "right") {
+						var deferred = $q.defer();
+						e.waitToReturn(deferred.promise);
+						window.setTimeout(function () {
+							deferred.resolve();
+						}, 2500);
+					}
+				});
+			}, 100);
 	};
 
 	$scope.invite = function(activity)
