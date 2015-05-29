@@ -69,6 +69,7 @@ module.controller("loginCtrl", function (eventService, $scope, $http, settingsSe
 
 	$scope.facebookLogin = function()
 	{
+		loginLoader.show();
 		var success = function(authData)
 		{
 			facebookConnectPlugin.api(authData.authResponse.userID + "?fields=id,email,name,picture,gender,birthday", ["public_profile", "email", "user_birthday"], function(data) {
@@ -89,10 +90,12 @@ module.controller("loginCtrl", function (eventService, $scope, $http, settingsSe
 				).error(
 					function(data)
 					{
+						loginLoader.hide();
 						alert("Facebook auth callback error: " + data);
 					}
 				);
 			}, function(err) {
+				loginLoader.hide();
 				console.error("Could not get user data token: " + JSON.stringify(err));
 			});
 		};
