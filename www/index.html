@@ -123,8 +123,8 @@
 			</div>
 		</ons-toolbar>
 
-		<div ng-show="activities.length">
-			<ons-carousel swipeable overscrollable auto-scroll auto-refresh initial-index="1">
+		<div ng-show="activities.length" style="height: 100%;">
+			<ons-carousel swipeable overscrollable auto-scroll auto-refresh ng-overscroll="function (e) { overscroll(e); }">
 				<ons-carousel-item ng-repeat="activity in activities">
 					<div class="profile-card" style="{{_getActivityTypeStyles(activity)}}">
 						<img ng-src="{{_getOrganizerImage(activity)}}" class="profile-image" alt="{{activity.organizer.email}}">
@@ -155,6 +155,10 @@
 						</ons-icon>
 					</div>
 				</ons-carousel-item>
+				<ons-carousel-cover>
+					<div class="cover-label">
+						Pyyhkäise ruutua selataksesi aktiviteettejä</div>
+				</ons-carousel-cover>
 			</ons-carousel>
 		</div>
 		<div ng-hide="activities.length">

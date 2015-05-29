@@ -32,6 +32,14 @@ module.controller("browseCtrl", function ($scope, $http, $q, settingsService, ur
 		);
 	};
 
+	$scope.overscroll = function (e)
+	{
+		alert("Overscroll happened");
+		if (e) {
+
+		}
+	};
+
 	$scope.updateActivities = function()
 	{
 		activityService.getActivities().then(
