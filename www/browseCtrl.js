@@ -1,6 +1,19 @@
 module.controller("browseCtrl", function ($scope, $http, $q, settingsService, urlConfig, activityService, activityTypeService, invitationService) {
 	$scope.activities = [];
 
+
+	ons.ready(function() {
+		browseCarousel.on('overscroll', function(e) {
+			if (e.direction === "right") {
+				var deferred = $q.defer();
+				e.waitToReturn(deferred.promise);
+				window.setTimeout(function () {
+					deferred.resolve();
+				}, 2500);
+			}
+		})
+	});
+
 	$scope.invite = function(activity)
 	{
 		invitationService.send(activity.id).then(
@@ -30,14 +43,6 @@ module.controller("browseCtrl", function ($scope, $http, $q, settingsService, ur
 				window.plugins.toast.showShortBottom('Activity rejecting failed with status ' + status);
 			}
 		);
-	};
-
-	$scope.overscroll = function (e)
-	{
-		alert("Overscroll happened");
-		if (e) {
-
-		}
 	};
 
 	$scope.updateActivities = function()
