@@ -124,7 +124,7 @@
 		</ons-toolbar>
 
 		<div ng-show="activities.length">
-			<ons-carousel fullscreen swipeable overscrollable auto-scroll>
+			<ons-carousel swipeable overscrollable auto-scroll auto-refresh initial-index="1">
 				<ons-carousel-item ng-repeat="activity in activities">
 					<div class="profile-card" style="{{_getActivityTypeStyles(activity)}}">
 						<img ng-src="{{_getOrganizerImage(activity)}}" class="profile-image" alt="{{activity.organizer.email}}">
@@ -157,7 +157,7 @@
 				</ons-carousel-item>
 			</ons-carousel>
 		</div>
-		<div ng-hide="!activities.length">
+		<div ng-hide="activities.length">
 			<div style="margin: 0 auto; width: 130px;margin-top: 100px">Ei aktiviteetteja..</div>
 		</div>
 	</ons-page>
