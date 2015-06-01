@@ -23,7 +23,6 @@ module.controller("loginCtrl", function (eventService, $scope, $http, settingsSe
 					navigator.splashscreen.hide();
 					hidingSplashScreenNeeded = false;
 				}
-				activityTypeService.getActivityTypes();
 				clearInterval(interval);
 			}
 		}, 50);
@@ -49,6 +48,7 @@ module.controller("loginCtrl", function (eventService, $scope, $http, settingsSe
 	$scope.loginSuccess = function (user)
 	{
 		userService.setUser(user);
+		activityTypeService.getActivityTypes();
 		$scope.signedIn();
 	};
 
