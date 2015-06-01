@@ -7,14 +7,10 @@ module.controller("browseCtrl", function ($scope, $http, $q, settingsService, ur
 			function () {
 				browseCarousel.on('overscroll', function (e) {
 					if (e.direction === "right") {
-						var deferred = $q.defer();
-						e.waitToReturn(deferred.promise);
-						window.setTimeout(function () {
-							deferred.resolve();
-						}, 2500);
+						e.waitToReturn(this.updateActivities(true));
 					}
-				});
-			}, 100);
+				}.bind(this));
+			}.bind(this), 100);
 	};
 
 	$scope.invite = function(activity)
@@ -23,8 +19,8 @@ module.controller("browseCtrl", function ($scope, $http, $q, settingsService, ur
 			function ()
 			{
 				window.plugins.toast.showShortBottom('Invitation sent');
-				activityService.handled();
-				$scope.updateActivities();
+				activityService.handled(browseCarousel.getActiveCarouselItemIndex());
+				$scope.updateActivities(false);
 			},
 			function(data, status)
 			{
@@ -38,8 +34,8 @@ module.controller("browseCtrl", function ($scope, $http, $q, settingsService, ur
 			function()
 			{
 				window.plugins.toast.showShortBottom('Activity rejected');
-				activityService.handled();
-				$scope.updateActivities();
+				activityService.handled(browseCarousel.getActiveCarouselItemIndex());
+				$scope.updateActivities(false);
 			},
 			function(data, status)
 			{
@@ -48,20 +44,20 @@ module.controller("browseCtrl", function ($scope, $http, $q, settingsService, ur
 		);
 	};
 
-	$scope.updateActivities = function()
+	$scope.updateActivities = function(fetchMore)
 	{
-		activityService.getActivities().then(
+		return activityService.getActivities(fetchMore || $scope.activities.length < 5).then(
 			function(activities)
 			{
 				if (activities.length === 0)
 				{
-					setTimeout(this.updateActivities.bind(this), 1000*30);
+					setTimeout(this.updateActivities.bind(this, true), 1000*30);
 				}
 				$scope.activities = angular.copy(activities);
 			}.bind(this),
 			function ()
 			{
-				setTimeout(this.updateActivities.bind(this), 1000*20);
+				setTimeout(this.updateActivities.bind(this, true), 1000*20);
 			}.bind(this)
 		);
 	};
