@@ -48,13 +48,13 @@ module.controller("loginCtrl", function (eventService, $scope, $http, settingsSe
 	$scope.loginSuccess = function (user)
 	{
 		userService.setUser(user);
-		activityTypeService.getActivityTypes();
 		$scope.signedIn();
 	};
 
 	$scope.signedIn = function()
 	{
 		console.log("Login succeeded.");
+		activityTypeService.getActivityTypes();
 		settingsService.loadUserSettings();
 		appNavigator.pushPage("main-view.html",
 			{
