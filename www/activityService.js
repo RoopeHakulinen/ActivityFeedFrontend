@@ -8,7 +8,7 @@ module.service('activityService', function ($http, $q, urlConfig, userService, s
 		{
 			this._fetchActivities().then(
 				function (data) {
-					this.activities.concat(data);
+					this.activities = this.activities.concat(data);
 					deferred.resolve(this.activities)
 				}.bind(this)
 			);

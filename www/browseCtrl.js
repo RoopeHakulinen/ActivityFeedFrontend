@@ -20,7 +20,7 @@ module.controller("browseCtrl", function ($scope, $http, $q, settingsService, ur
 			{
 				window.plugins.toast.showShortBottom('Invitation sent');
 				activityService.handled(browseCarousel.getActiveCarouselItemIndex());
-				$scope.updateActivities(false);
+				$scope.updateActivities();
 			},
 			function(data, status)
 			{
@@ -35,7 +35,7 @@ module.controller("browseCtrl", function ($scope, $http, $q, settingsService, ur
 			{
 				window.plugins.toast.showShortBottom('Activity rejected');
 				activityService.handled(browseCarousel.getActiveCarouselItemIndex());
-				$scope.updateActivities(false);
+				$scope.updateActivities();
 			},
 			function(data, status)
 			{
