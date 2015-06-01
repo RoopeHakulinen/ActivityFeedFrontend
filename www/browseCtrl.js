@@ -2,7 +2,7 @@ module.controller("browseCtrl", function ($scope, $http, $q, settingsService, ur
 	$scope.activities = [];
 
 	$scope.initialize = function() {
-		$scope.updateActivities();
+		$scope.updateActivities(true);
 		setTimeout(
 			function () {
 				browseCarousel.on('overscroll', function (e) {
