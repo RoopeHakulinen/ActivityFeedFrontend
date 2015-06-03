@@ -62,13 +62,6 @@
 			<div class="center">Kirjaudu sisään</div>
 		</ons-toolbar>
 
-		<ons-modal var="loginLoader">
-			<ons-icon icon="fa-circle-o-notch" spin="true"></ons-icon>
-			<div>
-				<div>Kirjaudutaan sisään</div>
-			</div>
-		</ons-modal>
-
 		<div class="login-form">
 			<input type="email" class="text-input--underbar" placeholder="Email" ng-model="email" value="">
 			<input type="password" class="text-input--underbar" placeholder="Password" ng-model="password" value="">
@@ -170,12 +163,6 @@
 
 <ons-template id="main-menu.html">
 	<ons-page modifier="menu-page" ng-controller="mainMenuCtrl">
-		<ons-modal var="menuListLoader">
-			<ons-icon icon="fa-circle-o-notch" spin="true"></ons-icon>
-			<div>
-				<div>Ladataan</div>
-			</div>
-		</ons-modal>
 		<ons-toolbar modifier="transparent">
 			<div class="center">Activer</div>
 		</ons-toolbar>
@@ -396,12 +383,6 @@
 
 <ons-template id="settings.html">
 	<ons-page class="center">
-		<ons-modal var="appLoader">
-			<ons-icon icon="fa-circle-o-notch" spin="true"></ons-icon>
-			<div>
-				<div>Ladataan</div>
-			</div>
-		</ons-modal>
 		<ons-toolbar>
 			<div class="left"><ons-back-button>Takaisin</ons-back-button></div>
 			<div class="center">Asetukset</div>
@@ -436,6 +417,13 @@
 		</div>
 	</ons-page>
 </ons-template>
+
+<ons-modal var="loginLoader">
+	<ons-icon icon="fa-circle-o-notch" spin="true"></ons-icon>
+	<div>
+		<div>Kirjaudutaan sisään</div>
+	</div>
+</ons-modal>
 
 <ons-modal var="commonLoader">
 	<ons-icon icon="fa-circle-o-notch" spin="true"></ons-icon>
