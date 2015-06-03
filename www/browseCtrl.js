@@ -7,10 +7,8 @@ module.controller("browseCtrl", function ($scope, $http, $q, settingsService, ur
 			function () {
 				browseCarousel.on('overscroll', function (e) {
 					if (e.direction === "right") {
-						e.waitToReturn(function () {
-							commonLoader.show();
-							return this.updateActivities(true).finally(function () { commonLoader.hide(); });
-						}.bind(this));
+						commonLoader.show();
+						e.waitToReturn(this.updateActivities(true).finally(function () { commonLoader.hide(); }));
 					}
 				}.bind(this));
 			}.bind(this), 100);
