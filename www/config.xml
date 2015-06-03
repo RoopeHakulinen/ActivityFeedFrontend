@@ -48,6 +48,7 @@
 	<!--<gap:splash src="splash.png" />-->
 
 	<!-- General preferences -->
+	<preference name="Orientation" value="portrait" />
 	<preference name="AutoHideSplashScreen" value="false" />
 	<preference name="SplashScreen" value="screen" />
 
