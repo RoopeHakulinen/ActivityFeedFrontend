@@ -95,7 +95,6 @@ module.controller("loginCtrl", function (eventService, $scope, $http, settingsSe
 					}
 				);
 			}, function(err) {
-				loginLoader.hide();
 				console.error("Could not get user data token: " + JSON.stringify(err));
 			});
 		};
