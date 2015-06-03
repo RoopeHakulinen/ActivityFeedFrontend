@@ -20,6 +20,7 @@
 	<!-- PhoneGap plugins for PhoneGap Build to attach to build -->
 	<gap:plugin name="org.apache.cordova.camera" version="0.3.2" source="pgb" />
 	<gap:plugin name="org.apache.cordova.device" version="0.2.12" source="pgb" />
+	<gap:plugin name="org.apache.cordova.dialogs" version="0.2.10" source="pgb" />
 	<gap:plugin name="org.apache.cordova.file" version="1.3.1" source="pgb" />
 	<gap:plugin name="org.apache.cordova.geolocation" version="0.3.10" source="pgb" />
 	<gap:plugin name="org.apache.cordova.network-information" version="0.2.12" source="pgb" />
