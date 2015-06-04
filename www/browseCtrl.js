@@ -47,6 +47,7 @@ module.controller("browseCtrl", function ($scope, $http, $q, urlConfig, activity
 					setTimeout($scope.updateActivities.bind(this, true), 1000*30);
 				}
 				$scope.activities = angular.copy(activities);
+				browseCarousel.refresh();
 			}.bind(this),
 			function ()
 			{
@@ -97,6 +98,7 @@ module.controller("browseCtrl", function ($scope, $http, $q, urlConfig, activity
 					if ($scope.currentIndex + 1 < $scope.activities.length)
 					{
 						browseCarousel.setActiveCarouselItemIndex(browseCarousel.getActiveCarouselItemIndex() + 1);
+						browseCarousel.refresh();
 					}
 				})
 			);

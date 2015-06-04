@@ -116,7 +116,7 @@
 		</ons-toolbar>
 
 		<div ng-show="activities.length" style="height: 100%;">
-			<ons-carousel swipeable overscrollable auto-scroll auto-refresh style="height: 100%;" var="browseCarousel" auto-scroll-ratio="0.33" ons-postchange="changed($event)" ons-overscroll="overscrolled($event)">
+			<ons-carousel swipeable overscrollable auto-scroll style="height: 100%;" var="browseCarousel" auto-scroll-ratio="0.33" ons-postchange="changed($event)" ons-overscroll="overscrolled($event)">
 				<ons-carousel-item ng-repeat="activity in activities track by $index">
 					<div class="profile-card" style="{{_getActivityTypeStyles(activity)}}">
 						<img ng-src="{{_getOrganizerImage(activity)}}" class="profile-image" alt="{{activity.organizer.email}}">
