@@ -6,9 +6,14 @@ module.controller("showActivityCtrl", function ($scope, urlConfig, activityServi
 		$scope.activity = activity;
 	};
 
-	$scope.comment = function()
+	$scope.sendComment = function()
 	{
-		activityService.comment(activity.id, comment).then(
+		if ($scope.comment.length === 0)
+		{
+			window.plugins.toast.showShortBottom('Kommentti ei voi olla tyhjä.');
+			return;
+		}
+		activityService.sendComment($scope.activity.id, $scope.comment).then(
 			function ()
 			{
 				activity.comments.push(comment);

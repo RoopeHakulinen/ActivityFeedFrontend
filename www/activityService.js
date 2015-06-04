@@ -105,6 +105,17 @@ module.service('activityService', function ($http, $q, urlConfig, userService) {
 		);
 	};
 
+	this.sendComment = function (activityId, comment)
+	{
+		return $http.post(urlConfig["activities"] + activityId + "/comments",
+			{
+				comment: {
+					text: comment
+				}
+			}
+		);
+	};
+
 	this.handled = function()
 	{
 		this.activities.splice(1,0);
