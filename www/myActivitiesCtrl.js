@@ -38,4 +38,13 @@ module.controller("myActivitiesCtrl", function ($scope, activityService, activit
 		return !$scope.ownActivity(activity) && activity.suggestions[0].status === "match";
 	};
 
+	$scope.getActivityTypeName = function(id)
+	{
+		return activityTypeService.getName(id);
+	};
+
+	$scope.getDuration = function (from, to)
+	{
+		return Date.parse(from) - Date.parse(to);
+	};
 });
