@@ -221,8 +221,8 @@
 			</ons-list-item>
 
 			<ons-list-item>
-				Ajanjakso: <input type="text" ng-model="date" class="text-input text-input--transparent" style="width: 40px"> <input type="text" ng-model="from" class="text-input text-input--transparent" style="width: 40px"> -
-				<input type="text" ng-model="to" class="text-input text-input--transparent" style="width: 40px">
+				Ajanjakso: <input type="date" ng-model="date" class="text-input text-input--transparent" style="width: 40px"> <input type="time" ng-model="from" class="text-input text-input--transparent" style="width: 40px"> -
+				<input type="time" ng-model="to" class="text-input text-input--transparent" style="width: 40px">
 			</ons-list-item>
 
 			<ons-list-item>
@@ -230,11 +230,11 @@
 			</ons-list-item>
 
 			<ons-list-item>
-				Maksimiosallistujamäärä: <input type="text" ng-model="participantCount" class="text-input text-input--transparent" style="width: 100%">
+				Maksimiosallistujamäärä: <input type="number" max="20" ng-model="participantCount" class="text-input text-input--transparent" style="width: 100%">
 			</ons-list-item>
 
 			<ons-list-item>
-				Vaadittu taso (0.0 - 5.0): <input type="text" ng-model="requiredLevel" class="text-input text-input--transparent" style="width: 100%">
+				Vaadittu taso (0.0 - 5.0): <input type="number" min="0" max="5" step="0.5" ng-model="requiredLevel" class="text-input text-input--transparent" style="width: 100%">
 			</ons-list-item>
 
 			<ons-list-item>
@@ -393,7 +393,7 @@
 
 		<div class="content-padded" style="font-size: 13px; text-align: center; color: #999;" ng-controller="settingsCtrl">
 			<ons-list>
-				<ons-list-item>Etäisyys: <input type="text" ng-model="range" /></ons-list-item>
+				<ons-list-item>Etäisyys: <input type="number" min="1" max="500" ng-model="range" /></ons-list-item>
 			</ons-list>
 			<ons-list>
 				<ons-list-item modifier="tappable" ng-click="logout()" style="">{{getUserName()}}<span style="color: #00ACEE;">Sign out from Activer</span></ons-list-item>
