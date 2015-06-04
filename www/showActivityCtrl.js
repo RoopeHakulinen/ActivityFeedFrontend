@@ -25,4 +25,13 @@ module.controller("showActivityCtrl", function ($scope, urlConfig, activityServi
 			});
 	};
 
+	$scope.getActivityTypeName = function(id)
+	{
+		return activityTypeService.getName(id);
+	};
+
+	$scope.getDuration = function (from, to)
+	{
+		return Date.parse(from) - Date.parse(to);
+	};
 });
