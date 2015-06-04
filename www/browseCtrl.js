@@ -86,11 +86,11 @@ module.controller("browseCtrl", function ($scope, $http, $q, urlConfig, activity
 		$scope.currentIndex = $event.activeIndex;
 	};
 
-	$scope.overscrolled = function ()
+	$scope.overscrolled = function ($event)
 	{
-		if (e.direction === "right") {
+		if ($event.direction === "right") {
 			commonLoader.show();
-			e.waitToReturn(this.updateActivities(true).finally(
+			$event.waitToReturn(this.updateActivities(true).finally(
 				function ()
 				{
 					commonLoader.hide();
