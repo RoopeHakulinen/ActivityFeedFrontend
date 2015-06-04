@@ -118,7 +118,7 @@
 
 		<div ng-show="activities.length" style="height: 100%;">
 			<ons-carousel swipeable overscrollable auto-scroll auto-refresh style="height: 100%;" var="browseCarousel">
-				<ons-carousel-item ng-repeat="activity in activities">
+				<ons-carousel-item ng-repeat="activity in activities track by $index">
 					<div class="profile-card" style="{{_getActivityTypeStyles(activity)}}">
 						<img ng-src="{{_getOrganizerImage(activity)}}" class="profile-image" alt="{{activity.organizer.email}}">
 						<div class="profile-name">{{activity.organizer.profile.name}}</div>
