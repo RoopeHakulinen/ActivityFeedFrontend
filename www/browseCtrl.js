@@ -94,6 +94,8 @@ module.controller("browseCtrl", function ($scope, $http, $q, urlConfig, activity
 				function ()
 				{
 					commonLoader.hide();
+					$scope.$apply();
+					//browseCarousel.refresh();
 				})
 			);
 		}
