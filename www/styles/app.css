@@ -157,17 +157,17 @@ input[type=email], input[type=password] {
 
 .my-activities.own
 {
-	background-color: green;
+	background-color: lightgreen;
 }
 
 .my-activities.pending
 {
-	background-color: yellow;
+	background-color: lightyellow;
 }
 
 .my-activities.participating
 {
-	background-color: lawngreen;
+	background-color: darkcyan;
 }
 
 .my-activities-left {
