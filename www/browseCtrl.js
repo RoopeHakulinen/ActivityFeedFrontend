@@ -1,5 +1,6 @@
 module.controller("browseCtrl", function ($scope, $http, $q, urlConfig, activityService, activityTypeService, invitationService) {
 	$scope.activities = [];
+	$scope.currentIndex = 0;
 
 	$scope.initialize = function() {
 		$scope.updateActivities(true);
@@ -88,4 +89,14 @@ module.controller("browseCtrl", function ($scope, $http, $q, urlConfig, activity
 	{
 		return browseCarousel.getActiveCarouselItemIndex();
 	};
+
+	$scope.changed = function ($event)
+	{
+		$scope.currentIndex = $event.activeIndex;
+	};
+
+	$scope.overscrolled = function ()
+	{
+		alert("overscrolled.");
+	}
 });

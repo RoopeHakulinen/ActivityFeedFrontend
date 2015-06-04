@@ -116,7 +116,7 @@
 		</ons-toolbar>
 
 		<div ng-show="activities.length" style="height: 100%;">
-			<ons-carousel swipeable overscrollable auto-scroll auto-refresh style="height: 100%;" var="browseCarousel">
+			<ons-carousel swipeable overscrollable auto-scroll auto-refresh style="height: 100%;" var="browseCarousel" ons-postchange="changed($event)" ons-overscroll="overscrolled($event)">
 				<ons-carousel-item ng-repeat="activity in activities track by $index">
 					<div class="profile-card" style="{{_getActivityTypeStyles(activity)}}">
 						<img ng-src="{{_getOrganizerImage(activity)}}" class="profile-image" alt="{{activity.organizer.email}}">
@@ -150,7 +150,7 @@
 				<ons-carousel-cover>
 					<div class="cover-label">
 						Pyyhkäise ruutua selataksesi aktiviteettejä.<br/>
-						Aktiviteetti {{getCurrentActivityIndex() + 1}} / {{activities.length}}
+						Aktiviteetti {{currentIndex + 1}} / {{activities.length}}
 					</div>
 				</ons-carousel-cover>
 			</ons-carousel>
