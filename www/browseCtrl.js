@@ -44,13 +44,13 @@ module.controller("browseCtrl", function ($scope, $http, $q, urlConfig, activity
 			{
 				if (activities.length === 0)
 				{
-					setTimeout(this.updateActivities.bind(this, true), 1000*30);
+					setTimeout($scope.updateActivities.bind(this, true), 1000*30);
 				}
-				$scope.activities = activities;
+				$scope.activities = angular.copy(activities);
 			}.bind(this),
 			function ()
 			{
-				setTimeout(this.updateActivities.bind(this, true), 1000*20);
+				setTimeout($scope.updateActivities.bind(this, true), 1000*20);
 			}.bind(this)
 		);
 	};
@@ -90,7 +90,7 @@ module.controller("browseCtrl", function ($scope, $http, $q, urlConfig, activity
 	{
 		if ($event.direction === "right") {
 			commonLoader.show();
-			$event.waitToReturn(this.updateActivities(true).finally(
+			$event.waitToReturn($scope.updateActivities(true).finally(
 				function ()
 				{
 					commonLoader.hide();
