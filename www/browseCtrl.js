@@ -4,15 +4,6 @@ module.controller("browseCtrl", function ($scope, $http, $q, urlConfig, activity
 
 	$scope.initialize = function() {
 		$scope.updateActivities(true);
-		setTimeout(
-			function () {
-				browseCarousel.on('overscroll', function (e) {
-					if (e.direction === "right") {
-						commonLoader.show();
-						e.waitToReturn(this.updateActivities(true).finally(function () { commonLoader.hide(); browseCarousel.refresh(); }));
-					}
-				}.bind(this));
-			}.bind(this), 100);
 	};
 
 	$scope.invite = function(activity)
@@ -97,6 +88,15 @@ module.controller("browseCtrl", function ($scope, $http, $q, urlConfig, activity
 
 	$scope.overscrolled = function ()
 	{
-		alert("overscrolled.");
+		if (e.direction === "right") {
+			commonLoader.show();
+			e.waitToReturn(this.updateActivities(true).finally(
+				function ()
+				{
+					commonLoader.hide();
+					browseCarousel.refresh();
+				})
+			);
+		}
 	}
 });
