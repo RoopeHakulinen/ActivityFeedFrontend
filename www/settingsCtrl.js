@@ -7,12 +7,10 @@ module.controller("settingsCtrl", function ($scope, userService) {
 	};
 
 	$scope.$on("$destroy", function handler() {
-		console.log("Storing settings. ");
-		$scope.storeSettings();
+		userService.setRange($scope.range);
 	});
 
 	$scope.storeSettings = function()
 	{
-		userService.setRange($scope.range);
 	};
 });
