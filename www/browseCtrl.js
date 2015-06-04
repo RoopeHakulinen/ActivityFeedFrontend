@@ -8,7 +8,7 @@ module.controller("browseCtrl", function ($scope, $http, $q, settingsService, ur
 				browseCarousel.on('overscroll', function (e) {
 					if (e.direction === "right") {
 						commonLoader.show();
-						e.waitToReturn(this.updateActivities(true).finally(function () { commonLoader.hide(); }));
+						e.waitToReturn(this.updateActivities(true).finally(function () { commonLoader.hide(); browseCarousel.refresh(); }));
 					}
 				}.bind(this));
 			}.bind(this), 100);
