@@ -22,7 +22,7 @@ module.controller("myActivitiesCtrl", function ($scope, activityService, activit
 
 	$scope.showActivity = function (activity)
 	{
-		return activity.id;
+		appNavigator.pushPage("show-activity.html", {activity: activity});
 	};
 
 	$scope.ownActivity = function (activity)
