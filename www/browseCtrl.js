@@ -83,9 +83,4 @@ module.controller("browseCtrl", function ($scope, $http, $q, settingsService, ur
 		}
 		return "";
 	};
-
-	$scope.getCurrentActivityIndex = function()
-	{
-		return browseCarousel.getActiveCarouselItemIndex();
-	};
 });
