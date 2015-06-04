@@ -47,7 +47,7 @@ module.controller("browseCtrl", function ($scope, $http, $q, urlConfig, activity
 					setTimeout($scope.updateActivities.bind(this, true), 1000*30);
 				}
 				$scope.activities = angular.copy(activities);
-				browseCarousel.refresh();
+				setTimeout(browseCarousel.refresh, 100);
 			}.bind(this),
 			function ()
 			{
