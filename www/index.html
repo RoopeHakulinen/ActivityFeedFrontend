@@ -395,7 +395,7 @@
 		</ons-toolbar>
 
 		<ons-list class="invitation-list">
-			<ons-list-item modifier="chevron" class="invitation" ng-repeat="invitation in invitations track by $index" ng-click="showInvitation(invitation);">
+			<ons-list-item modifier="chevron" class="invitation" ng-repeat="invitation in invitations track by $index" ng-click="showActivity(invitation.activity);">
 				<ons-row> <!--  ng-style="{backgroundColor:status == 'match' ? '#3399ff' : '#ccc'}" -->
 					<ons-col width="80px" class="invitation-left">
 						<div class="invitation-date">{{invitation.activity.from | asDate | date: "d.M. klo H:mm"}} - {{invitation.activity.to | asDate | date: "H:mm"}}</div>
