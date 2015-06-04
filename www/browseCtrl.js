@@ -1,4 +1,4 @@
-module.controller("browseCtrl", function ($scope, $http, $q, settingsService, urlConfig, activityService, activityTypeService, invitationService) {
+module.controller("browseCtrl", function ($scope, $http, $q, urlConfig, activityService, activityTypeService, invitationService) {
 	$scope.activities = [];
 
 	$scope.initialize = function() {
@@ -82,5 +82,10 @@ module.controller("browseCtrl", function ($scope, $http, $q, settingsService, ur
 			return activityTypeService.getStyles(activity.activity_type_id);
 		}
 		return "";
+	};
+
+	$scope.getCurrentActivityIndex = function()
+	{
+		return browseCarousel.getActiveCarouselItemIndex();
 	};
 });

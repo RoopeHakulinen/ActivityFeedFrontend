@@ -23,7 +23,6 @@
 	<script src="conf.js" type="application/javascript"></script>
 	<script src="eventService.js" type="application/javascript"></script>
 	<script src="fileSystemService.js" type="application/javascript"></script>
-	<script src="settingsService.js" type="application/javascript"></script>
 	<script src="userService.js" type="application/javascript"></script>
 	<script src="activityService.js" type="application/javascript"></script>
 	<script src="activityTypeService.js" type="application/javascript"></script>
@@ -151,7 +150,7 @@
 				<ons-carousel-cover>
 					<div class="cover-label">
 						Pyyhkäise ruutua selataksesi aktiviteettejä.<br/>
-						Aktiviteetti {{$index + 1}} / {{activities.length}}
+						Aktiviteetti {{getCurrentActivityIndex() + 1}} / {{activities.length}}
 					</div>
 				</ons-carousel-cover>
 			</ons-carousel>

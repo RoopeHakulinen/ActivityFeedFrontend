@@ -1,5 +1,5 @@
-module.controller("settingsCtrl", function ($scope, userService, settingsService) {
-	$scope.range = settingsService.getRange();
+module.controller("settingsCtrl", function ($scope, userService) {
+	$scope.range = userService.getRange();
 
 	$scope.logout = function ()
 	{
@@ -13,7 +13,6 @@ module.controller("settingsCtrl", function ($scope, userService, settingsService
 
 	$scope.storeSettings = function()
 	{
-		settingsService.setRange($scope.range);
-		settingsService.save();
+		userService.setRange($scope.range);
 	};
 });

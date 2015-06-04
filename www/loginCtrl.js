@@ -1,4 +1,4 @@
-module.controller("loginCtrl", function (eventService, $scope, $http, settingsService, fileSystemService, userService, urlConfig, activityTypeService) {
+module.controller("loginCtrl", function (eventService, $scope, $http, fileSystemService, userService, urlConfig, activityTypeService) {
 	$scope.email = "";
 	$scope.password = "";
 
@@ -55,7 +55,6 @@ module.controller("loginCtrl", function (eventService, $scope, $http, settingsSe
 	{
 		console.log("Login succeeded.");
 		activityTypeService.getActivityTypes();
-		settingsService.loadUserSettings();
 		appNavigator.pushPage("main-view.html",
 			{
 				onTransitionEnd: function ()

@@ -1,4 +1,4 @@
-module.service('activityService', function ($http, $q, urlConfig, userService, settingsService) {
+module.service('activityService', function ($http, $q, urlConfig, userService) {
 	this.activities = [];
 
 	this.getActivities = function (fetchMore)
@@ -34,7 +34,7 @@ module.service('activityService', function ($http, $q, urlConfig, userService, s
 		// Add location stuff AKA lat, lng and range
 		var loc = userService.getLocation();
 		var history = JSON.stringify(this.activities.map(function(item) { return item.id; })); // Add only the ids in the history
-		url += "?lat=" + loc.lat + "&lng=" + loc.lng + "&range=" + settingsService.getRange() + "&history=" + history;
+		url += "?lat=" + loc.lat + "&lng=" + loc.lng + "&range=" + userService.getRange() + "&history=" + history;
 
 		$http.get(url).success(
 			function (data)

@@ -31,6 +31,18 @@ module.service('userService', function () {
 		return this.getUser().id;
 	};
 
+	this.getRange = function ()
+	{
+		return this.getUser().range;
+	};
+
+	this.setRange = function (range)
+	{
+		var user = this.getUser();
+		user.range = range;
+		this.setUser(user);
+	};
+
 	this.getLocation = function ()
 	{
 		return this.position;
