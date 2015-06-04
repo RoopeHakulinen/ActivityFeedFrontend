@@ -33,7 +33,8 @@ module.service('userService', function () {
 
 	this.getRange = function ()
 	{
-		return this.getUser().range;
+		var user = this.getUser();
+		return user ? user.range : "50";
 	};
 
 	this.setRange = function (range)
