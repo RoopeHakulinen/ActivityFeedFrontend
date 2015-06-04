@@ -1,5 +1,5 @@
 module.controller("settingsCtrl", function ($scope, userService) {
-	$scope.range = parseInt(userService.getRange());
+	$scope.range = userService.getRange();
 
 	$scope.logout = function ()
 	{

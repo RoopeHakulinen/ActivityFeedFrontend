@@ -34,7 +34,7 @@ module.service('userService', function () {
 	this.getRange = function ()
 	{
 		var user = this.getUser();
-		return user && user.range ? user.range : "50";
+		return user && user.range ? parseInt(user.range) : 50;
 	};
 
 	this.setRange = function (range)
