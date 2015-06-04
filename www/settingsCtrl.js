@@ -6,11 +6,7 @@ module.controller("settingsCtrl", function ($scope, userService) {
 		userService.logout(true);
 	};
 
-	$scope.$on("$destroy", function handler() {
+	$scope.$on("$destroy", function () {
 		userService.setRange($scope.range);
 	});
-
-	$scope.storeSettings = function()
-	{
-	};
 });
