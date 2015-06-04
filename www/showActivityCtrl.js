@@ -13,10 +13,11 @@ module.controller("showActivityCtrl", function ($scope, urlConfig, activityServi
 			window.plugins.toast.showShortBottom('Kommentti ei voi olla tyhjä.');
 			return;
 		}
+
 		activityService.sendComment($scope.activity.id, $scope.comment).then(
-			function ()
+			function (data)
 			{
-				activity.comments.push(comment);
+				$scope.activity.comments.push(data);
 			},
 			function()
 			{
