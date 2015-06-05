@@ -57,11 +57,6 @@ module.controller("listInvitationsCtrl", function ($scope, urlConfig, invitation
 		appNavigator.pushPage("show-activity.html", {activity: activity});
 	};
 
-	$scope.getActivityTypeName = function(id)
-	{
-		return activityTypeService.getName(id);
-	};
-
 	$scope.getDuration = function (from, to)
 	{
 		return Date.parse(from) - Date.parse(to);

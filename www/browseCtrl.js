@@ -67,15 +67,6 @@ module.controller("browseCtrl", function ($scope, $http, $q, urlConfig, activity
 		return imageUrl;
 	};
 
-	$scope._getActivityTypeStyles = function(activity)
-	{
-		if (typeof activity.activity_type_id !== "undefined")
-		{
-			return activityTypeService.getStyles(activity.activity_type_id);
-		}
-		return "";
-	};
-
 	$scope.getCurrentActivityIndex = function()
 	{
 		return browseCarousel.getActiveCarouselItemIndex();
