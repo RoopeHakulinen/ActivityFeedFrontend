@@ -128,7 +128,7 @@
 						<div class="profile-stars">
 							<div class="star-five" ng-class="{highlight: activity.required_level >= n}" ng-repeat="n in [1, 2, 3, 4, 5]"></div>
 						</div>
-						<div class="profile-participants">{{activity.participants}} / {{activity.participant_count}} pelaajaa jo mukana</div>
+						<div class="profile-participants">{{activity.participants.length + 1}} / {{activity.participant_count}} pelaajaa jo mukana</div>
 						<div class="profile-distance">{{activity.distance | number:1}} km</div>
 					</div>
 					<div class="controls" style="width: 140px; margin: 5% auto;">
