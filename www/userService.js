@@ -1,4 +1,4 @@
-module.service('userService', function (urlConfig) {
+module.service('userService', function ($http, urlConfig) {
 	this.position = {lat: 0, lng: 0};
 
 	this.setUser = function (user)
