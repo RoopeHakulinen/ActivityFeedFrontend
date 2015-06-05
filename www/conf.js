@@ -17,6 +17,6 @@ module.constant(
 		"activityTypes": serverUrl + "activity_types/",
 		"suggestions": serverUrl + "suggestions/",
 		"profile": serverUrl + "profile/",
-		"direct": serverUrl + "direct/"
+		"directs": serverUrl + "directs/"
 	}
 );

@@ -36,6 +36,7 @@
 	<script src="myActivitiesCtrl.js" type="application/javascript"></script>
 	<script src="settingsCtrl.js" type="application/javascript"></script>
 	<script src="showActivityCtrl.js" type="application/javascript"></script>
+	<script src="showProfileCtrl.js" type="application/javascript"></script>
 </head>
 <body ng-app="app">
 <ons-navigator var="appNavigator" page="login.html"></ons-navigator>
@@ -119,7 +120,7 @@
 		<div ng-show="activities.length" style="height: 100%;">
 			<ons-carousel swipeable overscrollable auto-scroll auto-refresh style="height: 100%;" var="browseCarousel" auto-scroll-ratio="0.33" ons-postchange="changed($event)" ons-overscroll="overscrolled($event)">
 				<ons-carousel-item ng-repeat="activity in activities track by $index">
-					<div class="profile-card" style="{{activity.activity_type.style}}">
+					<div class="profile-card" style="{{activity.activity_type.style}}" ng-click="showProfile(activity.organizer)">
 						<img ng-src="{{_getOrganizerImage(activity)}}" class="profile-image" alt="{{activity.organizer.email}}">
 						<div class="profile-name">{{activity.organizer.profile.name}}</div>
 						<div class="profile-location-name">{{activity.location_name}}</div>
@@ -290,6 +291,43 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ons-template id="show-profile.html">
+	<ons-page class="center" ng-controller="showProfileCtrl" ng-init="initialize(appNavigator.getCurrentPage().options.profile)">
+		<ons-toolbar>
+			<div class="left"><ons-back-button>Takaisin</ons-back-button></div>
+			<div class="center">Activer</div>
+			<div class="right">
+			</div>
+		</ons-toolbar>
+
+		<div style="height: 100%;">
+			{{profile.name}} ({{profile.user_id}})
+			<ons-button ng-hide="profile.is_direct" modifier="large" ng-click="addAsDirect(profile)">Lisää Direct</ons-button>
+			<ons-button ng-show="profile.is_direct" modifier="large" ng-click="removeDirect(profile)">Poista Direct</ons-button>
+		</div>
+	</ons-page>
+</ons-template>
 
 
 

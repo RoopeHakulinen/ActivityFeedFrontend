@@ -22,7 +22,7 @@ module.controller("showActivityCtrl", function ($scope, urlConfig, activityServi
 			},
 			function()
 			{
-				window.plugins.toast.showShortBottom('Comment sending failed with status ' + status);
+				window.plugins.toast.showShortBottom('Comment sending failed.');
 			});
 	};
 });

@@ -92,5 +92,10 @@ module.controller("browseCtrl", function ($scope, $http, $q, urlConfig, activity
 				})
 			);
 		}
-	}
+	};
+
+	$scope.showProfile = function (profile)
+	{
+		appNavigator.pushPage("show-profile.html", {profile: profile});
+	};
 });
