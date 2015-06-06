@@ -1,12 +1,23 @@
 module.service('directService', function ($http, urlConfig) {
-	this.directs = this.getDirects();
+	this.directs = false;
 
 	this.getDirects = function ()
 	{
-		if (typeof this.directs === "undefined")
+		var deferred = $q.defer();
+		if (!this.directs)
 		{
-			return $http.get(urlConfig["directs"]);
+			$http.get(urlConfig["directs"]).then(
+					function (data) {
+						this.directs = data;
+						deferred.resolve(this.directs)
+					}.bind(this)
+				);
 		}
+		else
+		{
+			deferred.resolve(this.directs);
+		}
+		return deferred.promise;
 	};
 
 	this.addAsDirect = function (userId)
