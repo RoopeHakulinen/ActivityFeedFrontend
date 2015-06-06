@@ -52,7 +52,7 @@ module.controller("createActivityCtrl", function ($scope, $http, $q, urlConfig, 
 	$scope.showDirectMenu = function ()
 	{
 		var deferred = $q.defer();
-		appNavigator.pushPage("select-list.html", {name: "Lähetä kutsu Directeille", data: directService.getDirects(), selection: [], deferred: deferred});
+		appNavigator.pushPage("select-list.html", {name: "Lähetä kutsu Directeille", dataPromise: directService.getDirects(), selection: [], deferred: deferred});
 		return deferred.promise;
 	};
 
