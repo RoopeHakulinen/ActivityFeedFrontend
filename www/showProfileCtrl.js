@@ -1,4 +1,4 @@
-module.controller("showProfileCtrl", function ($scope, userService) {
+module.controller("showProfileCtrl", function ($scope, directService) {
 	$scope.profile = {};
 
 	$scope.initialize = function(profile) {
@@ -7,7 +7,7 @@ module.controller("showProfileCtrl", function ($scope, userService) {
 
 	$scope.addAsDirect = function()
 	{
-		userService.addAsDirect($scope.profile.user_id).then(
+		directService.addAsDirect($scope.profile.user_id).then(
 			function ()
 			{
 				$scope.profile.is_direct = true;
@@ -21,7 +21,7 @@ module.controller("showProfileCtrl", function ($scope, userService) {
 
 	$scope.removeDirect = function()
 	{
-		userService.removeDirect($scope.profile.user_id).then(
+		directService.removeDirect($scope.profile.user_id).then(
 			function ()
 			{
 				$scope.profile.is_direct = false;

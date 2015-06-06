@@ -1,48 +1,17 @@
-module.service('directService', function ($http, $q, urlConfig) {
-	this.directs = false;
-
-	this.getDirects = function ()
+module.service('directService', function ($http, urlConfig) {
+	this.addAsDirect = function (userId)
 	{
-		var deferred = $q.defer();
-		if (!this.directs)
-		{
-			this._fetchDirects().then(
-				function(data)
-				{
-					this.directs = data;
-					deferred.resolve(this.directs)
-				}.bind(this)
-			);
-		}
-		else
-		{
-			deferred.resolve(this.directs);
-		}
-		return deferred.promise;
-	};
-
-	this._fetchDirects = function ()
-	{
-		return $http.get();
-	};
-
-	this.addDirect = function (id)
-	{
-		return $http.post(urlConfig["direct"] + id + "/").success(
-			function (data)
+		return $http.post(urlConfig["directs"],
 			{
-				this.directs.push(data);
-			}.bind(this)
+				direct: {
+					direct_id: userId
+				}
+			}
 		);
 	};
 
-	this.removeDirect = function (id)
+	this.removeDirect = function (userId)
 	{
-		return $http.delete(urlConfig["direct"] + id + "/").success(
-			function (data)
-			{
-				this.directs.push(data);
-			}.bind(this)
-		);
+		return $http.del(urlConfig["directs"] + userId);
 	};
 });

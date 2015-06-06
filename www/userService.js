@@ -1,4 +1,4 @@
-module.service('userService', function ($http, urlConfig) {
+module.service('userService', function () {
 	this.position = {lat: 0, lng: 0};
 
 	this.setUser = function (user)
@@ -93,22 +93,6 @@ module.service('userService', function ($http, urlConfig) {
 			{maximumAge: 1000*60*30, enableHighAccuracy: true}
 		);
 		setTimeout(this._updatePosition.bind(this), 1000*60*15);
-	};
-
-	this.addAsDirect = function (userId)
-	{
-		return $http.post(urlConfig["directs"],
-			{
-				direct: {
-					direct_id: userId
-				}
-			}
-		);
-	};
-
-	this.removeDirect = function (userId)
-	{
-		return $http.del(urlConfig["directs"] + userId);
 	};
 
 	this.logout = function (force)
