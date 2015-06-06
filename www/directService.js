@@ -8,8 +8,8 @@ module.service('directService', function ($http, $q, urlConfig) {
 		{
 			$http.get(urlConfig["directs"]).then(
 					function (data) {
-						this.directs = data;
-						deferred.resolve(this.directs)
+						this.directs = data.data;
+						deferred.resolve(this.directs);
 					}.bind(this)
 				);
 		}
