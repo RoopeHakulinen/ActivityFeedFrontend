@@ -1,4 +1,4 @@
-module.controller("createActivityCtrl", function ($scope, $http, urlConfig, activityService, activityTypeService, userService) {
+module.controller("createActivityCtrl", function ($scope, $http, $q, urlConfig, activityService, activityTypeService, userService) {
 	$scope.activityTypes = [];
 
 	$scope.activityType = {name: "", id: -1};
@@ -27,25 +27,33 @@ module.controller("createActivityCtrl", function ($scope, $http, urlConfig, acti
 
 	$scope.createActivity = function()
 	{
-		commonLoader.show();
+		$scope.showDirectMenu().then(
+			function () {
+				commonLoader.show();
 
-		activityService.create($scope.activityType.id, $scope.locationName, $scope.lat, $scope.lng, $scope.date + "T" + $scope.from, $scope.date + "T" + $scope.to, $scope.participantCount, $scope.requiredLevel, $scope.message).success(
-			function()
-			{
-				window.plugins.toast.showShortBottom('Activity successfully added.');
-			}
-		).error(
-			function(data, status)
-			{
+				activityService.create($scope.activityType.id, $scope.locationName, $scope.lat, $scope.lng, $scope.date + "T" + $scope.from, $scope.date + "T" + $scope.to, $scope.participantCount, $scope.requiredLevel, $scope.message).success(
+					function () {
+						window.plugins.toast.showShortBottom('Activity successfully added.');
+					}
+				).error(
+					function (data, status) {
 
-				window.plugins.toast.showShortBottom('Activity creation failed with status ' + status);
-			}
-		).finally(
-			function ()
-			{
-				commonLoader.hide();
+						window.plugins.toast.showShortBottom('Activity creation failed with status ' + status);
+					}
+				).finally(
+					function () {
+						commonLoader.hide();
+					}
+				);
 			}
 		);
+	};
+
+	$scope.showDirectMenu = function ()
+	{
+		var deferred = $q.defer();
+		appNavigator.pushPage("select-list.html", {name: "Lähetä kutsu Directeille", data: directService.getDirects(), selection: [], deferred: deferred});
+		return deferred.promise;
 	};
 
 	$scope.initialize();
