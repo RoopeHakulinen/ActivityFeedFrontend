@@ -30,7 +30,7 @@ module.service("eventService", function (userService) {
 
 			if ( event.badge )
 			{
-				pushNotification.setApplicationIconBadgeNumber(successHandler, errorHandler, event.badge);
+				window.plugins.pushNotification.setApplicationIconBadgeNumber(successHandler, errorHandler, event.badge);
 			}
 		}
 
@@ -95,7 +95,7 @@ module.service("eventService", function (userService) {
 		
 		if (device.platform == 'android' || device.platform == 'Android')
 		{
-			pushNotification.register(
+			window.plugins.pushNotification.register(
 				successHandler,
 				errorHandler,
 				{
@@ -105,7 +105,7 @@ module.service("eventService", function (userService) {
 		}
 		else
 		{
-			pushNotification.register(
+			window.plugins.pushNotification.register(
 				tokenHandler,
 				errorHandler,
 				{
