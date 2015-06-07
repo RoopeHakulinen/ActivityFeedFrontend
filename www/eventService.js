@@ -5,86 +5,86 @@ module.service("eventService", function (userService) {
 		userService.logout();
 	};
 
-	// iOS
-	function onNotificationAPN (event) {
-		if ( event.alert )
-		{
-			navigator.notification.alert(event.alert);
-		}
-
-		if ( event.sound )
-		{
-			var snd = new Media(event.sound);
-			snd.play();
-		}
-
-		if ( event.badge )
-		{
-			window.plugins.pushNotification.setApplicationIconBadgeNumber(successHandler, errorHandler, event.badge);
-		}
-	}
-
-	// Android and Amazon Fire OS
-	function onNotification(e) {
-		alert('EVENT -> RECEIVED:' + e.event);
-
-		switch( e.event )
-		{
-			case 'registered':
-				if ( e.regid.length > 0 )
-				{
-					alert('REGISTERED -> REGID:' + e.regid);
-					// Your GCM push server needs to know the regID before it can push to this device
-					// here is where you might want to send it the regID for later use.
-					console.log("regID = " + e.regid);
-				}
-				break;
-
-			case 'message':
-				// if this flag is set, this notification happened while we were in the foreground.
-				// you might want to play a sound to get the user's attention, throw up a dialog, etc.
-				if ( e.foreground )
-				{
-					alert('--INLINE NOTIFICATION--');
-
-					// on Android soundname is outside the payload.
-					// On Amazon FireOS all custom attributes are contained within payload
-					var soundfile = e.soundname || e.payload.sound;
-					// if the notification contains a soundname, play it.
-					var my_media = new Media("/android_asset/www/"+ soundfile);
-					my_media.play();
-				}
-				else
-				{  // otherwise we were launched because the user touched a notification in the notification tray.
-					if ( e.coldstart )
-					{
-						alert('--COLDSTART NOTIFICATION--');
-					}
-					else
-					{
-						alert('--BACKGROUND NOTIFICATION--');
-					}
-				}
-
-				alert('MESSAGE -> MSG: ' + e.payload.message);
-				//Only works for GCM
-				alert('MESSAGE -> MSGCNT: ' + e.payload.msgcnt);
-				//Only works on Amazon Fire OS
-				$status.append('MESSAGE -> TIME: ' + e.payload.timeStamp);
-				break;
-
-			case 'error':
-				alert('ERROR -> MSG:' + e.msg);
-				break;
-
-			default:
-				alert('EVENT -> Unknown, an event was received and we do not know what it is');
-				break;
-		}
-	}
-
 	this.initializePushNotifications = function ()
 	{
+		// iOS
+		onNotificationAPN = function (event) {
+			if ( event.alert )
+			{
+				navigator.notification.alert(event.alert);
+			}
+
+			if ( event.sound )
+			{
+				var snd = new Media(event.sound);
+				snd.play();
+			}
+
+			if ( event.badge )
+			{
+				window.plugins.pushNotification.setApplicationIconBadgeNumber(successHandler, errorHandler, event.badge);
+			}
+		}
+
+		// Android and Amazon Fire OS
+		onNotification = function (e) {
+			alert('EVENT -> RECEIVED:' + e.event);
+
+			switch( e.event )
+			{
+				case 'registered':
+					if ( e.regid.length > 0 )
+					{
+						alert('REGISTERED -> REGID:' + e.regid);
+						// Your GCM push server needs to know the regID before it can push to this device
+						// here is where you might want to send it the regID for later use.
+						console.log("regID = " + e.regid);
+					}
+					break;
+
+				case 'message':
+					// if this flag is set, this notification happened while we were in the foreground.
+					// you might want to play a sound to get the user's attention, throw up a dialog, etc.
+					if ( e.foreground )
+					{
+						alert('--INLINE NOTIFICATION--');
+
+						// on Android soundname is outside the payload.
+						// On Amazon FireOS all custom attributes are contained within payload
+						var soundfile = e.soundname || e.payload.sound;
+						// if the notification contains a soundname, play it.
+						var my_media = new Media("/android_asset/www/"+ soundfile);
+						my_media.play();
+					}
+					else
+					{  // otherwise we were launched because the user touched a notification in the notification tray.
+						if ( e.coldstart )
+						{
+							alert('--COLDSTART NOTIFICATION--');
+						}
+						else
+						{
+							alert('--BACKGROUND NOTIFICATION--');
+						}
+					}
+
+					alert('MESSAGE -> MSG: ' + e.payload.message);
+					//Only works for GCM
+					alert('MESSAGE -> MSGCNT: ' + e.payload.msgcnt);
+					//Only works on Amazon Fire OS
+					$status.append('MESSAGE -> TIME: ' + e.payload.timeStamp);
+					break;
+
+				case 'error':
+					alert('ERROR -> MSG:' + e.msg);
+					break;
+
+				default:
+					alert('EVENT -> Unknown, an event was received and we do not know what it is');
+					break;
+			}
+		}
+
 		function successHandler (result) {
 			alert('result = ' + result);
 		}
