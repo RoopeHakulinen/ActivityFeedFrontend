@@ -24,21 +24,21 @@ module.service("eventService", function (userService) {
 			{
 				window.plugins.pushNotification.setApplicationIconBadgeNumber(successHandler, errorHandler, event.badge);
 			}
-		}
+		};
 
 		// Android and Amazon Fire OS
 		onNotification = function (e) {
-			alert('EVENT -> RECEIVED:' + e.event);
+			console.warn('EVENT -> RECEIVED:' + e.event);
 
 			switch( e.event )
 			{
 				case 'registered':
 					if ( e.regid.length > 0 )
 					{
-						alert('REGISTERED -> REGID:' + e.regid);
+						console.warn('REGISTERED -> REGID:' + e.regid);
 						// Your GCM push server needs to know the regID before it can push to this device
 						// here is where you might want to send it the regID for later use.
-						console.log("regID = " + e.regid);
+						console.warn("regID = " + e.regid);
 					}
 					break;
 
@@ -47,7 +47,7 @@ module.service("eventService", function (userService) {
 					// you might want to play a sound to get the user's attention, throw up a dialog, etc.
 					if ( e.foreground )
 					{
-						alert('--INLINE NOTIFICATION--');
+						console.warn('--INLINE NOTIFICATION--');
 
 						// on Android soundname is outside the payload.
 						// On Amazon FireOS all custom attributes are contained within payload
@@ -60,37 +60,37 @@ module.service("eventService", function (userService) {
 					{  // otherwise we were launched because the user touched a notification in the notification tray.
 						if ( e.coldstart )
 						{
-							alert('--COLDSTART NOTIFICATION--');
+							console.warn('--COLDSTART NOTIFICATION--');
 						}
 						else
 						{
-							alert('--BACKGROUND NOTIFICATION--');
+							console.warn('--BACKGROUND NOTIFICATION--');
 						}
 					}
 
-					alert('MESSAGE -> MSG: ' + e.payload.message);
+					console.warn('MESSAGE -> MSG: ' + e.payload.message);
 					//Only works for GCM
-					alert('MESSAGE -> MSGCNT: ' + e.payload.msgcnt);
+					console.warn('MESSAGE -> MSGCNT: ' + e.payload.msgcnt);
 					//Only works on Amazon Fire OS
-					$status.append('MESSAGE -> TIME: ' + e.payload.timeStamp);
+					console.warn('MESSAGE -> TIME: ' + e.payload.timeStamp);
 					break;
 
 				case 'error':
-					alert('ERROR -> MSG:' + e.msg);
+					console.warn('ERROR -> MSG:' + e.msg);
 					break;
 
 				default:
-					alert('EVENT -> Unknown, an event was received and we do not know what it is');
+					console.warn('EVENT -> Unknown, an event was received and we do not know what it is');
 					break;
 			}
-		}
+		};
 
 		function successHandler (result) {
-			alert('result = ' + result);
+			console.warn('result = ' + result);
 		}
 
 		function errorHandler (error) {
-			alert('error = ' + error);
+			console.warn('error = ' + error);
 		}
 		
 		if (device.platform == 'android' || device.platform == 'Android')
