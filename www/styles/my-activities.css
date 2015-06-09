@@ -1,0 +1,61 @@
+.my-activities-list {
+	border-top: none;
+	background-image: none !important;
+}
+
+.my-activities {
+	line-height: 1;
+	padding: 0;
+}
+
+.my-activities.own
+{
+	background-color: lightgreen;
+}
+
+.my-activities.pending
+{
+	background-color: lightyellow;
+}
+
+.my-activities.participating
+{
+	background-color: darkcyan;
+}
+
+.my-activities-left {
+	text-align: right;
+	padding: 10px 10px 10px 0;
+}
+
+.my-activities-center {
+	background-color: #3399ff;
+	opacity: 0.5;
+}
+
+.my-activities-right {
+	padding: 10px 40px 10px 10px;
+}
+
+.my-activities-date {
+	font-size: 14px;
+	opacity: 0.8;
+	margin-bottom: 4px;
+	font-weight: 500;
+}
+
+.my-activities-duration {
+	font-size: 11px;
+	opacity: 0.4;
+}
+
+.my-activities-name {
+	font-size: 17px;
+	margin-bottom: 8px;
+}
+
+.my-activities-info {
+	opacity: 0.4;
+	font-size: 12px;
+	line-height: 1.4;
+}
