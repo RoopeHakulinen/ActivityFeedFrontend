@@ -1,4 +1,6 @@
 .page__content
 {
-	background-color: #B3E4F5 !important;
+	background-color: #b3e4f5;
+	background-image: url("zenbg-1.png"), url("zenbg-2.png");
+	background-repeat: repeat-x, repeat;
 }
