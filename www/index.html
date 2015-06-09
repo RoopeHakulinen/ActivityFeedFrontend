@@ -128,16 +128,19 @@
 			<ons-carousel swipeable overscrollable auto-scroll auto-refresh style="height: 100%;" var="browseCarousel" auto-scroll-ratio="0.33" ons-postchange="changed($event)" ons-overscroll="overscrolled($event)">
 				<ons-carousel-item ng-repeat="activity in activities track by $index">
 					<div class="profile-card" style="{{activity.activity_type.style}}" ng-click="showProfile(activity.organizer)">
-						<img ng-src="{{_getOrganizerImage(activity)}}" class="profile-image" alt="{{activity.organizer.email}}">
-						<div class="profile-name">{{activity.organizer.profile.name}}</div>
-						<div class="profile-location-name">{{activity.location_name}}</div>
-						<div class="profile-timeframe">{{activity.from | asDate | date: "d.M. klo H:mm"}} - {{activity.to | asDate | date: "H:mm"}}</div>
-						<div class="profile-desc">{{activity.comments[0].text}}</div>
-						<div class="profile-stars">
-							<div class="star-five" ng-class="{highlight: activity.required_level >= n}" ng-repeat="n in [1, 2, 3, 4, 5]"></div>
+						<img ng-src="{{_getOrganizerImage(activity)}}" class="activity-organizer-image" alt="{{activity.organizer.email}}">
+						<div class="activity-info">
+							<div class="activity-type-name">{{activity.activity_type.name}}</div>
+							<div class="activity-organizer-name">{{activity.organizer.name}}</div>
+							<div class="activity-location-name">{{activity.location_name}}</div>
+							<div class="activity-timeframe">{{activity.from | asDate | date: "d.M. klo H:mm"}} - {{activity.to | asDate | date: "H:mm"}}</div>
+							<div class="activity-desc">{{activity.comments[0].text}}</div>
+							<div class="activity-stars">
+								<div class="star-five" ng-class="{highlight: activity.required_level >= n}" ng-repeat="n in [1, 2, 3, 4, 5]"></div>
+							</div>
+							<div class="activity-participants">{{activity.participants.length + 1}} / {{activity.participant_count}} pelaajaa jo mukana</div>
+							<div class="activity-distance">{{activity.distance | number:1}} km</div>
 						</div>
-						<div class="profile-participants">{{activity.participants.length + 1}} / {{activity.participant_count}} pelaajaa jo mukana</div>
-						<div class="profile-distance">{{activity.distance | number:1}} km</div>
 					</div>
 					<div class="controls" style="width: 140px; margin: 5% auto;">
 						<ons-icon

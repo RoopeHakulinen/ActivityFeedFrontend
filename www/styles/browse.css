@@ -20,7 +20,16 @@
 	height: 60%;
 }
 
-.profile-image {
+.profile-card .activity-info
+{
+	background-color: rgba(0, 0, 0, 0.85);
+	border-radius: 10px;
+	padding: 2px;
+	width: 85%;
+	margin: 0 auto;
+}
+
+.profile-card .activity-organizer-image {
 	height: 200px;
 	width: 200px;
 	border-radius: 50%;
@@ -29,24 +38,4 @@
 	border: 1px solid white;
 	box-shadow:rgba(0, 0, 0, 0.2) 0px 2px 0px 0px;
 	-webkit-box-shadow:rgba(0, 0, 0, 0.2) 0px 2px 0px 0px;
-}
-
-.profile-name {
-	margin: 20px 0 0 0;
-	font-weight: 600;
-	font-size: 17px;
-}
-
-.profile-id {
-	margin: 0 0 5px 0;
-	font-size: 14px;
-	opacity: 0.6;
-}
-
-.profile-desc {
-	font-size: 15px;
-	opacity: 0.6;
-	width: 90%;
-	text-align: center;
-	margin: 0 auto;
 }
