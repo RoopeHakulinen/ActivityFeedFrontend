@@ -165,7 +165,12 @@
 			</ons-carousel>
 		</div>
 		<div ng-hide="activities.length">
-			<div style="margin: 0 auto; width: 130px;margin-top: 100px">Ei aktiviteetteja..</div>
+			<div style="margin: 0 auto; width: 130px;margin-top: 100px">
+				Ei aktiviteetteja..<br/>
+				<ons-button modifier="large outline" style="margin: 0 auto;" ng-click="updateActivities(true);">
+					Päivitä
+				</ons-button>
+			</div>
 		</div>
 	</ons-page>
 </ons-template>
