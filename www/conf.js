@@ -9,6 +9,7 @@ if (TEST_ENABLED)
 module.constant(
 	"urlConfig",
 	{
+		"user": serverUrl + "user",
 		"login": serverUrl + "users/sign_in",
 		"facebookCallback": serverUrl + "users/facebook/",
 		"activity": serverUrl + "activity/",

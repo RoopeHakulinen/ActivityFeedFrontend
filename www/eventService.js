@@ -1,4 +1,4 @@
-module.service("eventService", function (userService) {
+module.service("eventService", function (userService, $http) {
 
 	this.logout = function()
 	{
@@ -7,35 +7,41 @@ module.service("eventService", function (userService) {
 
 	this.initializePushNotifications = function ()
 	{
+		function registerDevice(system, id)
+		{
+			$http.put(urlConfig["user"], {user: {notification_system: system, notification_id: id}});
+		}
+
 		// iOS
 		onNotificationAPN = function (event) {
-			if ( event.alert )
+			if (event.alert)
 			{
 				navigator.notification.alert(event.alert);
 			}
 
-			if ( event.sound )
+			if (event.sound)
 			{
 				var snd = new Media(event.sound);
 				snd.play();
 			}
 
-			if ( event.badge )
+			if (event.badge)
 			{
 				window.plugins.pushNotification.setApplicationIconBadgeNumber(successHandler, errorHandler, event.badge);
 			}
 		};
 
-		// Android and Amazon Fire OS
+		// Android
 		onNotification = function (e) {
 			console.warn('EVENT -> RECEIVED:' + e.event);
 
-			switch( e.event )
+			switch(e.event)
 			{
 				case 'registered':
-					if ( e.regid.length > 0 )
+					if (e.regid.length > 0)
 					{
 						console.warn('REGISTERED -> REGID:' + e.regid);
+						registerDevice("Gcm", e.regid);
 						// Your GCM push server needs to know the regID before it can push to this device
 						// here is where you might want to send it the regID for later use.
 						console.warn("regID = " + e.regid);
@@ -45,7 +51,7 @@ module.service("eventService", function (userService) {
 				case 'message':
 					// if this flag is set, this notification happened while we were in the foreground.
 					// you might want to play a sound to get the user's attention, throw up a dialog, etc.
-					if ( e.foreground )
+					if (e.foreground)
 					{
 						console.warn('--INLINE NOTIFICATION--');
 
@@ -58,7 +64,7 @@ module.service("eventService", function (userService) {
 					}
 					else
 					{  // otherwise we were launched because the user touched a notification in the notification tray.
-						if ( e.coldstart )
+						if (e.coldstart)
 						{
 							console.warn('--COLDSTART NOTIFICATION--');
 						}
@@ -84,6 +90,12 @@ module.service("eventService", function (userService) {
 					break;
 			}
 		};
+
+		function tokenHandler (result)
+		{
+			console.warn("Got Apns token " + result);
+			registerDevice("Apns", result);
+		}
 
 		function successHandler (result) {
 			console.warn('result = ' + result);
@@ -160,7 +172,6 @@ module.service("eventService", function (userService) {
 				"OK"
 			);
 		};
-		this.initializePushNotifications();
 		userService.initializePosition();
 	}.bind(this), false);
 
