@@ -1,4 +1,4 @@
-module.controller("showProfileCtrl", function ($scope, directService) {
+module.controller("showProfileCtrl", function ($scope, directService, userService) {
 	$scope.profile = {};
 
 	$scope.initialize = function(profile) {

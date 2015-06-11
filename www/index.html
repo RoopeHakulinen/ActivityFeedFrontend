@@ -340,7 +340,7 @@
 		<div class="profile-card">
 			<img src="{{profile.picture}}" class="profile-image">
 			<div class="profile-name">{{profile.name}}</div>
-			<div class="profile-id">{{profile.born | ageFilter}}</div>
+			<div class="profile-id">Ikä: {{profile.born | ageFilter}}</div>
 			<div class="profile-desc">{{profile.description}}</div>
 		</div>
 
@@ -349,10 +349,10 @@
 				<ons-row>
 					<ons-col class="info-col">
 						<div class="info-num">{{profile.activity_count}}</div>
-						<div class="info-unit">Aktiviteettia</div>
+						<div class="info-unit">Osallistumista</div>
 					</ons-col>
 					<ons-col class="info-col">
-						<div class="info-num">{{profile.rating_mean}}</div>
+						<div class="info-num">{{profile.rating_mean | number:1}}</div>
 						<div class="info-unit">Palaute (0-5)</div>
 					</ons-col>
 					<ons-col class="info-col">
@@ -364,7 +364,7 @@
 		</ons-list>
 
 		<ons-list modifier="inset" style="margin-top: 10px">
-			<ons-list-item modifier="chevron" ng-hide="profile.is_direct" ng-click="addAsDirect(profile)">
+			<ons-list-item modifier="chevron" ng-hide="profile.is_direct || profile.user_id == userService.getId()" ng-click="addAsDirect(profile)">
 				Lisää Directiksi
 			</ons-list-item>
 
