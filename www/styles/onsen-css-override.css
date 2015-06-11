@@ -1,6 +1,6 @@
 .page__content
 {
-	background-color: #b3e4f5;
-	background-image: url("images/ZenBG-1.png"), url("images/ZenBG-2.png");
-	background-repeat: repeat-x, repeat;
+	background-color: #b3e4f5 !important;
+	background-image: url("images/ZenBG-1.png"), url("images/ZenBG-2.png") !important;
+	background-repeat: repeat-x, repeat !important;
 }
