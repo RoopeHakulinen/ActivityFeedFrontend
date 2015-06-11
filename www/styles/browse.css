@@ -1,4 +1,4 @@
-.cover-label {
+#browse-activities .cover-label {
 	text-align: center;
 	position: absolute;
 	left: 0px;
@@ -7,7 +7,7 @@
 	color: #33393c;
 }
 
-.profile-card {
+#browse-activities .profile-card {
 	width: 80%;
 	text-align: center;
 	color: white;
@@ -20,7 +20,7 @@
 	height: 60%;
 }
 
-.profile-card .activity-info
+#browse-activities .profile-card .activity-info
 {
 	background-color: rgba(0, 0, 0, 0.85);
 	border-radius: 10px;
@@ -29,7 +29,7 @@
 	margin: 0 auto;
 }
 
-.profile-card .activity-organizer-image {
+#browse-activities .profile-card .activity-organizer-image {
 	height: 200px;
 	width: 200px;
 	border-radius: 50%;
