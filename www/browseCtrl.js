@@ -58,11 +58,11 @@ module.controller("browseCtrl", function ($scope, $http, $q, urlConfig, activity
 	$scope._getOrganizerImage = function (activity)
 	{
 		try{
-			var imageUrl = activity.organizer.profile.picture;
+			var imageUrl = activity.organizer.picture;
 		}
 		catch (e)
 		{ // Fall back to default image
-			imageUrl = "http://cdn2-b.examiner.com/sites/default/files/styles/image_content_width/hash/a8/55/a855bf4d4292f3428df5284ba5620643.jpg?itok=S73UMWZ9";
+			imageUrl = "styles/images/no-image.jpg";
 		}
 		return imageUrl;
 	};
