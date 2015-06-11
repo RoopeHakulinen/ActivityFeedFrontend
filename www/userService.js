@@ -57,7 +57,7 @@ module.service('userService', function () {
 
 	this._positioningFailed = function (error)
 	{
-		alert("Paikannus epäonnistui. Käyttäjää ei pystytty paikantamaan. Koodi: " + error.code + ", viesti: " + error.message);
+		alert("Paikannus epäonnistui. Varmista, että sovelluksella on lupa paikantamiseen. Aktiviteettien haku ei ole mahdollista ilman paikannusta.");
 	};
 
 	this._positioningCallback = function (position)
