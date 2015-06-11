@@ -32,4 +32,9 @@ module.controller("showProfileCtrl", function ($scope, directService, userServic
 				window.plugins.toast.showShortBottom('Adding as direct failed.');
 			});
 	};
+
+	$scope.hideDirect = function ()
+	{
+		return $scope.profile.user_id === userService.getId();
+	};
 });

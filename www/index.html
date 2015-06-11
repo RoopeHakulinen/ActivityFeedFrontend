@@ -364,7 +364,7 @@
 		</ons-list>
 
 		<ons-list modifier="inset" style="margin-top: 10px">
-			<ons-list-item modifier="chevron" ng-hide="profile.is_direct || profile.user_id == userService.getId()" ng-click="addAsDirect(profile)">
+			<ons-list-item modifier="chevron" ng-hide="profile.is_direct || hideDirect()" ng-click="addAsDirect(profile)">
 				Lisää Directiksi
 			</ons-list-item>
 
