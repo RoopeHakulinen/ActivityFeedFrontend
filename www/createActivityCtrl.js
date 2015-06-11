@@ -28,10 +28,16 @@ module.controller("createActivityCtrl", function ($scope, $http, $q, urlConfig, 
 	$scope.createActivity = function()
 	{
 		$scope.showDirectMenu().then(
-			function () {
+			function (directs) {
 				commonLoader.show();
 
-				activityService.create($scope.activityType.id, $scope.locationName, $scope.lat, $scope.lng, $scope.date + "T" + $scope.from, $scope.date + "T" + $scope.to, $scope.participantCount, $scope.requiredLevel, $scope.message).success(
+				directs = directs.map(
+					function (direct)
+					{
+						return direct.id;
+					}
+				);
+				activityService.create($scope.activityType.id, $scope.locationName, $scope.lat, $scope.lng, $scope.date + "T" + $scope.from, $scope.date + "T" + $scope.to, $scope.participantCount, $scope.requiredLevel, $scope.message, directs).success(
 					function () {
 						window.plugins.toast.showShortBottom('Activity successfully added.');
 					}

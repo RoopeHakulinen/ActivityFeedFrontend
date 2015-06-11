@@ -86,7 +86,7 @@ module.service('activityService', function ($http, $q, urlConfig, userService) {
 		return deferred.promise;
 	};
 
-	this.create = function (activityTypeId, locationName, lat, lng, from, to, participantCount, requiredLevel, message)
+	this.create = function (activityTypeId, locationName, lat, lng, from, to, participantCount, requiredLevel, message, directs)
 	{
 		return $http.post(urlConfig["activities"],
 			{
@@ -99,7 +99,8 @@ module.service('activityService', function ($http, $q, urlConfig, userService) {
 					lng: lng,
 					participant_count: participantCount,
 					required_level: requiredLevel,
-					message: message
+					message: message,
+					directs: directs
 				}
 			}
 		);

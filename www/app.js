@@ -30,3 +30,16 @@ module.factory('authHttpRequestInterceptor', function (userService) {
 module.config(function ($httpProvider) {
 	$httpProvider.interceptors.push('authHttpRequestInterceptor');
 });
+
+module.filter('ageFilter', function () {
+	function calculateAge (birthday) { // birthday is a date
+		var date = new Date(birthday);
+		var ageDifMs = Date.now() - date.getTime();
+		var ageDate = new Date(ageDifMs); // miliseconds from epoch
+		return Math.abs(ageDate.getUTCFullYear() - 1970);
+	}
+
+	return function (birthdate) {
+		return calculateAge(birthdate);
+	};
+});
