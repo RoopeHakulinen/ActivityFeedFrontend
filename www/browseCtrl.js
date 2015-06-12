@@ -1,11 +1,17 @@
 module.controller("browseCtrl", function ($scope, $http, $q, urlConfig, activityService, activityTypeService, invitationService) {
 	$scope.activities = [];
 	$scope.currentIndex = 0;
-	$scope.activityTypes = activityTypeService.getActivityTypes();
+	$scope.activityTypes = [];
 	$scope.selectedActivityType = {};
 
 	$scope.initialize = function() {
 		$scope.updateActivities(true);
+		activityTypeService.getActivityTypes().then(
+			function (activityTypes)
+			{
+				$scope.activityTypes = activityTypes;
+			}
+		);
 	};
 
 	$scope.invite = function(activity)

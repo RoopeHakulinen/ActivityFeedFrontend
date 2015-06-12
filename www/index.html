@@ -126,7 +126,7 @@
 		</ons-toolbar>
 
 		<div ng-show="activities.length" style="height: 100%;">
-			<ons-button modifier="large outline" style="margin: 0 auto;" ng-click="showActivityTypePopover($event);">
+			<ons-button modifier="large" style="margin: 0 auto;" ng-click="showActivityTypePopover($event);">
 				{{selectedActivityType.name || "Kaikki"}}
 			</ons-button>
 			<ons-carousel swipeable overscrollable auto-scroll auto-refresh style="height: 100%;" var="browseCarousel" auto-scroll-ratio="0.33" ons-postchange="changed($event)" ons-overscroll="overscrolled($event)">
