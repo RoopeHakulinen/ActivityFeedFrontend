@@ -124,11 +124,10 @@
 				</ons-toolbar-button>
 			</div>
 		</ons-toolbar>
-
+		<ons-button modifier="large" style="margin: 0 auto;" ng-click="showActivityTypePopover($event);">
+			{{selectedActivityType.name || "Kaikki"}}
+		</ons-button>
 		<div ng-show="activities.length" style="height: 100%;">
-			<ons-button modifier="large" style="margin: 0 auto;" ng-click="showActivityTypePopover($event);">
-				{{selectedActivityType.name || "Kaikki"}}
-			</ons-button>
 			<ons-carousel swipeable overscrollable auto-scroll auto-refresh style="height: 100%;" var="browseCarousel" auto-scroll-ratio="0.33" ons-postchange="changed($event)" ons-overscroll="overscrolled($event)">
 				<ons-carousel-item ng-repeat="activity in activities track by $index">
 					<div class="profile-card" style="{{activity.activity_type.style}}" ng-click="showProfile(activity.organizer)">
