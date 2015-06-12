@@ -1,12 +1,12 @@
 module.service('activityService', function ($http, $q, urlConfig, userService) {
 	this.activities = [];
 
-	this.getActivities = function (fetchMore)
+	this.getActivities = function (fetchMore, type)
 	{
 		var deferred = $q.defer();
 		if (fetchMore)
 		{
-			this._fetchActivities().then(
+			this._fetchActivities(type).then(
 				function (data) {
 					this.activities = this.activities.concat(data);
 					deferred.resolve(this.activities)

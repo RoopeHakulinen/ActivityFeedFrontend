@@ -47,7 +47,7 @@ module.controller("browseCtrl", function ($scope, $http, $q, urlConfig, activity
 
 	$scope.updateActivities = function(fetchMore)
 	{
-		return activityService.getActivities(fetchMore || $scope.activities.length < 5).then(
+		return activityService.getActivities(fetchMore || $scope.activities.length < 5, $scope.selectedActivityType.id).then(
 			function(activities)
 			{
 				if (activities.length === 0)
