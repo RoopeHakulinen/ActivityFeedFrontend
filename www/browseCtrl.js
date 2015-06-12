@@ -107,13 +107,15 @@ module.controller("browseCtrl", function ($scope, $http, $q, urlConfig, activity
 		appNavigator.pushPage("show-profile.html", {profile: profile});
 	};
 
-	$scope.showActivityTypePopover = function ()
+	ons.createPopover('popover.html', {parentScope: $scope}).then(
+		function(popover) {
+			$scope.popover = popover;
+		}
+	);
+
+	$scope.showActivityTypePopover = function ($event)
 	{
-		ons.createPopover('popover.html', {parentScope: $scope}).then(
-			function(popover) {
-				$scope.popover = popover;
-			}
-		);
+		$scope.popover.show($event.target);
 	};
 
 	$scope.changeActivityType = function (activityType)
