@@ -127,7 +127,7 @@
 
 		<div ng-show="activities.length" style="height: 100%;">
 			<ons-button modifier="large outline" style="margin: 0 auto;" ng-click="showActivityTypePopover($event);">
-				{{selectedActivityType.name}}
+				{{selectedActivityType.name || "Kaikki"}}
 			</ons-button>
 			<ons-carousel swipeable overscrollable auto-scroll auto-refresh style="height: 100%;" var="browseCarousel" auto-scroll-ratio="0.33" ons-postchange="changed($event)" ons-overscroll="overscrolled($event)">
 				<ons-carousel-item ng-repeat="activity in activities track by $index">
@@ -181,17 +181,18 @@
 		</div>
 
 
-		<ons-template id="activity-type-popover.html">
-			<ons-popover cancelable direction="down">
-				<ons-list>
-					<ons-list-item ng-repeat="activityType in activityTypes" ng-click="changeActivityType(activityType)" modifier="tappable">
-						{{ activityType.name }}
-					</ons-list-item>
-				</ons-list>
-			</ons-popover>
-		</ons-template>
 	</ons-page>
 </ons-template>
+
+<script type="text/ons-template" id="popover.html">
+	<ons-popover cancelable direction="down">
+		<ons-list>
+			<ons-list-item ng-repeat="activityType in activityTypes" ng-click="changeActivityType(activityType)" modifier="tappable">
+				{{ activityType.name }}
+			</ons-list-item>
+		</ons-list>
+	</ons-popover>
+</script>
 
 
 <ons-template id="main-menu.html">
