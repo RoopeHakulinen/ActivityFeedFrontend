@@ -126,5 +126,6 @@ module.controller("browseCtrl", function ($scope, $http, $q, urlConfig, activity
 			activityService.resetActivities();
 			$scope.updateActivities(true);
 		}
+		$scope.popover.hide();
 	};
 });
