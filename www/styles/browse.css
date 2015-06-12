@@ -3,7 +3,7 @@
 	position: absolute;
 	left: 0px;
 	width: 100%;
-	bottom: 10px;
+	bottom: 10%;
 	color: #33393c;
 }
 
@@ -17,7 +17,7 @@
 	text-shadow: rgba(0, 0, 0, 0.4) 0px 1px 0px;
 	margin: 10% auto 0;
 	border: 2px solid black;
-	height: 60%;
+	height: 54%;
 }
 
 #browse-activities .profile-card .activity-info
@@ -30,8 +30,8 @@
 }
 
 #browse-activities .profile-card .activity-organizer-image {
-	height: 200px;
-	width: 200px;
+	height: 150px;
+	width: 150px;
 	border-radius: 50%;
 	-webkit-border-radius: 50%;
 	background-color: black;
