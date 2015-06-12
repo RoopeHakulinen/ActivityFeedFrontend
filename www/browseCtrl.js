@@ -103,7 +103,7 @@ module.controller("browseCtrl", function ($scope, $http, $q, urlConfig, activity
 
 	$scope.showActivityTypePopover = function ()
 	{
-		ons.createPopover('popover.html').then(
+		ons.createPopover('popover.html', {parentScope: $scope}).then(
 			function(popover) {
 				$scope.popover = popover;
 			}
