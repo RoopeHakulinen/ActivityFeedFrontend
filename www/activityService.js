@@ -25,21 +25,22 @@ module.service('activityService', function ($http, $q, urlConfig, userService) {
 		this.activities = [];
 	};
 
-	this._fetchActivities = function (type)
+	this._fetchActivities = function (activityTypeId)
 	{
 		var deferred = $q.defer();
 		var url = urlConfig["activities"];
 
-		// If there is activity type specified, append that as parameter
-		if (typeof type === "number")
-		{
-			url += type + "/";
-		}
 
 		// Add location stuff AKA lat, lng and range
 		var loc = userService.getLocation();
 		var history = JSON.stringify(this.activities.map(function(item) { return item.id; })); // Add only the ids in the history
 		url += "?lat=" + loc.lat + "&lng=" + loc.lng + "&range=" + userService.getRange() + "&history=" + history;
+
+		// If there is activity type specified, append that as parameter
+		if (typeof activityTypeId === "number")
+		{
+			url += "&activity_type_id=" + activityTypeId;
+		}
 
 		$http.get(url).success(
 			function (data)
