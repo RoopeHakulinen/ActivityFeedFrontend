@@ -1,6 +1,8 @@
 module.controller("browseCtrl", function ($scope, $http, $q, urlConfig, activityService, activityTypeService, invitationService) {
 	$scope.activities = [];
 	$scope.currentIndex = 0;
+	$scope.activityTypes = activityTypeService.getActivityTypes();
+	$scope.selectedActivityType = {};
 
 	$scope.initialize = function() {
 		$scope.updateActivities(true);
@@ -97,5 +99,24 @@ module.controller("browseCtrl", function ($scope, $http, $q, urlConfig, activity
 	$scope.showProfile = function (profile)
 	{
 		appNavigator.pushPage("show-profile.html", {profile: profile});
+	};
+
+	$scope.showActivityTypePopover = function ()
+	{
+		ons.createPopover('popover.html').then(
+			function(popover) {
+				$scope.popover = popover;
+			}
+		);
+	};
+
+	$scope.changeActivityType = function (activityType)
+	{
+		if ($scope.selectedActivityType != activityType)
+		{
+			$scope.selectedActivityType = activityType;
+			activityService.resetActivities();
+			$scope.updateActivities(true);
+		}
 	};
 });

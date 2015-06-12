@@ -20,6 +20,11 @@ module.service('activityService', function ($http, $q, urlConfig, userService) {
 		return deferred.promise;
 	};
 
+	this.resetActivities = function ()
+	{
+		this.activities = [];
+	};
+
 	this._fetchActivities = function (type)
 	{
 		var deferred = $q.defer();
