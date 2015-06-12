@@ -190,7 +190,7 @@
 			<ons-list-item ng-click="changeActivityType({})" modifier="tappable">
 				Kaikki
 			</ons-list-item>
-			<ons-list-item ng-repeat="activityType in activityTypes" ng-click="parentScope.changeActivityType(activityType)" modifier="tappable">
+			<ons-list-item ng-repeat="activityType in activityTypes" ng-click="$parent.changeActivityType(activityType)" modifier="tappable">
 				{{ activityType.name }}
 			</ons-list-item>
 		</ons-list>
