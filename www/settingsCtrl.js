@@ -1,4 +1,4 @@
-module.controller("settingsCtrl", function ($scope, userService) {
+app.controller("settingsCtrl", function ($scope, userService) {
 	$scope.range = userService.getRange();
 
 	$scope.logout = function ()

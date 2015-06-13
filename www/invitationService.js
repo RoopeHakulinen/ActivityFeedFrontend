@@ -1,4 +1,4 @@
-module.service('invitationService', function ($http, $q, urlConfig) {
+app.service('invitationService', function ($http, $q, urlConfig) {
 	this.invitations = [];
 
 	this.getInvitations = function ()

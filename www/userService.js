@@ -1,4 +1,4 @@
-module.service('userService', function () {
+app.service('userService', function () {
 	this.position = {lat: 0, lng: 0};
 
 	this.setUser = function (user)

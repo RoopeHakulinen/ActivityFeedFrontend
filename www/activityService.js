@@ -1,4 +1,4 @@
-module.service('activityService', function ($http, $q, urlConfig, userService) {
+app.service('activityService', function ($http, $q, urlConfig, userService) {
 	this.activities = [];
 
 	this.getActivities = function (fetchMore, activityTypeId)

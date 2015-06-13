@@ -1,4 +1,4 @@
-module.service('activityTypeService', function ($http, $q, urlConfig) {
+app.service('activityTypeService', function ($http, $q, urlConfig) {
 	this.activityTypes = false;
 
 	this.getActivityTypes = function ()

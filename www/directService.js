@@ -1,4 +1,4 @@
-module.service('directService', function ($http, $q, urlConfig) {
+app.service('directService', function ($http, $q, urlConfig) {
 	this.directs = false;
 
 	this.getDirects = function ()

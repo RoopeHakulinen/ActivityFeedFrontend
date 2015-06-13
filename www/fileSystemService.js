@@ -1,4 +1,4 @@
-module.service('fileSystemService', function ()
+app.service('fileSystemService', function ()
 {
 	this.readFile = function (fileName, callback, readType)
 	{

@@ -1,4 +1,4 @@
-module.controller("selectListCtrl", function ($scope) {
+app.controller("selectListCtrl", function ($scope) {
 	$scope.data = {};
 	$scope.name = "";
 	$scope.selection = [];

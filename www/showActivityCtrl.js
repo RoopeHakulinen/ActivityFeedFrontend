@@ -1,4 +1,4 @@
-module.controller("showActivityCtrl", function ($scope, urlConfig, activityService, activityTypeService, invitationService) {
+app.controller("showActivityCtrl", function ($scope, urlConfig, activityService, activityTypeService, invitationService) {
 	$scope.activity = {};
 	$scope.comment = "";
 

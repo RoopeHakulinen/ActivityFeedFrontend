@@ -1,4 +1,4 @@
-var module = angular.module('app', ['onsen', 'pascalprecht.translate'], function() {
+var app = angular.module('app', ['onsen', 'pascalprecht.translate'], function() {
 
 });
 
@@ -7,7 +7,7 @@ String.prototype.splice = function( idx, rem, s ) {
 };
 
 
-module.factory('authHttpRequestInterceptor', function (userService) {
+app.factory('authHttpRequestInterceptor', function (userService) {
 	return {
 		request: function (config) {
 			// Adjust the JSON API
@@ -27,11 +27,11 @@ module.factory('authHttpRequestInterceptor', function (userService) {
 	};
 });
 
-module.config(function ($httpProvider) {
+app.config(function ($httpProvider) {
 	$httpProvider.interceptors.push('authHttpRequestInterceptor');
 });
 
-module.filter('ageFilter', function () {
+app.filter('ageFilter', function () {
 	function calculateAge (birthday) { // birthday is a date
 		var date = new Date(birthday);
 		var ageDifMs = Date.now() - date.getTime();

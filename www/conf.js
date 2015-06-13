@@ -6,7 +6,7 @@ if (TEST_ENABLED)
 	serverUrl = "https://test.activer.net/";
 }
 
-module.constant(
+app.constant(
 	"urlConfig",
 	{
 		"user": serverUrl + "user",

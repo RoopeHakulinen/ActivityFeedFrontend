@@ -1,4 +1,4 @@
-module.controller("myActivitiesCtrl", function ($scope, activityService, activityTypeService, userService) {
+app.controller("myActivitiesCtrl", function ($scope, activityService, activityTypeService, userService) {
 	$scope.activities = [];
 
 	$scope.initialize = function ()

@@ -1,4 +1,4 @@
-module.service("eventService", function ($http, urlConfig, userService) {
+app.service("eventService", function ($http, urlConfig, userService) {
 
 	this.logout = function()
 	{
