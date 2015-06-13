@@ -5,7 +5,7 @@
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="mobile-web-app-capable" content="yes">
 
-	<title>Activer</title>
+	<title>{{'ACTIVER' | translate}}</title>
 
 	<link rel="stylesheet" href="lib/onsen/css/onsenui.css">
 	<link rel="stylesheet" href="lib/onsen/css/onsen-css-components.css">
@@ -54,15 +54,15 @@
 <ons-modal var="confirmationModal">
 	<div class="alert-dialog-mask"></div>
 	<div class="alert-dialog">
-		<div class="alert-dialog-title">Kirjaudu ulos</div>
+		<div class="alert-dialog-title">{{'COMMON_SIGN_OUT' | translate}}</div>
 
 		<div class="alert-dialog-content">
-			Oletko varma, että haluat kirjautua ulos?
+			{{'SIGN_OUT_CONFIRMATION_TEXT' | translate}}
 		</div>
 
 		<div class="alert-dialog-footer alert-dialog-footer--one">
-			<button class="alert-dialog-button alert-dialog-button--primal alert-dialog-button--one">Kirjaudu ulos</button>
-			<button class="alert-dialog-button alert-dialog-button--one">Peruuta</button>
+			<button class="alert-dialog-button alert-dialog-button--primal alert-dialog-button--one">{{'COMMON_SIGN_OUT' | translate}}</button>
+			<button class="alert-dialog-button alert-dialog-button--one">{{'COMMON_CANCEL' | translate}}</button>
 		</div>
 	</div>
 </ons-modal>
@@ -70,18 +70,18 @@
 <ons-template id="login.html">
 	<ons-page ng-controller="loginCtrl" ng-init="initialize()">
 		<ons-toolbar>
-			<div class="center">Kirjaudu sisään</div>
+			<div class="center">{{'LOGIN_SIGN_IN' | translate}}</div>
 		</ons-toolbar>
 
 		<div class="login-form">
-			<input type="email" class="text-input--underbar" placeholder="Email" ng-model="email" value="">
-			<input type="password" class="text-input--underbar" placeholder="Password" ng-model="password" value="">
+			<input type="email" class="text-input--underbar" placeholder="{{'LOGIN_EMAIL' | translate}}" ng-model="email" value="">
+			<input type="password" class="text-input--underbar" placeholder="{{'LOGIN_PASSWORD' | translate}}" ng-model="password" value="">
 			<br><br>
-			<ons-button modifier="large" class="login-button" ng-click="login()">Kirjaudu sisään</ons-button>
+			<ons-button modifier="large" class="login-button" ng-click="login()">{{'LOGIN_SIGN_IN' | translate}}</ons-button>
 			<br><br>
-			<ons-button modifier="large" class="login-button" ng-click="facebookLogin()">Kirjaudu sisään Facebookin avulla</ons-button>
+			<ons-button modifier="large" class="login-button" ng-click="facebookLogin()">{{'LOGIN_SIGN_IN_FACEBOOK' | translate}}</ons-button>
 			<br>
-			<ons-button modifier="quiet" class="forgot-password">Unohditko salasanasi?</ons-button>
+			<ons-button modifier="quiet" class="forgot-password">{{'LOGIN_FORGOT_PASSWORD' | translate}}</ons-button>
 		</div>
 	</ons-page>
 </ons-template>
@@ -119,7 +119,7 @@
 					<ons-icon icon="ion-navicon" size="28px" fixed-width="false"></ons-icon>
 				</ons-toolbar-button>
 			</div>
-			<div class="center">Activer</div>
+			<div class="center">{{'ACTIVER' | translate}}</div>
 			<div class="right">
 				<ons-toolbar-button ng-click="appNavigator.pushPage('create-activity.html');">
 					<ons-icon icon="ion-ios-plus-outline" size="28px" fixed-width="false"></ons-icon>
@@ -127,7 +127,7 @@
 			</div>
 		</ons-toolbar>
 		<ons-button modifier="large" style="margin: 0 auto;" ng-click="showActivityTypePopover($event);">
-			{{selectedActivityType.name || "Kaikki"}}
+			{{selectedActivityType.name || 'BROWSE_ALL_ACTIVITY_TYPES' | translate}}
 		</ons-button>
 		<div ng-show="activities.length" style="height: 100%;">
 			<ons-carousel swipeable overscrollable auto-scroll auto-refresh style="height: 100%;" var="browseCarousel" auto-scroll-ratio="0.33" ons-postchange="changed($event)" ons-overscroll="overscrolled($event)">
@@ -143,7 +143,7 @@
 							<div class="activity-stars">
 								<div class="star-five" ng-class="{highlight: activity.required_level >= n}" ng-repeat="n in [1, 2, 3, 4, 5]"></div>
 							</div>
-							<div class="activity-participants">{{activity.participants.length + 1}} / {{activity.participant_count}} pelaajaa jo mukana</div>
+							<div class="activity-participants">{{activity.participants.length + 1}} / {{activity.participant_count}} {{'BROWSE_PARTICIPANTS' | translate}}</div>
 							<div class="activity-distance">{{activity.distance | number:1}} km</div>
 						</div>
 					</div>
@@ -167,16 +167,16 @@
 				<ons-carousel-cover>
 					<div class="cover-label">
 						{{'BROWSE_SWIPE_FOR_MORE' | translate}}<br/>
-						Aktiviteetti {{currentIndex + 1}} / {{activities.length}}
+						{{'COMMON_ACTIVITY' | translate}} {{currentIndex + 1}} / {{activities.length}}
 					</div>
 				</ons-carousel-cover>
 			</ons-carousel>
 		</div>
 		<div ng-hide="activities.length">
 			<div style="margin: 100px auto 0; width: 130px;">
-				Ei aktiviteetteja..<br/>
+				{{'BROWSE_NO_ACTIVITIES' | translate}}<br/>
 				<ons-button modifier="large outline" style="margin: 0 auto;" ng-click="updateActivities(true);">
-					Päivitä
+					{{'COMMON_UPDATE' | translate}}
 				</ons-button>
 			</div>
 		</div>
@@ -189,7 +189,7 @@
 	<ons-popover cancelable direction="down">
 		<ons-list>
 			<ons-list-item ng-click="changeActivityType({})" modifier="tappable">
-				Kaikki lajit
+				{{'BROWSE_ALL_ACTIVITY_TYPES' | translate}}
 			</ons-list-item>
 			<ons-list-item ng-repeat="activityType in activityTypes" ng-click="$parent.changeActivityType(activityType)" modifier="tappable">
 				{{ activityType.name }}
@@ -202,36 +202,36 @@
 <ons-template id="main-menu.html">
 	<ons-page modifier="menu-page" ng-controller="mainMenuCtrl">
 		<ons-toolbar modifier="transparent">
-			<div class="center">Activer</div>
+			<div class="center">{{'ACTIVER' | translate}}</div>
 		</ons-toolbar>
 
 		<ons-list class="menu-list" style="margin-bottom: 6px;">
 			<ons-list-item class="menu-item" ng-click="appNavigator.pushPage('create-activity.html');mainMenu.closeMenu();">
 				<ons-icon icon="fa-plus"></ons-icon>
-				Luo aktiviteetti
+				{{'MENU_CREATE_ACTIVITY' | translate}}
 			</ons-list-item>
 			<ons-list-item class="menu-item" ng-click="appNavigator.pushPage('show-activities.html');mainMenu.closeMenu();">
 				<ons-icon icon="fa-star"></ons-icon>
-				Minun aktiviteettini
+				{{'MENU_MY_ACTIVITIES' | translate}}
 			</ons-list-item>
 			<ons-list-item class="menu-item" ng-click="appNavigator.pushPage('list-invitations.html');mainMenu.closeMenu();">
 				<ons-icon icon="fa-user"></ons-icon>
-				Kutsut
+				{{'MENU_INVITATIONS' | translate}}
 				<div ng-show="invitations" class="notification menu-notification">{{invitations.length}}</div>
 			</ons-list-item>
 		</ons-list>
 
 		<ons-list class="bottom-menu-list">
 			<ons-list-item class="bottom-menu-item" ng-click="appNavigator.pushPage('settings.html');mainMenu.closeMenu();">
-				Asetukset
+				{{'MENU_SETTINGS' | translate}}
 			</ons-list-item>
 
 			<!--<ons-list-item class="bottom-menu-item" ng-click="appNavigator.pushPage('profile.html');mainMenu.closeMenu();">
-				Profiili
+				{{'MENU_PROFILE' | translate}}
 			</ons-list-item>-->
 
 			<ons-list-item class="bottom-menu-item" ng-click="appNavigator.pushPage('about.html');mainMenu.closeMenu();">
-				Tietoja
+				{{'MENU_ABOUT' | translate}}
 			</ons-list-item>
 		</ons-list>
 	</ons-page>
@@ -252,41 +252,41 @@
 <ons-template id="create-activity.html">
 	<ons-page ng-controller="createActivityCtrl">
 		<ons-toolbar>
-			<div class="left"><ons-back-button>Takaisin</ons-back-button></div>
-			<div class="center">Luo aktiviteetti</div>
+			<div class="left"><ons-back-button>{{'COMMON_BACK' | translate}}</ons-back-button></div>
+			<div class="center">{{'CREATE_ACTIVITY' | translate}}</div>
 		</ons-toolbar>
 
 		<ons-list modifier="inset" style="margin-top: 10px">
 			<ons-list-item>
-				<label for="activity-type">Tyyppi</label>
+				<label for="activity-type">{{'CREATE_ACTIVITY_ACTIVITY_TYPE' | translate}}</label>
 				<select id="activity-type" ng-model="activityType" ng-options="activityType.name for activityType in activityTypes track by activityType.id" style="float: right; margin-top: 2px; padding: 9px;"></select>
 			</ons-list-item>
 
 			<ons-list-item>
-				Ajanjakso: <input type="date" ng-model="date" class="text-input text-input--transparent" style="background-color: rgb(221, 221, 221);"> <input type="time" ng-model="from" class="text-input text-input--transparent" style="background-color: rgb(221, 221, 221)"> -
+				{{'CREATE_ACTIVITY_TIME' | translate}}: <input type="date" ng-model="date" class="text-input text-input--transparent" style="background-color: rgb(221, 221, 221);"> <input type="time" ng-model="from" class="text-input text-input--transparent" style="background-color: rgb(221, 221, 221)"> -
 				<input type="time" ng-model="to" class="text-input text-input--transparent" style="background-color: rgb(221, 221, 221);">
 			</ons-list-item>
 
 			<ons-list-item>
-				Sijainnin nimi: <input type="text" ng-model="locationName" class="text-input text-input--transparent" placeholder="Paikka" style="width: 100%">
+				{{'CREATE_ACTIVITY_LOCATION_NAME' | translate}}: <input type="text" ng-model="locationName" class="text-input text-input--transparent" placeholder="{{'CREATE_ACTIVITY_LOCATION' | translate}}" style="width: 100%">
 			</ons-list-item>
 
 			<ons-list-item>
-				Maksimiosallistujamäärä: <input type="number" max="20" ng-model="participantCount" class="text-input text-input--transparent" style="width: 100%">
+				{{'CREATE_ACTIVITY_MAX_PARTICIPANTS' | translate}}: <input type="number" max="20" ng-model="participantCount" class="text-input text-input--transparent" style="width: 100%">
 			</ons-list-item>
 
 			<ons-list-item>
-				Vaadittu taso (0.0 - 5.0): <input type="number" min="0" max="5" step="0.5" ng-model="requiredLevel" class="text-input text-input--transparent" style="width: 100%">
+				{{'CREATE_ACTIVITY_REQUIRED_LEVEL' | translate}}: <input type="number" min="0" max="5" step="0.5" ng-model="requiredLevel" class="text-input text-input--transparent" style="width: 100%">
 			</ons-list-item>
 
 			<ons-list-item>
-				Lisätietoja: <textarea class="textarea textarea--transparent" ng-model="message" style="width: 100%; height: 100px;"></textarea>
+				{{'CREATE_ACTIVITY_MORE_INFORMATION' | translate}}: <textarea class="textarea textarea--transparent" ng-model="message" style="width: 100%; height: 100px;"></textarea>
 			</ons-list-item>
 		</ons-list>
 
 		<div style="padding: 10px 9px">
 			<ons-button modifier="large outline" style="margin: 0 auto;" ng-click="createActivity();">
-				Luo aktiviteetti
+				{{'CREATE_ACTIVITY' | translate}}
 			</ons-button>
 		</div>
 	</ons-page>
@@ -313,16 +313,16 @@
 <ons-template id="show-activity.html">
 	<ons-page class="center" ng-controller="showActivityCtrl" ng-init="initialize(appNavigator.getCurrentPage().options.activity)">
 		<ons-toolbar>
-			<div class="left"><ons-back-button>Takaisin</ons-back-button></div>
-			<div class="center">Activer</div>
+			<div class="left"><ons-back-button>{{'COMMON_BACK' | translate}}</ons-back-button></div>
+			<div class="center">{{'ACTIVER' | translate}}</div>
 			<div class="right">
 			</div>
 		</ons-toolbar>
 
 		<div style="height: 100%;">
 			{{activity.location_name}}
-			<input type="text" ng-model="comment" placeholder="Write a comment" />
-			<ons-button modifier="large" ng-click="sendComment()">Kommentoi</ons-button>
+			<input type="text" ng-model="comment" placeholder="{{'SHOW_ACTIVITY_WRITE_A_COMMENT' | translate}}" />
+			<ons-button modifier="large" ng-click="sendComment()">{{'SHOW_ACTIVITY_COMMENT' | translate}}</ons-button>
 		</div>
 	</ons-page>
 </ons-template>
@@ -355,8 +355,8 @@
 <ons-template id="show-profile.html">
 	<ons-page class="center" ng-controller="showProfileCtrl" ng-init="initialize(appNavigator.getCurrentPage().options.profile)" id="show-profile">
 		<ons-toolbar>
-			<div class="left"><ons-back-button>Takaisin</ons-back-button></div>
-			<div class="center">Activer</div>
+			<div class="left"><ons-back-button>{{'COMMON_BACK' | translate}}</ons-back-button></div>
+			<div class="center">{{'ACTIVER' | translate}}</div>
 			<div class="right">
 			</div>
 		</ons-toolbar>
@@ -364,7 +364,7 @@
 		<div class="profile-card">
 			<img src="{{profile.picture}}" class="profile-image">
 			<div class="profile-name">{{profile.name}}</div>
-			<div class="profile-id">Ikä: {{profile.born | ageFilter}}</div>
+			<div class="profile-id">{{'PROFILE_AGE' | translate}}: {{profile.born | ageFilter}}</div>
 			<div class="profile-desc">{{profile.description}}</div>
 		</div>
 
@@ -373,15 +373,15 @@
 				<ons-row>
 					<ons-col class="info-col">
 						<div class="info-num">{{profile.activity_count}}</div>
-						<div class="info-unit">Osallistumista</div>
+						<div class="info-unit">{{'PROFILE_PARTICIPATIONS' | translate}}</div>
 					</ons-col>
 					<ons-col class="info-col">
 						<div class="info-num">{{profile.rating_mean | number:1}}</div>
-						<div class="info-unit">Palaute (0-5)</div>
+						<div class="info-unit">{{'PROFILE_RATING' | translate}}</div>
 					</ons-col>
 					<ons-col class="info-col">
 						<div class="info-num">{{profile.rating_count}}</div>
-						<div class="info-unit">Arvostelua</div>
+						<div class="info-unit">{{'PROFILE_RATING_COUNT' | translate}}</div>
 					</ons-col>
 				</ons-row>
 			</ons-list-item>
@@ -389,11 +389,11 @@
 
 		<ons-list modifier="inset" style="margin-top: 10px">
 			<ons-list-item modifier="chevron" ng-hide="profile.is_direct || hideDirect()" ng-click="addAsDirect(profile)">
-				Lisää Directiksi
+				{{'DIRECT_ADD' | translate}}
 			</ons-list-item>
 
 			<ons-list-item modifier="chevron" ng-show="profile.is_direct" ng-click="removeDirect(profile)">
-				Poista Directeistä
+				{{'DIRECT_REMOVE' | translate}}
 			</ons-list-item>
 		</ons-list>
 	</ons-page>
@@ -415,8 +415,8 @@
 <ons-template id="select-list.html">
 	<ons-page class="center" ng-controller="selectListCtrl" ng-init="initialize(appNavigator.getCurrentPage().options)">
 		<ons-toolbar>
-			<div class="left"><ons-back-button>Takaisin</ons-back-button></div>
-			<div class="center">Activer</div>
+			<div class="left"><ons-back-button>{{'COMMON_BACK' | translate}}</ons-back-button></div>
+			<div class="center">{{'ACTIVER' | translate}}</div>
 			<div class="right">
 			</div>
 		</ons-toolbar>
@@ -431,8 +431,8 @@
 				</label>
 			</ons-list-item>
 		</ons-list>
-		<ons-button modifier="large" ng-click="cancel()">Cancel</ons-button>
-		<ons-button modifier="large" ng-click="ok()">Ok</ons-button>
+		<ons-button modifier="large" ng-click="cancel()">{{'COMMON_CANCEL' | translate}}</ons-button>
+		<ons-button modifier="large" ng-click="ok()">{{'COMMON_OK' | translate}}</ons-button>
 	</ons-page>
 </ons-template>
 
@@ -456,9 +456,9 @@
 <ons-template id="show-activities.html">
 	<ons-page ng-controller="myActivitiesCtrl" ng-init="initialize()">
 		<ons-toolbar>
-			<div class="left"><ons-back-button>Takaisin</ons-back-button></div>
+			<div class="left"><ons-back-button>{{'COMMON_BACK' | translate}}</ons-back-button></div>
 			<div class="center">
-				Omat aktiviteetit
+				{{'MENU_MY_ACTIVITIES' | translate}}
 			</div>
 			<div class="right">
 				<ons-toolbar-button>
@@ -484,7 +484,7 @@
 						<div class="my-activities-duration">{{getDuration(activityObj.from, activityObj.to) | asDate | date: "H'h' mm'min'"}}</div>
 					</ons-col>
 
-					<ons-col width="6px" class="my-activities-center" style="backgroundColor: #3399ff">
+					<ons-col width="6px" class="my-activities-center" style="background-color: #3399ff">
 					</ons-col>
 
 					<ons-col class="my-activities-right">
@@ -521,9 +521,9 @@
 <ons-template id="list-invitations.html">
 	<ons-page ng-controller="listInvitationsCtrl" ng-init="initialize()">
 		<ons-toolbar>
-			<div class="left"><ons-back-button>Takaisin</ons-back-button></div>
+			<div class="left"><ons-back-button>{{'COMMON_BACK' | translate}}</ons-back-button></div>
 			<div class="center">
-				Kutsut
+				{{'MENU_INVITATIONS' | translate}}
 			</div>
 			<div class="right">
 				<ons-toolbar-button>
@@ -574,18 +574,18 @@
 <ons-template id="settings.html">
 	<ons-page class="center">
 		<ons-toolbar>
-			<div class="left"><ons-back-button>Takaisin</ons-back-button></div>
-			<div class="center">Asetukset</div>
+			<div class="left"><ons-back-button>{{'COMMON_BACK' | translate}}</ons-back-button></div>
+			<div class="center">{{'MENU_SETTINGS' | translate}}</div>
 			<div class="right"></div>
 		</ons-toolbar>
 
 
 		<div class="content-padded" style="font-size: 13px; text-align: center; color: #999;" ng-controller="settingsCtrl">
 			<ons-list>
-				<ons-list-item>Etäisyys: <input type="number" min="1" max="500" ng-model="range" /></ons-list-item>
+				<ons-list-item>{{'SETTINGS_RANGE' | translate}}: <input type="number" min="1" max="500" ng-model="range" /></ons-list-item>
 			</ons-list>
 			<ons-list>
-				<ons-list-item modifier="tappable" ng-click="logout()" style="">{{getUserName()}}<span style="color: #00ACEE;">Sign out from Activer</span></ons-list-item>
+				<ons-list-item modifier="tappable" ng-click="logout()" style="">{{getUserName()}}<span style="color: #00ACEE;">{{'SETTINGS_SIGN_OUT' | translate}}</span></ons-list-item>
 			</ons-list>
 		</div>
 	</ons-page>
@@ -596,13 +596,13 @@
 <ons-template id="about.html">
 	<ons-page>
 		<ons-toolbar>
-			<div class="left"><ons-back-button>Takaisin</ons-back-button></div>
+			<div class="left"><ons-back-button>{{'COMMON_BACK' | translate}}</ons-back-button></div>
 		</ons-toolbar>
 		<div class="content-padded" style="font-size: 13px; text-align: center;">
-			<h1>Activer by Activer Ltd</h1>
-			<p>Version 1.0.0<br/>
-				Contact via info@activer.net<br/>
-				Designed by: Roope Hakulinen<br/>
+			<h1>{{'ABOUT_TITLE' | translate}}</h1>
+			<p>{{'ABOUT_VERSION' | translate}} 1.0.0<br/>
+				info@activer.net<br/>
+				Roope Hakulinen, Jesse Kaislavuo, Tommi Ketola, Vesa Fagerlund & Ville Salonen<br/>
 			</p>
 		</div>
 	</ons-page>
@@ -611,7 +611,7 @@
 <ons-modal var="loginLoader">
 	<ons-icon icon="fa-circle-o-notch" spin="true"></ons-icon>
 	<div>
-		<div>Kirjaudutaan sisään</div>
+		<div>{{'LOGIN_SIGNING_IN' | translate}}</div>
 	</div>
 </ons-modal>
 
