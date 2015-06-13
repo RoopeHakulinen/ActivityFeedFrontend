@@ -1,4 +1,4 @@
-var module = angular.module('app', ['onsen'], function() {
+var module = angular.module('app', ['onsen', 'pascalprecht.translate'], function() {
 
 });
 

@@ -18,6 +18,7 @@
 	<link rel="stylesheet" href="styles/profile.css"/>
 
 	<script src="lib/onsen/js/angular/angular.js"></script>
+	<script src="lib/angular/angular-translate.js"></script>
 	<script src="lib/onsen/js/onsenui.js"></script>
 	<script src="cordova.js"></script>
 
@@ -26,6 +27,7 @@
 		window.deviceReady = false;
 	</script>
 	<script src="app.js" type="application/javascript"></script>
+	<script src="i18n.js" type="application/javascript"></script>
 	<script src="filters.js" type="application/javascript"></script>
 	<script src="conf.js" type="application/javascript"></script>
 	<script src="eventService.js" type="application/javascript"></script>
@@ -164,7 +166,7 @@
 				</ons-carousel-item>
 				<ons-carousel-cover>
 					<div class="cover-label">
-						Pyyhkäise ruutua selataksesi aktiviteettejä.<br/>
+						{{'BROWSE_SWIPE_FOR_MORE' | translate}}<br/>
 						Aktiviteetti {{currentIndex + 1}} / {{activities.length}}
 					</div>
 				</ons-carousel-cover>
