@@ -49,8 +49,8 @@
 
 	<!-- General preferences -->
 	<preference name="orientation" value="portrait" />
-	<preference name="AutoHideSplashScreen" value="false" />
-	<preference name="SplashScreen" value="screen" />
+	<preference name="SplashScreen" value="splash" />
+	<preference name="SplashScreenDelay" value="30000" />
 
 	<!-- Android preferences -->
 	<preference name="android-installLocation" value="auto" />
