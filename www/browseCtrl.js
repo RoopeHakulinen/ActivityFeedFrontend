@@ -16,7 +16,7 @@ app.controller("browseCtrl", function ($scope, $http, $q, urlConfig, activitySer
 		{
 			setTimeout(
 				navigator.splashscreen.hide,
-				5000
+				1000
 			);
 		}
 	};
