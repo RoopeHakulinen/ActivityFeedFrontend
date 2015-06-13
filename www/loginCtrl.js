@@ -56,17 +56,7 @@ app.controller("loginCtrl", function (eventService, $scope, $http, fileSystemSer
 		console.log("Login succeeded.");
 		activityTypeService.getActivityTypes();
 		eventService.initializePushNotifications();
-		appNavigator.pushPage("main-view.html",
-			{
-				onTransitionEnd: function ()
-				{
-					if (hidingSplashScreenNeeded)
-					{
-						navigator.splashscreen.hide();
-					}
-				}
-			}
-		);
+		appNavigator.pushPage("main-view.html");
 		loginLoader.hide();
 	};
 

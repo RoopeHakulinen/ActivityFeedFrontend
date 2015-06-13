@@ -12,6 +12,10 @@ app.controller("browseCtrl", function ($scope, $http, $q, urlConfig, activitySer
 				$scope.activityTypes = activityTypes;
 			}
 		);
+		if (hidingSplashScreenNeeded)
+		{
+			navigator.splashscreen.hide();
+		}
 	};
 
 	$scope.invite = function(activity)
