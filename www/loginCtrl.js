@@ -60,7 +60,10 @@ app.controller("loginCtrl", function (eventService, $scope, $http, fileSystemSer
 			{
 				onTransitionEnd: function ()
 				{
-					navigator.splashscreen.hide();
+					if (hidingSplashScreenNeeded)
+					{
+						navigator.splashscreen.hide();
+					}
 				}
 			}
 		);
