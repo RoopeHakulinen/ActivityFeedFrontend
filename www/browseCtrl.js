@@ -14,7 +14,10 @@ app.controller("browseCtrl", function ($scope, $http, $q, urlConfig, activitySer
 		);
 		if (hidingSplashScreenNeeded)
 		{
-			navigator.splashscreen.hide();
+			setTimeout(
+				navigator.splashscreen.hide,
+				200
+			);
 		}
 	};
 
