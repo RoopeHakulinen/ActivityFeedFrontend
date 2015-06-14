@@ -33,6 +33,6 @@ app.service('directService', function ($http, $q, urlConfig) {
 
 	this.removeDirect = function (userId)
 	{
-		return $http.del(urlConfig["directs"] + userId);
+		return $http.delete(urlConfig["directs"] + userId);
 	};
 });
