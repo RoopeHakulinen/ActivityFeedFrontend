@@ -12,9 +12,11 @@ app.config(function ($translateProvider) {
 		COMMON_BACK: 'Back',
 		COMMON_CANCEL: 'Cancel',
 		COMMON_CONNECTION_LOST: 'Connection lost',
+		COMMON_EMAIL: 'Email',
 		COMMON_LIST_FAILED: 'Fetching list failed. Please try again.',
 		COMMON_OK: 'Okay',
 		COMMON_SIGN_OUT: 'Sign out',
+		COMMON_PASSWORD: 'Password',
 		COMMON_UPDATE: 'Refresh',
 		CREATE_ACTIVITY: 'Create an activity',
 		CREATE_ACTIVITY_ACTIVITY_TYPE: 'Activity type',
@@ -35,9 +37,7 @@ app.config(function ($translateProvider) {
 		INVITATION_ACCEPTED: 'Invitation accepted',
 		INVITATION_FAILED: 'Sending invitation failed. Please try again.',
 		INVITATION_REJECTED: 'Invitation rejected',
-		LOGIN_EMAIL: 'Email',
 		LOGIN_FORGOT_PASSWORD: 'Forgot password?',
-		LOGIN_PASSWORD: 'Password',
 		LOGIN_SIGN_IN: 'Sign in',
 		LOGIN_SIGN_IN_WITH_FACEBOOK: 'Sign in with Facebook',
 		LOGIN_SIGNING_IN: 'Signing in',
@@ -57,7 +57,10 @@ app.config(function ($translateProvider) {
 		SHOW_ACTIVITY_COMMENT_EMPTY: "Comment can't be empty",
 		SHOW_ACTIVITY_COMMENTING_FAILED: 'Comment creation failed. Please try again.',
 		SHOW_ACTIVITY_WRITE_A_COMMENT: 'Write a comment',
-		SIGN_OUT_CONFIRMATION_TEXT: 'Are you sure you want to sign out?'
+		SIGN_OUT_CONFIRMATION_TEXT: 'Are you sure you want to sign out?',
+		SIGN_UP_FIRST_NAME: 'First name',
+		SIGN_UP_LAST_NAME: 'Last name',
+		SIGN_UP_SIGN_UP: 'Sign up'
 	});
 
 	$translateProvider.translations('fi', {
@@ -73,9 +76,11 @@ app.config(function ($translateProvider) {
 		COMMON_BACK: 'Takaisin',
 		COMMON_CANCEL: 'Peruuta',
 		COMMON_CONNECTION_LOST: 'Yhteys katkesi',
+		COMMON_EMAIL: 'Sähköposti',
 		COMMON_LIST_FAILED: 'Listan hakeminen epäonnistui. Yritä uudelleen.',
 		COMMON_OK: 'Ok',
 		COMMON_SIGN_OUT: 'Kirjaudu ulos',
+		COMMON_PASSWORD: 'Salasana',
 		COMMON_UPDATE: 'Päivitä',
 		CREATE_ACTIVITY: 'Luo aktiviteetti',
 		CREATE_ACTIVITY_ACTIVITY_TYPE: 'Aktiviteettityyppi',
@@ -96,9 +101,7 @@ app.config(function ($translateProvider) {
 		INVITATION_ACCEPTED: 'Pyyntö hyväksytty',
 		INVITATION_FAILED: 'Pyynnön lähetys epäonnistui. Yritä uudelleen.',
 		INVITATION_REJECTED: 'Pyyntö hylätty',
-		LOGIN_EMAIL: 'Sähköpostiosoite',
 		LOGIN_FORGOT_PASSWORD: 'Unohditko salasanasi?',
-		LOGIN_PASSWORD: 'Salasana',
 		LOGIN_SIGN_IN: 'Kirjaudu sisään',
 		LOGIN_SIGN_IN_WITH_FACEBOOK: 'Kirjaudu sisään Facebookin avulla',
 		LOGIN_SIGNING_IN: 'Kirjaudutaan sisään',
@@ -118,7 +121,10 @@ app.config(function ($translateProvider) {
 		SHOW_ACTIVITY_COMMENT_EMPTY: "Kommentti ei voi olla tyhjä",
 		SHOW_ACTIVITY_COMMENTING_FAILED: 'Kommentin lisäys epäonnistui. Yritä uudelleen.',
 		SHOW_ACTIVITY_WRITE_A_COMMENT: 'Kirjoita kommentti',
-		SIGN_OUT_CONFIRMATION_TEXT: 'Oletko varma, että haluat kirjautua ulos?'
+		SIGN_OUT_CONFIRMATION_TEXT: 'Oletko varma, että haluat kirjautua ulos?',
+		SIGN_UP_FIRST_NAME: 'Etunimi',
+		SIGN_UP_LAST_NAME: 'Sukunimi',
+		SIGN_UP_SIGN_UP: 'Rekisteröidy'
 	});
 
 	var preferredLanguage = localStorage.getItem("language");
