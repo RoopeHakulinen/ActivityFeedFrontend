@@ -26,13 +26,13 @@ app.controller("browseCtrl", function ($scope, $http, $q, urlConfig, activitySer
 		invitationService.send(activity.id).then(
 			function ()
 			{
-				window.plugins.toast.showShortBottom($translate('BROWSE_INVITATION_SENT'));
+				window.plugins.toast.showShortBottom($translate.instant('BROWSE_INVITATION_SENT'));
 				activityService.handled(browseCarousel.getActiveCarouselItemIndex());
 				$scope.updateActivities();
 			},
 			function()
 			{
-				window.plugins.toast.showShortBottom($translate('INVITATION_FAILED'));
+				window.plugins.toast.showShortBottom($translate.instant('INVITATION_FAILED'));
 			});
 	};
 
@@ -46,7 +46,7 @@ app.controller("browseCtrl", function ($scope, $http, $q, urlConfig, activitySer
 			},
 			function()
 			{
-				window.plugins.toast.showShortBottom($translate('INVITATION_FAILED'));
+				window.plugins.toast.showShortBottom($translate.instant('INVITATION_FAILED'));
 			}
 		);
 	};

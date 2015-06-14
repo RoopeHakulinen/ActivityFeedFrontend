@@ -15,7 +15,7 @@ app.controller("listInvitationsCtrl", function ($scope, urlConfig, invitationSer
 			},
 			function()
 			{
-				window.plugins.toast.showShortBottom($translate('COMMON_LIST_FAILED'));
+				window.plugins.toast.showShortBottom($translate.instant('COMMON_LIST_FAILED'));
 			}
 		);
 	};
@@ -25,13 +25,13 @@ app.controller("listInvitationsCtrl", function ($scope, urlConfig, invitationSer
 		invitationService.accept(invitation.id).success(
 			function()
 			{
-				window.plugins.toast.showShortBottom($translate('INVITATION_ACCEPTED'));
+				window.plugins.toast.showShortBottom($translate.instant('INVITATION_ACCEPTED'));
 				$scope.invitations.splice(index, 1);
 			}
 		).error(
 			function()
 			{
-				window.plugins.toast.showShortBottom($translate('INVITATION_FAILED'));
+				window.plugins.toast.showShortBottom($translate.instant('INVITATION_FAILED'));
 			}
 		);
 	};
@@ -41,13 +41,13 @@ app.controller("listInvitationsCtrl", function ($scope, urlConfig, invitationSer
 		invitationService.reject(invitation.id).success(
 			function()
 			{
-				window.plugins.toast.showShortBottom($translate('INVITATION_REJECTED'));
+				window.plugins.toast.showShortBottom($translate.instant('INVITATION_REJECTED'));
 				$scope.invitations.splice(index, 1);
 			}
 		).error(
 			function()
 			{
-				window.plugins.toast.showShortBottom($translate('INVITATION_FAILED'));
+				window.plugins.toast.showShortBottom($translate.instant('INVITATION_FAILED'));
 			}
 		);
 	};

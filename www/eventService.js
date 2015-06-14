@@ -193,6 +193,6 @@ app.service("eventService", function ($http, urlConfig, userService, $translate)
 
 	document.addEventListener('offline', function() {
 		console.log("Got offline event.");
-		window.plugins.toast.showShortBottom($translate('COMMON_CONNECTION_LOST'));
+		window.plugins.toast.showShortBottom($translate.instant('COMMON_CONNECTION_LOST'));
 	}, false);
 });
