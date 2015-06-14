@@ -136,18 +136,18 @@ app.service("eventService", function ($http, urlConfig, userService, $translate)
 			confirmationModal.hide();
 			e.preventDefault();
 		}
-		else if (mainMenu.isMenuOpened())
+		else if (mainMenu && mainMenu.isMenuOpened())
 		{
 			mainMenu.closeMenu();
 			e.preventDefault();
 		}
-		else if (currentPage.name.indexOf("main-view") !== -1) // If we are on survey view
-		{
-			this.logout();
-			appNavigator.popPage();
-			e.preventDefault();
-		}
-		else if (currentPage.name.indexOf("login") !== -1)
+//		else if (currentPage.name.indexOf("main-view") !== -1) // If we are on survey view
+//		{
+//			this.logout();
+//			appNavigator.popPage();
+//			e.preventDefault();
+//		}
+		else if (currentPage.name.indexOf("main-view") !== -1 || currentPage.name.indexOf("login") !== -1)
 		{
 			e.preventDefault();
 			navigator.app.exitApp();
