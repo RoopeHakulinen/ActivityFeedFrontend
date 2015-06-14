@@ -81,7 +81,7 @@
 			<br><br>
 			<ons-button modifier="large" class="login-button" ng-click="facebookLogin()">{{'LOGIN_SIGN_IN_WITH_FACEBOOK' | translate}}</ons-button>
 			<br>
-			<ons-button modifier="quiet" class="sign-up" ng-click="appNavigator.pushPage('sign-up.html');">{{'SIGN_UP_SIGN_UP' | translate}}</ons-button>
+			<ons-button modifier="quiet" class="sign-up" ng-click="register();">{{'SIGN_UP_SIGN_UP' | translate}}</ons-button>
 			<br>
 			<ons-button modifier="quiet" class="forgot-password">{{'LOGIN_FORGOT_PASSWORD' | translate}}</ons-button>
 		</div>
@@ -92,7 +92,7 @@
 
 
 <ons-template id="sign-up.html">
-	<ons-page>
+	<ons-page id="register" ng-controller="registerCtrl" ng-init="initialize(appNavigator.getCurrentPage().options.registeredDeferred)">
 		<ons-toolbar>
 			<div class="left"><ons-back-button>{{'COMMON_BACK' | translate}}</ons-back-button></div>
 			<div class="center">{{'SIGN_UP_SIGN_UP' | translate}}</div>
@@ -113,14 +113,13 @@
 			</div>
 
 			<div class="lucent">
-				<p class="note">Password - 6 characters or more</p>
+				<p class="note">{{'SIGN_UP_PASSWORD_HINT' | translate}}</p>
 			</div>
 
 			<div class="vspc form-row">
 				<ons-button modifier="large--cta">{{'SIGN_UP_SIGN_UP' | translate}}</ons-button>
 			</div>
 		</div>
-
 	</ons-page>
 </ons-template>
 
@@ -131,7 +130,7 @@
 
 
 <ons-template id="main-view.html">
-	<ons-page id="register">
+	<ons-page>
 		<ons-sliding-menu
 			menu-page="main-menu.html"
 			main-page="browse.html"

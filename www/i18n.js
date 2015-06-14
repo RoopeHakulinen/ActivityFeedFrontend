@@ -58,9 +58,13 @@ app.config(function ($translateProvider) {
 		SHOW_ACTIVITY_COMMENTING_FAILED: 'Comment creation failed. Please try again.',
 		SHOW_ACTIVITY_WRITE_A_COMMENT: 'Write a comment',
 		SIGN_OUT_CONFIRMATION_TEXT: 'Are you sure you want to sign out?',
+		SIGN_UP_FAILURE: 'Registering failed. Please try again.',
+		SIGN_UP_FILL_ALL: 'Please fill in all the required fields',
 		SIGN_UP_FIRST_NAME: 'First name',
 		SIGN_UP_LAST_NAME: 'Last name',
-		SIGN_UP_SIGN_UP: 'Sign up'
+		SIGN_UP_PASSWORD_HINT: 'Password - 6 characters or more',
+		SIGN_UP_SIGN_UP: 'Sign up',
+		SIGN_UP_SUCCESS: 'Registering succeeded. Signing in.'
 	});
 
 	$translateProvider.translations('fi', {
@@ -122,9 +126,13 @@ app.config(function ($translateProvider) {
 		SHOW_ACTIVITY_COMMENTING_FAILED: 'Kommentin lisäys epäonnistui. Yritä uudelleen.',
 		SHOW_ACTIVITY_WRITE_A_COMMENT: 'Kirjoita kommentti',
 		SIGN_OUT_CONFIRMATION_TEXT: 'Oletko varma, että haluat kirjautua ulos?',
+		SIGN_UP_FILL_ALL: 'Täytä kaikki vaaditut kohdat',
+		SIGN_UP_FAILURE: 'Rekisteröityminen epäonnistui. Yritä uudelleen.',
 		SIGN_UP_FIRST_NAME: 'Etunimi',
 		SIGN_UP_LAST_NAME: 'Sukunimi',
-		SIGN_UP_SIGN_UP: 'Rekisteröidy'
+		SIGN_UP_PASSWORD_HINT: 'Salasana - Vähintään 6 merkkiä',
+		SIGN_UP_SIGN_UP: 'Rekisteröidy',
+		SIGN_UP_SUCCESS: 'Rekisteröityminen onnistui. Kirjaudutaan sisään.'
 	});
 
 	var preferredLanguage = localStorage.getItem("language");

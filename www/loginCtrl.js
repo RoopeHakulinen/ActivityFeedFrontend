@@ -99,4 +99,16 @@ app.controller("loginCtrl", function (eventService, $scope, $http, fileSystemSer
 
 		facebookConnectPlugin.login(["public_profile", "email"], success, error)
 	};
+
+	$scope.register = function ()
+	{
+		var registeredDeferred = $q.defer();
+		appNavigator.pushPage('sign-up.html', {registeredDeferred: registeredDeferred});
+		registeredDeferred.then(
+			function ()
+			{
+				$scope.signedIn();
+			}
+		)
+	};
 });
