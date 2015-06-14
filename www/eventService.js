@@ -136,7 +136,7 @@ app.service("eventService", function ($http, urlConfig, userService, $translate)
 			confirmationModal.hide();
 			e.preventDefault();
 		}
-		else if (mainMenu !== undefined && mainMenu.isMenuOpened())
+		else if (typeof mainMenu !== "undefined" && mainMenu.isMenuOpened())
 		{
 			mainMenu.closeMenu();
 			e.preventDefault();
