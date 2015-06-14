@@ -15,7 +15,7 @@ app.controller("myActivitiesCtrl", function ($scope, activityService, activityTy
 			},
 			function()
 			{
-				window.plugins.toast.showShortBottom('My activities list fetching failed with status code ' + status);
+				window.plugins.toast.showShortBottom(translate('COMMON_LIST_FAILED'));
 			}
 		);
 	};

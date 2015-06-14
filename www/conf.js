@@ -21,3 +21,8 @@ app.constant(
 		"directs": serverUrl + "directs/"
 	}
 );
+
+app.constant(
+	"defaultLanguage",
+	"fi"
+);

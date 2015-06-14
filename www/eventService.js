@@ -1,4 +1,4 @@
-app.service("eventService", function ($http, urlConfig, userService) {
+app.service("eventService", function ($http, urlConfig, userService, translate) {
 
 	this.logout = function()
 	{
@@ -193,6 +193,6 @@ app.service("eventService", function ($http, urlConfig, userService) {
 
 	document.addEventListener('offline', function() {
 		console.log("Got offline event.");
-		//window.plugins.toast.showShortBottom('Connection lost');
+		window.plugins.toast.showShortBottom(translate('COMMON_CONNECTION_LOST'));
 	}, false);
 });

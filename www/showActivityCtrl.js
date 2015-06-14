@@ -1,4 +1,4 @@
-app.controller("showActivityCtrl", function ($scope, urlConfig, activityService, activityTypeService, invitationService) {
+app.controller("showActivityCtrl", function ($scope, urlConfig, activityService, translate) {
 	$scope.activity = {};
 	$scope.comment = "";
 
@@ -10,7 +10,7 @@ app.controller("showActivityCtrl", function ($scope, urlConfig, activityService,
 	{
 		if ($scope.comment.length === 0)
 		{
-			window.plugins.toast.showShortBottom('Kommentti ei voi olla tyhjä.');
+			window.plugins.toast.showShortBottom(translate('SHOW_ACTIVITY_COMMENT_EMPTY'));
 			return;
 		}
 
@@ -22,7 +22,7 @@ app.controller("showActivityCtrl", function ($scope, urlConfig, activityService,
 			},
 			function()
 			{
-				window.plugins.toast.showShortBottom('Comment sending failed.');
+				window.plugins.toast.showShortBottom(translate('SHOW_ACTIVITY_COMMENTING_FAILED'));
 			});
 	};
 });

@@ -79,7 +79,7 @@
 			<br><br>
 			<ons-button modifier="large" class="login-button" ng-click="login()">{{'LOGIN_SIGN_IN' | translate}}</ons-button>
 			<br><br>
-			<ons-button modifier="large" class="login-button" ng-click="facebookLogin()">{{'LOGIN_SIGN_IN_FACEBOOK' | translate}}</ons-button>
+			<ons-button modifier="large" class="login-button" ng-click="facebookLogin()">{{'LOGIN_SIGN_IN_WITH_FACEBOOK' | translate}}</ons-button>
 			<br>
 			<ons-button modifier="quiet" class="forgot-password">{{'LOGIN_FORGOT_PASSWORD' | translate}}</ons-button>
 		</div>
@@ -131,7 +131,7 @@
 		</ons-button>
 		<div ng-show="activities.length" style="height: 100%;">
 			<ons-carousel swipeable overscrollable auto-scroll auto-refresh style="height: 100%;" var="browseCarousel" auto-scroll-ratio="0.33" ons-postchange="changed($event)" ons-overscroll="overscrolled($event)">
-				<ons-carousel-item ng-repeat="activity in activities track by $index">
+				<ons-carousel-item ng-repeat="activity in activities track by $index" style="visibility: visible !important">
 					<div class="profile-card" style="{{activity.activity_type.style}}" ng-click="showProfile(activity.organizer)">
 						<img ng-src="{{_getOrganizerImage(activity)}}" class="activity-organizer-image" alt="{{activity.organizer.email}}">
 						<div class="activity-info">
@@ -585,7 +585,7 @@
 				<ons-list-item>{{'SETTINGS_RANGE' | translate}}: <input type="number" min="1" max="500" ng-model="range" /></ons-list-item>
 			</ons-list>
 			<ons-list>
-				<ons-list-item modifier="tappable" ng-click="logout()" style="">{{getUserName()}}<span style="color: #00ACEE;">{{'SETTINGS_SIGN_OUT' | translate}}</span></ons-list-item>
+				<ons-list-item modifier="tappable" ng-click="logout()" style=""><ons-icon icon="ion-log-out" style="opacity: 0.8"></ons-icon>{{getUserName()}}<span style="color: #00ACEE;">{{'SETTINGS_SIGN_OUT' | translate}}</span></ons-list-item>
 			</ons-list>
 		</div>
 	</ons-page>

@@ -1,5 +1,5 @@
-app.controller("listInvitationsCtrl", function ($scope, urlConfig, invitationService, activityTypeService) {
-	$scope.invitations = [];//invitationService.getInvitations();
+app.controller("listInvitationsCtrl", function ($scope, urlConfig, invitationService, translate) {
+	$scope.invitations = [];
 
 	$scope.initialize = function ()
 	{
@@ -15,7 +15,7 @@ app.controller("listInvitationsCtrl", function ($scope, urlConfig, invitationSer
 			},
 			function()
 			{
-				window.plugins.toast.showShortBottom('Invitation list fetching failed with status code ' + status);
+				window.plugins.toast.showShortBottom(translate('COMMON_LIST_FAILED'));
 			}
 		);
 	};
@@ -25,13 +25,13 @@ app.controller("listInvitationsCtrl", function ($scope, urlConfig, invitationSer
 		invitationService.accept(invitation.id).success(
 			function()
 			{
-				window.plugins.toast.showShortBottom('Invitation accepted');
+				window.plugins.toast.showShortBottom(translate('INVITATION_ACCEPTED'));
 				$scope.invitations.splice(index, 1);
 			}
 		).error(
-			function(data, status)
+			function()
 			{
-				window.plugins.toast.showShortBottom('Invitation accepting failed with status ' + status);
+				window.plugins.toast.showShortBottom(translate('INVITATION_FAILED'));
 			}
 		);
 	};
@@ -41,13 +41,13 @@ app.controller("listInvitationsCtrl", function ($scope, urlConfig, invitationSer
 		invitationService.reject(invitation.id).success(
 			function()
 			{
-				window.plugins.toast.showShortBottom('Invitation rejected');
+				window.plugins.toast.showShortBottom(translate('INVITATION_REJECTED'));
 				$scope.invitations.splice(index, 1);
 			}
 		).error(
-			function(data, status)
+			function()
 			{
-				window.plugins.toast.showShortBottom('Invitation rejecting failed with status ' + status);
+				window.plugins.toast.showShortBottom(translate('INVITATION_FAILED'));
 			}
 		);
 	};

@@ -1,4 +1,4 @@
-app.controller("browseCtrl", function ($scope, $http, $q, urlConfig, activityService, activityTypeService, invitationService) {
+app.controller("browseCtrl", function ($scope, $http, $q, urlConfig, activityService, activityTypeService, invitationService, translate) {
 	$scope.activities = [];
 	$scope.currentIndex = 0;
 	$scope.activityTypes = [];
@@ -26,13 +26,13 @@ app.controller("browseCtrl", function ($scope, $http, $q, urlConfig, activitySer
 		invitationService.send(activity.id).then(
 			function ()
 			{
-				window.plugins.toast.showShortBottom('Invitation sent');
+				window.plugins.toast.showShortBottom(translate('BROWSE_INVITATION_SENT'));
 				activityService.handled(browseCarousel.getActiveCarouselItemIndex());
 				$scope.updateActivities();
 			},
-			function(data, status)
+			function()
 			{
-				window.plugins.toast.showShortBottom('Invitation sending failed with status ' + status);
+				window.plugins.toast.showShortBottom(translate('INVITATION_FAILED'));
 			});
 	};
 
@@ -41,13 +41,12 @@ app.controller("browseCtrl", function ($scope, $http, $q, urlConfig, activitySer
 		invitationService.skip(activity.id).then(
 			function()
 			{
-				window.plugins.toast.showShortBottom('Activity rejected');
 				activityService.handled(browseCarousel.getActiveCarouselItemIndex());
 				$scope.updateActivities();
 			},
-			function(data, status)
+			function()
 			{
-				window.plugins.toast.showShortBottom('Activity rejecting failed with status ' + status);
+				window.plugins.toast.showShortBottom(translate('INVITATION_FAILED'));
 			}
 		);
 	};

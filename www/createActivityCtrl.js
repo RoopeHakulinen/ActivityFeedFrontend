@@ -1,4 +1,4 @@
-app.controller("createActivityCtrl", function ($scope, $http, $q, urlConfig, activityService, activityTypeService, userService, directService) {
+app.controller("createActivityCtrl", function ($scope, $http, $q, urlConfig, activityService, activityTypeService, userService, directService, translate) {
 	$scope.activityTypes = [];
 
 	$scope.activityType = {name: "", id: -1};
@@ -39,7 +39,7 @@ app.controller("createActivityCtrl", function ($scope, $http, $q, urlConfig, act
 				);
 				activityService.create($scope.activityType.id, $scope.locationName, $scope.lat, $scope.lng, $scope.date + "T" + $scope.from, $scope.date + "T" + $scope.to, $scope.participantCount, $scope.requiredLevel, $scope.message, directs).success(
 					function () {
-						window.plugins.toast.showShortBottom('Activity successfully added.');
+						window.plugins.toast.showShortBottom(translate('CREATE_ACTIVITY_CREATED'));
 					}
 				).error(
 					function (data, status) {
