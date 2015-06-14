@@ -1,4 +1,4 @@
-app.controller("showProfileCtrl", function ($scope, directService, userService, $translate) {
+app.controller("showProfileCtrl", function ($scope, directService, userService) {
 	$scope.profile = {};
 
 	$scope.initialize = function(profile) {
@@ -11,11 +11,11 @@ app.controller("showProfileCtrl", function ($scope, directService, userService, 
 			function ()
 			{
 				$scope.profile.is_direct = true;
-				window.plugins.toast.showShortBottom($translate.instant('DIRECT_ADDED'));
+				toast('DIRECT_ADDED');
 			},
 			function()
 			{
-				window.plugins.toast.showShortBottom($translate.instant('DIRECT_ADD_FAILED'));
+				toast('DIRECT_ADD_FAILED');
 			});
 	};
 
@@ -25,11 +25,11 @@ app.controller("showProfileCtrl", function ($scope, directService, userService, 
 			function ()
 			{
 				$scope.profile.is_direct = false;
-				window.plugins.toast.showShortBottom($translate.instant('DIRECT_REMOVED'));
+				toast('DIRECT_REMOVED');
 			},
 			function()
 			{
-				window.plugins.toast.showShortBottom($translate.instant('DIRECT_REMOVE_FAILED'));
+				toast('DIRECT_REMOVE_FAILED');
 			});
 	};
 

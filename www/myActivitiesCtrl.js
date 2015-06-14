@@ -15,7 +15,7 @@ app.controller("myActivitiesCtrl", function ($scope, activityService, activityTy
 			},
 			function()
 			{
-				window.plugins.toast.showShortBottom($translate.instant('COMMON_LIST_FAILED'));
+				toast('COMMON_LIST_FAILED');
 			}
 		);
 	};

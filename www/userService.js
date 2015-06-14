@@ -21,11 +21,6 @@ app.service('userService', function () {
 		return this.getUser().username;
 	};
 
-	this.getFullname = function ()
-	{
-		return this.getUser().firstname + " " + this.getUser().lastname;
-	};
-
 	this.getId = function ()
 	{
 		return this.getUser().id;

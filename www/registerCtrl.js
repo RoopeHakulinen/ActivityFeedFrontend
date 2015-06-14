@@ -1,4 +1,4 @@
-app.controller("registerCtrl", function ($scope, $http, urlConfig, userService, $translate) {
+app.controller("registerCtrl", function ($scope, $http, urlConfig, userService) {
 	$scope.firstName = "";
 	$scope.lastName = "";
 	$scope.email = "";
@@ -12,7 +12,7 @@ app.controller("registerCtrl", function ($scope, $http, urlConfig, userService, 
 	{
 		if ($scope.email.length === 0 || $scope.password.length < 6)
 		{
-			window.plugins.toast.showShortBottom($translate.instant('SIGN_UP_FILL_IN'));
+			toast('SIGN_UP_FILL_IN');
 			return;
 		}
 
@@ -23,19 +23,18 @@ app.controller("registerCtrl", function ($scope, $http, urlConfig, userService, 
 				password: $scope.password,
 				profile:
 				{
-					firstName: $scope.firstName,
-					lastName: $scope.lastName
+					name: $scope.firstName + " " + $scope.lastName
 				}
 			}).then(
 			function (user)
 			{
-				window.plugins.toast.showShortBottom($translate.instant('SIGN_UP_SUCCESS'));
+				toast('SIGN_UP_SUCCESS');
 				userService.setUser(user);
 				$scope.registeredDeferred.resolve();
 			},
 			function()
 			{
-				window.plugins.toast.showShortBottom($translate.instant('SIGN_UP_FAILURE'));
+				toast('SIGN_UP_FAILURE');
 			});
 	};
 });

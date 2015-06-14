@@ -1,4 +1,4 @@
-app.controller("browseCtrl", function ($scope, $http, $q, urlConfig, activityService, activityTypeService, invitationService, $translate) {
+app.controller("browseCtrl", function ($scope, $http, $q, urlConfig, activityService, activityTypeService, invitationService) {
 	$scope.activities = [];
 	$scope.currentIndex = 0;
 	$scope.activityTypes = [];
@@ -26,13 +26,13 @@ app.controller("browseCtrl", function ($scope, $http, $q, urlConfig, activitySer
 		invitationService.send(activity.id).then(
 			function ()
 			{
-				window.plugins.toast.showShortBottom($translate.instant('BROWSE_INVITATION_SENT'));
+				toast('BROWSE_INVITATION_SENT');
 				activityService.handled(browseCarousel.getActiveCarouselItemIndex());
 				$scope.updateActivities();
 			},
 			function()
 			{
-				window.plugins.toast.showShortBottom($translate.instant('INVITATION_FAILED'));
+				toast('INVITATION_FAILED');
 			});
 	};
 
@@ -46,7 +46,7 @@ app.controller("browseCtrl", function ($scope, $http, $q, urlConfig, activitySer
 			},
 			function()
 			{
-				window.plugins.toast.showShortBottom($translate.instant('INVITATION_FAILED'));
+				toast('INVITATION_FAILED');
 			}
 		);
 	};

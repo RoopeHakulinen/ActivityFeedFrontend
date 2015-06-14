@@ -136,7 +136,7 @@ app.service("eventService", function ($http, urlConfig, userService, $translate)
 			confirmationModal.hide();
 			e.preventDefault();
 		}
-		else if (mainMenu && mainMenu.isMenuOpened())
+		else if (mainMenu !== undefined && mainMenu.isMenuOpened())
 		{
 			mainMenu.closeMenu();
 			e.preventDefault();
@@ -172,6 +172,12 @@ app.service("eventService", function ($http, urlConfig, userService, $translate)
 				"OK"
 			);
 		};
+
+		window.toast = function (value, fixed)
+		{
+			var text = fixed ? value : $translate.instant(value);
+			window.plugins.toast.showShortBottom(text);
+		};
 		userService.initializePosition();
 	}.bind(this), false);
 
@@ -193,6 +199,6 @@ app.service("eventService", function ($http, urlConfig, userService, $translate)
 
 	document.addEventListener('offline', function() {
 		console.log("Got offline event.");
-		window.plugins.toast.showShortBottom($translate.instant('COMMON_CONNECTION_LOST'));
+		toast('COMMON_CONNECTION_LOST');
 	}, false);
 });
