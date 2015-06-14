@@ -12,6 +12,7 @@
 
 #register .lucent {
 	opacity: 0.4;
+	color: white;
 }
 
 #register .note {
@@ -26,6 +27,9 @@
 #register .formarea {
 	width: 90%;
 	margin: 50px auto 0px auto;
+	background-color: rgba(0,0,0,0.5);
+	padding: 10px;
+	border-radius: 7px;
 }
 
 #register input[type=text],
@@ -33,4 +37,5 @@
 	height: 40px;
 	padding-top: 10px;
 	padding-bottom: 10px;
+	color: white;
 }
