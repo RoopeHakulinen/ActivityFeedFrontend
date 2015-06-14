@@ -1,4 +1,4 @@
-app.controller("listInvitationsCtrl", function ($scope, urlConfig, invitationService, translate) {
+app.controller("listInvitationsCtrl", function ($scope, urlConfig, invitationService, $translate) {
 	$scope.invitations = [];
 
 	$scope.initialize = function ()

@@ -1,4 +1,4 @@
-app.controller("createActivityCtrl", function ($scope, $http, $q, urlConfig, activityService, activityTypeService, userService, directService, translate) {
+app.controller("createActivityCtrl", function ($scope, $http, $q, urlConfig, activityService, activityTypeService, userService, directService, $translate) {
 	$scope.activityTypes = [];
 
 	$scope.activityType = {name: "", id: -1};

@@ -1,4 +1,4 @@
-app.controller("browseCtrl", function ($scope, $http, $q, urlConfig, activityService, activityTypeService, invitationService, translate) {
+app.controller("browseCtrl", function ($scope, $http, $q, urlConfig, activityService, activityTypeService, invitationService, $translate) {
 	$scope.activities = [];
 	$scope.currentIndex = 0;
 	$scope.activityTypes = [];

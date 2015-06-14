@@ -1,4 +1,4 @@
-app.controller("showActivityCtrl", function ($scope, urlConfig, activityService, translate) {
+app.controller("showActivityCtrl", function ($scope, urlConfig, activityService, $translate) {
 	$scope.activity = {};
 	$scope.comment = "";
 

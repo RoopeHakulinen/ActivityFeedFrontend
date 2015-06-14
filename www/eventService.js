@@ -1,4 +1,4 @@
-app.service("eventService", function ($http, urlConfig, userService, translate) {
+app.service("eventService", function ($http, urlConfig, userService, $translate) {
 
 	this.logout = function()
 	{
