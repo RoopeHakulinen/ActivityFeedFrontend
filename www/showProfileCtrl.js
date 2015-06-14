@@ -11,11 +11,11 @@ app.controller("showProfileCtrl", function ($scope, directService, userService, 
 			function ()
 			{
 				$scope.profile.is_direct = true;
-				window.plugins.toast.showShortBottom(translate('DIRECT_ADDED'));
+				window.plugins.toast.showShortBottom($translate('DIRECT_ADDED'));
 			},
 			function()
 			{
-				window.plugins.toast.showShortBottom(translate('DIRECT_ADD_FAILED'));
+				window.plugins.toast.showShortBottom($translate('DIRECT_ADD_FAILED'));
 			});
 	};
 
@@ -25,11 +25,11 @@ app.controller("showProfileCtrl", function ($scope, directService, userService, 
 			function ()
 			{
 				$scope.profile.is_direct = false;
-				window.plugins.toast.showShortBottom(translate('DIRECT_REMOVED'));
+				window.plugins.toast.showShortBottom($translate('DIRECT_REMOVED'));
 			},
 			function()
 			{
-				window.plugins.toast.showShortBottom(translate('DIRECT_REMOVE_FAILED'));
+				window.plugins.toast.showShortBottom($translate('DIRECT_REMOVE_FAILED'));
 			});
 	};
 

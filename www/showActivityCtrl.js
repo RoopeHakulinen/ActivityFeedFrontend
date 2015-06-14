@@ -10,7 +10,7 @@ app.controller("showActivityCtrl", function ($scope, urlConfig, activityService,
 	{
 		if ($scope.comment.length === 0)
 		{
-			window.plugins.toast.showShortBottom(translate('SHOW_ACTIVITY_COMMENT_EMPTY'));
+			window.plugins.toast.showShortBottom($translate('SHOW_ACTIVITY_COMMENT_EMPTY'));
 			return;
 		}
 
@@ -22,7 +22,7 @@ app.controller("showActivityCtrl", function ($scope, urlConfig, activityService,
 			},
 			function()
 			{
-				window.plugins.toast.showShortBottom(translate('SHOW_ACTIVITY_COMMENTING_FAILED'));
+				window.plugins.toast.showShortBottom($translate('SHOW_ACTIVITY_COMMENTING_FAILED'));
 			});
 	};
 });
