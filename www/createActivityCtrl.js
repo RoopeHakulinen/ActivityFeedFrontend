@@ -42,9 +42,9 @@ app.controller("createActivityCtrl", function ($scope, $http, $q, urlConfig, act
 						window.plugins.toast.showShortBottom(translate('CREATE_ACTIVITY_CREATED'));
 					}
 				).error(
-					function (data, status) {
+					function () {
 
-						window.plugins.toast.showShortBottom('Activity creation failed with status ' + status);
+						window.plugins.toast.showShortBottom(translate('CREATE_ACTIVITY_FAILED'));
 					}
 				).finally(
 					function () {
