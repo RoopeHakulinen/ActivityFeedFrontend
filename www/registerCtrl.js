@@ -1,4 +1,4 @@
-app.controller("registerCtrl", function ($scope, urlConfig, userService, $translate) {
+app.controller("registerCtrl", function ($scope, $http, urlConfig, userService, $translate) {
 	$scope.firstName = "";
 	$scope.lastName = "";
 	$scope.email = "";
