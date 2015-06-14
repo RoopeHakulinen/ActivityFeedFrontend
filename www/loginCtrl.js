@@ -104,7 +104,7 @@ app.controller("loginCtrl", function ($scope, $http, $q, fileSystemService, user
 	{
 		var registeredDeferred = $q.defer();
 		appNavigator.pushPage('sign-up.html', {registeredDeferred: registeredDeferred});
-		registeredDeferred.then(
+		registeredDeferred.promise.then(
 			function ()
 			{
 				$scope.signedIn();
