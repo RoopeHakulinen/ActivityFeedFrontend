@@ -113,6 +113,11 @@ app.controller("browseCtrl", function ($scope, $http, $q, urlConfig, activitySer
 		appNavigator.pushPage("templates/show-profile.html", {profile: profile});
 	};
 
+	$scope.showActivity = function (activity)
+	{
+		appNavigator.pushPage("templates/show-activity.html", {activity: activity});
+	};
+
 	ons.createPopover('popover.html', {parentScope: $scope}).then(
 		function(popover) {
 			$scope.popover = popover;
