@@ -103,7 +103,7 @@ app.controller("loginCtrl", function ($scope, $http, $q, fileSystemService, user
 	$scope.register = function ()
 	{
 		var registeredDeferred = $q.defer();
-		appNavigator.pushPage('sign-up.html', {registeredDeferred: registeredDeferred});
+		appNavigator.pushPage('templates/sign-up.html', {registeredDeferred: registeredDeferred});
 		registeredDeferred.promise.then(
 			function ()
 			{
