@@ -39,10 +39,22 @@ app.controller("loginCtrl", function ($scope, $http, $q, fileSystemService, user
 			})
 			.success(function (data) {
 				$scope.loginSuccess(data);
-			}).error(function () {
-				console.log("Login failed.");
+			}).error(function (status) {
+				$scope.loginFailure(status);
 				loginLoader.hide();
 			});
+	};
+
+	$scope.loginFailure = function (status)
+	{
+		if (status === 401)
+		{
+			toast('LOGIN_FAILED');
+		}
+		else if (status === 404)
+		{
+			toast('CONNECTION_PROBLEM');
+		}
 	};
 
 	$scope.loginSuccess = function (user)
