@@ -1,4 +1,4 @@
-<ons-page class="center" ng-controller="showActivityCtrl" ng-init="initialize(appNavigator.getCurrentPage().options.activity)">
+<ons-page class="center" ng-controller="showActivityCtrl" ng-init="initialize(appNavigator.getCurrentPage().options.activity)" style="{{activity.activity_type.style}}">
 	<ons-toolbar>
 		<div class="left"><ons-back-button>{{'COMMON_BACK' | translate}}</ons-back-button></div>
 		<div class="center">{{'ACTIVER' | translate}}</div>
@@ -6,7 +6,7 @@
 		</div>
 	</ons-toolbar>
 
-	<div id="activity" style="{{activity.activity_type.style}}">
+	<div id="activity">
 		{{activity.activity_type.name}}
 		{{activity.location_name}}
 		{{activity.participants.length}} / {{activity.participant_count}}

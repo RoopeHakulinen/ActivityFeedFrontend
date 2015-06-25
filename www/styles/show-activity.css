@@ -1,26 +1,28 @@
 #activity
 {
-	height: 99%;
-	width: 99%;
+	height: 96%;
+	width: 96%;
 	margin: auto;
 	border: 1px solid white;
 }
 
 #activity #comments
 {
-	min-height: 40px;
+	min-height: 100px;
 	background-color: rgba(255, 255, 255, 0.7);
+	width: 100%;
+	margin: 0 auto;
 }
 
 #activity #comments .comment
 {
-	width: 100%;
+	width: 98%;
 	border-bottom: 1px solid black;
 	padding: 2px 0;
-	color: white;
+	color: black;
 }
 
 #activity #comments .comment .author
 {
-	color: rgb(150, 150, 255);
+	color: #3399ff;
 }
