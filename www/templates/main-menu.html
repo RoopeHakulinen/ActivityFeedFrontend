@@ -1,0 +1,35 @@
+<ons-page modifier="menu-page" ng-controller="mainMenuCtrl">
+	<ons-toolbar modifier="transparent">
+		<div class="center">{{'ACTIVER' | translate}}</div>
+	</ons-toolbar>
+
+	<ons-list class="menu-list" style="margin-bottom: 6px;">
+		<ons-list-item class="menu-item" ng-click="appNavigator.pushPage('templates/create-activity.html');mainMenu.closeMenu();">
+			<ons-icon icon="fa-plus"></ons-icon>
+			{{'MENU_CREATE_ACTIVITY' | translate}}
+		</ons-list-item>
+		<ons-list-item class="menu-item" ng-click="appNavigator.pushPage('templates/show-activities.html');mainMenu.closeMenu();">
+			<ons-icon icon="fa-star"></ons-icon>
+			{{'MENU_MY_ACTIVITIES' | translate}}
+		</ons-list-item>
+		<ons-list-item class="menu-item" ng-click="appNavigator.pushPage('templates/list-invitations.html');mainMenu.closeMenu();">
+			<ons-icon icon="fa-user"></ons-icon>
+			{{'MENU_INVITATIONS' | translate}}
+			<div ng-show="invitations" class="notification menu-notification">{{invitations.length}}</div>
+		</ons-list-item>
+	</ons-list>
+
+	<ons-list class="bottom-menu-list">
+		<ons-list-item class="bottom-menu-item" ng-click="appNavigator.pushPage('templates/settings.html');mainMenu.closeMenu();">
+			{{'MENU_SETTINGS' | translate}}
+		</ons-list-item>
+
+		<ons-list-item class="bottom-menu-item" ng-click="appNavigator.pushPage('templates/edit-profile.html');mainMenu.closeMenu();">
+			{{'MENU_PROFILE' | translate}}
+		</ons-list-item>
+
+		<ons-list-item class="bottom-menu-item" ng-click="appNavigator.pushPage('templates/about.html');mainMenu.closeMenu();">
+			{{'MENU_ABOUT' | translate}}
+		</ons-list-item>
+	</ons-list>
+</ons-page>

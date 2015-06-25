@@ -1,0 +1,18 @@
+<ons-page ng-controller="loginCtrl" ng-init="initialize()">
+	<ons-toolbar>
+		<div class="center">{{'LOGIN_SIGN_IN' | translate}}</div>
+	</ons-toolbar>
+
+	<div class="login-form">
+		<input type="email" class="text-input--underbar" placeholder="{{'COMMON_EMAIL' | translate}}" ng-model="email" value="">
+		<input type="password" class="text-input--underbar" placeholder="{{'COMMON_PASSWORD' | translate}}" ng-model="password" value="">
+		<br><br>
+		<ons-button modifier="large" class="login-button" ng-click="login()">{{'LOGIN_SIGN_IN' | translate}}</ons-button>
+		<br><br>
+		<ons-button modifier="large" class="login-button" ng-click="facebookLogin()">{{'LOGIN_SIGN_IN_WITH_FACEBOOK' | translate}}</ons-button>
+		<br>
+		<ons-button modifier="quiet" class="sign-up" ng-click="register();">{{'SIGN_UP_SIGN_UP' | translate}}</ons-button>
+		<br>
+		<ons-button modifier="quiet" class="forgot-password">{{'LOGIN_FORGOT_PASSWORD' | translate}}</ons-button>
+	</div>
+</ons-page>

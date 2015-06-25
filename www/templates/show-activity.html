@@ -1,0 +1,14 @@
+<ons-page class="center" ng-controller="showActivityCtrl" ng-init="initialize(appNavigator.getCurrentPage().options.activity)">
+	<ons-toolbar>
+		<div class="left"><ons-back-button>{{'COMMON_BACK' | translate}}</ons-back-button></div>
+		<div class="center">{{'ACTIVER' | translate}}</div>
+		<div class="right">
+		</div>
+	</ons-toolbar>
+
+	<div style="height: 100%;">
+		{{activity.location_name}}
+		<input type="text" ng-model="comment" placeholder="{{'SHOW_ACTIVITY_WRITE_A_COMMENT' | translate}}" />
+		<ons-button modifier="large" ng-click="sendComment()">{{'SHOW_ACTIVITY_COMMENT' | translate}}</ons-button>
+	</div>
+</ons-page>

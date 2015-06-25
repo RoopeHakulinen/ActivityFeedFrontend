@@ -54,7 +54,7 @@ app.controller("listInvitationsCtrl", function ($scope, urlConfig, invitationSer
 
 	$scope.showActivity = function (activity)
 	{
-		appNavigator.pushPage("show-activity.html", {activity: activity});
+		appNavigator.pushPage("templates/show-activity.html", {activity: activity});
 	};
 
 	$scope.getDuration = function (from, to)

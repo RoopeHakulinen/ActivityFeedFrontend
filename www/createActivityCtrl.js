@@ -58,7 +58,7 @@ app.controller("createActivityCtrl", function ($scope, $http, $q, urlConfig, act
 	$scope.showDirectMenu = function ()
 	{
 		var deferred = $q.defer();
-		appNavigator.pushPage("select-list.html", {name: "Lähetä kutsu Directeille", dataPromise: directService.getDirects(), selection: [], deferred: deferred});
+		appNavigator.pushPage("templates/select-list.html", {name: "Lähetä kutsu Directeille", dataPromise: directService.getDirects(), selection: [], deferred: deferred});
 		return deferred.promise;
 	};
 

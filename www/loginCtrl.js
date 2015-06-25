@@ -56,7 +56,7 @@ app.controller("loginCtrl", function ($scope, $http, $q, fileSystemService, user
 		console.log("Login succeeded.");
 		activityTypeService.getActivityTypes();
 		eventService.initializePushNotifications();
-		appNavigator.pushPage("main-view.html");
+		appNavigator.pushPage("templates/main-view.html");
 		loginLoader.hide();
 	};
 

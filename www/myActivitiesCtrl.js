@@ -22,7 +22,7 @@ app.controller("myActivitiesCtrl", function ($scope, activityService, activityTy
 
 	$scope.showActivity = function (activity)
 	{
-		appNavigator.pushPage("show-activity.html", {activity: activity});
+		appNavigator.pushPage("templates/show-activity.html", {activity: activity});
 	};
 
 	$scope.ownActivity = function (activity)

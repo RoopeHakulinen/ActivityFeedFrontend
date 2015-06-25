@@ -103,6 +103,6 @@ app.service('userService', function () {
 
 		console.log("Logged out.");
 		this.setUser(false);
-		appNavigator.resetToPage("login.html");
+		appNavigator.resetToPage("templates/login.html");
 	};
 });

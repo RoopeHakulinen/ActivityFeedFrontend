@@ -1,0 +1,42 @@
+<ons-page ng-controller="listInvitationsCtrl" ng-init="initialize()">
+	<ons-toolbar>
+		<div class="left"><ons-back-button>{{'COMMON_BACK' | translate}}</ons-back-button></div>
+		<div class="center">
+			{{'MENU_INVITATIONS' | translate}}
+		</div>
+		<div class="right">
+			<ons-toolbar-button>
+				<ons-icon icon="ion-plus" fixed-width="false" style="vertical-align: -4px;"></ons-icon>
+			</ons-toolbar-button>
+		</div>
+	</ons-toolbar>
+
+	<ons-list class="invitation-list">
+		<ons-list-item modifier="chevron" class="invitation" ng-repeat="invitation in invitations track by $index" ng-click="showActivity(invitation.activity);">
+			<ons-row> <!--  ng-style="{backgroundColor:status == 'match' ? '#3399ff' : '#ccc'}" -->
+				<ons-col width="80px" class="invitation-left">
+					<div class="invitation-date">{{invitation.activity.from | asDate | date: "d.M. klo H:mm"}} - {{invitation.activity.to | asDate | date: "H:mm"}}</div>
+					<div class="invitation-duration">{{getDuration(invitation.activity.from, invitation.activity.to) | asDate | date: "H'h' mm'min'"}}</div>
+				</ons-col>
+
+				<ons-col width="6px" class="invitation-center" style="background-color: #3399ff">
+				</ons-col>
+
+				<ons-col class="invitation-right">
+					<div class="invitation-name">{{invitation.activity.activity_type.name}}</div>
+
+					<!--<div class="invitation-info">
+						<div ng-hide="a % 4 == 0">
+							<ons-icon icon="fa-phone"></ons-icon>123-456-789
+						</div>
+					</div>-->
+
+					<div class="controls">
+						<ons-icon icon="ion-checkmark-circled" size="56px" fixed-width="false" ng-click="accept(invitation, $index);" style="color: green;"></ons-icon>
+						<ons-icon icon="ion-close-circled" size="56px" fixed-width="false" ng-click="reject(invitation, $index);" style="color: red;"></ons-icon>
+					</div>
+				</ons-col>
+			</ons-row>
+		</ons-list-item>
+	</ons-list>
+</ons-page>

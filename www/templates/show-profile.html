@@ -1,0 +1,44 @@
+<ons-page class="center" ng-controller="showProfileCtrl" ng-init="initialize(appNavigator.getCurrentPage().options.profile)" id="show-profile">
+	<ons-toolbar>
+		<div class="left"><ons-back-button>{{'COMMON_BACK' | translate}}</ons-back-button></div>
+		<div class="center">{{'ACTIVER' | translate}}</div>
+		<div class="right">
+		</div>
+	</ons-toolbar>
+
+	<div class="profile-card">
+		<img src="{{profile.picture}}" class="profile-image">
+		<div class="profile-name">{{profile.name}}</div>
+		<div class="profile-id">{{'PROFILE_AGE' | translate}}: {{profile.born | ageFilter}}</div>
+		<div class="profile-desc">{{profile.description}}</div>
+	</div>
+
+	<ons-list>
+		<ons-list-item>
+			<ons-row>
+				<ons-col class="info-col">
+					<div class="info-num">{{profile.activity_count}}</div>
+					<div class="info-unit">{{'PROFILE_PARTICIPATIONS' | translate}}</div>
+				</ons-col>
+				<ons-col class="info-col">
+					<div class="info-num">{{profile.rating_mean | number:1}}</div>
+					<div class="info-unit">{{'PROFILE_RATING' | translate}}</div>
+				</ons-col>
+				<ons-col class="info-col">
+					<div class="info-num">{{profile.rating_count}}</div>
+					<div class="info-unit">{{'PROFILE_RATING_COUNT' | translate}}</div>
+				</ons-col>
+			</ons-row>
+		</ons-list-item>
+	</ons-list>
+
+	<ons-list modifier="inset" style="margin-top: 10px">
+		<ons-list-item modifier="chevron" ng-hide="profile.is_direct || hideDirect()" ng-click="addAsDirect(profile)">
+			{{'DIRECT_ADD' | translate}}
+		</ons-list-item>
+
+		<ons-list-item modifier="chevron" ng-show="profile.is_direct" ng-click="removeDirect(profile)">
+			{{'DIRECT_REMOVE' | translate}}
+		</ons-list-item>
+	</ons-list>
+</ons-page>
