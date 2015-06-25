@@ -53,7 +53,7 @@ app.controller("loginCtrl", function ($scope, $http, $q, fileSystemService, user
 		}
 		else if (status === 404)
 		{
-			toast('CONNECTION_PROBLEM');
+			toast('COMMON_CONNECTION_PROBLEM');
 		}
 	};
 

@@ -33,7 +33,7 @@ app.config(function ($httpProvider) {
 		return {
 			responseError: function(rejection) {
 				if(rejection.status == 0) {
-					toast('CONNECTION_PROBLEM');
+					toast('COMMON_CONNECTION_PROBLEM');
 					return;
 				}
 				return $q.reject(rejection);
