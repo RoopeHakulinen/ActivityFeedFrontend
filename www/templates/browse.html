@@ -18,8 +18,8 @@
 	<div ng-show="activities.length" style="height: 100%;">
 		<ons-carousel swipeable overscrollable auto-scroll auto-refresh style="height: 100%;" var="browseCarousel" auto-scroll-ratio="0.33" ons-postchange="changed($event)" ons-overscroll="overscrolled($event)">
 			<ons-carousel-item ng-repeat="activity in activities track by $index" style="visibility: visible !important" ng-click="showActivity(activity)">
-				<div class="profile-card" style="{{activity.activity_type.style}}" ng-click="showProfile(activity.organizer)">
-					<img ng-src="{{_getOrganizerImage(activity)}}" class="activity-organizer-image" alt="{{activity.organizer.email}}">
+				<div class="profile-card" style="{{activity.activity_type.style}}">
+					<img ng-src="{{_getOrganizerImage(activity)}}" class="activity-organizer-image" alt="{{activity.organizer.email}}" ng-click="showProfile(activity.organizer)">
 					<div class="activity-info">
 						<div class="activity-type-name">{{activity.activity_type.name}}</div>
 						<div class="activity-organizer-name">{{activity.organizer.name}}</div>

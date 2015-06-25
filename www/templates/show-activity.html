@@ -8,10 +8,10 @@
 
 	<div id="activity" style="{{activity.activity_type.style}}">
 		<div id="info">
-			<span id="type">{{activity.activity_type.name}}</span>
-			<span id="location-name">{{activity.location_name}}</span>
-			<span id="participation">{{activity.participants.length}} / {{activity.participant_count}}</span>
-			<span id="when">{{activity.from | date}} - {{activity.to | date}}</span>
+			<div id="type">{{activity.activity_type.name}}</span>
+			<div id="location-name">{{activity.location_name}}</span>
+			<div id="participation">{{activity.participants.length}} / {{activity.participant_count}}</span>
+			<div id="when">{{activity.from | date}} - {{activity.to | date}}</span>
 		</div>
 		<div id="comments">
 			<div class="comment" ng-repeat="comment in activity.comments">
