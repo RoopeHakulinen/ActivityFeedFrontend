@@ -29,6 +29,17 @@ app.factory('authHttpRequestInterceptor', function (userService) {
 
 app.config(function ($httpProvider) {
 	$httpProvider.interceptors.push('authHttpRequestInterceptor');
+	$httpProvider.interceptors.push(function($q) {
+		return {
+			responseError: function(rejection) {
+				if(rejection.status == 0) {
+					toast('CONNECTION_PROBLEM');
+					return;
+				}
+				return $q.reject(rejection);
+			}
+		};
+	});
 });
 
 app.filter('ageFilter', function () {
