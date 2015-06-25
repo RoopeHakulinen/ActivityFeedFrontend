@@ -34,7 +34,6 @@ app.config(function ($httpProvider) {
 			responseError: function(rejection) {
 				if(rejection.status == 0) {
 					toast('COMMON_CONNECTION_PROBLEM');
-					return;
 				}
 				return $q.reject(rejection);
 			}
