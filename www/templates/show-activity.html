@@ -12,8 +12,8 @@
 		{{activity.participants.length}} / {{activity.participant_count}}
 		{{activity.from | date}} - {{activity.to | date}}
 		<div id="comments">
-			<div ng-repeat="comment in activity.comments">
-				{{comment.author.name}}: {{comment.text}}
+			<div class="comment" ng-repeat="comment in activity.comments">
+				<span class="author">{{comment.author.name}}</span>: {{comment.text}}
 			</div>
 		</div>
 		<input type="text" ng-model="comment" placeholder="{{'SHOW_ACTIVITY_WRITE_A_COMMENT' | translate}}" />
