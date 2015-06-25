@@ -39,7 +39,7 @@ app.controller("loginCtrl", function ($scope, $http, $q, fileSystemService, user
 			})
 			.success(function (data) {
 				$scope.loginSuccess(data);
-			}).error(function (status) {
+			}).error(function (data, status) {
 				$scope.loginFailure(status);
 				loginLoader.hide();
 			});
