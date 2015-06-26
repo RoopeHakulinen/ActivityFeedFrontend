@@ -18,7 +18,7 @@ app.controller("showActivityCtrl", function ($scope, urlConfig, activityService)
 			function (data)
 			{
 				$scope.comment = "";
-				$scope.activity.comments.push(data);
+				$scope.activity.comments.push(data.data);
 			},
 			function()
 			{
