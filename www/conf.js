@@ -1,9 +1,17 @@
-TEST_ENABLED = true;
+ENV = "test"; // "localhost", "test" or "production"
 
-var serverUrl = "https://api.activer.net/";
-if (TEST_ENABLED)
+var serverUrl;
+if (ENV === "localhost")
 {
-	serverUrl = "https://test.activer.net/";
+	serverUrl = 'http://localhost:3000/';
+}
+else if (ENV === "test")
+{
+	serverUrl = 'https://test.activer.net/';
+}
+else if (ENV === "production")
+{
+	serverUrl = 'https://api.activer.net/';
 }
 
 app.constant(

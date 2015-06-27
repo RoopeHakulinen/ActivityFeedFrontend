@@ -2,7 +2,7 @@ app.controller("loginCtrl", function ($scope, $http, $q, fileSystemService, user
 	$scope.email = "";
 	$scope.password = "";
 
-	if (TEST_ENABLED)
+	if (ENV === 'localhost' || ENV === 'test')
 	{
 		$scope.email = "roope.hakulinen@gmail.com";
 		$scope.password = "password";
