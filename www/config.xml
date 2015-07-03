@@ -27,7 +27,7 @@
 	<gap:plugin name="org.apache.cordova.splashscreen" version="0.3.4" source="npm" />
 	<gap:plugin name="nl.x-services.plugins.toast" version="2.0.2" source="npm" />
 	<gap:plugin name="com.phonegap.plugins.pushplugin" version="2.4.0" source="pgb" />
-	<gap:plugin name="com.phonegap.plugins.facebookconnect" version="0.9.0" source="pgb"> <!-- PhoneGap Build doesn't yet support 0.9.0 -->
+	<gap:plugin name="com.phonegap.plugins.facebookconnect" version="0.9.0" source="pgb">
 		<param name="APP_ID" value="375866282577187"/>
 		<param name="APP_NAME" value="Activer"/>
 	</gap:plugin>
