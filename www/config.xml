@@ -25,7 +25,7 @@
 	<gap:plugin name="cordova-plugin-geolocation" version="0.3.10" source="npm" />
 	<gap:plugin name="cordova-plugin-network-information" version="0.2.12" source="npm" />
 	<gap:plugin name="cordova-plugin-splashscreen" version="0.3.4" source="npm" />
-	<gap:plugin name="cordova-plugin-whitelist" version="1.1.0" source="npm" />
+	<gap:plugin name="cordova-plugin-whitelist" version="1.0.0" source="npm" />
 	<gap:plugin name="nl.x-services.plugins.toast" version="2.0.2" source="npm" />
 	<gap:plugin name="com.phonegap.plugins.pushplugin" version="2.4.0" source="pgb" />
 	<gap:plugin name="com.phonegap.plugins.facebookconnect" version="0.9.0" source="pgb">
