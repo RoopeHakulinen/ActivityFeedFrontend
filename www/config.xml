@@ -11,11 +11,11 @@
 	<author email="roope.hakulinen@gmail.com" href="http://activer.net">
 		Roope Hakulinen
 	</author>
-	<content src="index.html"/>
+	<content src="templates/index.html"/>
 	<access origin="*"/>
 
 	<!-- Use the newest version of PhoneGap -->
-	<preference name='phonegap-version' value='3.7.0' />
+	<preference name='phonegap-version' value='cli-5.1.1' />
 
 	<!-- PhoneGap plugins for PhoneGap Build to attach to build -->
 	<gap:plugin name="org.apache.cordova.camera" version="0.3.2" source="npm" />
