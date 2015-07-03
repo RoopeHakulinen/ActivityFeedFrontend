@@ -11,7 +11,7 @@
 	<author email="roope.hakulinen@gmail.com" href="http://activer.net">
 		Roope Hakulinen
 	</author>
-	<content src="templates/index.html"/>
+	<content src="index.html"/>
 	<access origin="*"/>
 
 	<!-- Use the newest version of PhoneGap -->
