@@ -15,10 +15,9 @@
 	<access origin="*"/>
 
 	<!-- Use the newest version of PhoneGap -->
-	<preference name='phonegap-version' value='cli-5.1.1' />
+	<preference name='phonegap-version' value='3.7.0' />
 
 	<!-- PhoneGap plugins for PhoneGap Build to attach to build -->
-	<gap:plugin name="com.indigoway.cordova.whitelist.whitelistplugin" version="1.0.0" />
 	<gap:plugin name="org.apache.cordova.camera" version="0.3.2" source="npm" />
 	<gap:plugin name="org.apache.cordova.device" version="0.2.12" source="npm" />
 	<gap:plugin name="org.apache.cordova.dialogs" version="0.2.10" source="npm" />
