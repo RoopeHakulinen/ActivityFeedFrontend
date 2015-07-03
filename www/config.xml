@@ -25,12 +25,12 @@
 	<gap:plugin name="cordova-plugin-geolocation" version="0.3.10" source="npm" />
 	<gap:plugin name="cordova-plugin-network-information" version="0.2.12" source="npm" />
 	<gap:plugin name="cordova-plugin-splashscreen" version="0.3.4" source="npm" />
-	<gap:plugin name="cordova-plugin-whitelist" source="npm" />
+	<gap:plugin name="cordova-plugin-whitelist" version="1.1.0" source="npm" />
 	<gap:plugin name="nl.x-services.plugins.toast" version="2.0.2" source="npm" />
 	<gap:plugin name="com.phonegap.plugins.pushplugin" version="2.4.0" source="pgb" />
 	<gap:plugin name="com.phonegap.plugins.facebookconnect" version="0.9.0" source="pgb">
-		<param name="APP_ID" value="375866282577187"/>
-		<param name="APP_NAME" value="Activer"/>
+		<param name="APP_ID" value="375866282577187" />
+		<param name="APP_NAME" value="Activer" />
 	</gap:plugin>
 
 	<gap:config-file platform="android" parent="/manifest">
