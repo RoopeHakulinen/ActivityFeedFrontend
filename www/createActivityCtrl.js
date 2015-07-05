@@ -39,6 +39,7 @@ app.controller("createActivityCtrl", function ($scope, $http, $q, urlConfig, act
 				);
 				activityService.create($scope.activityType.id, $scope.locationName, $scope.lat, $scope.lng, $scope.date + "T" + $scope.from, $scope.date + "T" + $scope.to, $scope.participantCount, $scope.requiredLevel, $scope.message, directs).success(
 					function () {
+						appNavigator.popPage();
 						toast('CREATE_ACTIVITY_CREATED');
 					}
 				).error(
