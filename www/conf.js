@@ -18,7 +18,9 @@ app.constant(
 	"urlConfig",
 	{
 		"user": serverUrl + "user",
+		"users": serverUrl + "users",
 		"login": serverUrl + "users/sign_in",
+		"password": serverUrl + "users/password",
 		"facebookCallback": serverUrl + "users/facebook/",
 		"activity": serverUrl + "activity/",
 		"activities": serverUrl + "activities/",

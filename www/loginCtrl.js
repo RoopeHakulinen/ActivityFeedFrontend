@@ -115,12 +115,17 @@ app.controller("loginCtrl", function ($scope, $http, $q, fileSystemService, user
 	$scope.register = function ()
 	{
 		var registeredDeferred = $q.defer();
-		appNavigator.pushPage('templates/sign-up.html', {registeredDeferred: registeredDeferred});
+		appNavigator.pushPage('templates/register.html', {registeredDeferred: registeredDeferred});
 		registeredDeferred.promise.then(
 			function ()
 			{
 				$scope.signedIn();
 			}
 		)
+	};
+
+	$scope.forgotPassword = function ()
+	{
+		appNavigator.pushPage('templates/forgot-password.html', {});
 	};
 });

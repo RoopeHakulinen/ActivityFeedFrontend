@@ -1,8 +1,8 @@
 app.controller("registerCtrl", function ($scope, $http, urlConfig, userService) {
-	$scope.firstName = "";
-	$scope.lastName = "";
 	$scope.email = "";
 	$scope.password = "";
+	$scope.firstName = "";
+	$scope.lastName = "";
 
 	$scope.initialize = function(registeredDeferred) {
 		$scope.registeredDeferred = registeredDeferred;
@@ -12,29 +12,31 @@ app.controller("registerCtrl", function ($scope, $http, urlConfig, userService) 
 	{
 		if ($scope.email.length === 0 || $scope.password.length < 6)
 		{
-			toast('SIGN_UP_FILL_IN');
+			toast('COMMON_FILL_ALL');
 			return;
 		}
 
 		$http.post(
 			urlConfig["users"],
 			{
-				email: $scope.email,
-				password: $scope.password,
-				profile:
+				user:
 				{
-					name: $scope.firstName + " " + $scope.lastName
+					email: $scope.email,
+					password: $scope.password,
+					profile: {
+						name: $scope.firstName + " " + $scope.lastName
+					}
 				}
 			}).then(
-			function (user)
+			function (data)
 			{
-				toast('SIGN_UP_SUCCESS');
-				userService.setUser(user);
+				toast('REGISTER_SUCCESS');
+				userService.setUser(data.data);
 				$scope.registeredDeferred.resolve();
 			},
 			function()
 			{
-				toast('SIGN_UP_FAILURE');
+				toast('REGISTER_FAILURE');
 			});
 	};
 });
