@@ -44,7 +44,6 @@ app.controller("createActivityCtrl", function ($scope, $http, $q, urlConfig, act
 					}
 				).error(
 					function () {
-
 						toast('CREATE_ACTIVITY_FAILED');
 					}
 				).finally(
