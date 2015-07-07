@@ -15,51 +15,65 @@
 	<ons-button modifier="large" style="margin: 0 auto;" ng-click="showActivityTypePopover($event);">
 		{{selectedActivityType.name || 'BROWSE_ALL_ACTIVITY_TYPES' | translate}}
 	</ons-button>
-	<div ng-show="activities.length" style="height: 100%;">
-		<ons-carousel swipeable overscrollable auto-scroll auto-refresh style="height: 100%;" var="browseCarousel" auto-scroll-ratio="0.33" ons-postchange="changed($event)" ons-overscroll="overscrolled($event)">
-			<ons-carousel-item ng-repeat="activity in activities track by $index" style="visibility: visible !important" ng-click="showActivity(activity)">
-				<div class="profile-card" style="{{activity.activity_type.style}}">
-					<img ng-src="{{_getOrganizerImage(activity)}}" class="activity-organizer-image" alt="{{activity.organizer.email}}" ng-click="showProfile(activity.organizer);$event.stopPropagation();">
-					<div class="activity-info">
-						<div class="activity-type-name">{{activity.activity_type.name}}</div>
-						<div class="activity-organizer-name">{{activity.organizer.name}}</div>
-						<div class="activity-location-name">{{activity.location_name}}</div>
-						<div class="activity-timeframe">{{activity.from | asDate | date: "d.M. klo H:mm"}} - {{activity.to | asDate | date: "H:mm"}}</div>
-						<div class="activity-desc">{{activity.comments[0].text}}</div>
-						<div class="activity-stars">
-							<div class="star-five" ng-class="{highlight: activity.required_level >= n}" ng-repeat="n in [1, 2, 3, 4, 5]"></div>
+	<div ng-show="activities.length" style="height: calc(100% - 64px);">
+		<div id="browser">
+			<ons-carousel swipeable overscrollable auto-scroll auto-refresh style="height: 100%;" var="browseCarousel" auto-scroll-ratio="0.33" ons-postchange="changed($event)" ons-overscroll="overscrolled($event)">
+				<ons-carousel-item ng-repeat="activity in activities track by $index" style="visibility: visible !important;">
+					<div id="top-container">
+						<div class="activity-card" style="{{activity.activity_type.style}}" ng-click="showActivity(activity)">
+							<div style="height: calc(100% - 184px);">
+								<img ng-src="{{_getOrganizerImage(activity)}}" class="activity-organizer-image" alt="{{activity.organizer.email}}" ng-click="showProfile(activity.organizer);$event.stopPropagation();">
+								<br class="clear">
+							</div>
+							<div class="activity-info">
+								<div class="center glossy">
+									<div class="activity-type-name">{{activity.activity_type.name}}</div>
+									<div class="activity-organizer-name">{{activity.organizer.name}}</div>
+									<div class="activity-location-name">{{activity.location_name}}</div>
+									<div class="activity-timeframe">{{activity.from | asDate | date: "d.M. klo H:mm"}} - {{activity.to | asDate | date: "H:mm"}}</div>
+									<div class="activity-desc">{{activity.comments[0].text}}</div>
+									<div class="activity-stars">
+										<div class="star-five" ng-class="{highlight: activity.required_level >= n}" ng-repeat="n in [1, 2, 3, 4, 5]"></div>
+									</div>
+									<div class="activity-participants">{{activity.participants.length + 1}} / {{activity.participant_count}} {{'BROWSE_PARTICIPANTS' | translate}}</div>
+									<div class="activity-distance">{{activity.distance | number:1}} km</div>
+								</div>
+							</div>
 						</div>
-						<div class="activity-participants">{{activity.participants.length + 1}} / {{activity.participant_count}} {{'BROWSE_PARTICIPANTS' | translate}}</div>
-						<div class="activity-distance">{{activity.distance | number:1}} km</div>
+						<div id="controls">
+							<div class="center">
+								<ons-icon
+									icon="fa-check"
+									size="20px"
+									fixed-width="false"
+									class="glossy control send-invitation"
+									ng-click="invite(activity);">
+								</ons-icon>
+								<ons-icon
+									icon="fa-forward"
+									size="20px"
+									fixed-width="false"
+									class="glossy control skip"
+									ng-click="skip(activity);">
+								</ons-icon>
+							</div>
+						</div>
+
 					</div>
-				</div>
-				<div class="controls" style="width: 140px; margin: 5% auto;">
-					<ons-icon
-						icon="fa-forward"
-						size="20px"
-						fixed-width="false"
-						style="background-color: dimgray; border-radius: 50%; padding: 20px; color: red; float: right;"
-						ng-click="skip(activity);">
-					</ons-icon>
-					<ons-icon
-						icon="fa-check"
-						size="20px"
-						fixed-width="false"
-						style="background-color: dimgray; border-radius: 50%; padding: 20px; color: green; float: left;"
-						ng-click="invite(activity);">
-					</ons-icon>
-				</div>
-			</ons-carousel-item>
-			<ons-carousel-cover>
-				<div class="cover-label">
-					{{'BROWSE_SWIPE_FOR_MORE' | translate}}<br/>
-					{{'COMMON_ACTIVITY' | translate}} {{currentIndex + 1}} / {{activities.length}}
-				</div>
-			</ons-carousel-cover>
-		</ons-carousel>
+				</ons-carousel-item>
+				<ons-carousel-cover>
+					<div id="cover">
+						<div id="label" class="glossy">
+							{{'BROWSE_SWIPE_FOR_MORE' | translate}}<br/>
+							{{'COMMON_ACTIVITY' | translate}} {{currentIndex + 1}} / {{activities.length}}
+						</div>
+					</div>
+				</ons-carousel-cover>
+			</ons-carousel>
+		</div>
 	</div>
 	<div ng-hide="activities.length">
-		<div style="margin: 100px auto 0; width: 130px;">
+		<div class="glossy" style="margin: 100px auto 0; width: 60%; text-align: center;">
 			{{'BROWSE_NO_ACTIVITIES' | translate}}<br/>
 			<ons-button modifier="large outline" style="margin: 0 auto;" ng-click="updateActivities(true);">
 				{{'COMMON_UPDATE' | translate}}

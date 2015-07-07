@@ -29,8 +29,8 @@
 					</div>-->
 
 					<div class="controls">
-						<ons-icon icon="ion-checkmark-circled" size="56px" fixed-width="false" ng-click="accept(invitation, $index);" style="color: green;"></ons-icon>
-						<ons-icon icon="ion-close-circled" size="56px" fixed-width="false" ng-click="reject(invitation, $index);" style="color: red;"></ons-icon>
+						<ons-icon icon="ion-checkmark-circled" size="56px" fixed-width="false" ng-click="accept(invitation, $index);$event.stopPropagation();" style="color: green;"></ons-icon>
+						<ons-icon icon="ion-close-circled" size="56px" fixed-width="false" ng-click="reject(invitation, $index);$event.stopPropagation();" style="color: red;"></ons-icon>
 					</div>
 				</ons-col>
 			</ons-row>

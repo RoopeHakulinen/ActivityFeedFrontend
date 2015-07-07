@@ -1,41 +1,104 @@
-#browse-activities .cover-label {
-	text-align: center;
+#browse-activities #browser
+{
+	height: calc(100% - 50px);
 	position: absolute;
-	left: 0px;
+	top: 48px;
 	width: 100%;
-	bottom: 10%;
-	color: #33393c;
 }
 
-#browse-activities .profile-card {
-	width: 80%;
+#browse-activities #top-container
+{
+	height: 85%;
+	position: absolute;
+	width: 100%;
+}
+
+#browse-activities #top-container .activity-card {
 	text-align: center;
 	color: white;
-	padding: 30px 0;
-	line-height: 1.4;
+	padding: 1% 0;
+	line-height: 20px;
 	background-size: cover;
-	text-shadow: rgba(0, 0, 0, 0.4) 0px 1px 0px;
-	margin: 10% auto 0;
-	border: 2px solid black;
-	height: 54%;
-}
-
-#browse-activities .profile-card .activity-info
-{
-	background-color: rgba(0, 0, 0, 0.85);
-	border-radius: 10px;
-	padding: 2px;
-	width: 85%;
+	background-position: center;
+	background-repeat: no-repeat;
+	text-shadow: rgba(0, 0, 0, 0.4) 0 1px 0;
 	margin: 0 auto;
+	border: 2px solid black;
+	position: relative;
+	width: 96%;
+	height: 75%;
 }
 
-#browse-activities .profile-card .activity-organizer-image {
-	height: 150px;
-	width: 150px;
+#browse-activities #top-container .activity-card .activity-organizer-image {
+	height: 100%;
 	border-radius: 50%;
 	-webkit-border-radius: 50%;
 	background-color: black;
-	border: 1px solid white;
-	box-shadow:rgba(0, 0, 0, 0.2) 0px 2px 0px 0px;
-	-webkit-box-shadow:rgba(0, 0, 0, 0.2) 0px 2px 0px 0px;
+	border: 1px solid black;
+	box-shadow: rgba(0, 0, 0, 0.2) 0 2px 0 0;
+	-webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 2px 0 0;
+}
+
+#browse-activities #top-container .activity-card .activity-info
+{
+	position: absolute;
+	width: 100%;
+	bottom: 0;
+	height: 178px;
+	margin: 3px 0;
+}
+
+#browse-activities #top-container .activity-card .activity-info .center
+{
+	width: 95%;
+	margin: 0 auto;
+	padding: 4px 0;
+	background: linear-gradient(to bottom, rgba(114, 164, 224, 0.9) 31%,rgba(255, 255, 255, 0.65) 100%);
+}
+
+#browse-activities #controls
+{
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	height: 72px;
+}
+
+#browse-activities #controls .center
+{
+	margin: 1% auto;
+	width: 70%;
+}
+
+#browse-activities #controls .control
+{
+	padding: 20px;
+	border-radius: 40px;
+}
+
+#browse-activities #controls .control.send-invitation
+{
+	color: lightgreen;
+	float: left;
+}
+
+#browse-activities #controls .control.skip
+{
+	color: red;
+	float: right;
+}
+
+#browse-activities #cover {
+	text-align: center;
+	position: absolute;
+	left: 0;
+	width: 100%;
+	bottom: 0;
+	color: #33393c;
+	max-height: 15%;
+}
+
+#browse-activities #cover #label {
+	margin: 0 auto;
+	width: 96%;
 }
