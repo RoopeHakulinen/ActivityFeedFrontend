@@ -4,12 +4,13 @@
 	</ons-toolbar>
 
 	<div class="login-form">
-		<input type="email" class="text-input--underbar" placeholder="{{'COMMON_EMAIL' | translate}}" ng-model="email" value="">
-		<input type="password" class="text-input--underbar" placeholder="{{'COMMON_PASSWORD' | translate}}" ng-model="password" value="">
+		<div class="form-set">
+			<input type="email" class="text-input--underbar" placeholder="{{'COMMON_EMAIL' | translate}}" ng-model="email" value="">
+			<input type="password" class="text-input--underbar" placeholder="{{'COMMON_PASSWORD' | translate}}" ng-model="password" value="">
+		</div>
+		<ons-button modifier="large" class="login-button glossy" ng-click="login()">{{'LOGIN_SIGN_IN' | translate}}</ons-button>
 		<br><br>
-		<ons-button modifier="large" class="login-button" ng-click="login()">{{'LOGIN_SIGN_IN' | translate}}</ons-button>
-		<br><br>
-		<ons-button modifier="large" class="login-button" ng-click="facebookLogin()">{{'LOGIN_SIGN_IN_WITH_FACEBOOK' | translate}}</ons-button>
+		<ons-button modifier="large" class="login-button glossy" ng-click="facebookLogin()">{{'LOGIN_SIGN_IN_WITH_FACEBOOK' | translate}}</ons-button>
 		<br>
 		<ons-button modifier="quiet" class="register" ng-click="register();">{{'REGISTER_REGISTER' | translate}}</ons-button>
 		<br>
