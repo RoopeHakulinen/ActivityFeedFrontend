@@ -1,0 +1,24 @@
+#activity-details
+{
+
+}
+
+#activity-details > div
+{
+	padding: 22px;
+	margin-top: 10px;
+}
+
+#activity-details select
+{
+	margin-top: -5px;
+	padding: 10px;
+}
+
+#activity-details input
+{
+	margin-top: -5px;
+	margin-left: 10px;
+	background-color: white;
+	color: black !important;
+}

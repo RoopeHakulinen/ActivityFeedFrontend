@@ -52,6 +52,11 @@ app.controller("listInvitationsCtrl", function ($scope, urlConfig, invitationSer
 		);
 	};
 
+	$scope.showProfile = function (profile)
+	{
+		appNavigator.pushPage("templates/show-profile.html", {profile: profile});
+	};
+
 	$scope.showActivity = function (activity)
 	{
 		appNavigator.pushPage("templates/show-activity.html", {activity: activity});

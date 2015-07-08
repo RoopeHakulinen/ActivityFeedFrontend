@@ -20,7 +20,7 @@
 				</ons-col>
 
 				<ons-col class="invitation-right">
-					<div class="invitation-name">{{invitation.user.name || invitation.user.email}} {{'INVITATION_DESC' | translate}} {{invitation.activity.activity_type.name}}</div>
+					<div class="invitation-name"><span class="username" ng-click="showProfile(invitation.user);$event.stopPropagation();">{{invitation.user.name || invitation.user.email}}</span> {{'INVITATION_DESC' | translate}} {{invitation.activity.activity_type.name}}</div>
 
 					<!--<div class="invitation-info">
 						<div ng-hide="a % 4 == 0">

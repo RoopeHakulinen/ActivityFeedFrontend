@@ -1,4 +1,4 @@
-app.controller("createActivityCtrl", function ($scope, $http, $q, urlConfig, activityService, activityTypeService, userService, directService) {
+app.controller("createActivityCtrl", function ($scope, $http, $q, urlConfig, activityService, activityTypeService, userService, directService, $translate) {
 	$scope.activityTypes = [];
 
 	$scope.activityType = {name: "", id: -1};
@@ -27,6 +27,16 @@ app.controller("createActivityCtrl", function ($scope, $http, $q, urlConfig, act
 
 	$scope.createActivity = function()
 	{
+		if ($scope.activityType.id === -1)
+		{
+			toast('CREATE_ACTIVITY_NO_ACTIVITY_TYPE');
+			return;
+		}
+		if ($scope.locationName.length === 0)
+		{
+			toast('CREATE_ACTIVITY_NO_LOCATION');
+			return;
+		}
 		$scope.showDirectMenu().then(
 			function (directs) {
 				commonLoader.show();
@@ -58,7 +68,7 @@ app.controller("createActivityCtrl", function ($scope, $http, $q, urlConfig, act
 	$scope.showDirectMenu = function ()
 	{
 		var deferred = $q.defer();
-		appNavigator.pushPage("templates/select-list.html", {name: "Lähetä kutsu Directeille", dataPromise: directService.getDirects(), selection: [], deferred: deferred});
+		appNavigator.pushPage("templates/select-list.html", {name: $translate.instant('CREATE_ACTIVITY_SEND_INVITATION_FOR_DIRECTS'), dataPromise: directService.getDirects(), selection: [], deferred: deferred});
 		return deferred.promise;
 	};
 

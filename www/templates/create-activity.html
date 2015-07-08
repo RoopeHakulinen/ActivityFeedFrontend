@@ -4,36 +4,37 @@
 		<div class="center">{{'CREATE_ACTIVITY' | translate}}</div>
 	</ons-toolbar>
 
-	<ons-list modifier="inset" style="margin-top: 10px">
-		<ons-list-item>
-			<label for="activity-type">{{'CREATE_ACTIVITY_ACTIVITY_TYPE' | translate}}</label>
-			<select id="activity-type" ng-model="activityType" ng-options="activityType.name for activityType in activityTypes track by activityType.id" style="float: right; margin-top: 2px; padding: 9px;"></select>
-		</ons-list-item>
+	<div id="activity-details">
+		<div class="glossy">
+			<div>
+				<label for="activity-type">{{'CREATE_ACTIVITY_ACTIVITY_TYPE' | translate}}</label>
+				<select id="activity-type" ng-model="activityType" ng-options="activityType.name for activityType in activityTypes track by activityType.id"></select>
+			</div>
+		</div>
+		<div class="glossy">
+			{{'CREATE_ACTIVITY_TIME' | translate}}: <input type="date" ng-model="date" class="text-input text-input--transparent"> <input type="time" ng-model="from" class="text-input text-input--transparent"> -
+			<input type="time" ng-model="to" class="text-input text-input--transparent">
+		</div>
 
-		<ons-list-item>
-			{{'CREATE_ACTIVITY_TIME' | translate}}: <input type="date" ng-model="date" class="text-input text-input--transparent" style="background-color: rgb(221, 221, 221);"> <input type="time" ng-model="from" class="text-input text-input--transparent" style="background-color: rgb(221, 221, 221)"> -
-			<input type="time" ng-model="to" class="text-input text-input--transparent" style="background-color: rgb(221, 221, 221);">
-		</ons-list-item>
+		<div class="glossy">
+			{{'CREATE_ACTIVITY_LOCATION_NAME' | translate}}: <input type="text" ng-model="locationName" class="text-input text-input--transparent" placeholder="{{'CREATE_ACTIVITY_LOCATION' | translate}}">
+		</div>
 
-		<ons-list-item>
-			{{'CREATE_ACTIVITY_LOCATION_NAME' | translate}}: <input type="text" ng-model="locationName" class="text-input text-input--transparent" placeholder="{{'CREATE_ACTIVITY_LOCATION' | translate}}" style="width: 100%">
-		</ons-list-item>
+		<div class="glossy">
+			{{'CREATE_ACTIVITY_MAX_PARTICIPANTS' | translate}}: <input type="number" min="1" max="20" ng-model="participantCount" class="text-input text-input--transparent">
+		</div>
 
-		<ons-list-item>
-			{{'CREATE_ACTIVITY_MAX_PARTICIPANTS' | translate}}: <input type="number" max="20" ng-model="participantCount" class="text-input text-input--transparent" style="width: 100%">
-		</ons-list-item>
+		<div class="glossy">
+			{{'CREATE_ACTIVITY_REQUIRED_LEVEL' | translate}}: <input type="number" min="0" max="5" step="0.5" ng-model="requiredLevel" class="text-input text-input--transparent">
+		</div>
 
-		<ons-list-item>
-			{{'CREATE_ACTIVITY_REQUIRED_LEVEL' | translate}}: <input type="number" min="0" max="5" step="0.5" ng-model="requiredLevel" class="text-input text-input--transparent" style="width: 100%">
-		</ons-list-item>
-
-		<ons-list-item>
+		<div class="glossy">
 			{{'CREATE_ACTIVITY_MORE_INFORMATION' | translate}}: <textarea class="textarea textarea--transparent" ng-model="message" style="width: 100%; height: 100px;"></textarea>
-		</ons-list-item>
-	</ons-list>
+		</div>
+	</div>
 
 	<div style="padding: 10px 9px">
-		<ons-button modifier="large outline" style="margin: 0 auto;" ng-click="createActivity();">
+		<ons-button modifier="large" style="margin: 0 auto;" ng-click="createActivity();">
 			{{'CREATE_ACTIVITY' | translate}}
 		</ons-button>
 	</div>
