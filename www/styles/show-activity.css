@@ -1,37 +1,69 @@
 #activity
 {
-	height: 96%;
+	height: calc(100% - 64px);
 	width: 96%;
 	margin: auto;
-	border: 1px solid white;
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
 }
 
-#activity #info
+#activity #activity-card-container
 {
-	background-color: rgba(255, 255, 255, 0.7);
+	height: calc(100% - 170px);
 }
 
-#activity #comments
+
+#activity #comment-area-container
 {
-	min-height: 100px;
-	background-color: rgba(255, 255, 255, 0.7);
+	height: 170px;
+	left: 0;
+	bottom: 0;
+	position: absolute;
+	width: 100%;
+	margin-bottom: 2%;
+}
+
+#activity #comment-area-container #comment-area
+{
+	margin: 0 auto;
+	width: 93%;
+	position: relative;
+	height: 100%;
+}
+
+#activity #comment-area-container #comment-area #comments
+{
+	height: calc(100% - 54px);
 	width: 100%;
 	margin: 0 auto;
+	overflow-y: scroll;
+	padding-top: 4px;
 }
 
-#activity #comments .comment
+#activity #comment-area-container #comment-area #comments .comment
 {
 	width: 98%;
 	border-bottom: 1px solid black;
-	padding: 2px 0;
+	padding: 3px 0;
 	color: black;
 	margin: 0 auto;
 }
-
-#activity #comments .comment .author
+#activity #comment-area-container #comment-area #comments .comment .author
 {
-	color: #3399ff;
+	color: maroon;
+}
+
+#activity #comment-area-container #comment-area #commenting
+{
+	height: 50px;
+	bottom: 0;
+	position: absolute;
+	width: 98%;
+	margin: 0 1%;
+	padding-top: 2px;
+}
+
+#activity #comment-area-container #comment-area #commenting input
+{
+	height: 40px;
+	width: calc(100% - 130px);
+	margin: 0 4px;
 }
