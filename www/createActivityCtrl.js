@@ -72,19 +72,5 @@ app.controller("createActivityCtrl", function ($scope, $http, $q, urlConfig, act
 		return deferred.promise;
 	};
 
-	$scope.onLoaded = function () {
-		console.log('Google Picker loaded!');
-	};
-
-	$scope.onPicked = function (docs) {
-		angular.forEach(data.docs, function (file, index) {
-			$scope.files.push(file);
-		});
-	};
-
-	$scope.onCancel = function () {
-		console.log('Google picker close/cancel!');
-	};
-
 	$scope.initialize();
 });
