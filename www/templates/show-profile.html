@@ -7,7 +7,7 @@
 	</ons-toolbar>
 
 	<div class="profile-card">
-		<img ng-src="{{profile.picture}}" class="profile-image">
+		<img ng-src="{{helpers.resolveProfilePicture(profile)}}" class="profile-image">
 		<div class="profile-name">{{profile.name}}</div>
 		<div class="profile-id">{{'PROFILE_AGE' | translate}}: {{profile.born | ageFilter}}</div>
 		<div class="profile-desc">{{profile.description}}</div>

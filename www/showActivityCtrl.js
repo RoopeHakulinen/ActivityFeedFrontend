@@ -49,16 +49,4 @@ app.controller("showActivityCtrl", function ($scope, urlConfig, activityService,
 	{
 		// Do nothing
 	};
-
-	$scope._getOrganizerImage = function (activity)
-	{
-		try{
-			var imageUrl = activity.organizer.picture;
-		}
-		catch (e)
-		{ // Fall back to default image
-			imageUrl = "styles/images/no-image.jpg";
-		}
-		return imageUrl;
-	};
 });

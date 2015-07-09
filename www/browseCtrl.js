@@ -69,18 +69,6 @@ app.controller("browseCtrl", function ($scope, $http, $q, urlConfig, activitySer
 		);
 	};
 
-	$scope._getOrganizerImage = function (activity)
-	{
-		try{
-			var imageUrl = activity.organizer.picture;
-		}
-		catch (e)
-		{ // Fall back to default image
-			imageUrl = "styles/images/no-image.jpg";
-		}
-		return imageUrl;
-	};
-
 	$scope.getCurrentActivityIndex = function()
 	{
 		return browseCarousel.getActiveCarouselItemIndex();
