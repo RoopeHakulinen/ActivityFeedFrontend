@@ -1,4 +1,4 @@
-var app = angular.module('app', ['onsen', 'pascalprecht.translate'], function() {
+var app = angular.module('app', ['onsen', 'pascalprecht.translate', 'lk-google-picker'], function() {
 
 });
 
