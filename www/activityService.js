@@ -123,8 +123,8 @@ app.service('activityService', function ($http, $q, urlConfig, userService) {
 		);
 	};
 
-	this.handled = function()
+	this.handled = function(index)
 	{
-		this.activities.splice(1,0);
+		this.activities.splice(index,1);
 	}
 });

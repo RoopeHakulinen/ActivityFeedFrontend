@@ -15,7 +15,7 @@
 	padding: 10px;
 }
 
-#activity-details input
+#activity-details input, #activity-details textarea
 {
 	margin-top: -5px;
 	margin-left: 10px;

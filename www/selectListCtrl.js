@@ -7,12 +7,7 @@ app.controller("selectListCtrl", function ($scope) {
 	{
 		$scope.name = options.name;
 		$scope.selection = options.selection; // Contains only ids
-		options.dataPromise.then(
-			function (data)
-			{
-				$scope.data = data; // Each object should have id and name
-			}
-		);
+		$scope.data = options.data; // Each object should have id and name
 		$scope.deferred = options.deferred;
 	};
 
