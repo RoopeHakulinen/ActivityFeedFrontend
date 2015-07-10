@@ -1,4 +1,4 @@
-ENV = "test"; // "localhost", "test" or "production"
+ENV = "localhost"; // "localhost", "test" or "production"
 
 var serverUrl;
 if (ENV === "localhost")
