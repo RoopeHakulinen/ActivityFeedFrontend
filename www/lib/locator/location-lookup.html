@@ -1,0 +1,8 @@
+<location-predictions results="results" value="value"></location-predictions>
+
+<ul>
+	<!-- Results -->
+	<li ng-repeat="option in results | limitTo:limitTo"
+	    ng-click="pickLocation(option);"
+	    item="option">{{option.description}}</li>
+</ul>

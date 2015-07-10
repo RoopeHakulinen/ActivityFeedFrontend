@@ -17,7 +17,8 @@
 		</div>
 
 		<div class="glossy">
-			{{'CREATE_ACTIVITY_LOCATION_NAME' | translate}}: <input type="text" ng-model="locationName" class="text-input text-input--transparent" placeholder="{{'CREATE_ACTIVITY_LOCATION' | translate}}">
+			{{'CREATE_ACTIVITY_LOCATION_NAME' | translate}} ({{'CREATE_ACTIVITY_LOCATION_HELP' | translate}}):
+			<location-lookup ng-model="tempLocation" limit-to="15" callback="setLocation(location);"></location-lookup>
 		</div>
 
 		<div class="glossy">
