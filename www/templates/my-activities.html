@@ -15,24 +15,24 @@
 		<ons-list-item
 			modifier="chevron"
 			class="my-activities"
-			ng-repeat="activityObj in activities track by $index"
-			ng-click="showActivity(activityObj);"
+			ng-repeat="activity in activities track by $index"
+			ng-click="showActivity(activity);"
 			ng-class="{
-				'own': ownActivity(activityObj),
-				'pending': pendingActivity(activityObj),
-				'participating': participatingInActivity(activityObj)
+				'own': ownActivity(activity),
+				'pending': pendingActivity(activity),
+				'participating': participatingInActivity(activity)
 				}">
 			<ons-row>
 				<ons-col width="80px" class="my-activities-left">
-					<div class="my-activities-date">{{activityObj.from | asDate | date: "d.M. klo H:mm"}} - {{activityObj.to | asDate | date: "H:mm"}}</div>
-					<div class="my-activities-duration">{{getDuration(activityObj.from, activityObj.to) | asDate | date: "H'h' mm'min'"}}</div>
+					<div class="my-activities-date">{{activity.from | asDate | date: "d.M. klo H:mm"}} - {{activity.to | asDate | date: "H:mm"}}</div>
+					<div class="my-activities-duration">{{getDuration(activity.from, activity.to) | asDate | date: "H'h' mm'min'"}}</div>
 				</ons-col>
 
 				<ons-col width="6px" class="my-activities-center" style="background-color: #3399ff">
 				</ons-col>
 
 				<ons-col class="my-activities-right">
-					<div class="my-activities-name">{{activityObj.activity_type.name}}</div>
+					<div class="my-activities-name">{{activity.activity_type.name}} ({{activity.participants.length}} / {{activity.participant_count}} {{'COMMON_PARTICIPANTS' | translate}})</div>
 
 					<!--<div class="my-activities-info">
 						<div ng-hide="a % 4 == 0">

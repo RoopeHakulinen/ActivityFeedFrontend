@@ -13,7 +13,7 @@
 			<div class="activity-stars">
 				<div class="star-five" ng-class="{highlight: activity.required_level >= n}" ng-repeat="n in [1, 2, 3, 4, 5]"></div>
 			</div>
-			<div class="activity-participants">{{activity.participants.length + 1}} / {{activity.participant_count}} {{'BROWSE_PARTICIPANTS' | translate}}</div>
+			<div class="activity-participants">{{activity.participants.length + 1}} / {{activity.participant_count}} {{'COMMON_PARTICIPANTS' | translate}}</div>
 			<div class="activity-distance">{{activity.distance | number:1}} km</div>
 		</div>
 	</div>

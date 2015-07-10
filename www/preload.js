@@ -12,7 +12,7 @@ app.run(function ($templateCache, $http) {
 	$http.get('templates/register.html', { cache: $templateCache });
 	$http.get('templates/select-list.html', { cache: $templateCache });
 	$http.get('templates/settings.html', { cache: $templateCache });
-	$http.get('templates/show-activities.html', { cache: $templateCache });
+	$http.get('templates/my-activities.html', { cache: $templateCache });
 	$http.get('templates/show-activity.html', { cache: $templateCache });
 	$http.get('templates/show-profile.html', { cache: $templateCache });
 });
