@@ -24,6 +24,7 @@
 	position: absolute;
 	bottom: 0;
 	height: 72px;
+	padding-bottom: 10px;
 }
 
 #browse-activities #browser #top-container #controls .center

@@ -13,6 +13,11 @@ input
 	margin-bottom: 20px;
 }
 
+.dark-button
+{
+	background: linear-gradient(to bottom, #508ED9 31%,#72A4E0 100%) !important;
+}
+
 .glossy {
 	background: #94c4fe;
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(31%,#72A4E0), color-stop(100%,#94c4fe));
