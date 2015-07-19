@@ -1,7 +1,6 @@
 app.controller("createActivityCtrl", function ($scope, $http, $q, urlConfig, activityService, activityTypeService, userService, directService, $translate) {
 	$scope.activityTypes = [];
 
-	$scope.activityType = {name: "", id: -1};
 	$scope.location = "";
 	$scope.date = new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
 	$scope.from = new Date(1970, 0, 1, 17, 0, 0);
@@ -22,6 +21,10 @@ app.controller("createActivityCtrl", function ($scope, $http, $q, urlConfig, act
 		activityTypeService.getActivityTypes().then(function(activityTypes)
 		{
 			$scope.activityTypes = activityTypes;
+			if (activityTypes.length > 0)
+			{
+				$scope.activityType = activityTypes[0];
+			}
 		});
 	};
 
